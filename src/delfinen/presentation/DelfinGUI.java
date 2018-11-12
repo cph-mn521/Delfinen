@@ -5,6 +5,7 @@
  */
 package delfinen.presentation;
 
+import java.util.Objects;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
@@ -203,6 +204,56 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void textFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldIDActionPerformed
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DelfinGUI other = (DelfinGUI) obj;
+        if (!Objects.equals(this.comboBoxStatus, other.comboBoxStatus)) {
+            return false;
+        }
+        if (!Objects.equals(this.jTextPane1, other.jTextPane1)) {
+            return false;
+        }
+        if (!Objects.equals(this.textFieldAdresse, other.textFieldAdresse)) {
+            return false;
+        }
+        if (!Objects.equals(this.textFieldAlder, other.textFieldAlder)) {
+            return false;
+        }
+        if (!Objects.equals(this.textFieldEmail, other.textFieldEmail)) {
+            return false;
+        }
+        if (!Objects.equals(this.textFieldID, other.textFieldID)) {
+            return false;
+        }
+        if (!Objects.equals(this.textFieldNavn, other.textFieldNavn)) {
+            return false;
+        }
+        if (!Objects.equals(this.textFieldTelefon, other.textFieldTelefon)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "DelfinGUI{" + "comboBoxStatus=" + comboBoxStatus + ", jTextPane1=" + jTextPane1 + ", textFieldAdresse=" + textFieldAdresse + ", textFieldAlder=" + textFieldAlder + ", textFieldEmail=" + textFieldEmail + ", textFieldID=" + textFieldID + ", textFieldNavn=" + textFieldNavn + ", textFieldTelefon=" + textFieldTelefon + '}';
+    }
 
     /**
      * @param args the command line arguments
