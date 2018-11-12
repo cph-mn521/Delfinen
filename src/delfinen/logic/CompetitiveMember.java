@@ -10,5 +10,20 @@ package delfinen.logic;
  * @author Lord
  */
 public class CompetitiveMember extends Member {
+    ArrayList<String> disciplines;
+    
+    public CompetitiveMember(String name, String email, String adresse, int id, int age, int phone, enum membership, ArrayList<String> disciplines) {
+        super(name, email, adresse, id, age, phone, membership);
+        this.disciplines = disciplines;
+    }
+    
+    public CompetitiveMember(String name, String email, String adresse, int id, int age, int phone, enum membership, String disciplines) {
+        super(name, email, adresse, id, age, phone, membership);
+        this.disciplines.add(disciplines);
+    }
+    
+    
+    
+    
     
 }
