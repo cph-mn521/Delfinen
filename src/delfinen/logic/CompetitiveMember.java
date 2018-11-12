@@ -10,5 +10,9 @@ package delfinen.logic;
  * @author Lord
  */
 public class CompetitiveMember extends Member {
+
+    public CompetitiveMember(String name, String email, String adresse, int id, int age, int phone, enum membership) {
+        super(name, email, adresse, id, age, phone, membership);
+    }
     
 }
