@@ -9,21 +9,20 @@ package delfinen.logic;
  *
  * @author Lord
  */
+import java.util.ArrayList;
+
 public class CompetitiveMember extends Member {
     ArrayList<String> disciplines;
     
-    public CompetitiveMember(String name, String email, String adresse, int id, int age, int phone, enum membership, ArrayList<String> disciplines) {
-        super(name, email, adresse, id, age, phone, membership);
+    public CompetitiveMember(String name, String email, String adresse, int id, int age, int phone, Status status,ArrayList<String> disciplines) {
+        super(name, email, adresse, id, age, phone, status);
         this.disciplines = disciplines;
     }
     
-    public CompetitiveMember(String name, String email, String adresse, int id, int age, int phone, enum membership, String disciplines) {
-        super(name, email, adresse, id, age, phone, membership);
+    public CompetitiveMember(String name, String email, String adresse, int id, int age, int phone, Status status,String disciplines) {
+        super(name, email, adresse, id, age, phone, status);
         this.disciplines.add(disciplines);
     }
     
-    
-    
-    
-    
+ 
 }
