@@ -50,6 +50,13 @@ dist/
 nbdist/
 .nb-gradle/
 
+### Linux ###
+d
+pull
+push
+status
+commit
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
