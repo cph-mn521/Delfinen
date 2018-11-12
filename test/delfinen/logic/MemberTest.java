@@ -19,7 +19,7 @@ public class MemberTest {
     
    
     public MemberTest() {
-        Member m = new Member();
+        //Member m = new Member();
     
     }
         

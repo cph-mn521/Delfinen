@@ -29,7 +29,7 @@ public class Member {
         this.id = id;
         this.age = age;
         this.phone = phone;
-        this.Status = status;
+     //   this.Status = status;
     }
 
     
@@ -60,7 +60,7 @@ public class Member {
         if (!Objects.equals(this.email, other.email)) {
             return false;
         }
-        return !Objects.equals(this.adress, other.adresse);
+        return !Objects.equals(this.adress, other.adress);
         
     }
 
@@ -118,16 +118,15 @@ public class Member {
     public void setPhone(int phone) {
         this.phone = phone;
     }
-/*
-    public status getStatus() {
-        return status;
+
+    public Status getStatus() {
+        return Status;
     }
 
-    public void setStatus( 
-        enum status) {
-        this.satatus = status;
+    public void setStatus(Status status) {
+        this.Status = status;
     }
-*/
+
     public void changeMembership() {
         // new CompetitiveMember(name, email, adress, id, age, phone, null);
     }

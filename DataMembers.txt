@@ -1,0 +1,1 @@
+{"name": "Karsten Henriksen", "email":"abc@abs.dk","adresse":"vinder vænget 4","id":1,"age":48,"phone":12345678,"membership":PASSIVE}
