@@ -1,21 +1,20 @@
-
-import delfinen.data.DataAccessor;
-import delfinen.data.DataAccessorFile;
-import delfinen.data.DataException;
-import org.junit.Assert;
-import static org.junit.Assert.*;
-import org.junit.*;
-import delfinen.logic.Member;
 import java.util.List;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import delfinen.data.DataException;
+import delfinen.data.
+import delfinen.data.DataAccessor;
 
 /**
- * Tests any inserted DataAccessor
  *
- * @author RODA
+ * @author Martin Wulff
  */
-public class DataAccessorTest {
-
-    private DataAccessor da;
+public class DataAccesorTest {
+      private DataAccessor da;
 
     public DataAccessorTest() {
         try {
@@ -36,5 +35,4 @@ public class DataAccessorTest {
         }
     }
 
-   
 }
