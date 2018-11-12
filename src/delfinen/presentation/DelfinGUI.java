@@ -200,10 +200,6 @@ public class DelfinGUI extends javax.swing.JFrame {
         return accessibleContext;
     }
 
-    public static int getEXIT_ON_CLOSE() {
-        return EXIT_ON_CLOSE;
-    }
-
     private void textFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldIDActionPerformed
