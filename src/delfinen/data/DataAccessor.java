@@ -15,7 +15,7 @@ import java.util.List;
 public interface DataAccessor {
    
     // Methods for getting members from a txt database.
-    public void  getMembers() throws DataException;
+    public List<Member>  getMembers() throws DataException;
     
     
     public Member getMember() throws DataException;

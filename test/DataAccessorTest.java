@@ -6,6 +6,7 @@ import org.junit.Assert;
 import static org.junit.Assert.*;
 import org.junit.*;
 import delfinen.logic.Member;
+import java.util.List;
 
 /**
  * Tests any inserted DataAccessor
@@ -28,8 +29,9 @@ public class DataAccessorTest {
     @Test
     public void testGetMembers() {
         try {
-            da.getMembers();
-        } catch (DataException ex) {
+            List<Member> obj = da.getMembers();
+            assertNotNull(obj);
+        } catch (DataException ex){
             fail(ex.getMessage());
         }
     }
