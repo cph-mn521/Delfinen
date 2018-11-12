@@ -40,8 +40,8 @@ public class DelfinGUITest {
     public void testGetComboBoxStatus() {
         System.out.println("getComboBoxStatus");
         DelfinGUI instance = new DelfinGUI();
-        JComboBox<String> expResult = null;
-        JComboBox<String> result = instance.getComboBoxStatus();
+        String expResult = "Aktiv";
+        String result = instance.getComboBoxStatus();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
