@@ -14,6 +14,7 @@ import java.util.Objects;
 public class Member {
 
     String name, email, adresse;
+    
     int id, age, phone;
 
     public enum membership {
