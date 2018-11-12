@@ -4,35 +4,36 @@
  * and open the template in the editor.
  */
 package delfinen.logic;
-
 import java.util.Objects;
 
 /**
  *
- * @author Niels Bang
+ * @author Lord
  */
+
 public class Member {
 
-    String name, email, adresse;
-    int id, age, phone;
-
-    public enum membership {
-        ACTIVE,
-        PASSIVE
+    private String name, email, adress;
+    private int id, age, phone;
+    
+    public enum Status {
+        Active,
+        Passive
     }
 
-    public Member(String name, String email, String adresse, int id, int age, int phone,  
-        enum membership) {
+    
+    public Member(String name, String email, String adress, int id, int age, int phone, Status status) {
         this.name = name;
         this.email = email;
-        this.adresse = adresse;
+        this.adress = adress;
         this.id = id;
         this.age = age;
         this.phone = phone;
-        this.membership = membership;
+        this.Status = status;
     }
 
-    @Override
+    
+    @Override    
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -59,14 +60,16 @@ public class Member {
         if (!Objects.equals(this.email, other.email)) {
             return false;
         }
-        return !Objects.equals(this.adresse, other.adresse)
+        return !Objects.equals(this.adress, other.adresse);
         
     }
 
     @Override
     public String toString() {
-        return "Member{" + "name=" + name + ", email=" + email + ", adresse=" + adresse + ", id=" + id + ", age=" + age + ", phone=" + phone + '}';
+        return "Member{" + "name=" + name + ", email=" + email + ", adress=" + adress + ", id=" + id + ", age=" + age + ", phone=" + phone + '}';
     }
+
+    
 
     public String getName() {
         return name;
@@ -84,12 +87,12 @@ public class Member {
         this.email = email;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getAdress() {
+        return adress;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public void setAdress(String adresse) {
+        this.adress = adress;
     }
 
     public int getId() {
@@ -115,9 +118,20 @@ public class Member {
     public void setPhone(int phone) {
         this.phone = phone;
     }
-
-    public membership getStatus() {
-        return membership;
+/*
+    public status getStatus() {
+        return status;
     }
+
+    public void setStatus( 
+        enum status) {
+        this.satatus = status;
+    }
+*/
+    public void changeMembership() {
+        // new CompetitiveMember(name, email, adress, id, age, phone, null);
+    }
+
+
 
 }
