@@ -5,12 +5,23 @@ import delfinen.presentation.DelfinGUI;
  *
  * @author Martin Wulff
  */
-public class Main {
+public class Controller {
     /**
      * @param args the command line arguments
      */
+    private static DelfinGUI gui;
+    
     public static void main(String[] args) {
-        DelfinGUI gui = new DelfinGUI();
+        gui = new DelfinGUI();
         gui.setVisible(true);
     }
+    
+    
+    
+    
+    
 }
+
+
+
+
