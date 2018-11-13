@@ -347,19 +347,19 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public int getTextFieldAlder() {
-        return textFieldAlder;
+        return Integer.getInteger(textFieldAlder.getText());
     }
 
     public String getTextFieldEmail() {
-        return textFieldEmail;
+        return textFieldEmail.getText();
     }
 
     public int getTextFieldID() {
-        return textFieldID;
+        return Integer.getInteger(textFieldID.getText());
     }
 
     public String getTextFieldNavn() {
-        return textFieldNavn;
+        return textFieldNavn.getText();
     }
 
     public int getTextFieldTelefon() {
