@@ -4,24 +4,25 @@
  * and open the template in the editor.
  */
 package delfinen.logic;
+
 import java.util.Objects;
 
 /**
  *
  * @author Lord
  */
-
 public class Member {
 
     private String name, email, adress;
     private int id, age, phone;
+    private Status status;
+    private boolean isCoach;
     
     public enum Status {
         Active,
         Passive
     }
 
-    
     public Member(String name, String email, String adress, int id, int age, int phone, Status status) {
         this.name = name;
         this.email = email;
@@ -29,11 +30,10 @@ public class Member {
         this.id = id;
         this.age = age;
         this.phone = phone;
-     //   this.Status = status;
+        this.status = status;
     }
 
-    
-    @Override    
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -61,15 +61,13 @@ public class Member {
             return false;
         }
         return !Objects.equals(this.adress, other.adress);
-        
+
     }
 
     @Override
     public String toString() {
         return "Member{" + "name=" + name + ", email=" + email + ", adress=" + adress + ", id=" + id + ", age=" + age + ", phone=" + phone + '}';
     }
-
-    
 
     public String getName() {
         return name;
@@ -91,7 +89,7 @@ public class Member {
         return adress;
     }
 
-    public void setAdress(String adresse) {
+    public void setAdress(String adress) {
         this.adress = adress;
     }
 
@@ -120,17 +118,24 @@ public class Member {
     }
 
     public Status getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(Status status) {
-        this.Status = status;
+        this.status = status;
     }
-
+    
+    public void changeCoachStatus(){
+        isCoach = !isCoach;
+    }
+  
+    public boolean isCoach(){
+        return isCoach;
+    }
+    
     public void changeMembership() {
-        // new CompetitiveMember(name, email, adress, id, age, phone, null);
+        //Skal bruge en funktion til at 
+        //new CompetitiveMember(name, email, adress, id, age, phone, status, );
     }
-
-
 
 }
