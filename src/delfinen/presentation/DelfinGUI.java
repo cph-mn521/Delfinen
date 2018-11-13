@@ -41,10 +41,17 @@ public class DelfinGUI extends javax.swing.JFrame {
      */
     public DelfinGUI() {
         initComponents();
+        //Int checkboxes
         discipliner.add(checkBoxDisciplinBryst);
         discipliner.add(checkBoxDisciplinButterfly);
         discipliner.add(checkBoxDisciplinCrawl);
         discipliner.add(checkBoxDisciplinRygcrawl);
+//        checkBoxDisciplinBryst.setSelected(false);
+//        checkBoxDisciplinButterfly.setSelected(false);
+//        checkBoxDisciplinCrawl.setSelected(false);
+//        checkBoxDisciplinRygcrawl.setSelected(false);
+
+        //init textfields
         textFieldEmail.setBackground(Color.white);
         textFieldAdresse.setBackground(Color.white);
         textFieldAlder.setBackground(Color.white);
@@ -472,6 +479,22 @@ public class DelfinGUI extends javax.swing.JFrame {
         return disc;
     }
 
+    public boolean getDisciplinBryst() {
+        return checkBoxDisciplinBryst.isSelected();
+    }
+
+    public boolean getDisciplinButterfly() {
+        return checkBoxDisciplinButterfly.isSelected();
+    }
+
+    public boolean getDisciplinCrawl() {
+        return checkBoxDisciplinCrawl.isSelected();
+    }
+
+    public boolean getDisciplinRygcrawl() {
+        return checkBoxDisciplinRygcrawl.isSelected();
+    }
+
     public String getMotionKonkurrence() {
         return comboBoxMotionistKonkurrence.getSelectedItem().toString();
     }
@@ -485,7 +508,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public String getAdresse() {
-        if (textFieldEmail.getBackground() == Color.white) {
+        if (textFieldAdresse.getBackground() == Color.white) {
             return textFieldAdresse.getText();
         } else {
             return "";
@@ -529,6 +552,28 @@ public class DelfinGUI extends javax.swing.JFrame {
             return Integer.parseInt(textFieldTelefon.getText());
         } else {
             return 0;
+        }
+    }
+
+    public void setDisciplinCheckBoxes(ArrayList<String> disciplinList) {
+        for (String disciplin : disciplinList) {
+            switch (disciplin) {
+                case ("Brystsvømning"):
+                    checkBoxDisciplinBryst.setSelected(true);
+                    break;
+
+                case ("Butterfly"):
+                    checkBoxDisciplinButterfly.setSelected(true);
+                    break;
+
+                case ("Crawl"):
+                    checkBoxDisciplinCrawl.setSelected(true);
+                    break;
+
+                default:
+                    checkBoxDisciplinRygcrawl.setSelected(true);
+                    break;
+            }
         }
     }
 

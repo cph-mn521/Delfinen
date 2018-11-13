@@ -2,7 +2,6 @@ package delfinen.presentation;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import javax.accessibility.AccessibleContext;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -71,6 +70,31 @@ public class DelfinGUITest {
     }
 
     @Test
+    public void testDisciplinCheckboxes() {
+        System.out.println("getDisciplinCheckboxes");
+        DelfinGUI instance = new DelfinGUI();
+        ArrayList<String> result = new ArrayList<>();
+        result.add("Brystsvømning");
+        result.add("Butterfly");
+        result.add("Rygcrawl");
+        instance.setDisciplinCheckBoxes(result);
+        ArrayList<String> expResult = new ArrayList<String>();
+        if (instance.getDisciplinBryst()) {
+            expResult.add("Brystsvømning");
+        }
+        if (instance.getDisciplinButterfly()) {
+            expResult.add("Butterfly");
+        }
+        if (instance.getDisciplinCrawl()) {
+            expResult.add("Crawl");
+        }
+        if (instance.getDisciplinRygcrawl()) {
+            expResult.add("Rygcrawl");
+        }
+        assertEquals(expResult, result);
+    }
+
+    @Test
     public void testGetAdresse() {
         System.out.println("getAdresse");
         DelfinGUI instance = new DelfinGUI();
@@ -97,13 +121,13 @@ public class DelfinGUITest {
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void testisEmail() {
-        System.out.println("isEmail");
-        DelfinGUI instance = new DelfinGUI();
-        boolean result = (instance.getBackground() == Color.white);
-        assertTrue(result);
-    }
+//    @Test
+//    public void testisEmail() {
+//        System.out.println("isEmail");
+//        DelfinGUI instance = new DelfinGUI();
+//        boolean result = (instance.getBackground() == Color.white);
+//        assertTrue(result);
+//    }
 
     @Test
     public void testGetID() {
