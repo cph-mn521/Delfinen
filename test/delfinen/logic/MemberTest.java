@@ -6,29 +6,29 @@
 package delfinen.logic;
 
 import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+
+import delfinen.logic.Member.Status;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 
 /**
  *
  * @author Lord
  */
 public class MemberTest {
-    
-    
-    private Member testPerson1 = new Member("John Test","abe@kat.dk","Reeeeee 3",2,34, 12345678, Member.Status.Active);
-    private Member testPerson2 = new Member("John Test","abe@kat.dk","Reeeeee 3",2,34, 12345678, Member.Status.Active);
-    private Member testPerson3 = new Member("Ikke John","ny@mailt.dk","Anden Gade 23",4,89, 87654321, Member.Status.Passive);
+
+    private CompetitiveMember testPerson4, testPerson5;
+    private Member testPerson1 = new Member("John Test", "abe@kat.dk", "Testgade 3", 2, 34, 12345678, Member.Status.Active);
+    private Member testPerson2 = new Member("John Test", "abe@kat.dk", "Testgade 3", 2, 34, 12345678, Member.Status.Active);
+    private Member testPerson3 = new Member("Ikke John", "ny@mailt.dk", "Anden Gade 23", 4, 89, 87654321, Member.Status.Passive);
+
     public MemberTest() {
-    
-        
+
     }
-    
-   
 
     /**
      * Test of equals method, of class Member.
@@ -39,28 +39,13 @@ public class MemberTest {
     }
 
     @Test
-    public void testEquals2(){
+    public void testEquals2() {
         assertFalse(testPerson1.equals(testPerson3));
     }
-    
+
     @Test
-    public void nullTestEquals(){
-        assertFalse(testPerson1.equals(null));
-    }
-    
-    
-    /**
-     * Test of toString method, of class Member.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        Member instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void nullTestEquals() {
+        assertFalse(testPerson1 == null);
     }
 
     /**
@@ -68,13 +53,9 @@ public class MemberTest {
      */
     @Test
     public void testGetName() {
-        System.out.println("getName");
-        Member instance = null;
-        String expResult = "";
-        String result = instance.getName();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expected = "John Test";
+        String result = testPerson1.getName();
+        assertEquals(expected, result);
     }
 
     /**
@@ -82,12 +63,10 @@ public class MemberTest {
      */
     @Test
     public void testSetName() {
-        System.out.println("setName");
-        String name = "";
-        Member instance = null;
-        instance.setName(name);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expected = "John Tester Set";
+        testPerson1.setName(expected);
+        assertEquals(expected, testPerson1.getName());
+        testPerson1.setName("John Test");
     }
 
     /**
@@ -95,13 +74,10 @@ public class MemberTest {
      */
     @Test
     public void testGetEmail() {
-        System.out.println("getEmail");
-        Member instance = null;
-        String expResult = "";
-        String result = instance.getEmail();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expected = "abe@kat.dk";
+        String result = testPerson1.getEmail();
+        assertEquals(expected, result);
+
     }
 
     /**
@@ -109,26 +85,21 @@ public class MemberTest {
      */
     @Test
     public void testSetEmail() {
-        System.out.println("setEmail");
-        String email = "";
-        Member instance = null;
-        instance.setEmail(email);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expected = "ny@email.dk";
+        testPerson1.setEmail(expected);
+        assertEquals(expected, testPerson1.getEmail());
+        testPerson1.setEmail("abe@kat.dk");
     }
 
     /**
      * Test of getAdress method, of class Member.
      */
     @Test
-    public void testGetAdress() {
-        System.out.println("getAdress");
-        Member instance = null;
-        String expResult = "";
-        String result = instance.getAdress();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testGetAddress() {
+        String expected = "Testgade 3";
+        String result = testPerson1.getAddress();
+        assertEquals(expected, result);
+
     }
 
     /**
@@ -136,12 +107,9 @@ public class MemberTest {
      */
     @Test
     public void testSetAdress() {
-        System.out.println("setAdress");
-        String adress = "";
-        Member instance = null;
-        instance.setAdress(adress);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expected = "NyTestvej 18";
+        testPerson1.setAddress(expected);
+        assertEquals(expected, testPerson1.getAddress());
     }
 
     /**
@@ -149,13 +117,9 @@ public class MemberTest {
      */
     @Test
     public void testGetId() {
-        System.out.println("getId");
-        Member instance = null;
-        int expResult = 0;
-        int result = instance.getId();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int expected = 2;
+        int result = testPerson1.getId();
+        assertEquals(expected, result, 0);
     }
 
     /**
@@ -163,12 +127,9 @@ public class MemberTest {
      */
     @Test
     public void testSetId() {
-        System.out.println("setId");
-        int id = 0;
-        Member instance = null;
-        instance.setId(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int expected = 8;
+        testPerson1.setId(expected);
+        assertEquals(expected, testPerson1.getId());
     }
 
     /**
@@ -176,13 +137,9 @@ public class MemberTest {
      */
     @Test
     public void testGetAge() {
-        System.out.println("getAge");
-        Member instance = null;
-        int expResult = 0;
-        int result = instance.getAge();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int expected = 34;
+        int result = testPerson1.getAge();
+        assertEquals(expected, result, 0);
     }
 
     /**
@@ -190,12 +147,9 @@ public class MemberTest {
      */
     @Test
     public void testSetAge() {
-        System.out.println("setAge");
-        int age = 0;
-        Member instance = null;
-        instance.setAge(age);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int expected = 76;
+        testPerson1.setAge(76);
+        assertEquals(expected, testPerson1.getAge());
     }
 
     /**
@@ -203,13 +157,9 @@ public class MemberTest {
      */
     @Test
     public void testGetPhone() {
-        System.out.println("getPhone");
-        Member instance = null;
-        int expResult = 0;
-        int result = instance.getPhone();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int expected = 12345678;
+        int result = testPerson1.getPhone();
+        assertEquals(expected, result);
     }
 
     /**
@@ -217,12 +167,9 @@ public class MemberTest {
      */
     @Test
     public void testSetPhone() {
-        System.out.println("setPhone");
-        int phone = 0;
-        Member instance = null;
-        instance.setPhone(phone);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int expected = 135792468;
+        testPerson1.setPhone(expected);
+        assertEquals(expected, testPerson1.getPhone());
     }
 
     /**
@@ -230,13 +177,9 @@ public class MemberTest {
      */
     @Test
     public void testGetStatus() {
-        System.out.println("getStatus");
-        Member instance = null;
-        Member.Status expResult = null;
-        Member.Status result = instance.getStatus();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Status expected = Status.Active;
+        Status result = testPerson1.getStatus();
+        assertEquals(expected, result);
     }
 
     /**
@@ -244,12 +187,10 @@ public class MemberTest {
      */
     @Test
     public void testSetStatus() {
-        System.out.println("setStatus");
-        Member.Status status = null;
-        Member instance = null;
-        instance.setStatus(status);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Status expected = Status.Passive;
+        testPerson1.setStatus(expected);
+        assertEquals(expected, testPerson1.getStatus());
+
     }
 
     /**
@@ -257,11 +198,9 @@ public class MemberTest {
      */
     @Test
     public void testChangeCoachStatus() {
-        System.out.println("changeCoachStatus");
-        Member instance = null;
-        instance.changeCoachStatus();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expected = true;
+        testPerson1.changeCoachStatus();
+        assertTrue(testPerson1.isCoach());
     }
 
     /**
@@ -269,60 +208,115 @@ public class MemberTest {
      */
     @Test
     public void testIsCoach() {
-        System.out.println("isCoach");
-        Member instance = null;
-        boolean expResult = false;
-        boolean result = instance.isCoach();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expected = false;
+        assertEquals(expected, testPerson1.isCoach());
+
     }
 
     /**
      * Test of changeMembership method, of class Member.
+     *
+     * @throws CoachNotFoundException
      */
     @Test
-    public void testChangeMembership_Member() {
-        System.out.println("changeMembership");
-        Member coach = null;
-        Member instance = null;
-        Member expResult = null;
-        Member result = instance.changeMembership(coach);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testChangeMembership_Member() throws CoachNotFoundException {
+        testPerson1.changeCoachStatus();
+        testPerson3.changeMembership(testPerson1);
+        assertTrue(testPerson3.isCompetitive());
     }
 
     /**
      * Test of changeMembership method, of class Member.
+     *
+     * @throws CoachNotFoundException
      */
     @Test
-    public void testChangeMembership_Member_Discipline() {
-        System.out.println("changeMembership");
-        Member coach = null;
-        Discipline discipline = null;
-        Member instance = null;
-        Member expResult = null;
-        Member result = instance.changeMembership(coach, discipline);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testChangeMembership_Member_Discipline() throws CoachNotFoundException {
+        Member testPerson6 = new Member("John Test", "abe@kat.dk", "Testgade 3", 2, 34, 12345678, Member.Status.Active);
+        Member testPerson7 = new Member("John Test", "abe@kat.dk", "Testgade 3", 2, 34, 12345678, Member.Status.Active);
+        testPerson6.changeCoachStatus();
+        testPerson7.changeMembership(testPerson6, Discipline.crawl);
+
+        assertTrue(testPerson2.isCompetitive());
     }
 
     /**
      * Test of changeMembership method, of class Member.
+     *
+     * @throws CoachNotFoundException
      */
     @Test
-    public void testChangeMembership_Member_ArrayList() {
-        System.out.println("changeMembership");
-        Member coach = null;
-        ArrayList<Discipline> disciplines = null;
-        Member instance = null;
-        Member expResult = null;
-        Member result = instance.changeMembership(coach, disciplines);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testChangeMembership_Member_ArrayList() throws CoachNotFoundException {
+        Member testPerson8 = new Member("John Test", "abe@kat.dk", "Testgade 3", 2, 34, 12345678, Member.Status.Active);
+        Member testPerson9 = new Member("John Test", "abe@kat.dk", "Testgade 3", 2, 34, 12345678, Member.Status.Active);
+        testPerson8.changeCoachStatus();
+        ArrayList<Discipline> disciplines = new ArrayList<>();
+        disciplines.add(Discipline.butterfly);
+        disciplines.add(Discipline.rygcrawl);
+
+        testPerson9.changeMembership(testPerson8, disciplines);
+
+        assertTrue(testPerson2.isCompetitive());
+    }
+
+    /**
+     * Test of Competitive Member constructor
+     */
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    /**
+     * Test of competitiveMember constructor.
+     *
+     * @throws CoachNotFoundException
+     */
+    @Test
+    public void testCompetitiveMemberConstructor1() throws CoachNotFoundException {
+        thrown.expect(CoachNotFoundException.class
+        );
+        testPerson4 = new CompetitiveMember("David Hassellhoff", "david@thehoff.com", "Hoffstreet 5", 1, 66, 12345678, Status.Active, Discipline.crawl, testPerson1);
+
+    }
+
+    @Test
+    public void testCompetitiveMemberConstructor2() throws CoachNotFoundException {
+        ArrayList<Discipline> disciplines = new ArrayList<>();
+        disciplines.add(Discipline.crawl);
+        disciplines.add(Discipline.brystsvømning);
+        disciplines.add(Discipline.butterfly);
+        testPerson2.changeCoachStatus();
+        testPerson5 = new CompetitiveMember("Pamela Anderson", "pamela@anderson.com", "Hollywood 2", 9, 76, 98765432, Status.Active, disciplines, testPerson2);
+    }
+
+    /**
+     * Tests of isCompetitive.
+     */
+    @Test
+    public void testIsCompetitiveMember1() {
+        boolean expected = false;
+        assertEquals(expected, testPerson1.isCompetitive);
+    }
+
+    @Test
+    public void testIsCompetitiveMember2() throws CoachNotFoundException {
+        boolean expected = true;
+
+        testPerson2.changeCoachStatus();
+        testPerson5 = new CompetitiveMember("Pamela Anderson", "pamela@anderson.com", "Hollywood 2", 9, 76, 98765432, Status.Active, Discipline.crawl, testPerson2);
+
+        assertEquals(expected, testPerson5.isCompetitive());
+    }
+
+    
+    @Test
+    public void testgetCoach(){
+        fail();
+              
+    }
+    
+    @Test
+    public void testSetCoach(){
+        fail();
     }
     
 }
