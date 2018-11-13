@@ -61,6 +61,11 @@ public class DelfinGUITest {
         expResult.add("Rygcrawl");
         ArrayList<String> result;
         result = instance.getDisciplin();
+        System.out.println("Discipliner to string: " + result);
+        
+        for (String string : result) {
+            System.out.println("Discipliner: " + string);
+        }
         assertEquals(expResult, result);
     }
     
