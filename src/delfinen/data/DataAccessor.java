@@ -19,5 +19,7 @@ public interface DataAccessor {
    
    
     public void saveMember(Member obj) throws DataException;
-
+    
+    public void editMember(Member old,Member N) throws DataException;
+    
 }
