@@ -110,7 +110,7 @@ public class DataAccessorFile implements DataAccessor {
     public void saveMember(Member obj) throws DataException{
         BufferedWriter writer = new BufferedWriter(FW);
         try {
-            writer.write(gson.toJson(obj));
+            writer.append(gson.toJson(obj));
             writer.close();
         } catch (IOException ree) {
             throw new DataException("FileNotFound");
