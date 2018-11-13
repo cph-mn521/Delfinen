@@ -10,7 +10,7 @@ import delfinen.data.DataException;
 import delfinen.data.DataAccessorFile;
 import delfinen.data.DataAccessor;
 import delfinen.logic.Member;
-import delfinen.logic.Member.Status;
+
 
 /**
  *
@@ -22,9 +22,9 @@ public class DataAccesorTest {
     public DataAccesorTest() {
         try {
             da = new DataAccessorFile("DataMembers.txt");
-            Member target1 =new Member("hernik Henriksen", "abc@abs.dk","vinder vænget 4",1,48,12345678,Status.Passive);
-            Member target2 =new Member("hernik Henriksen", "abc@abs.dk","vinder vænget 5",2,48,12345678,Status.Passive);
-            Member target3 =new Member("hernik Henriksen", "abc@abs.dk","vinder vænget 6",3,48,12345678,Status.Passive);
+            Member target1 =new Member("hernik Henriksen", "abc@abs.dk","vinder vænget 4",1,48,12345678,delfinen.logic.Member.Status.Passive);
+            Member target2 =new Member("hernik Henriksen", "abc@abs.dk","vinder vænget 5",2,48,12345678,delfinen.logic.Member.Status.Passive);
+            Member target3 =new Member("hernik Henriksen", "abc@abs.dk","vinder vænget 6",3,48,12345678,delfinen.logic.Member.Status.Passive);
             da.saveMember(target1);
             da.saveMember(target2);
             da.saveMember(target3);
