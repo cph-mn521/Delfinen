@@ -171,7 +171,7 @@ public class DelfinGUITest {
 //        Object obj = null;
 //        DelfinGUI instance = new DelfinGUI();
 //        boolean expResult = false;
-//        boolean result = instance.equals(obj);
+//        boolean result = instance.equals(obj);result
 //        assertEquals(expResult, result);
 //        // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");

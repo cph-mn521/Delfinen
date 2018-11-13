@@ -73,7 +73,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         panelMain = new javax.swing.JPanel();
-        panelMedlemmer = new javax.swing.JPanel();
+        panelMembers = new javax.swing.JPanel();
         buttonMedlem = new javax.swing.JButton();
         panelMedlemsData = new javax.swing.JPanel();
         comboBoxStatus = new javax.swing.JComboBox<>();
@@ -107,15 +107,21 @@ public class DelfinGUI extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         buttonClose = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        panelAccount = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        panelResults = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         menuFileClose = new javax.swing.JMenuItem();
-        menuEdit = new javax.swing.JMenu();
+        menuSystem = new javax.swing.JMenu();
+        menuSystemAccount = new javax.swing.JMenuItem();
+        menuSystemMembers = new javax.swing.JMenuItem();
+        menuSystemResults = new javax.swing.JMenuItem();
         menuHelp = new javax.swing.JMenu();
         menuHelpAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.CardLayout());
 
         panelMain.setLayout(new java.awt.CardLayout());
 
@@ -323,43 +329,43 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         labelMemberPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
 
-        javax.swing.GroupLayout panelMedlemmerLayout = new javax.swing.GroupLayout(panelMedlemmer);
-        panelMedlemmer.setLayout(panelMedlemmerLayout);
-        panelMedlemmerLayout.setHorizontalGroup(
-            panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMedlemmerLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelMembersLayout = new javax.swing.GroupLayout(panelMembers);
+        panelMembers.setLayout(panelMembersLayout);
+        panelMembersLayout.setHorizontalGroup(
+            panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMembersLayout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panelMedlemmerLayout.createSequentialGroup()
+                .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelMembersLayout.createSequentialGroup()
                         .addComponent(labelDelfinIcon)
                         .addGap(18, 18, 18)
-                        .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(buttonSearchMember, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                             .addComponent(buttonMedlem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(panelMedlemsData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelMedlemmerLayout.createSequentialGroup()
+                    .addGroup(panelMembersLayout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelMemberPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        panelMedlemmerLayout.setVerticalGroup(
-            panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMedlemmerLayout.createSequentialGroup()
+        panelMembersLayout.setVerticalGroup(
+            panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMembersLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(panelMedlemmerLayout.createSequentialGroup()
-                        .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(panelMembersLayout.createSequentialGroup()
+                        .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelMemberPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1))
-                    .addGroup(panelMedlemmerLayout.createSequentialGroup()
-                        .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelMedlemmerLayout.createSequentialGroup()
+                    .addGroup(panelMembersLayout.createSequentialGroup()
+                        .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelMembersLayout.createSequentialGroup()
                                 .addComponent(buttonSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(buttonMedlem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -369,7 +375,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
-        panelMain.add(panelMedlemmer, "panelMedlemmer");
+        panelMain.add(panelMembers, "panelMembers");
 
         panelLogo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
@@ -430,7 +436,47 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         panelMain.add(panelAbout, "panelAbout");
 
-        getContentPane().add(panelMain, "card4");
+        jLabel12.setText("Kassen");
+
+        javax.swing.GroupLayout panelAccountLayout = new javax.swing.GroupLayout(panelAccount);
+        panelAccount.setLayout(panelAccountLayout);
+        panelAccountLayout.setHorizontalGroup(
+            panelAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAccountLayout.createSequentialGroup()
+                .addGap(255, 255, 255)
+                .addComponent(jLabel12)
+                .addContainerGap(707, Short.MAX_VALUE))
+        );
+        panelAccountLayout.setVerticalGroup(
+            panelAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAccountLayout.createSequentialGroup()
+                .addContainerGap(256, Short.MAX_VALUE)
+                .addComponent(jLabel12)
+                .addGap(182, 182, 182))
+        );
+
+        panelMain.add(panelAccount, "panelAccount");
+
+        jLabel11.setText("Results");
+
+        javax.swing.GroupLayout panelResultsLayout = new javax.swing.GroupLayout(panelResults);
+        panelResults.setLayout(panelResultsLayout);
+        panelResultsLayout.setHorizontalGroup(
+            panelResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelResultsLayout.createSequentialGroup()
+                .addGap(347, 347, 347)
+                .addComponent(jLabel11)
+                .addContainerGap(615, Short.MAX_VALUE))
+        );
+        panelResultsLayout.setVerticalGroup(
+            panelResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelResultsLayout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(jLabel11)
+                .addContainerGap(238, Short.MAX_VALUE))
+        );
+
+        panelMain.add(panelResults, "panelResults");
 
         menuFile.setText("File");
 
@@ -444,8 +490,33 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         menuBar.add(menuFile);
 
-        menuEdit.setText("Edit");
-        menuBar.add(menuEdit);
+        menuSystem.setText("System");
+
+        menuSystemAccount.setText("Kassen");
+        menuSystemAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSystemAccountActionPerformed(evt);
+            }
+        });
+        menuSystem.add(menuSystemAccount);
+
+        menuSystemMembers.setText("Medlemmer");
+        menuSystemMembers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSystemMembersActionPerformed(evt);
+            }
+        });
+        menuSystem.add(menuSystemMembers);
+
+        menuSystemResults.setText("Resultater");
+        menuSystemResults.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuSystemResultsActionPerformed(evt);
+            }
+        });
+        menuSystem.add(menuSystemResults);
+
+        menuBar.add(menuSystem);
 
         menuHelp.setText("Help");
 
@@ -460,6 +531,17 @@ public class DelfinGUI extends javax.swing.JFrame {
         menuBar.add(menuHelp);
 
         setJMenuBar(menuBar);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -654,7 +736,7 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     private void buttonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseActionPerformed
         CardLayout card = (CardLayout) panelMain.getLayout();
-        card.show(panelMain, "panelMedlemmer");
+        card.show(panelMain, "panelMembers");
     }//GEN-LAST:event_buttonCloseActionPerformed
 
     private void menuHelpAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuHelpAboutActionPerformed
@@ -673,7 +755,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void textFieldTelefonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTelefonActionPerformed
         // input check, Regex for Telephone
         regexUserInfoBackGroundColorSet("^\\d+$", textFieldTelefon,
-                "Telefonnummer skal være i formattet: 12345678");
+                "Telefonnummer skal være i formatet: 12345678");
     }//GEN-LAST:event_textFieldTelefonActionPerformed
 
     private void comboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxStatusActionPerformed
@@ -693,13 +775,13 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void textFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldEmailActionPerformed
         // input check, Regex for email
         regexUserInfoBackGroundColorSet("^.+@.+\\..+$", textFieldEmail,
-                "Email skal være i formattet: xx@yy.zz");
+                "Email skal være i formatet: xx@yy.zz");
     }//GEN-LAST:event_textFieldEmailActionPerformed
 
     private void textFieldAdresseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAdresseActionPerformed
         // input check, Regex for address
         regexUserInfoBackGroundColorSet("^.+,\\s+\\d{4}.+$", textFieldAdresse,
-                "Adresse skal være i formattet: adresse, 2938 Bynavn");
+                "Adresse skal være i formatet: adresse, 2938 Bynavn");
     }//GEN-LAST:event_textFieldAdresseActionPerformed
 
     private void textFieldNavnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNavnActionPerformed
@@ -720,6 +802,21 @@ public class DelfinGUI extends javax.swing.JFrame {
             textFieldAlder.setBackground(Color.white);
         }
     }//GEN-LAST:event_textFieldAlderActionPerformed
+
+    private void menuSystemResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSystemResultsActionPerformed
+        CardLayout card = (CardLayout) panelMain.getLayout();
+        card.show(panelMain, "panelResults");
+    }//GEN-LAST:event_menuSystemResultsActionPerformed
+
+    private void menuSystemMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSystemMembersActionPerformed
+        CardLayout card = (CardLayout) panelMain.getLayout();
+        card.show(panelMain, "panelMembers");
+    }//GEN-LAST:event_menuSystemMembersActionPerformed
+
+    private void menuSystemAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSystemAccountActionPerformed
+        CardLayout card = (CardLayout) panelMain.getLayout();
+        card.show(panelMain, "panelAccount");
+    }//GEN-LAST:event_menuSystemAccountActionPerformed
 
     private boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf,
             String err) {
@@ -837,6 +934,8 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -849,17 +948,22 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelDelfinIcon;
     private javax.swing.JLabel labelMemberPhoto;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenu menuEdit;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenuItem menuFileClose;
     private javax.swing.JMenu menuHelp;
     private javax.swing.JMenuItem menuHelpAbout;
+    private javax.swing.JMenu menuSystem;
+    private javax.swing.JMenuItem menuSystemAccount;
+    private javax.swing.JMenuItem menuSystemMembers;
+    private javax.swing.JMenuItem menuSystemResults;
     private javax.swing.JPanel panelAbout;
+    private javax.swing.JPanel panelAccount;
     private javax.swing.JPanel panelDisciplin;
     private javax.swing.JPanel panelLogo;
     private javax.swing.JPanel panelMain;
-    private javax.swing.JPanel panelMedlemmer;
     private javax.swing.JPanel panelMedlemsData;
+    private javax.swing.JPanel panelMembers;
+    private javax.swing.JPanel panelResults;
     private javax.swing.JTextField textFieldAdresse;
     private javax.swing.JTextField textFieldAlder;
     private javax.swing.JTextField textFieldEmail;
