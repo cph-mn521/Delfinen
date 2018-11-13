@@ -7,17 +7,13 @@ package delfinen.presentation;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -807,12 +803,15 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     private void textFieldAlderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAlderActionPerformed
         // input check, Regex for address
+        String err = "Alder skal være et tal mellem 0 og 120 år";
         regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder,
-                "Alder skal være et tal of i mellem 0 og 120 år");
+                err);
         if (Integer.parseInt(textFieldAlder.getText()) < 0
                 || Integer.parseInt(textFieldAlder.getText()) > 120) {
             textFieldAlder.setBackground(Color.red);
+            displayFormatedText(textPaneMedlemsInfo, err, FONT_NOTOSANS_PLAIN_12, Color.RED);
         } else {
+            clearFormatedText(textPaneMedlemsInfo);
             textFieldAlder.setBackground(Color.white);
         }
     }//GEN-LAST:event_textFieldAlderActionPerformed
