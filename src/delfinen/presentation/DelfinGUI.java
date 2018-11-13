@@ -640,16 +640,16 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public int getMemberPhoto() {
-        try{
+        try {
             int g = Integer.parseInt(labelMemberPhoto.getIcon()
-                .toString().split("files")[1].substring(1).split(".jpg")[0]);
+                    .toString().split("files")[1].substring(1).split(".jpg")[0]);
             return g;
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println(e);
             return 0;
         }
     }
-    
+
     public void setDisciplinCheckBoxes(ArrayList<String> disciplinList) {
         for (String disciplin : disciplinList) {
             switch (disciplin) {
@@ -710,7 +710,7 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     public void setMemberPhoto(int ID) {
         this.labelMemberPhoto.setIcon(new javax.swing.ImageIcon(getClass()
-                .getResource("/files/" + ID + ".jpg")));
+                .getResource("/files/" + String.valueOf(ID) + ".jpg")));
     }
 
     public void setID(int textFieldID) {
@@ -935,9 +935,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         System.out.println("getMotion: " + getMotionKonkurrence());
         System.out.println("getStatus: " + getStatus());
         setMemberPhoto(2);
-//        String[] gh = labelMemberPhoto.getIcon().toString().split("files");
-//        String[] dh = labelMemberPhoto.getIcon().toString().split("files")[1].substring(1).split(".jpg");
-//        String[] dh = gh[1].substring(1).split(".jpg");
+        System.out.println("getMemberPhoto: " + labelMemberPhoto.getIcon().toString());
         System.out.println("getMemberPhoto: " + labelMemberPhoto.getIcon()
                 .toString().split("files")[1].substring(1).split(".jpg")[0]);
     }
