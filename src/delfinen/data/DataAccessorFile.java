@@ -1,8 +1,17 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package delfinen.data;
 
-import com.google.gson.Gson;
 import delfinen.logic.Member;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,104 +22,74 @@ import java.util.List;
 public class DataAccessorFile implements DataAccessor {
 
     private final String FileName;
-    //private final String FilePath;
-    private Gson gson;
 
     public DataAccessorFile(String FileName) {
         this.FileName = FileName;
-        //this.FilePath=FilePath;
-        this.gson = new Gson();
     }
 
-    // Methods for getting members from a txt database.
     @Override
-    public List<Member> getMembers() throws DataException {
+    public List<String> getEntries() throws DataException {
         String line = null;
-        List<Member> Output = new ArrayList<>();
+        List<String> Output = new ArrayList<>();
         try {
-            BufferedReader bufferedReader
-                    = new BufferedReader(new FileReader(FileName));
-
-            while ((line = bufferedReader.readLine()) != null) {
-                Output.add(gson.fromJson(line, Member.class));
+            BufferedReader reader = new BufferedReader(new FileReader(FileName));
+            while ((line = reader.readLine()) != null && line != "") {
+                Output.add(line);
             }
-
-            // Always close files.
-            bufferedReader.close();
             return Output;
-        } catch (Exception e) {
-            System.out.println("Exception: File Not Found.");
-            throw new DataException("FileNotFound!");
+        } catch (IOException e) {
+            throw new DataException();
         }
     }
 
-    /*
-    Method for searching a json string for a specifik entry. expecst input to be of string type.
-    Will return first member that meets konditions, OBS! might be inacurate when using ID numbers.
-     */
     @Override
-    public Member getMember(String query) throws DataException {
+    public List<String> searchEntries(String query) throws DataException {
         String line = null;
-        Member bufferMember;
+        List<String> Output = new ArrayList<>();
         try {
-            BufferedReader bufferedReader
-                    = new BufferedReader(new FileReader(FileName));
-
-            while ((line = bufferedReader.readLine()) != null) {
+            BufferedReader reader = new BufferedReader(new FileReader(FileName));
+            while ((line = reader.readLine()) != null ) {
                 if (line.contains(query)) {
-                    bufferedReader.close();
-                    return gson.fromJson(line, Member.class);
+                    Output.add(line);
                 }
             }
-            throw new DataException("EntryNotFound!");
-            // Always close files.
-
-        } catch (IOException ree) {
-            System.out.println("Exception: File Not Found.");
-            throw new DataException("FileNotFound!");
+            return Output;
+        } catch (IOException e) {
+            throw new DataException();
         }
     }
 
-    ;
-    
-    /*
     @Override
-    public Member getMember(int query) throws DataException{
-    String line = null;
-    try {
-            BufferedReader bufferedReader = 
-                new BufferedReader(FR);
-
-            while((line = bufferedReader.readLine()) != null) {
-                if(line.contains("\"id:\""+query)||line.contains("\"phone\":"+query) ){
-                    bufferedReader.close(); 
-                    return gson.fromJson(line, Member.class);
-                }
-            }
-            bufferedReader.close(); 
-            throw new DataException("EntryNotFound!");
-            // Always close files.
-  
-
-        } catch (IOException ree) {
-            System.out.println("Exception: File Not Found.");
-            throw new DataException("FileNotFound!");
-        }
-    };
-    */
-   
-    @Override
-    public void saveMember(Member obj) throws DataException {
-        try {   
-
-            BufferedWriter writer = new BufferedWriter(new FileWriter(FileName,true));
-            System.out.println(gson.toJson(obj));
-            writer.append(gson.toJson(obj));
+    public void addEntry(String obj) throws DataException {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(FileName, true));
+            writer.newLine();
+            writer.write(obj);
             writer.close();
-        } catch (IOException ree) {
-            throw new DataException("FileNotFound");
+        } catch (IOException e) {
+            throw new DataException();
         }
+    }
 
+    @Override
+    public void editEntry(String old, String N) throws DataException {
+        try {
+            List<String> newFile = getEntries();
+            String lines = "";
+            BufferedWriter writer = new BufferedWriter(new FileWriter(FileName, false));
+            for (String string : newFile) {
+                if (string.equals(old)) {
+                    lines += N+"\r\n";
+                }
+                else lines +=string +"\r\n";
+            }
+            writer.write(lines);
+            writer.flush();
+            writer.close();
+
+        } catch (IOException e) {
+            throw new DataException();
+        }
     }
 ;
 
