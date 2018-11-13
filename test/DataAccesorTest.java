@@ -37,6 +37,7 @@ public class DataAccesorTest {
             List<String> obj = da.getEntries();
             assertNotNull(obj);
             assertTrue(1 <= obj.size());
+            System.out.println(obj.toString());
         } catch (DataException ex) {
             fail(ex.getMessage());
         }

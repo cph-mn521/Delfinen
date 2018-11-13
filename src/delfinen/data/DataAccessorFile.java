@@ -44,8 +44,8 @@ public class DataAccessorFile implements DataAccessor {
         List<String> Output = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FileName));
-            while ((line = reader.readLine()) != null && line != "") {
-                Output.add(line);
+            while ((line = reader.readLine()) != null) {
+                if(!line.equals(""))Output.add(line);
             }
             return Output;
         } catch (IOException e) {
@@ -69,7 +69,7 @@ public class DataAccessorFile implements DataAccessor {
         List<String> machingEntries = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FileName));
-            while ((line = reader.readLine()) != null && line != "") {
+            while ((line = reader.readLine()) != null) {
                 if (line.contains(query)) {
                     machingEntries.add(line);
                 }
