@@ -2,6 +2,7 @@ package delfinen.data;
 import com.google.gson.Gson;
 import delfinen.logic.Member;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,7 +46,6 @@ public class DataAccessorFile implements DataAccessor {
         } catch (Exception e) {
             System.out.println("Exception: File Not Found.");
             throw new DataException("FileNotFound!");
-            return null;
         }
     }
     

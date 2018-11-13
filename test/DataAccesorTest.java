@@ -6,8 +6,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import delfinen.data.DataException;
-import delfinen.data.
+import delfinen.data.DataAccessorFile;
 import delfinen.data.DataAccessor;
+import delfinen.logic.Member;
 
 /**
  *
@@ -16,7 +17,7 @@ import delfinen.data.DataAccessor;
 public class DataAccesorTest {
       private DataAccessor da;
 
-    public DataAccessorTest() {
+    public DataAccesorTest() {
         try {
             da = new DataAccessorFile("DataMembers.txt");
         } catch (Exception e) {
@@ -30,6 +31,7 @@ public class DataAccesorTest {
         try {
             List<Member> obj = da.getMembers();
             assertNotNull(obj);
+            assertEquals(6, obj.size());
         } catch (DataException ex){
             fail(ex.getMessage());
         }

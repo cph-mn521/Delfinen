@@ -5,6 +5,7 @@
  */
 package delfinen.presentation;
 
+import java.awt.CardLayout;
 import java.util.Objects;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JComboBox;
@@ -13,7 +14,7 @@ import javax.swing.JTextPane;
 
 /**
  *
- * @author martin
+ * @author martin b.
  */
 public class DelfinGUI extends javax.swing.JFrame {
 
@@ -33,11 +34,8 @@ public class DelfinGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textPaneMedlemsInfo = new javax.swing.JTextPane();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        buttonSearchMember = new javax.swing.JButton();
+        panelMain = new javax.swing.JPanel();
+        panelMedlemmer = new javax.swing.JPanel();
         buttonMedlem = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         comboBoxStatus = new javax.swing.JComboBox<>();
@@ -54,17 +52,27 @@ public class DelfinGUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         textFieldAdresse = new javax.swing.JTextField();
         textFieldNavn = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textPaneMedlemsInfo = new javax.swing.JTextPane();
+        labelDelfinIcon = new javax.swing.JLabel();
+        buttonSearchMember = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        panelAbout = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        buttonClose = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        menuBar = new javax.swing.JMenuBar();
+        menuFile = new javax.swing.JMenu();
+        menuFileClose = new javax.swing.JMenuItem();
+        menuEdit = new javax.swing.JMenu();
+        menuHelp = new javax.swing.JMenu();
+        menuHelpAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.CardLayout());
 
-        jScrollPane1.setViewportView(textPaneMedlemsInfo);
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BBWsmall.png"))); // NOI18N
-
-        jLabel9.setFont(new java.awt.Font("Noto Sans", 0, 36)); // NOI18N
-        jLabel9.setText("Medlemmer");
-
-        buttonSearchMember.setText("Søg medlem");
+        panelMain.setLayout(new java.awt.CardLayout());
 
         buttonMedlem.setText("Nyt Medlem");
 
@@ -76,8 +84,13 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         jLabel3.setText("Status");
 
+        textFieldTelefon.setText("25854578");
+
+        textFieldAlder.setText("23");
+
         jLabel2.setText("Navn");
 
+        textFieldID.setText("1");
         textFieldID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldIDActionPerformed(evt);
@@ -86,11 +99,17 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         jLabel1.setText("ID");
 
+        textFieldEmail.setText("hjyui@delfinen.dk");
+
         jLabel6.setText("Adresse");
 
         jLabel5.setText("Telefon");
 
         jLabel4.setText("Email");
+
+        textFieldAdresse.setText("Ligustervænget 23, 2756 Liguster");
+
+        textFieldNavn.setText("Lars Emil");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -164,88 +183,194 @@ public class DelfinGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(88, 88, 88)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttonMedlem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonSearchMember, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(jLabel9))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        textPaneMedlemsInfo.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.gray, java.awt.Color.white));
+        jScrollPane1.setViewportView(textPaneMedlemsInfo);
+
+        labelDelfinIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/delfin.jpg"))); // NOI18N
+        labelDelfinIcon.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        buttonSearchMember.setText("Søg medlem");
+
+        jLabel9.setFont(new java.awt.Font("Noto Sans", 0, 36)); // NOI18N
+        jLabel9.setText("Medlemmer");
+
+        javax.swing.GroupLayout panelMedlemmerLayout = new javax.swing.GroupLayout(panelMedlemmer);
+        panelMedlemmer.setLayout(panelMedlemmerLayout);
+        panelMedlemmerLayout.setHorizontalGroup(
+            panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMedlemmerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelMedlemmerLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(labelDelfinIcon)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                        .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelMedlemmerLayout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttonMedlem, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelMedlemmerLayout.setVerticalGroup(
+            panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelMedlemmerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(panelMedlemmerLayout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1))
+                    .addGroup(panelMedlemmerLayout.createSequentialGroup()
+                        .addComponent(labelDelfinIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelMedlemmerLayout.createSequentialGroup()
+                                .addComponent(buttonSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(buttonMedlem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+
+        panelMain.add(panelMedlemmer, "panelMedlemmer");
+
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        jLabel10.setText("BBW software 2018");
+
+        buttonClose.setText("Close");
+        buttonClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCloseActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BBW.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonClose)
+                .addGap(190, 190, 190))
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(buttonSearchMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buttonMedlem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1))
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonClose)
+                    .addComponent(jLabel10))
                 .addContainerGap())
         );
 
+        javax.swing.GroupLayout panelAboutLayout = new javax.swing.GroupLayout(panelAbout);
+        panelAbout.setLayout(panelAboutLayout);
+        panelAboutLayout.setHorizontalGroup(
+            panelAboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelAboutLayout.createSequentialGroup()
+                .addGap(246, 246, 246)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(178, 178, 178))
+        );
+        panelAboutLayout.setVerticalGroup(
+            panelAboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAboutLayout.createSequentialGroup()
+                .addContainerGap(94, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71))
+        );
+
+        panelMain.add(panelAbout, "panelAbout");
+
+        getContentPane().add(panelMain, "card4");
+
+        menuFile.setText("File");
+
+        menuFileClose.setText("Close");
+        menuFileClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuFileCloseActionPerformed(evt);
+            }
+        });
+        menuFile.add(menuFileClose);
+
+        menuBar.add(menuFile);
+
+        menuEdit.setText("Edit");
+        menuBar.add(menuEdit);
+
+        menuHelp.setText("Help");
+
+        menuHelpAbout.setText("About");
+        menuHelpAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuHelpAboutActionPerformed(evt);
+            }
+        });
+        menuHelp.add(menuHelpAbout);
+
+        menuBar.add(menuHelp);
+
+        setJMenuBar(menuBar);
+
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public JComboBox<String> getComboBoxStatus() {
-        return comboBoxStatus;
+    public String getComboBoxStatus() {
+        return comboBoxStatus.getSelectedItem().toString();
     }
 
-    public JTextPane getjTextPane1() {
-        return textPaneMedlemsInfo;
+    public String getjTextPane1() {
+        return textPaneMedlemsInfo.getText();
     }
 
-    public JTextField getTextFieldAdresse() {
-        return textFieldAdresse;
+    public String getTextFieldAdresse() {
+        return textFieldAdresse.getText();
     }
 
-    public JTextField getTextFieldAlder() {
-        return textFieldAlder;
+    public int getTextFieldAlder() {
+        return Integer.getInteger(textFieldAlder.getText());
     }
 
-    public JTextField getTextFieldEmail() {
-        return textFieldEmail;
+    public String getTextFieldEmail() {
+        return textFieldEmail.getText();
     }
 
-    public JTextField getTextFieldID() {
-        return textFieldID;
+    public int getTextFieldID() {
+        return Integer.getInteger(textFieldID.getText());
     }
 
-    public JTextField getTextFieldNavn() {
-        return textFieldNavn;
+    public String getTextFieldNavn() {
+        return textFieldNavn.getText();
     }
 
-    public JTextField getTextFieldTelefon() {
-        return textFieldTelefon;
+    public int getTextFieldTelefon() {
+        return Integer.getInteger(textFieldTelefon.getText());
     }
 
     public static int getEXIT_ON_CLOSE() {
         return EXIT_ON_CLOSE;
     }
 
+    @Override
     public AccessibleContext getAccessibleContext() {
         return accessibleContext;
     }
@@ -253,6 +378,20 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void textFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldIDActionPerformed
+
+    private void menuFileCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileCloseActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_menuFileCloseActionPerformed
+
+    private void buttonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseActionPerformed
+        CardLayout card = (CardLayout) panelMain.getLayout();
+        card.show(panelMain, "panelMedlemmer");
+    }//GEN-LAST:event_buttonCloseActionPerformed
+
+    private void menuHelpAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuHelpAboutActionPerformed
+        CardLayout card = (CardLayout) panelMain.getLayout();
+        card.show(panelMain, "panelAbout");
+    }//GEN-LAST:event_menuHelpAboutActionPerformed
 
     @Override
     public int hashCode() {
@@ -320,19 +459,16 @@ public class DelfinGUI extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DelfinGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DelfinGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DelfinGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DelfinGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            System.out.println(ex);
         }
+        //</editor-fold>
+
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new DelfinGUI().setVisible(true);
             }
@@ -340,10 +476,12 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonClose;
     private javax.swing.JButton buttonMedlem;
     private javax.swing.JButton buttonSearchMember;
     private javax.swing.JComboBox<String> comboBoxStatus;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -353,7 +491,18 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelDelfinIcon;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenu menuEdit;
+    private javax.swing.JMenu menuFile;
+    private javax.swing.JMenuItem menuFileClose;
+    private javax.swing.JMenu menuHelp;
+    private javax.swing.JMenuItem menuHelpAbout;
+    private javax.swing.JPanel panelAbout;
+    private javax.swing.JPanel panelMain;
+    private javax.swing.JPanel panelMedlemmer;
     private javax.swing.JTextField textFieldAdresse;
     private javax.swing.JTextField textFieldAlder;
     private javax.swing.JTextField textFieldEmail;
