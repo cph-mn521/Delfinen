@@ -53,6 +53,25 @@ public class DelfinGUITest {
     }
 
     @Test
+    public void testGetMemberPhoto() {
+        System.out.println("getMemberPhoto");
+        DelfinGUI instance = new DelfinGUI();
+        int expResult = 1;
+        int result = instance.getMemberPhoto();
+        assertEquals(expResult, result);
+    }
+    
+        @Test
+    public void testSetMemberPhoto() {
+        System.out.println("setMemberPhoto");
+        DelfinGUI instance = new DelfinGUI();
+        int expResult = 2;
+        instance.setMemberPhoto(2);
+        int result = instance.getMemberPhoto();
+        assertEquals(expResult, result);
+    }
+    
+    @Test
     public void testDisciplin() {
         System.out.println("getDisciplin");
         DelfinGUI instance = new DelfinGUI();

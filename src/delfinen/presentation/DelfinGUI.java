@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -359,17 +360,18 @@ public class DelfinGUI extends javax.swing.JFrame {
                 .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(panelMembersLayout.createSequentialGroup()
                         .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelMemberPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelMemberPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1))
                     .addGroup(panelMembersLayout.createSequentialGroup()
-                        .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(labelDelfinIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelMembersLayout.createSequentialGroup()
-                                .addComponent(buttonSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addComponent(buttonMedlem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(labelDelfinIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(84, 84, 84)
+                                .addComponent(buttonMedlem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(buttonSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(panelMedlemsData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -637,6 +639,17 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
     }
 
+    public int getMemberPhoto() {
+        try{
+            int g = Integer.parseInt(labelMemberPhoto.getIcon()
+                .toString().split("files")[1].substring(1).split(".jpg")[0]);
+            return g;
+        }catch(NumberFormatException e){
+            System.out.println(e);
+            return 0;
+        }
+    }
+    
     public void setDisciplinCheckBoxes(ArrayList<String> disciplinList) {
         for (String disciplin : disciplinList) {
             switch (disciplin) {
@@ -695,8 +708,9 @@ public class DelfinGUI extends javax.swing.JFrame {
         this.textFieldEmail.setText(textFieldEmail);
     }
 
-    public void setLabelMemberPhoto(JLabel labelMemberPhoto) {
-        this.labelMemberPhoto = labelMemberPhoto;
+    public void setMemberPhoto(int ID) {
+        this.labelMemberPhoto.setIcon(new javax.swing.ImageIcon(getClass()
+                .getResource("/files/" + ID + ".jpg")));
     }
 
     public void setID(int textFieldID) {
@@ -920,6 +934,12 @@ public class DelfinGUI extends javax.swing.JFrame {
     public void go() {
         System.out.println("getMotion: " + getMotionKonkurrence());
         System.out.println("getStatus: " + getStatus());
+        setMemberPhoto(2);
+//        String[] gh = labelMemberPhoto.getIcon().toString().split("files");
+//        String[] dh = labelMemberPhoto.getIcon().toString().split("files")[1].substring(1).split(".jpg");
+//        String[] dh = gh[1].substring(1).split(".jpg");
+        System.out.println("getMemberPhoto: " + labelMemberPhoto.getIcon()
+                .toString().split("files")[1].substring(1).split(".jpg")[0]);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
