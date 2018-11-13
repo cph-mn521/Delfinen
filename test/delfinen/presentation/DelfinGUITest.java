@@ -42,17 +42,14 @@ public class DelfinGUITest {
         DelfinGUI instance = new DelfinGUI();
         String expResult = "Aktiv";
         String result = instance.getComboBoxStatus();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testGetjTextPane1() {
         System.out.println("getjTextPane1");
         DelfinGUI instance = new DelfinGUI();
-        JTextPane expResult = null;
-        JTextPane result = instance.getjTextPane1();
+        String expResult = null;
+        String result = instance.getjTextPane1();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -62,66 +59,54 @@ public class DelfinGUITest {
     public void testGetTextFieldAdresse() {
         System.out.println("getTextFieldAdresse");
         DelfinGUI instance = new DelfinGUI();
-        JTextField expResult = null;
-        JTextField result = instance.getTextFieldAdresse();
+        String expResult = "Ligustervænget 23, 2756 Liguster";
+        String result = instance.getTextFieldAdresse();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testGetTextFieldAlder() {
         System.out.println("getTextFieldAlder");
         DelfinGUI instance = new DelfinGUI();
-        JTextField expResult = null;
-        JTextField result = instance.getTextFieldAlder();
+        int expResult = 23;
+        int result = instance.getTextFieldAlder();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testGetTextFieldEmail() {
         System.out.println("getTextFieldEmail");
         DelfinGUI instance = new DelfinGUI();
-        JTextField expResult = null;
-        JTextField result = instance.getTextFieldEmail();
+        String expResult = "lm@delfinen.dk";
+        String result = instance.getTextFieldEmail();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testGetTextFieldID() {
         System.out.println("getTextFieldID");
         DelfinGUI instance = new DelfinGUI();
-        JTextField expResult = null;
-        JTextField result = instance.getTextFieldID();
+        int expResult = 1;
+        int result = instance.getTextFieldID();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testGetTextFieldNavn() {
         System.out.println("getTextFieldNavn");
         DelfinGUI instance = new DelfinGUI();
-        JTextField expResult = null;
-        JTextField result = instance.getTextFieldNavn();
+        String expResult = "Lars Emil";
+        String result = instance.getTextFieldNavn();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testGetTextFieldTelefon() {
         System.out.println("getTextFieldTelefon");
         DelfinGUI instance = new DelfinGUI();
-        JTextField expResult = null;
-        JTextField result = instance.getTextFieldTelefon();
+        int expResult = 25854578;
+        int result = instance.getTextFieldTelefon();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test

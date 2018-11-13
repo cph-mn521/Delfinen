@@ -289,7 +289,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="textFieldEmail">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="hjyui@delfinen.dk"/>
+                    <Property name="text" type="java.lang.String" value="lm@delfinen.dk"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">

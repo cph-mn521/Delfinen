@@ -99,7 +99,7 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         jLabel1.setText("ID");
 
-        textFieldEmail.setText("hjyui@delfinen.dk");
+        textFieldEmail.setText("lm@delfinen.dk");
 
         jLabel6.setText("Adresse");
 
@@ -335,35 +335,35 @@ public class DelfinGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public String getComboBoxStatus() {
-        return comboBoxStatus.toString();
+        return comboBoxStatus.getSelectedItem().toString();
     }
 
-    public JTextPane getjTextPane1() {
-        return textPaneMedlemsInfo;
+    public String getjTextPane1() {
+        return textPaneMedlemsInfo.getText();
     }
 
-    public JTextField getTextFieldAdresse() {
-        return textFieldAdresse;
+    public String getTextFieldAdresse() {
+        return textFieldAdresse.getText();
     }
 
-    public JTextField getTextFieldAlder() {
-        return textFieldAlder;
+    public int getTextFieldAlder() {
+        return Integer.getInteger(textFieldAlder.getText());
     }
 
-    public JTextField getTextFieldEmail() {
-        return textFieldEmail;
+    public String getTextFieldEmail() {
+        return textFieldEmail.getText();
     }
 
-    public JTextField getTextFieldID() {
-        return textFieldID;
+    public int getTextFieldID() {
+        return Integer.getInteger(textFieldID.getText());
     }
 
-    public JTextField getTextFieldNavn() {
-        return textFieldNavn;
+    public String getTextFieldNavn() {
+        return textFieldNavn.getText();
     }
 
-    public JTextField getTextFieldTelefon() {
-        return textFieldTelefon;
+    public int getTextFieldTelefon() {
+        return Integer.getInteger(textFieldTelefon.getText());
     }
 
     public static int getEXIT_ON_CLOSE() {
