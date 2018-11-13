@@ -8,16 +8,13 @@ package delfinen.presentation;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.accessibility.AccessibleContext;
-import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 /**
  *
@@ -37,6 +34,13 @@ public class DelfinGUI extends javax.swing.JFrame {
         discipliner.add(checkBoxDisciplinCrawl);
         discipliner.add(checkBoxDisciplinRygcrawl);
         textFieldEmail.setBackground(Color.white);
+        textFieldAdresse.setBackground(Color.white);
+        textFieldAlder.setBackground(Color.white);
+        textFieldEmail.setBackground(Color.white);
+        textFieldID.setBackground(Color.white);
+        textFieldNavn.setBackground(Color.white);
+        textFieldTelefon.setBackground(Color.white);
+        textPaneMedlemsInfo.setBackground(Color.white);
 
     }
 
@@ -118,6 +122,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         });
 
         textFieldAlder.setText("23");
+        textFieldAlder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldAlderActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Navn");
 
@@ -144,8 +153,18 @@ public class DelfinGUI extends javax.swing.JFrame {
         jLabel4.setText("Email");
 
         textFieldAdresse.setText("Ligustervænget 23, 2756 Liguster");
+        textFieldAdresse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldAdresseActionPerformed(evt);
+            }
+        });
 
         textFieldNavn.setText("Lars Emil");
+        textFieldNavn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNavnActionPerformed(evt);
+            }
+        });
 
         comboBoxMotionistKonkurrence.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Motionist", "Konkurrencesvømmer" }));
         comboBoxMotionistKonkurrence.setSelectedIndex(1);
@@ -284,8 +303,8 @@ public class DelfinGUI extends javax.swing.JFrame {
         panelMedlemmer.setLayout(panelMedlemmerLayout);
         panelMedlemmerLayout.setHorizontalGroup(
             panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelMedlemmerLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMedlemmerLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelMedlemmerLayout.createSequentialGroup()
                         .addComponent(labelDelfinIcon)
@@ -298,7 +317,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                 .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelMedlemmerLayout.setVerticalGroup(
             panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,16 +454,28 @@ public class DelfinGUI extends javax.swing.JFrame {
         return comboBoxMotionistKonkurrence.getSelectedItem().toString();
     }
 
-    public String getjTextPane1() {
-        return textPaneMedlemsInfo.getText();
+    public String getMedlemsInfo() {
+        if (textPaneMedlemsInfo.getBackground() == Color.white) {
+            return textPaneMedlemsInfo.getText();
+        } else {
+            return "";
+        }
     }
 
     public String getAdresse() {
-        return textFieldAdresse.getText();
+        if (textFieldEmail.getBackground() == Color.white) {
+            return textFieldAdresse.getText();
+        } else {
+            return "";
+        }
     }
 
     public int getAlder() {
-        return Integer.parseInt(textFieldAlder.getText());
+        if (textFieldAlder.getBackground() == Color.white) {
+            return Integer.parseInt(textFieldAlder.getText());
+        } else {
+            return 0;
+        }
     }
 
     public String getEmail() {
@@ -456,15 +487,83 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public int getID() {
-        return Integer.parseInt(textFieldID.getText());
+        if (textFieldID.getBackground() == Color.white) {
+            return Integer.parseInt(textFieldID.getText());
+        } else {
+            return 0;
+        }
     }
 
     public String getNavn() {
-        return textFieldNavn.getText();
+        if (textFieldNavn.getBackground() == Color.white) {
+            return textFieldNavn.getText();
+        } else {
+            return "";
+        }
     }
 
     public int getTelefon() {
-        return Integer.parseInt(textFieldTelefon.getText());
+        if (textFieldTelefon.getBackground() == Color.white) {
+            return Integer.parseInt(textFieldTelefon.getText());
+        } else {
+            return 0;
+        }
+    }
+
+    public void setDiscipliner(ArrayList<JCheckBox> discipliner) {
+        this.discipliner = discipliner;
+    }
+
+    public void setCheckBoxDisciplinBryst(JCheckBox checkBoxDisciplinBryst) {
+        this.checkBoxDisciplinBryst = checkBoxDisciplinBryst;
+    }
+
+    public void setCheckBoxDisciplinButterfly(JCheckBox checkBoxDisciplinButterfly) {
+        this.checkBoxDisciplinButterfly = checkBoxDisciplinButterfly;
+    }
+
+    public void setCheckBoxDisciplinCrawl(JCheckBox checkBoxDisciplinCrawl) {
+        this.checkBoxDisciplinCrawl = checkBoxDisciplinCrawl;
+    }
+
+    public void setCheckBoxDisciplinRygcrawl(JCheckBox checkBoxDisciplinRygcrawl) {
+        this.checkBoxDisciplinRygcrawl = checkBoxDisciplinRygcrawl;
+    }
+
+    public void setComboBoxMotionistKonkurrence(JComboBox<String> comboBoxMotionistKonkurrence) {
+        this.comboBoxMotionistKonkurrence = comboBoxMotionistKonkurrence;
+    }
+
+    public void setComboBoxStatus(JComboBox<String> comboBoxStatus) {
+        this.comboBoxStatus = comboBoxStatus;
+    }
+
+    public void setTextFieldAdresse(String textFieldAdresse) {
+        this.textFieldAdresse.setText(textFieldAdresse);
+    }
+
+    public void setTextFieldAlder(int textFieldAlder) {
+        this.textFieldAlder.setText(String.valueOf(textFieldAlder));
+    }
+
+    public void setTextFieldEmail(String textFieldEmail) {
+        this.textFieldEmail.setText(textFieldEmail);
+    }
+
+    public void setTextFieldID(int textFieldID) {
+        this.textFieldID.setText(String.valueOf(textFieldID));
+    }
+
+    public void setTextFieldNavn(String textFieldNavn) {
+        this.textFieldNavn.setText(textFieldNavn);
+    }
+
+    public void setTextFieldTelefon(JTextField textFieldTelefon) {
+        this.textFieldTelefon = textFieldTelefon;
+    }
+
+    public void setTextPaneMedlemsInfo(String textPaneMedlemsInfo) {
+//        this.textPaneMedlemsInfo.add.append(textPaneMedlemsInfo);
     }
 
     public static int getEXIT_ON_CLOSE() {
@@ -477,7 +576,8 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     private void textFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIDActionPerformed
-        // TODO add your handling code here:
+        // input check, Regex for ID
+        regexUserInfoBackGroundColorSet("^\\d+$", textFieldID);
     }//GEN-LAST:event_textFieldIDActionPerformed
 
     private void menuFileCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileCloseActionPerformed
@@ -499,7 +599,8 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxMotionistKonkurrenceActionPerformed
 
     private void textFieldTelefonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTelefonActionPerformed
-        // TODO add your handling code here:
+        // input check, Regex for Telephone
+        regexUserInfoBackGroundColorSet("^\\d+$", textFieldTelefon);
     }//GEN-LAST:event_textFieldTelefonActionPerformed
 
     private void comboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxStatusActionPerformed
@@ -511,16 +612,41 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxStatusActionPerformed
 
     private void textFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldEmailActionPerformed
-
-        // Test for email
-        Pattern pattern = Pattern.compile("^.+@.+\\..+$");
-        Matcher matcher = pattern.matcher(textFieldEmail.getText());
-        if (!matcher.matches()) {
-            textFieldEmail.setBackground(Color.red);
-        } else {
-            textFieldEmail.setBackground(Color.white);
-        }
+        // input check, Regex for email
+        regexUserInfoBackGroundColorSet("^.+@.+\\..+$", textFieldEmail);
     }//GEN-LAST:event_textFieldEmailActionPerformed
+
+    private void textFieldAdresseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAdresseActionPerformed
+        // input check, Regex for address
+        regexUserInfoBackGroundColorSet("^.+,\\s+\\d{4}.+$", textFieldAdresse);
+    }//GEN-LAST:event_textFieldAdresseActionPerformed
+
+    private void textFieldNavnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNavnActionPerformed
+        // input check, Regex for name
+        regexUserInfoBackGroundColorSet("^\\w+(\\s\\w+)+$", textFieldNavn);
+    }//GEN-LAST:event_textFieldNavnActionPerformed
+
+    private void textFieldAlderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAlderActionPerformed
+        // input check, Regex for address
+        regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder);
+        if(Integer.parseInt(textFieldAlder.getText())<0 ||
+                Integer.parseInt(textFieldAlder.getText())>120){
+            textFieldAlder.setBackground(Color.red);
+        } else {
+            textFieldAlder.setBackground(Color.white);
+        }
+    }//GEN-LAST:event_textFieldAlderActionPerformed
+
+    private void regexUserInfoBackGroundColorSet(String regex, JTextField tf) {
+        // check user input and set background accordingly
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(tf.getText());
+        if (!matcher.matches()) {
+            tf.setBackground(Color.red);
+        } else {
+            tf.setBackground(Color.white);
+        }
+    }
 
     @Override
     public int hashCode() {
