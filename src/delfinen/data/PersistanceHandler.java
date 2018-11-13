@@ -21,9 +21,8 @@ public class PersistanceHandler {
     // Deklaration of filepaths.
     private final String DBMembers = "Members.txt";
     private final String DBRekords = "Rekords.txt";
-    ;
     private final String DBKontigents = "Kontigents.txt";
-    ;
+    
     private DataAccessor dam = new DataAccessorFile(DBMembers);
     private Gson gson = new Gson();
 
@@ -82,9 +81,26 @@ public class PersistanceHandler {
         }
 
     }
-
+    
+    
+    /*
+    Method for adding a member to the Member database. 
+    
+    @param Member   Member to be added to the database.
+    @throws DataException.
+    */
     public void addMember(Member obj) throws DataException{
         dam.addEntry(gson.toJson(obj));
+    }
+    
+    /*
+    Method for edeting a member. Can also be used to remove members.
+    
+    @param  old     The Member that you wish to modify.
+    @param  N       The Member you wish it should be.
+    */
+    public void editMember(Member old, Member N) throws DataException{
+        dam.editEntry(gson.toJson(old), gson.toJson(N));
     }
     
     
