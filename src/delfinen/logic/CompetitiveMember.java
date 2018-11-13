@@ -45,7 +45,7 @@ public class CompetitiveMember extends Member {
         disciplines.add(discipline);
     }
     
-    public void removeDiscipline(String discipline)throws DisciplineNotFoundException{
+    public void removeDiscipline(Discipline discipline)throws DisciplineNotFoundException{
         if(disciplines.contains(discipline))
             disciplines.remove(discipline);
         else
