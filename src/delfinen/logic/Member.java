@@ -14,27 +14,28 @@ import java.util.Objects;
  */
 public class Member {
 
-    private String name, email, adress;
+    private String name, email, address;
     private int id, age, phone;
     private Status status;
-    private boolean isCoach;
+    private boolean isCoach = false;
+    boolean isCompetitive; 
 
+    
     public enum Status {
         Active,
         Passive
     }
     
-    public Member(String name, String email, String adress, int id, int age, int phone, Status status) {
+    public Member(String name, String email, String address, int id, int age, int phone, Status status) {
         this.name = name;
         this.email = email;
-        this.adress = adress;
+        this.address = address;
         this.id = id;
         this.age = age;
         this.phone = phone;
         this.status = status;
-           
+        isCompetitive = false;
     }
-
     
     public boolean equals(Member other) {
         if (this == other) {
@@ -53,19 +54,14 @@ public class Member {
         if (this.phone != other.phone) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!this.name.equals(other.name)) {
             return false;
         }
-        if (!Objects.equals(this.email, other.email)) {
+        if (!this.email.equals(other.email)) {
             return false;
         }
-        return !Objects.equals(this.adress, other.adress);
+        return this.address.equals(other.address);
 
-    }
-
-    @Override
-    public String toString() {
-        return "Member{" + "name=" + name + ", email=" + email + ", adress=" + adress + ", id=" + id + ", age=" + age + ", phone=" + phone + '}';
     }
 
     public String getName() {
@@ -84,12 +80,12 @@ public class Member {
         this.email = email;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public int getId() {
@@ -132,16 +128,19 @@ public class Member {
         return isCoach;
     }
 
-    public Member changeMembership(Member coach) {
-        return new CompetitiveMember(name, email, adress, id, age, phone, status, coach);
+    public Member changeMembership(Member coach) throws CoachNotFoundException {
+        return new CompetitiveMember(name, email, address, id, age, phone, status, coach);
     }
 
-    public Member changeMembership(Member coach, Discipline discipline) {
-        return new CompetitiveMember(name, email, adress, id, age, phone, status, discipline, coach);
+    public Member changeMembership(Member coach, Discipline discipline) throws CoachNotFoundException {
+        return new CompetitiveMember(name, email, address, id, age, phone, status, discipline, coach);
     }
 
-    public Member changeMembership(Member coach, ArrayList<Discipline> disciplines) {
-        return new CompetitiveMember(name, email, adress, id, age, phone, status, disciplines, coach);
+    public Member changeMembership(Member coach, ArrayList<Discipline> disciplines) throws CoachNotFoundException {
+        return new CompetitiveMember(name, email, address, id, age, phone, status, disciplines, coach);
     }
 
+    public boolean isCompetitive(){
+        return isCompetitive;
+    }
 }

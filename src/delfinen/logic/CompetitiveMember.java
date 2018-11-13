@@ -10,28 +10,41 @@ package delfinen.logic;
  * @author Lord
  */
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class CompetitiveMember extends Member {
-    private ArrayList<Discipline> disciplines;
+
+    private ArrayList<Discipline> disciplines = new ArrayList<>();
     private Member coach;
-    
-    
-    public CompetitiveMember(String name, String email, String adresse, int id, int age, int phone, Status status,ArrayList<Discipline> disciplines, Member coach) {
-        super(name, email, adresse, id, age, phone, status);
+
+    public CompetitiveMember(String name, String email, String address, int id, int age, int phone, Status status, ArrayList<Discipline> disciplines, Member coach) throws CoachNotFoundException {
+        super(name, email, address, id, age, phone, status);
         this.disciplines = disciplines;
+        if (!coach.isCoach()) {
+            throw new CoachNotFoundException();
+        }
         this.coach = coach;
+        isCompetitive = true;
     }
-    
-    public CompetitiveMember(String name, String email, String adresse, int id, int age, int phone, Status status,Discipline disciplines, Member coach) {
-        super(name, email, adresse, id, age, phone, status);
+
+    public CompetitiveMember(String name, String email, String address, int id, int age, int phone, Status status, Discipline disciplines, Member coach) throws CoachNotFoundException {
+        super(name, email, address, id, age, phone, status);
         this.disciplines.add(disciplines);
+        if (!coach.isCoach()) {
+            throw new CoachNotFoundException();
+        }
         this.coach = coach;
+        isCompetitive = true;
     }
-    public CompetitiveMember(String name, String email, String adresse, int id, int age, int phone, Status status, Member coach) {
-        super(name, email, adresse, id, age, phone, status);
+
+    public CompetitiveMember(String name, String email, String address, int id, int age, int phone, Status status, Member coach) throws CoachNotFoundException {
+        super(name, email, address, id, age, phone, status);
         disciplines = null;
+        if (!coach.isCoach()) {
+            throw new CoachNotFoundException();
+        }
         this.coach = coach;
+        isCompetitive = true;
+
     }
 
     public Member getCoach() {
@@ -41,21 +54,21 @@ public class CompetitiveMember extends Member {
     public void setCoach(Member coach) {
         this.coach = coach;
     }
- 
-    public void addDiscipline(Discipline discipline){
+
+    public void addDiscipline(Discipline discipline) {
         disciplines.add(discipline);
     }
-    
-    public void removeDiscipline(Discipline discipline)throws DisciplineNotFoundException{
-        if(disciplines.contains(discipline))
+
+    public void removeDiscipline(Discipline discipline) throws DisciplineNotFoundException {
+        if (disciplines.contains(discipline)) {
             disciplines.remove(discipline);
-        else
+        } else {
             throw new DisciplineNotFoundException();
+        }
     }
- 
-    
+
     public Member changeMembership() {
-        return new Member(this.getName(), this.getEmail(), this.getAdress(), this.getId(), this.getAge(), this.getPhone(), this.getStatus());
+        return new Member(this.getName(), this.getEmail(), this.getAddress(), this.getId(), this.getAge(), this.getPhone(), this.getStatus());
     }
 
 }
