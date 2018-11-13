@@ -84,8 +84,13 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         jLabel3.setText("Status");
 
+        textFieldTelefon.setText("25854578");
+
+        textFieldAlder.setText("23");
+
         jLabel2.setText("Navn");
 
+        textFieldID.setText("1");
         textFieldID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldIDActionPerformed(evt);
@@ -94,11 +99,17 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         jLabel1.setText("ID");
 
+        textFieldEmail.setText("hjyui@delfinen.dk");
+
         jLabel6.setText("Adresse");
 
         jLabel5.setText("Telefon");
 
         jLabel4.setText("Email");
+
+        textFieldAdresse.setText("Ligustervænget 23, 2756 Liguster");
+
+        textFieldNavn.setText("Lars Emil");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
