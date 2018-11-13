@@ -260,8 +260,14 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textFieldTelefon">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="25854578"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textFieldAlder">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="23"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel2">
                   <Properties>
@@ -269,6 +275,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textFieldID">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="1"/>
+                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldIDActionPerformed"/>
                   </Events>
@@ -279,6 +288,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textFieldEmail">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="hjyui@delfinen.dk"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel6">
                   <Properties>
@@ -296,8 +308,14 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textFieldAdresse">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ligusterv&#xe6;nget 23, 2756 Liguster"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textFieldNavn">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Lars Emil"/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
