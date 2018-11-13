@@ -335,35 +335,35 @@ public class DelfinGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public String getComboBoxStatus() {
-        return comboBoxStatus.toString();
+        return comboBoxStatus.getSelectedItem().toString();
     }
 
-    public JTextPane getjTextPane1() {
-        return textPaneMedlemsInfo;
+    public String getjTextPane1() {
+        return textPaneMedlemsInfo.getText();
     }
 
-    public JTextField getTextFieldAdresse() {
-        return textFieldAdresse;
+    public String getTextFieldAdresse() {
+        return textFieldAdresse.getText();
     }
 
-    public JTextField getTextFieldAlder() {
+    public int getTextFieldAlder() {
         return textFieldAlder;
     }
 
-    public JTextField getTextFieldEmail() {
+    public String getTextFieldEmail() {
         return textFieldEmail;
     }
 
-    public JTextField getTextFieldID() {
+    public int getTextFieldID() {
         return textFieldID;
     }
 
-    public JTextField getTextFieldNavn() {
+    public String getTextFieldNavn() {
         return textFieldNavn;
     }
 
-    public JTextField getTextFieldTelefon() {
-        return textFieldTelefon;
+    public int getTextFieldTelefon() {
+        return Integer.getInteger(textFieldTelefon.getText());
     }
 
     public static int getEXIT_ON_CLOSE() {
