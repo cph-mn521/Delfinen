@@ -99,7 +99,7 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         jLabel1.setText("ID");
 
-        textFieldEmail.setText("hjyui@delfinen.dk");
+        textFieldEmail.setText("lm@delfinen.dk");
 
         jLabel6.setText("Adresse");
 

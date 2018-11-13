@@ -15,9 +15,9 @@ public interface DataAccessor {
     public List<Member>  getMembers() throws DataException;
     
     
-    public Member getMember() throws DataException;
+    public Member getMember(String query) throws DataException;
    
    
-    public void saveMember() throws DataException;
+    public void saveMember(Member obj) throws DataException;
 
 }

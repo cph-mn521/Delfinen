@@ -68,18 +68,16 @@ public class DelfinGUITest {
     public void testGetTextFieldAlder() {
         System.out.println("getTextFieldAlder");
         DelfinGUI instance = new DelfinGUI();
-        int expResult = 0;
+        int expResult = 23;
         int result = instance.getTextFieldAlder();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testGetTextFieldEmail() {
         System.out.println("getTextFieldEmail");
         DelfinGUI instance = new DelfinGUI();
-        String expResult = "hjyui@delfinen.dk";
+        String expResult = "lm@delfinen.dk";
         String result = instance.getTextFieldEmail();
         assertEquals(expResult, result);
     }
@@ -88,11 +86,9 @@ public class DelfinGUITest {
     public void testGetTextFieldID() {
         System.out.println("getTextFieldID");
         DelfinGUI instance = new DelfinGUI();
-        int expResult = -1;
+        int expResult = 1;
         int result = instance.getTextFieldID();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
@@ -102,8 +98,6 @@ public class DelfinGUITest {
         String expResult = "Lars Emil";
         String result = instance.getTextFieldNavn();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test

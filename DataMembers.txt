@@ -1,6 +1,1 @@
-{"name": "Karsten Henriksen", "email":"abc@abs.dk","adresse":"vinder vænget 4","id":1,"age":48,"phone":12345678,"membership":PASSIVE}
-{"name": "lars lars", "email":"abc@abs.dk","adresse":"vinder vænget 4","id":1,"age":48,"phone":12345678,"membership":PASSIVE}
-{"name": "kaj kaj", "email":"abc@abs.dk","adresse":"vinder vænget 4","id":1,"age":48,"phone":12345678,"membership":PASSIVE}
-{"name": "hernik Henriksen", "email":"abc@abs.dk","adresse":"vinder vænget 4","id":1,"age":48,"phone":12345678,"membership":PASSIVE}
-{"name": "Karsten Karstensen", "email":"abc@abs.dk","adresse":"vinder vænget 4","id":1,"age":48,"phone":12345678,"membership":PASSIVE}
-{"name": "æv fra bæv", "email":"abc@abs.dk","adresse":"vinder vænget 4","id":1,"age":48,"phone":12345678,"membership":PASSIVE}
+{"name":"hernik Henriksen","email":"abc@abs.dk","adress":"vinder vænget 4","id":1,"age":48,"phone":12345678}
