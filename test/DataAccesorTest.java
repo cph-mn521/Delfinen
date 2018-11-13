@@ -11,6 +11,7 @@ import delfinen.data.DataException;
 import delfinen.data.DataAccessorFile;
 import delfinen.data.DataAccessor;
 import delfinen.logic.Member;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -20,62 +21,78 @@ import java.util.ArrayList;
 public class DataAccesorTest {
 
     private DataAccessor da;
-    private DataAccessor DAW;
+
     public DataAccesorTest() {
         try {
             da = new DataAccessorFile("DataMembers.txt");
-            DAW = new DataAccessorFile("DataMembersWrite.txt");
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     @Test
-    public void testGetMembers() {
+    public void testGetEntries() {
         try {
-            List<Member> obj = da.getMembers();
+            List<String> obj = da.getEntries();
             assertNotNull(obj);
-            assertEquals(6, obj.size());
+            assertTrue(1 <= obj.size());
         } catch (DataException ex) {
             fail(ex.getMessage());
         }
     }
 
     @Test
-    public void testGetMember() {
+    public void testSearchEntries() {
         Gson gson = new Gson();
 
         try {
-            List<Member> mmbrs = da.getMembers();
-            Member target = mmbrs.get(5);
-            Member fetch = da.getMember(target.getName());
-            
-            assertTrue(gson.toJson(target).equals(gson.toJson(fetch)));
-            
-            fetch = da.getMember("id\":"+Integer.toString(target.getId()));
-            assertTrue(gson.toJson(target).equals(gson.toJson(fetch)));
-            
-            
-            fetch = da.getMember(Integer.toString(target.getPhone()));
-            assertTrue(gson.toJson(target).equals(gson.toJson(fetch)));
+            List<String> mmbrs = da.getEntries();
+            String target = mmbrs.get(1);
+            List<String> fetch = da.searchEntries("entry");
+            assertTrue(fetch.size() == 3);
+
+            fetch = da.searchEntries("entry 1");
+            assertTrue(fetch.size() == 1);
+
+            fetch = da.searchEntries("asdf");
+            assertTrue(fetch.size() == 1);
 
         } catch (DataException e) {
             fail(e.getMessage());
         }
     }
+
     @Test
-    public void testSaveMember(){
+    public void testAddEntry() {
         try {
-            List<Member> members= da.getMembers();
-            DAW.saveMember(members.get(0));
-            DAW.saveMember(members.get(1));
-            DAW.saveMember(members.get(2));
-            DAW.saveMember(members.get(3));
-            DAW.saveMember(members.get(4));
-            DAW.saveMember(members.get(5));
-            List<Member> members2= DAW.getMembers();
-            assertTrue(members.size() == members2.size());
+            File file = new File("DataMembersWrite.txt");
+            file.delete();
+            file.createNewFile();
+            DataAccessor DAW = new DataAccessorFile("DataMembersWrite.txt");
+
+            assertTrue(DAW.getEntries().size() == 0);
+            DAW.addEntry("reee");
+            assertTrue(DAW.getEntries().size() == 2);
+            DAW.addEntry("woooo");
+            assertTrue(DAW.getEntries().size() == 3);
+
         } catch (Exception e) {
+            fail(e.getMessage());
         }
     }
+
+    @Test
+    public void testEditEntry() {
+        try {
+            da.editEntry("entry 1", "entry 1, nu med lidt extra");
+            List<String> whatevs = da.searchEntries("entry 1");
+            assertTrue(whatevs.get(0).equals("entry 1, nu med lidt extra"));
+            
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+
+    }
+
 }

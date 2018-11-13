@@ -12,14 +12,14 @@ import java.util.List;
 public interface DataAccessor {
    
     // Methods for getting members from a txt database.
-    public List<Member>  getMembers() throws DataException;
+    public List<String> getEntries() throws DataException;
     
     
-    public Member getMember(String query) throws DataException;
+    public List<String> searchEntries(String query) throws DataException;
    
    
-    public void saveMember(Member obj) throws DataException;
+    public void addEntry(String obj) throws DataException;
     
-    public void editMember(Member old,Member N) throws DataException;
+    public void editEntry(String old,String N) throws DataException;
     
 }
