@@ -77,7 +77,7 @@ public class DelfinGUITest {
     public void testGetTextFieldEmail() {
         System.out.println("getTextFieldEmail");
         DelfinGUI instance = new DelfinGUI();
-        String expResult = "hjyui@delfinen.dk";
+        String expResult = "lm@delfinen.dk";
         String result = instance.getTextFieldEmail();
         assertEquals(expResult, result);
     }
