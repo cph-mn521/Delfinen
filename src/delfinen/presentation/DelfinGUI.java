@@ -6,9 +6,12 @@
 package delfinen.presentation;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.accessibility.AccessibleContext;
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
@@ -22,7 +25,8 @@ import javax.swing.JTextPane;
  */
 public class DelfinGUI extends javax.swing.JFrame {
 
-        ArrayList<JCheckBox> discipliner = new ArrayList<>();
+    ArrayList<JCheckBox> discipliner = new ArrayList<>();
+
     /**
      * Creates new form DelfinGUI
      */
@@ -32,7 +36,8 @@ public class DelfinGUI extends javax.swing.JFrame {
         discipliner.add(checkBoxDisciplinButterfly);
         discipliner.add(checkBoxDisciplinCrawl);
         discipliner.add(checkBoxDisciplinRygcrawl);
-        
+        textFieldEmail.setBackground(Color.white);
+
     }
 
     /**
@@ -126,6 +131,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         jLabel1.setText("ID");
 
         textFieldEmail.setText("lm@delfinen.dk");
+        textFieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldEmailActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Adresse");
 
@@ -414,7 +424,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     public ArrayList<String> getDisciplin() {
         ArrayList<String> disc = new ArrayList<>();
         for (JCheckBox jCheckbox : discipliner) {
-            if(jCheckbox.isSelected()){
+            if (jCheckbox.isSelected()) {
                 disc.add(jCheckbox.getText());
             }
         }
@@ -438,7 +448,11 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public String getEmail() {
-        return textFieldEmail.getText();
+        if (textFieldEmail.getBackground() == Color.white) {
+            return textFieldEmail.getText();
+        } else {
+            return "";
+        }
     }
 
     public int getID() {
@@ -495,6 +509,18 @@ public class DelfinGUI extends javax.swing.JFrame {
             comboBoxMotionistKonkurrence.hide();
         }
     }//GEN-LAST:event_comboBoxStatusActionPerformed
+
+    private void textFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldEmailActionPerformed
+
+        // Test for email
+        Pattern pattern = Pattern.compile("^.+@.+\\..+$");
+        Matcher matcher = pattern.matcher(textFieldEmail.getText());
+        if (!matcher.matches()) {
+            textFieldEmail.setBackground(Color.red);
+        } else {
+            textFieldEmail.setBackground(Color.white);
+        }
+    }//GEN-LAST:event_textFieldEmailActionPerformed
 
     @Override
     public int hashCode() {
