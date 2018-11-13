@@ -61,8 +61,8 @@ public class DelfinGUITest {
     }
     
     @Test
-    public void testGetTextFieldAdresse() {
-        System.out.println("getTextFieldAdresse");
+    public void testGetAdresse() {
+        System.out.println("getAdresse");
         DelfinGUI instance = new DelfinGUI();
         String expResult = "Ligustervænget 23, 2756 Liguster";
         String result = instance.getAdresse();
@@ -70,8 +70,8 @@ public class DelfinGUITest {
     }
 
     @Test
-    public void testGetTextFieldAlder() {
-        System.out.println("getTextFieldAlder");
+    public void testGetAlder() {
+        System.out.println("getAlder");
         DelfinGUI instance = new DelfinGUI();
         int expResult = 23;
         int result = instance.getAlder();

@@ -148,6 +148,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         checkBoxDisciplinCrawl.setText("Crawl");
 
         buttonGroupDisciplin.add(checkBoxDisciplinRygcrawl);
+        checkBoxDisciplinRygcrawl.setSelected(true);
         checkBoxDisciplinRygcrawl.setText("Rygcrawl");
 
         javax.swing.GroupLayout panelDisciplinLayout = new javax.swing.GroupLayout(panelDisciplin);
