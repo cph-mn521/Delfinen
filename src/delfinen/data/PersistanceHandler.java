@@ -97,10 +97,11 @@ public class PersistanceHandler {
     Method for edeting a member. Can also be used to remove members.
     
     @param  old     The Member that you wish to modify.
-    @param  N       The Member you wish it should be.
+    @param  N       The Member you wish it should be. if null, removes the entry.
     */
     public void editMember(Member old, Member N) throws DataException{
-        dam.editEntry(gson.toJson(old), gson.toJson(N));
+        if(N!=null)dam.editEntry(gson.toJson(old), gson.toJson(N));
+        elsedam.editEntry(gson.toJson(old), "");
     }
     
     

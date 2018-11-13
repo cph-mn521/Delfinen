@@ -22,11 +22,22 @@ import java.util.List;
 public class DataAccessorFile implements DataAccessor {
 
     private final String FileName;
-
+    
+    /*
+    Constructor for the class, used to assign the current database.
+    
+    @param FileName     The File to pull data from.
+    */
     public DataAccessorFile(String FileName) {
         this.FileName = FileName;
     }
-
+    
+    /*
+    Method for retrieving all entries in the current selected txt document. Will not return
+    blank entries
+    
+    @throws DataException.
+    */
     @Override
     public List<String> getEntries() throws DataException {
         String line = null;
@@ -41,24 +52,41 @@ public class DataAccessorFile implements DataAccessor {
             throw new DataException();
         }
     }
-
+    
+        /*
+    Method for searching for keywords in the database. Searches the
+    database for all entries with containing the query.
+    
+    For more precise searches, knowledge of the data strukture is required.
+    
+    @param  Query               The wanted Query. 
+    @return machingEntries      All entries that contains the query.   
+    @throws DataException
+    */    
     @Override
     public List<String> searchEntries(String query) throws DataException {
         String line = null;
-        List<String> Output = new ArrayList<>();
+        List<String> machingEntries = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FileName));
-            while ((line = reader.readLine()) != null ) {
+            while ((line = reader.readLine()) != null && line != "") {
                 if (line.contains(query)) {
-                    Output.add(line);
+                    machingEntries.add(line);
                 }
             }
-            return Output;
+            return machingEntries;
         } catch (IOException e) {
             throw new DataException();
         }
     }
-
+    
+    /*
+    Method for adding a new entry to the currently selected file. New entry is
+    always appended, and will apear last in the database.
+    
+    @param  obj The object to add to the database 
+    @throws DataException
+    */
     @Override
     public void addEntry(String obj) throws DataException {
         try {
@@ -70,7 +98,16 @@ public class DataAccessorFile implements DataAccessor {
             throw new DataException();
         }
     }
-
+    
+    /*
+    Method for edeting an entry in the databse. Works by finding the object to 
+    change, and then we writing the file to match the new signature.
+    Takes 2 parameters, bot of string type.
+    
+    @param  old     The entry to change.
+    @param  N       The changed entry.
+    @throws DataException.
+    */
     @Override
     public void editEntry(String old, String N) throws DataException {
         try {
