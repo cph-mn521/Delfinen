@@ -8,6 +8,7 @@ package delfinen.presentation;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.regex.Matcher;
@@ -17,6 +18,11 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -24,6 +30,10 @@ import javax.swing.JTextField;
  */
 public class DelfinGUI extends javax.swing.JFrame {
 
+    Font FONT_NOTOSANS_PLAIN_12 = new Font("notosans", Font.PLAIN, 12);
+    Font FONT_NOTOSANS_BOLD_12 = new Font("notosans", Font.BOLD, 12);
+    Font FONT_NOTOSANS_ITALIC_12 = new Font("notosans", Font.ITALIC, 12);
+    Font FONT_NOTOSANS_BOLD_ITALIC_12 = new Font("notosans", Font.BOLD + Font.ITALIC, 12);
     ArrayList<JCheckBox> discipliner = new ArrayList<>();
 
     /**
@@ -333,14 +343,13 @@ public class DelfinGUI extends javax.swing.JFrame {
             panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMedlemmerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(panelMedlemmerLayout.createSequentialGroup()
                         .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelMemberPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 14, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1))
                     .addGroup(panelMedlemmerLayout.createSequentialGroup()
                         .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(panelMedlemmerLayout.createSequentialGroup()
@@ -349,8 +358,8 @@ public class DelfinGUI extends javax.swing.JFrame {
                                 .addComponent(buttonMedlem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(labelDelfinIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(panelMedlemsData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addComponent(panelMedlemsData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         panelMain.add(panelMedlemmer, "panelMedlemmer");
@@ -407,7 +416,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         panelAboutLayout.setVerticalGroup(
             panelAboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAboutLayout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
+                .addContainerGap(121, Short.MAX_VALUE)
                 .addComponent(panelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
         );
@@ -524,19 +533,19 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public void setDisciplinBryst(boolean disciplinBryst) {
-       this.checkBoxDisciplinBryst.setSelected(disciplinBryst);
+        this.checkBoxDisciplinBryst.setSelected(disciplinBryst);
     }
 
     public void setDisciplinButterfly(boolean disciplinButterfly) {
-       this.checkBoxDisciplinButterfly.setSelected(disciplinButterfly);
+        this.checkBoxDisciplinButterfly.setSelected(disciplinButterfly);
     }
 
     public void setDisciplinCrawl(boolean disciplinCrawl) {
-       this.checkBoxDisciplinCrawl.setSelected(disciplinCrawl);
+        this.checkBoxDisciplinCrawl.setSelected(disciplinCrawl);
     }
 
     public void setDisciplinRygcrawl(boolean disciplinRygcrawl) {
-       this.checkBoxDisciplinRygcrawl.setSelected(disciplinRygcrawl);
+        this.checkBoxDisciplinRygcrawl.setSelected(disciplinRygcrawl);
     }
 
     public void setMotionistKonkurrence(String MotionistKonkurrence) {
@@ -576,7 +585,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public void setMedlemsInfo(String textPaneMedlemsInfo) {
-//        this.textPaneMedlemsInfo.add.append(textPaneMedlemsInfo);
+        displayFormatedText(this.textPaneMedlemsInfo, textPaneMedlemsInfo, FONT_NOTOSANS_PLAIN_12, Color.GREEN);
     }
 
     public static int getEXIT_ON_CLOSE() {
@@ -590,7 +599,8 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     private void textFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIDActionPerformed
         // input check, Regex for ID
-        regexUserInfoBackGroundColorSet("^\\d+$", textFieldID);
+        regexUserInfoBackGroundColorSet("^\\d+$", textFieldID,
+                "ID skal være et tal større end 0");
     }//GEN-LAST:event_textFieldIDActionPerformed
 
     private void menuFileCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileCloseActionPerformed
@@ -609,43 +619,55 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     private void comboBoxMotionistKonkurrenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxMotionistKonkurrenceActionPerformed
         if (comboBoxMotionistKonkurrence.getSelectedItem().equals("Konkurrencesvømmer")) {
-            panelDisciplin.show();
+            panelDisciplin.setVisible(true);
         } else {
-            panelDisciplin.hide();
+            panelDisciplin.setVisible(false);
         }
     }//GEN-LAST:event_comboBoxMotionistKonkurrenceActionPerformed
 
     private void textFieldTelefonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTelefonActionPerformed
         // input check, Regex for Telephone
-        regexUserInfoBackGroundColorSet("^\\d+$", textFieldTelefon);
+        regexUserInfoBackGroundColorSet("^\\d+$", textFieldTelefon,
+                "Telefonnummer skal være i formattet: 12345678");
     }//GEN-LAST:event_textFieldTelefonActionPerformed
 
     private void comboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxStatusActionPerformed
-        if (comboBoxStatus.getSelectedItem().equals("Aktiv")) {
-            comboBoxMotionistKonkurrence.show();
+        if (comboBoxStatus.getSelectedItem().equals("Passiv")) {
+            comboBoxMotionistKonkurrence.setVisible(false);
+            panelDisciplin.setVisible(false);
         } else {
-            comboBoxMotionistKonkurrence.hide();
+            comboBoxMotionistKonkurrence.setVisible(true);
+            if (comboBoxMotionistKonkurrence.getSelectedItem().equals("Konkurrencesvømmer")) {
+                panelDisciplin.setVisible(true);
+            } else {
+                panelDisciplin.setVisible(false);
+            }
         }
     }//GEN-LAST:event_comboBoxStatusActionPerformed
 
     private void textFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldEmailActionPerformed
         // input check, Regex for email
-        regexUserInfoBackGroundColorSet("^.+@.+\\..+$", textFieldEmail);
+        regexUserInfoBackGroundColorSet("^.+@.+\\..+$", textFieldEmail,
+                "Email skal være i formattet: xx@yy.zz");
     }//GEN-LAST:event_textFieldEmailActionPerformed
 
     private void textFieldAdresseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAdresseActionPerformed
         // input check, Regex for address
-        regexUserInfoBackGroundColorSet("^.+,\\s+\\d{4}.+$", textFieldAdresse);
+        regexUserInfoBackGroundColorSet("^.+,\\s+\\d{4}.+$", textFieldAdresse,
+                "Adresse skal være i formattet: adresse, 2938 Bynavn");
     }//GEN-LAST:event_textFieldAdresseActionPerformed
 
     private void textFieldNavnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNavnActionPerformed
         // input check, Regex for name
-        regexUserInfoBackGroundColorSet("^\\w+(\\s\\w+)+$", textFieldNavn);
+        regexUserInfoBackGroundColorSet("^\\w+(\\s\\w+)+$", textFieldNavn,
+                "Navnet skal være i formatet: xxxx yyyy zzzzz");
+
     }//GEN-LAST:event_textFieldNavnActionPerformed
 
     private void textFieldAlderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAlderActionPerformed
         // input check, Regex for address
-        regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder);
+        regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder,
+                "Alder skal være et tal of i mellem 0 og 120 år");
         if (Integer.parseInt(textFieldAlder.getText()) < 0
                 || Integer.parseInt(textFieldAlder.getText()) > 120) {
             textFieldAlder.setBackground(Color.red);
@@ -654,14 +676,19 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_textFieldAlderActionPerformed
 
-    private void regexUserInfoBackGroundColorSet(String regex, JTextField tf) {
+    private boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf,
+            String err) {
         // check user input and set background accordingly
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(tf.getText());
         if (!matcher.matches()) {
             tf.setBackground(Color.red);
+            displayFormatedText(textPaneMedlemsInfo, err, FONT_NOTOSANS_PLAIN_12, Color.RED);
+            return false;
         } else {
             tf.setBackground(Color.white);
+            textPaneMedlemsInfo.setText("");
+            return true;
         }
     }
 
@@ -747,8 +774,8 @@ public class DelfinGUI extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void go(){
+
+    public void go() {
         System.out.println("getMotion: " + getMotionKonkurrence());
         System.out.println("getStatus: " + getStatus());
     }
@@ -796,4 +823,37 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldTelefon;
     private javax.swing.JTextPane textPaneMedlemsInfo;
     // End of variables declaration//GEN-END:variables
+
+    public void displayFormatedText(JTextPane tp, String txt, Font font, Color color) {
+
+        StyledDocument doc = (StyledDocument) tp.getDocument();
+        try {
+            doc.insertString(doc.getLength(), txt, displayFormat(font, color));
+        } catch (BadLocationException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public SimpleAttributeSet displayFormat(Font font, Color color) {
+//        Font trb_18 = new Font("TimesRoman", Font.BOLD, 18);
+//        Font tri = new Font("TimesRoman", Font.ITALIC, 18);
+//        Font times_b_i = new Font("TimesRoman", Font.BOLD + Font.ITALIC, 18);
+//        Font h = new Font("Helvetica", Font.PLAIN, 18);
+//        Font c = new Font("Courier", Font.PLAIN, 18);
+//        Font d = new Font("Dialog", Font.PLAIN, 18);
+//        Font z = new Font("ZapfDingbats", Font.PLAIN, 18);
+        SimpleAttributeSet sAS = new SimpleAttributeSet();
+
+        StyleConstants.setFontFamily(sAS, font.getFamily());
+        StyleConstants.setFontSize(sAS, font.getSize());
+        StyleConstants.setBold(sAS, font.isBold());
+        StyleConstants.setItalic(sAS, font.isItalic());
+        StyleConstants.setForeground(sAS, color);
+
+        return sAS;
+    }
+
+    public void clearFormatedText(JTextPane tp) {
+        tp.setText("");
+    }
 }
