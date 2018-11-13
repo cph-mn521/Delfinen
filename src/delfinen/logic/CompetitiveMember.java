@@ -10,6 +10,7 @@ package delfinen.logic;
  * @author Lord
  */
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CompetitiveMember extends Member {
     private ArrayList<Discipline> disciplines;
@@ -51,5 +52,10 @@ public class CompetitiveMember extends Member {
         else
             throw new DisciplineNotFoundException();
     }
+ 
     
+    public Member changeMembership() {
+        return new Member(this.getName(), this.getEmail(), this.getAdress(), this.getId(), this.getAge(), this.getPhone(), this.getStatus());
+    }
+
 }

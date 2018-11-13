@@ -5,6 +5,7 @@
  */
 package delfinen.logic;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -17,7 +18,7 @@ public class Member {
     private int id, age, phone;
     private Status status;
     private boolean isCoach;
-    
+
     public enum Status {
         Active,
         Passive
@@ -124,18 +125,25 @@ public class Member {
     public void setStatus(Status status) {
         this.status = status;
     }
-    
-    public void changeCoachStatus(){
+
+    public void changeCoachStatus() {
         isCoach = !isCoach;
     }
-  
-    public boolean isCoach(){
+
+    public boolean isCoach() {
         return isCoach;
     }
-    
-    public void changeMembership() {
-        //Skal bruge en funktion til at 
-        //new CompetitiveMember(name, email, adress, id, age, phone, status, );
+
+    public Member changeMembership(Member coach) {
+        return new CompetitiveMember(name, email, adress, id, age, phone, status, coach);
+    }
+
+    public Member changeMembership(Member coach, Discipline discipline) {
+        return new CompetitiveMember(name, email, adress, id, age, phone, status, discipline, coach);
+    }
+
+    public Member changeMembership(Member coach, ArrayList<Discipline> disciplines) {
+        return new CompetitiveMember(name, email, adress, id, age, phone, status, disciplines, coach);
     }
 
 }
