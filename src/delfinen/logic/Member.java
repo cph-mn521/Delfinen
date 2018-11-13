@@ -32,8 +32,7 @@ public class Member {
         this.age = age;
         this.phone = phone;
         this.status = status;
-        
-        
+           
     }
 
     @Override

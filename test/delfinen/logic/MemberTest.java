@@ -13,13 +13,13 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Lord
+ * @author Niels Bang
  */
 public class MemberTest {
     
    
     public MemberTest() {
-        //Member m = new Member();
+        Member m = new Member("John Test", "Abe@kat.dk", "tabervej 100", 23, 54, 12345678, Member.Status.Active);
     
     }
         

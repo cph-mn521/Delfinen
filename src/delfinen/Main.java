@@ -10,6 +10,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new DelfinGUI().setVisible(true);
+        DelfinGUI gui = new DelfinGUI();
+        gui.setVisible(true);
     }
 }
