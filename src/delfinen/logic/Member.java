@@ -35,18 +35,15 @@ public class Member {
            
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    
+    public boolean equals(Member other) {
+        if (this == other) {
             return true;
         }
-        if (obj == null) {
+        if (other == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Member other = (Member) obj;
+        
         if (this.id != other.id) {
             return false;
         }

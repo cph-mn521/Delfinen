@@ -20,8 +20,9 @@ import static org.junit.Assert.*;
 public class MemberTest {
     
     
-    private Member testPerson = new Member("John Test","abe@kat.dk","Reeeeee 3",2,34, 12345678, Member.Status.Active);
+    private Member testPerson1 = new Member("John Test","abe@kat.dk","Reeeeee 3",2,34, 12345678, Member.Status.Active);
     private Member testPerson2 = new Member("John Test","abe@kat.dk","Reeeeee 3",2,34, 12345678, Member.Status.Active);
+    private Member testPerson3 = new Member("Ikke John","ny@mailt.dk","Anden Gade 23",4,89, 87654321, Member.Status.Passive);
     public MemberTest() {
     
         
@@ -33,19 +34,21 @@ public class MemberTest {
      * Test of equals method, of class Member.
      */
     @Test
-    public void testEquals() {
-        Object obj = null;
-        //Member instance = null;
-        boolean expResult = true;
-        
-        assertEquals(testPerson, testPerson);
-        assertTrue(testPerson.equals(testPerson2));
-        
-        
-        // TODO review the generated test code and remove the default call to fail.
-        
+    public void testEquals1() {
+        assertTrue(testPerson1.equals(testPerson2));
     }
 
+    @Test
+    public void testEquals2(){
+        assertFalse(testPerson1.equals(testPerson3));
+    }
+    
+    @Test
+    public void nullTestEquals(){
+        assertFalse(testPerson1.equals(null));
+    }
+    
+    
     /**
      * Test of toString method, of class Member.
      */
