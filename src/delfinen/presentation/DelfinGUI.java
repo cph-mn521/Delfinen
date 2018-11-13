@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Objects;
 import javax.accessibility.AccessibleContext;
 import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -21,11 +22,17 @@ import javax.swing.JTextPane;
  */
 public class DelfinGUI extends javax.swing.JFrame {
 
+        ArrayList<JCheckBox> discipliner = new ArrayList<>();
     /**
      * Creates new form DelfinGUI
      */
     public DelfinGUI() {
         initComponents();
+        discipliner.add(checkBoxDisciplinBryst);
+        discipliner.add(checkBoxDisciplinButterfly);
+        discipliner.add(checkBoxDisciplinCrawl);
+        discipliner.add(checkBoxDisciplinRygcrawl);
+        
     }
 
     /**
@@ -37,7 +44,6 @@ public class DelfinGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroupDisciplin = new javax.swing.ButtonGroup();
         panelMain = new javax.swing.JPanel();
         panelMedlemmer = new javax.swing.JPanel();
         buttonMedlem = new javax.swing.JButton();
@@ -132,22 +138,20 @@ public class DelfinGUI extends javax.swing.JFrame {
         textFieldNavn.setText("Lars Emil");
 
         comboBoxMotionistKonkurrence.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Motionist", "Konkurrencesvømmer" }));
+        comboBoxMotionistKonkurrence.setSelectedIndex(1);
         comboBoxMotionistKonkurrence.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxMotionistKonkurrenceActionPerformed(evt);
             }
         });
 
-        buttonGroupDisciplin.add(checkBoxDisciplinBryst);
         checkBoxDisciplinBryst.setText("Brystsvømning");
 
-        buttonGroupDisciplin.add(checkBoxDisciplinButterfly);
+        checkBoxDisciplinButterfly.setSelected(true);
         checkBoxDisciplinButterfly.setText("Butterfly");
 
-        buttonGroupDisciplin.add(checkBoxDisciplinCrawl);
         checkBoxDisciplinCrawl.setText("Crawl");
 
-        buttonGroupDisciplin.add(checkBoxDisciplinRygcrawl);
         checkBoxDisciplinRygcrawl.setSelected(true);
         checkBoxDisciplinRygcrawl.setText("Rygcrawl");
 
@@ -304,7 +308,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         panelMain.add(panelMedlemmer, "panelMedlemmer");
@@ -361,7 +365,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         panelAboutLayout.setVerticalGroup(
             panelAboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAboutLayout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addContainerGap(116, Short.MAX_VALUE)
                 .addComponent(panelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
         );
@@ -408,14 +412,16 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public ArrayList<String> getDisciplin() {
-        ArrayList<String> discipliner = new ArrayList<>();
-        for (int i = 0; i < buttonGroupDisciplin.getButtonCount(); i++) {
-            discipliner.add(buttonGroupDisciplin.getSelection().toString());
+        ArrayList<String> disc = new ArrayList<>();
+        for (JCheckBox JCheckbox : discipliner) {
+            if(JCheckbox.isSelected()){
+                disc.add(Arrays.toString(JCheckbox.getSelectedObjects()));
+            }
         }
-        return discipliner;
+        return disc;
     }
 
-    public String getKonkurrence() {
+    public String getMotionKonkurrence() {
         return comboBoxMotionistKonkurrence.getSelectedItem().toString();
     }
 
@@ -574,7 +580,6 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonClose;
-    private javax.swing.ButtonGroup buttonGroupDisciplin;
     private javax.swing.JButton buttonMedlem;
     private javax.swing.JButton buttonSearchMember;
     private javax.swing.JCheckBox checkBoxDisciplinBryst;

@@ -1,5 +1,6 @@
 package delfinen.presentation;
 
+import java.util.ArrayList;
 import javax.accessibility.AccessibleContext;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -46,8 +47,8 @@ public class DelfinGUITest {
     public void testMotionistKonkurrence() {
         System.out.println("getMotionistKonkurrence");
         DelfinGUI instance = new DelfinGUI();
-        String expResult = "Kokurrencesvømmer";
-        String result = instance.getStatus();
+        String expResult = "Konkurrencesvømmer";
+        String result = instance.getMotionKonkurrence();
         assertEquals(expResult, result);
     }
 
@@ -55,8 +56,11 @@ public class DelfinGUITest {
     public void testDisciplin() {
         System.out.println("getDisciplin");
         DelfinGUI instance = new DelfinGUI();
-        String expResult = "Aktiv";
-        String result = instance.getStatus();
+        ArrayList<String> expResult = new ArrayList<>();
+        expResult.add("Butterfly");
+        expResult.add("Rygcrawl");
+        ArrayList<String> result;
+        result = instance.getDisciplin();
         assertEquals(expResult, result);
     }
     
