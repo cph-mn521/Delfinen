@@ -1,9 +1,6 @@
 package delfinen.presentation;
 
 import javax.accessibility.AccessibleContext;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -16,51 +13,59 @@ import static org.junit.Assert.*;
  * @author martin b.
  */
 public class DelfinGUITest {
-    
+
     public DelfinGUITest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     @Test
-    public void testGetComboBoxStatus() {
-        System.out.println("getComboBoxStatus");
+    public void testStatus() {
+        System.out.println("getStatus");
         DelfinGUI instance = new DelfinGUI();
         String expResult = "Aktiv";
-        String result = instance.getComboBoxStatus();
+        String result = instance.getStatus();
+        assertEquals(expResult, result);
     }
 
     @Test
-    public void testGetjTextPane1() {
-        System.out.println("getjTextPane1");
+    public void testMotionistKonkurrence() {
+        System.out.println("getMotionistKonkurrence");
         DelfinGUI instance = new DelfinGUI();
-        String expResult = null;
-        String result = instance.getjTextPane1();
+        String expResult = "Kokurrencesvømmer";
+        String result = instance.getStatus();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
+    @Test
+    public void testDisciplin() {
+        System.out.println("getDisciplin");
+        DelfinGUI instance = new DelfinGUI();
+        String expResult = "Aktiv";
+        String result = instance.getStatus();
+        assertEquals(expResult, result);
+    }
+    
     @Test
     public void testGetTextFieldAdresse() {
         System.out.println("getTextFieldAdresse");
         DelfinGUI instance = new DelfinGUI();
         String expResult = "Ligustervænget 23, 2756 Liguster";
-        String result = instance.getTextFieldAdresse();
+        String result = instance.getAdresse();
         assertEquals(expResult, result);
     }
 
@@ -69,43 +74,43 @@ public class DelfinGUITest {
         System.out.println("getTextFieldAlder");
         DelfinGUI instance = new DelfinGUI();
         int expResult = 23;
-        int result = instance.getTextFieldAlder();
+        int result = instance.getAlder();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testGetTextFieldEmail() {
-        System.out.println("getTextFieldEmail");
+    public void testGetEmail() {
+        System.out.println("getEmail");
         DelfinGUI instance = new DelfinGUI();
         String expResult = "lm@delfinen.dk";
-        String result = instance.getTextFieldEmail();
+        String result = instance.getEmail();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testGetTextFieldID() {
-        System.out.println("getTextFieldID");
+    public void testGetID() {
+        System.out.println("getID");
         DelfinGUI instance = new DelfinGUI();
         int expResult = 1;
-        int result = instance.getTextFieldID();
+        int result = instance.getID();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testGetTextFieldNavn() {
-        System.out.println("getTextFieldNavn");
+    public void testGetNavn() {
+        System.out.println("getNavn");
         DelfinGUI instance = new DelfinGUI();
         String expResult = "Lars Emil";
-        String result = instance.getTextFieldNavn();
+        String result = instance.getNavn();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testGetTextFieldTelefon() {
-        System.out.println("getTextFieldTelefon");
+    public void testGetTelefon() {
+        System.out.println("getTelefon");
         DelfinGUI instance = new DelfinGUI();
         int expResult = 25854578;
-        int result = instance.getTextFieldTelefon();
+        int result = instance.getTelefon();
         assertEquals(expResult, result);
     }
 
@@ -153,13 +158,5 @@ public class DelfinGUITest {
         fail("The test case is a prototype.");
     }
 
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        DelfinGUI.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
+
 }

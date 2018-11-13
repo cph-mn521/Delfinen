@@ -6,8 +6,11 @@
 package delfinen.presentation;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 import javax.accessibility.AccessibleContext;
+import javax.swing.ButtonGroup;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -34,6 +37,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupDisciplin = new javax.swing.ButtonGroup();
         panelMain = new javax.swing.JPanel();
         panelMedlemmer = new javax.swing.JPanel();
         buttonMedlem = new javax.swing.JButton();
@@ -52,13 +56,19 @@ public class DelfinGUI extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         textFieldAdresse = new javax.swing.JTextField();
         textFieldNavn = new javax.swing.JTextField();
+        comboBoxMotionistKonkurrence = new javax.swing.JComboBox<>();
+        panelDisciplin = new javax.swing.JPanel();
+        checkBoxDisciplinBryst = new javax.swing.JCheckBox();
+        checkBoxDisciplinButterfly = new javax.swing.JCheckBox();
+        checkBoxDisciplinCrawl = new javax.swing.JCheckBox();
+        checkBoxDisciplinRygcrawl = new javax.swing.JCheckBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         textPaneMedlemsInfo = new javax.swing.JTextPane();
         labelDelfinIcon = new javax.swing.JLabel();
         buttonSearchMember = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         panelAbout = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        panelLogo = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         buttonClose = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -79,12 +89,22 @@ public class DelfinGUI extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         comboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktiv", "Passiv" }));
+        comboBoxStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxStatusActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Alder");
 
         jLabel3.setText("Status");
 
         textFieldTelefon.setText("25854578");
+        textFieldTelefon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldTelefonActionPerformed(evt);
+            }
+        });
 
         textFieldAlder.setText("23");
 
@@ -111,42 +131,87 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         textFieldNavn.setText("Lars Emil");
 
+        comboBoxMotionistKonkurrence.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Motionist", "Konkurrencesvømmer" }));
+        comboBoxMotionistKonkurrence.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxMotionistKonkurrenceActionPerformed(evt);
+            }
+        });
+
+        buttonGroupDisciplin.add(checkBoxDisciplinBryst);
+        checkBoxDisciplinBryst.setText("Brystsvømning");
+
+        buttonGroupDisciplin.add(checkBoxDisciplinButterfly);
+        checkBoxDisciplinButterfly.setText("Butterfly");
+
+        buttonGroupDisciplin.add(checkBoxDisciplinCrawl);
+        checkBoxDisciplinCrawl.setText("Crawl");
+
+        buttonGroupDisciplin.add(checkBoxDisciplinRygcrawl);
+        checkBoxDisciplinRygcrawl.setText("Rygcrawl");
+
+        javax.swing.GroupLayout panelDisciplinLayout = new javax.swing.GroupLayout(panelDisciplin);
+        panelDisciplin.setLayout(panelDisciplinLayout);
+        panelDisciplinLayout.setHorizontalGroup(
+            panelDisciplinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDisciplinLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelDisciplinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkBoxDisciplinButterfly)
+                    .addComponent(checkBoxDisciplinRygcrawl)
+                    .addComponent(checkBoxDisciplinCrawl)
+                    .addComponent(checkBoxDisciplinBryst))
+                .addContainerGap())
+        );
+        panelDisciplinLayout.setVerticalGroup(
+            panelDisciplinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelDisciplinLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(checkBoxDisciplinButterfly)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkBoxDisciplinCrawl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkBoxDisciplinRygcrawl)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkBoxDisciplinBryst)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textFieldNavn, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
+                        .addComponent(panelDisciplin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel7)
                         .addGap(7, 7, 7)
                         .addComponent(textFieldAlder)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(8, 8, 8)
-                        .addComponent(comboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(textFieldAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(textFieldNavn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textFieldTelefon, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(17, 17, 17))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(comboBoxMotionistKonkurrence, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {textFieldAlder, textFieldID});
@@ -156,31 +221,37 @@ public class DelfinGUI extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(textFieldAlder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(comboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(textFieldNavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(textFieldAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(textFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(comboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxMotionistKonkurrence, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(textFieldNavn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(textFieldAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(textFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textFieldTelefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(panelDisciplin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         textPaneMedlemsInfo.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.gray, java.awt.Color.white));
@@ -199,48 +270,45 @@ public class DelfinGUI extends javax.swing.JFrame {
         panelMedlemmerLayout.setHorizontalGroup(
             panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMedlemmerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(23, 23, 23)
+                .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelMedlemmerLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
                         .addComponent(labelDelfinIcon)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelMedlemmerLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonMedlem, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(buttonSearchMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonMedlem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelMedlemmerLayout.setVerticalGroup(
             panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMedlemmerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelMedlemmerLayout.createSequentialGroup()
+                        .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelMedlemmerLayout.createSequentialGroup()
+                                .addComponent(buttonSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(buttonMedlem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelDelfinIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelMedlemmerLayout.createSequentialGroup()
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1))
-                    .addGroup(panelMedlemmerLayout.createSequentialGroup()
-                        .addComponent(labelDelfinIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(panelMedlemmerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelMedlemmerLayout.createSequentialGroup()
-                                .addComponent(buttonSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buttonMedlem, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         panelMain.add(panelMedlemmer, "panelMedlemmer");
 
-        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        panelLogo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jLabel10.setText("BBW software 2018");
 
@@ -253,28 +321,28 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/BBW.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelLogoLayout = new javax.swing.GroupLayout(panelLogo);
+        panelLogo.setLayout(panelLogoLayout);
+        panelLogoLayout.setHorizontalGroup(
+            panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLogoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonClose)
                 .addGap(190, 190, 190))
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(panelLogoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelLogoLayout.setVerticalGroup(
+            panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLogoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonClose)
                     .addComponent(jLabel10))
                 .addContainerGap())
@@ -286,14 +354,14 @@ public class DelfinGUI extends javax.swing.JFrame {
             panelAboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAboutLayout.createSequentialGroup()
                 .addGap(246, 246, 246)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(178, 178, 178))
         );
         panelAboutLayout.setVerticalGroup(
             panelAboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAboutLayout.createSequentialGroup()
                 .addContainerGap(94, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
         );
 
@@ -334,36 +402,48 @@ public class DelfinGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public String getComboBoxStatus() {
+    public String getStatus() {
         return comboBoxStatus.getSelectedItem().toString();
+    }
+
+    public ArrayList<String> getDisciplin() {
+        ArrayList<String> discipliner = new ArrayList<>();
+        for (int i = 0; i < buttonGroupDisciplin.getButtonCount(); i++) {
+            discipliner.add(buttonGroupDisciplin.getSelection().toString());
+        }
+        return discipliner;
+    }
+
+    public String getKonkurrence() {
+        return comboBoxMotionistKonkurrence.getSelectedItem().toString();
     }
 
     public String getjTextPane1() {
         return textPaneMedlemsInfo.getText();
     }
 
-    public String getTextFieldAdresse() {
+    public String getAdresse() {
         return textFieldAdresse.getText();
     }
 
-    public int getTextFieldAlder() {
-        return Integer.getInteger(textFieldAlder.getText());
+    public int getAlder() {
+        return Integer.parseInt(textFieldAlder.getText());
     }
 
-    public String getTextFieldEmail() {
+    public String getEmail() {
         return textFieldEmail.getText();
     }
 
-    public int getTextFieldID() {
-        return Integer.getInteger(textFieldID.getText());
+    public int getID() {
+        return Integer.parseInt(textFieldID.getText());
     }
 
-    public String getTextFieldNavn() {
+    public String getNavn() {
         return textFieldNavn.getText();
     }
 
-    public int getTextFieldTelefon() {
-        return Integer.getInteger(textFieldTelefon.getText());
+    public int getTelefon() {
+        return Integer.parseInt(textFieldTelefon.getText());
     }
 
     public static int getEXIT_ON_CLOSE() {
@@ -392,6 +472,22 @@ public class DelfinGUI extends javax.swing.JFrame {
         CardLayout card = (CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelAbout");
     }//GEN-LAST:event_menuHelpAboutActionPerformed
+
+    private void comboBoxMotionistKonkurrenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxMotionistKonkurrenceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxMotionistKonkurrenceActionPerformed
+
+    private void textFieldTelefonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTelefonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldTelefonActionPerformed
+
+    private void comboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxStatusActionPerformed
+        if (comboBoxStatus.getSelectedItem().toString().equals("Aktiv")) {
+            comboBoxMotionistKonkurrence.show();
+        } else {
+            comboBoxMotionistKonkurrence.hide();
+        }
+    }//GEN-LAST:event_comboBoxStatusActionPerformed
 
     @Override
     public int hashCode() {
@@ -477,8 +573,14 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonClose;
+    private javax.swing.ButtonGroup buttonGroupDisciplin;
     private javax.swing.JButton buttonMedlem;
     private javax.swing.JButton buttonSearchMember;
+    private javax.swing.JCheckBox checkBoxDisciplinBryst;
+    private javax.swing.JCheckBox checkBoxDisciplinButterfly;
+    private javax.swing.JCheckBox checkBoxDisciplinCrawl;
+    private javax.swing.JCheckBox checkBoxDisciplinRygcrawl;
+    private javax.swing.JComboBox<String> comboBoxMotionistKonkurrence;
     private javax.swing.JComboBox<String> comboBoxStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -491,7 +593,6 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelDelfinIcon;
     private javax.swing.JMenuBar menuBar;
@@ -501,6 +602,8 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JMenu menuHelp;
     private javax.swing.JMenuItem menuHelpAbout;
     private javax.swing.JPanel panelAbout;
+    private javax.swing.JPanel panelDisciplin;
+    private javax.swing.JPanel panelLogo;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelMedlemmer;
     private javax.swing.JTextField textFieldAdresse;
