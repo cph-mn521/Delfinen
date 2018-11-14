@@ -29,11 +29,12 @@ public class Controller {
     }
 
     public static void init() {
+        gui.setTrainedBy(getTrainers());
         gui.setVisible(true);
     }
 
     /**
-     * Returns a list of trainers.
+     * Queries the PersistanceHandler for a list of trainers.
      * @return 
      */
     public static List<String> getTrainers(){
