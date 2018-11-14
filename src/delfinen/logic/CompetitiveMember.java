@@ -23,7 +23,6 @@ public class CompetitiveMember extends Member {
             throw new CoachNotFoundException();
         }
         this.coach = coach;
-        isCompetitive = true;
     }
 
     public CompetitiveMember(String name, String email, String address, int id, int age, int phone, Status status, Discipline disciplines, Member coach) throws CoachNotFoundException {
@@ -32,8 +31,7 @@ public class CompetitiveMember extends Member {
         if (!coach.isCoach()) {
             throw new CoachNotFoundException();
         }
-        this.coach = coach;
-        isCompetitive = true;
+        this.coach = coach;       
     }
 
     public CompetitiveMember(String name, String email, String address, int id, int age, int phone, Status status, Member coach) throws CoachNotFoundException {
@@ -43,7 +41,6 @@ public class CompetitiveMember extends Member {
             throw new CoachNotFoundException();
         }
         this.coach = coach;
-        isCompetitive = true;
 
     }
 
@@ -55,8 +52,13 @@ public class CompetitiveMember extends Member {
         this.coach = coach;
     }
 
-    public void addDiscipline(Discipline discipline) {
-        disciplines.add(discipline);
+    public void addDiscipline(Discipline discipline) throws DisciplineException {
+        if (!disciplines.contains(discipline)) {
+            disciplines.add(discipline);
+        } else {
+            throw new DisciplineException("Discipline already in use.");
+
+        }
     }
 
     public void removeDiscipline(Discipline discipline) throws DisciplineNotFoundException {
@@ -67,8 +69,17 @@ public class CompetitiveMember extends Member {
         }
     }
 
+    public ArrayList<Discipline> getDiscipline() {
+        return disciplines;
+    }
+
     public Member changeMembership() {
         return new Member(this.getName(), this.getEmail(), this.getAddress(), this.getId(), this.getAge(), this.getPhone(), this.getStatus());
     }
-
+    
+    @Override
+    public boolean isCompetitive(){
+        return true;
+    }
+    
 }
