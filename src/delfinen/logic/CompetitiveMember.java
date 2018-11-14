@@ -8,7 +8,7 @@ package delfinen.logic;
 /**
  *
  * @author Lord
- * @comentator
+ * @comentator Wulff
  */
 import java.util.ArrayList;
 
