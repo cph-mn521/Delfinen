@@ -126,7 +126,8 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="buttonSearchMember" pref="173" max="32767" attributes="0"/>
-                                  <Component id="buttonNewMember" max="32767" attributes="0"/>
+                                  <Component id="buttonChangeMember" max="32767" attributes="0"/>
+                                  <Component id="buttonNewMember" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="panelMedlemsData" max="32767" attributes="0"/>
@@ -160,9 +161,11 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                       <Component id="buttonNewMember" min="-2" pref="43" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="buttonChangeMember" min="-2" pref="43" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="buttonSearchMember" min="-2" pref="41" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" pref="29" max="32767" attributes="0"/>
                                   </Group>
@@ -180,12 +183,12 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="buttonNewMember">
+            <Component class="javax.swing.JButton" name="buttonChangeMember">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nyt/&#xe6;ndre medlem"/>
+                <Property name="text" type="java.lang.String" value="&#xc6;ndre medlem"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonNewMemberActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonChangeMemberActionPerformed"/>
               </Events>
             </Component>
             <Container class="javax.swing.JPanel" name="panelMedlemsData">
@@ -568,6 +571,14 @@
                   <Image iconType="3" name="/files/1.jpg"/>
                 </Property>
               </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="buttonNewMember">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nyt medlem"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonNewMemberActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

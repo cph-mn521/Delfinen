@@ -82,7 +82,7 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         panelMain = new javax.swing.JPanel();
         panelMembers = new javax.swing.JPanel();
-        buttonNewMember = new javax.swing.JButton();
+        buttonChangeMember = new javax.swing.JButton();
         panelMedlemsData = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -113,6 +113,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         buttonSearchMember = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         labelMemberPhoto = new javax.swing.JLabel();
+        buttonNewMember = new javax.swing.JButton();
         panelAbout = new javax.swing.JPanel();
         panelLogo = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -136,10 +137,10 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         panelMain.setLayout(new java.awt.CardLayout());
 
-        buttonNewMember.setText("Nyt/ændre medlem");
-        buttonNewMember.addActionListener(new java.awt.event.ActionListener() {
+        buttonChangeMember.setText("Ændre medlem");
+        buttonChangeMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonNewMemberActionPerformed(evt);
+                buttonChangeMemberActionPerformed(evt);
             }
         });
 
@@ -387,6 +388,13 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         labelMemberPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
 
+        buttonNewMember.setText("Nyt medlem");
+        buttonNewMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonNewMemberActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelMembersLayout = new javax.swing.GroupLayout(panelMembers);
         panelMembers.setLayout(panelMembersLayout);
         panelMembersLayout.setHorizontalGroup(
@@ -399,6 +407,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(buttonSearchMember, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                            .addComponent(buttonChangeMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonNewMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(panelMedlemsData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -424,9 +433,11 @@ public class DelfinGUI extends javax.swing.JFrame {
                     .addGroup(panelMembersLayout.createSequentialGroup()
                         .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelMembersLayout.createSequentialGroup()
-                                .addGap(84, 84, 84)
+                                .addGap(23, 23, 23)
                                 .addComponent(buttonNewMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(buttonChangeMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(buttonSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 29, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMembersLayout.createSequentialGroup()
@@ -905,12 +916,12 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSystemAccountActionPerformed
 
     private void buttonSearchMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchMemberActionPerformed
-        // TODO add your handling code here:
+        Controller
     }//GEN-LAST:event_buttonSearchMemberActionPerformed
 
-    private void buttonNewMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewMemberActionPerformed
-        Controller.addMember();
-    }//GEN-LAST:event_buttonNewMemberActionPerformed
+    private void buttonChangeMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangeMemberActionPerformed
+        
+    }//GEN-LAST:event_buttonChangeMemberActionPerformed
 
     private void comboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxStatusActionPerformed
         if (comboBoxStatus.getSelectedItem().equals("Aktiv")) {
@@ -939,6 +950,10 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void comboBoxTrainedByFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboBoxTrainedByFocusGained
         setTrainedBy(Controller.getTrainers());
     }//GEN-LAST:event_comboBoxTrainedByFocusGained
+
+    private void buttonNewMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewMemberActionPerformed
+        Controller.addMember();
+    }//GEN-LAST:event_buttonNewMemberActionPerformed
 
     private boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf,
             String err) {
@@ -1005,6 +1020,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonChangeMember;
     private javax.swing.JButton buttonClose;
     private javax.swing.JButton buttonNewMember;
     private javax.swing.JButton buttonSearchMember;
