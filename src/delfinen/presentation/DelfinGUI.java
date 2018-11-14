@@ -858,7 +858,13 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonNewMemberActionPerformed
 
     private void comboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxStatusActionPerformed
-        // TODO add your handling code here:
+        if (comboBoxStatus.getSelectedItem().equals("Aktiv")) {
+            comboBoxMotionistKonkurrence.setVisible(true);
+            panelDisciplin.setVisible(true);
+        } else {
+            comboBoxMotionistKonkurrence.setVisible(false);
+            panelDisciplin.setVisible(false);
+        }
     }//GEN-LAST:event_comboBoxStatusActionPerformed
 
     private void checkBoxTrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxTrainerActionPerformed
