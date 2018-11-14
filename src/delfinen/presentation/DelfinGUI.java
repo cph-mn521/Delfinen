@@ -784,6 +784,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public void setTrainedBy(List<String> comboBoxTrainedBy) {
+        this.comboBoxTrainedBy.removeAllItems();
         for (String string : comboBoxTrainedBy) {
             this.comboBoxTrainedBy.addItem(string);
         }
