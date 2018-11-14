@@ -10,6 +10,7 @@ import com.google.gson.JsonSyntaxException;
 import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Member;
 import delfinen.logic.Record;
+import delfinen.logic.Subscription;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +25,10 @@ public class PersistanceHandler {
     private final String DBRekords = "Records.txt";
     private final String DBSubscriptions = "Subscriptions.txt";
 
-    private DataAccessor dam = new DataAccessorFile(DBMembers);
-    private DataAccessor dar = new DataAccessorFile(DBRekords);
-    private DataAccessor dac = new DataAccessorFile(DBSubscriptions);
-    private Gson gson = new Gson();
+    final DataAccessor dam = new DataAccessorFile(DBMembers);
+    final DataAccessor dar = new DataAccessorFile(DBRekords);
+    final DataAccessor das = new DataAccessorFile(DBSubscriptions);
+    final Gson gson = new Gson();
 
     public PersistanceHandler() {
 
@@ -67,7 +68,7 @@ public class PersistanceHandler {
      *
      * @param Query The wanted Query.
      * @return Members All members in the database with maching Attribute.
-     * @throws DataException.
+     * @throws delfinen.data.DataException
      */
     public List<Member> searchMember(String Query) throws DataException {
         try {
@@ -88,8 +89,10 @@ public class PersistanceHandler {
     }
 
     /**
-     * Method for adding a member to the Member database.      *
-     * @param obj   Member to be added to the database.
+     * Method for adding a member to the Member database.
+     *
+     *
+     * @param obj Member to be added to the database.
      * @throws delfinen.data.DataException
      */
     public void addMember(Member obj) throws DataException {
@@ -101,6 +104,7 @@ public class PersistanceHandler {
      *
      * @param old The Member that you wish to modify.
      * @param N The Member you wish it should be. if null, removes the entry.
+     * @throws delfinen.data.DataException
      */
     public void editMember(Member old, Member N) throws DataException {
         if (N != null) {
@@ -113,7 +117,7 @@ public class PersistanceHandler {
     /**
      * Method for retrieving a list of all Records in the Records.txt database.
      *
-     * @return Records      All members in the database.
+     * @return Records All members in the database.
      * @throws DataException
      */
     public List<Record> getRecords() throws DataException {
@@ -128,45 +132,47 @@ public class PersistanceHandler {
             throw new DataException(e.getMessage());
         }
     }
-    
+
     /**
      * Method for searching for keywords in the Records database. Searches the
-     * database for all entries with containing the query.     *
-     * For more precise searches, use the "ATTRIBUTE:"+"String" or
-     * "ATTRIBUTE:"+query
+     * database for all entries with containing the query. * For more precise
+     * searches, use the "ATTRIBUTE:"+"String" or "ATTRIBUTE:"+query
      *
-     * @param   Query         The wanted Query.
-     * @return  records      All members in the database with maching Attribute.
-     * @throws DataException.
+     * @param Query The wanted Query.
+     * @return records All members in the database with maching Attribute.
+     * @throws delfinen.data.DataException
      */
     public List<Record> searchRecord(String Query) throws DataException {
         try {
             List<String> json = dar.searchEntries(Query);
             List<Record> records = new ArrayList<>();
-            for (String string : json) {
+            json.forEach((string) -> {
                 records.add(gson.fromJson(string, Record.class));
-            }
+            });
             return records;
         } catch (DataException e) {
             throw new DataException(e.getMessage());
         }
 
     }
-    
-     /**
-     * Method for adding a member to the Member database.      *
-     * @param Record    Record to be added to the database.
-     * @throws DataException.
+
+    /**
+     * Method for adding a member to the Member database.
+     *
+     *
+     * @param obj Record to be added to the database.
+     * @throws delfinen.data.DataException
      */
     public void addRecord(Record obj) throws DataException {
         dar.addEntry(gson.toJson(obj));
     }
-    
-     /**
+
+    /**
      * Method for editing a Record. Can also be used to remove Record.
      *
-     * @param old   The Record that you wish to modify.
-     * @param N     The Record you wish it should be. if null, removes the entry.
+     * @param old The Record that you wish to modify.
+     * @param N The Record you wish it should be. if null, removes the entry.
+     * @throws delfinen.data.DataException
      */
     public void editRecord(Record old, Record N) throws DataException {
         if (N != null) {
@@ -176,16 +182,34 @@ public class PersistanceHandler {
         }
 
     }
-    /*
-    public list<Subscription> getSubscriptions(){
-        List<Record> out = new ArrayList<>();
-    try{
-        List<String> jsons = dak.getEntries();
-        for(String json : jsons){
-            out.add(gson.fromJson(json,Subscription.class);
+
+    public List<Subscription> getSubscriptions() throws DataException {
+        List<Subscription> out = new ArrayList<>();
+        try {
+            List<String> jsons = das.getEntries();
+            for (String json : jsons) {
+                out.add(gson.fromJson(json, Subscription.class));
+            }
+            return out;
+        } catch (DataException e) {
+            throw new DataException(e.getMessage());
         }
-    }catch(DataException e){
-        throw new DataException();
     }
-    */
+    
+    public List<Subscription> searhcSubscriptions(String Query) throws DataException{
+        List<String> jsons = das.searchEntries(Query);
+        List<Subscription> result= new ArrayList<>();
+        for (String json : jsons) {
+            result.add(gson.fromJson(json, Subscription.class));
+        }
+        return result;
+    }
+    
+    public void addSubscription(Subscription obj) throws DataException{
+        das.addEntry(gson.toJson(obj));
+    }
+    public void editSubscription(Subscription old,Subscription N) throws DataException{
+        das.editEntry(gson.toJson(old), gson.toJson(N));
+    }
+
 }

@@ -662,7 +662,6 @@ public class DelfinGUI extends javax.swing.JFrame {
         return checkBoxTrainer.isSelected();
     }
 
-    
     public int getMemberPhoto() {
         try {
             int g = Integer.parseInt(labelMemberPhoto.getIcon()
@@ -757,7 +756,6 @@ public class DelfinGUI extends javax.swing.JFrame {
     public void setTrainer(boolean checkBoxTrainer) {
         this.checkBoxTrainer.setSelected(checkBoxTrainer);
     }
-    
 
     public static int getEXIT_ON_CLOSE() {
         return EXIT_ON_CLOSE;
@@ -982,6 +980,22 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldTelefon;
     private javax.swing.JTextPane textPaneMedlemsInfo;
     // End of variables declaration//GEN-END:variables
+
+    public void displayPlainBlack(String text) {
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.black);
+    }
+
+    public void displayPlainRed(String text) {
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.red);
+    }
+
+    public void displayBoldRed(String text) {
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.red);
+    }
+
+    public void displayBoldBlack(String text) {
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.black);
+    }
 
     public void displayFormatedText(JTextPane tp, String txt, Font font, Color color) {
 
