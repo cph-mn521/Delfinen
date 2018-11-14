@@ -5,6 +5,7 @@
  */
 package delfinen.presentation;
 
+import delfinen.Controller;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -855,7 +856,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSearchMemberActionPerformed
 
     private void buttonNewMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewMemberActionPerformed
-        // TODO add your handling code here:
+        Controller.addMember();
     }//GEN-LAST:event_buttonNewMemberActionPerformed
 
     private void comboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxStatusActionPerformed
