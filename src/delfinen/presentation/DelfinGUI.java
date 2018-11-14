@@ -678,11 +678,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
     }
 
-    public boolean getCheckBoxTrainer() {
+    public boolean getTrainer() {
         return checkBoxTrainer.isSelected();
     }
 
-    public String getComboBoxTrainedBy() {
+    public String getTrainedBy() {
         return comboBoxTrainedBy.getSelectedItem().toString();
     }
 
