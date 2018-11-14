@@ -23,7 +23,7 @@ public class DataAccessorFile implements DataAccessor {
 
     private final String FileName;
     
-    /*
+    /**
     Constructor for the class, used to assign the current database.
     
     @param FileName     The File to pull data from.
@@ -32,7 +32,7 @@ public class DataAccessorFile implements DataAccessor {
         this.FileName = FileName;
     }
     
-    /*
+    /**
     Method for retrieving all entries in the current selected txt document. Will not return
     blank entries
     
@@ -53,7 +53,7 @@ public class DataAccessorFile implements DataAccessor {
         }
     }
     
-        /*
+    /**
     Method for searching for keywords in the database. Searches the
     database for all entries with containing the query.
     
@@ -80,7 +80,7 @@ public class DataAccessorFile implements DataAccessor {
         }
     }
     
-    /*
+    /**
     Method for adding a new entry to the currently selected file. New entry is
     always appended, and will apear last in the database.
     
@@ -99,15 +99,15 @@ public class DataAccessorFile implements DataAccessor {
         }
     }
     
-    /*
-    Method for edeting an entry in the databse. Works by finding the object to 
-    change, and then we writing the file to match the new signature.
-    Takes 2 parameters, bot of string type.
-    
-    @param  old     The entry to change.
-    @param  N       The changed entry.
-    @throws DataException.
-    */
+    /**
+    *Method for edeting an entry in the databse. Works by finding the object to 
+    *change, and then we writing the file to match the new signature.
+    *Takes 2 parameters, bot of string type.
+    *
+    *@param  old     The entry to change.
+    *@param  N       The changed entry.
+    *@throws DataException.
+    **/
     @Override
     public void editEntry(String old, String N) throws DataException {
         try {
