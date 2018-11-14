@@ -781,10 +781,12 @@ public class DelfinGUI extends javax.swing.JFrame {
         this.checkBoxTrainer.setSelected(checkBoxTrainer);
     }
 
-    public void setComboBoxTrainedBy(ArrayList<String> comboBoxTrainedBy) {
-//        this.comboBoxTrainedBy = comboBoxTrainedBy;
+    public void setTrainedBy(ArrayList<String> comboBoxTrainedBy) {
+        for (String string : comboBoxTrainedBy) {
+            this.comboBoxTrainedBy.addItem(string);
+        }
     }
-    
+
     public static int getEXIT_ON_CLOSE() {
         return EXIT_ON_CLOSE;
     }
