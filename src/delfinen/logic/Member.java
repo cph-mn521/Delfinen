@@ -42,7 +42,6 @@ public class Member {
         this.age = age;
         this.phone = phone;
         this.status = status;
-        isCompetitive = false;
         this.isCoach = isCoach;
     }
     
