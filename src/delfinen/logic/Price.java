@@ -41,11 +41,9 @@ public class Price {
         return status;
     }
 
-    public Prices getPris() {
-        return pris;
+        public int getPris() {
+        return priceSubscription();
     }
-
-    
     
     
     public int priceSubscription() {
