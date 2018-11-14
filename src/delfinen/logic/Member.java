@@ -18,8 +18,6 @@ public class Member {
     private int id, age, phone;
     private Status status;
     private boolean isCoach = false;
-    boolean isCompetitive; 
-
     
     public enum Status {
         Active,
@@ -34,7 +32,6 @@ public class Member {
         this.age = age;
         this.phone = phone;
         this.status = status;
-        isCompetitive = false;
     }
     
     public Member(String name, String email, String address, int id, int age, int phone, Status status, boolean isCoach) {
@@ -153,6 +150,6 @@ public class Member {
     }
 
     public boolean isCompetitive(){
-        return isCompetitive;
+        return false;
     }
 }
