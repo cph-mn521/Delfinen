@@ -123,6 +123,17 @@ public class Controller {
         return members;
     }
     
+    public static void search(){
+        String query = "";
+        
+        String name = gui.getNavn();
+        
+        
+        
+        List<Object> result = data.customSearch(query);
+    }
     
-    
+    public static void change(){
+        
+    }
 }
