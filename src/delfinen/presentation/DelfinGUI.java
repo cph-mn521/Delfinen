@@ -11,12 +11,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -60,6 +58,14 @@ public class DelfinGUI extends javax.swing.JFrame {
         textFieldNavn.setBackground(Color.white);
         textFieldTelefon.setBackground(Color.white);
         textPaneMedlemsInfo.setBackground(Color.white);
+//        textFieldEmail.setText("");
+//        textFieldAdresse.setText("");
+//        textFieldAlder.setText("");
+//        textFieldEmail.setText("");
+//        textFieldID.setText("");
+//        textFieldNavn.setText("");
+//        textFieldTelefon.setText("");
+//        textPaneMedlemsInfo.setText("");
 
     }
 
@@ -404,14 +410,17 @@ public class DelfinGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1))
                     .addGroup(panelMembersLayout.createSequentialGroup()
-                        .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(labelDelfinIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelMembersLayout.createSequentialGroup()
                                 .addGap(84, 84, 84)
-                                .addComponent(buttonNewMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonNewMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(buttonSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                                .addComponent(buttonSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 29, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMembersLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(labelDelfinIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
                         .addComponent(panelMedlemsData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
@@ -582,7 +591,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -783,6 +792,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public void setTrainedBy(List<String> comboBoxTrainedBy) {
+        this.comboBoxTrainedBy.removeAllItems();
         for (String string : comboBoxTrainedBy) {
             this.comboBoxTrainedBy.addItem(string);
         }
@@ -820,8 +830,10 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void comboBoxMotionistKonkurrenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxMotionistKonkurrenceActionPerformed
         if (comboBoxMotionistKonkurrence.getSelectedItem().equals("Konkurrencesvømmer")) {
             panelDisciplin.setVisible(true);
+            comboBoxTrainedBy.setVisible(true);
         } else {
             panelDisciplin.setVisible(false);
+            comboBoxTrainedBy.setVisible(false);
         }
     }//GEN-LAST:event_comboBoxMotionistKonkurrenceActionPerformed
 
@@ -892,9 +904,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         if (comboBoxStatus.getSelectedItem().equals("Aktiv")) {
             comboBoxMotionistKonkurrence.setVisible(true);
             panelDisciplin.setVisible(true);
+            comboBoxTrainedBy.setVisible(true);
         } else {
             comboBoxMotionistKonkurrence.setVisible(false);
             panelDisciplin.setVisible(false);
+            comboBoxTrainedBy.setVisible(false);
         }
     }//GEN-LAST:event_comboBoxStatusActionPerformed
 

@@ -10,8 +10,8 @@ package delfinen.logic;
  * @author Lord
  */
 public enum Discipline {
-    butterfly,
-    crawl,
-    rygcrawl,
-    brystsvømning
+    Butterfly,
+    Crawl,
+    Rygcrawl,
+    Brystsvømning
 }

@@ -62,7 +62,7 @@ public class CompetitiveMember extends Member {
     public CompetitiveMember(String name, String email, String address, int id, int age, int phone, Status status, ArrayList<Discipline> disciplines, boolean isCoach,Member coach) throws CoachNotFoundException {
         super(name, email, address, id, age, phone, status, isCoach);
         this.disciplines = disciplines;
-        if (!coach.isCoach()) {
+        if (coach == null || !coach.isCoach()) {
             throw new CoachNotFoundException();
         }
         this.coach = coach;
