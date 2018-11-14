@@ -269,16 +269,6 @@ public class DelfinGUI extends javax.swing.JFrame {
                 comboBoxTrainedByFocusGained(evt);
             }
         });
-        comboBoxTrainedBy.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                comboBoxTrainedByMousePressed(evt);
-            }
-        });
-        comboBoxTrainedBy.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxTrainedByActionPerformed(evt);
-            }
-        });
 
         jLabel13.setText("Trænet af:");
 
@@ -916,11 +906,11 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSystemAccountActionPerformed
 
     private void buttonSearchMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchMemberActionPerformed
-        
+        Controller.search();
     }//GEN-LAST:event_buttonSearchMemberActionPerformed
 
     private void buttonChangeMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangeMemberActionPerformed
-        
+        Controller.change();
     }//GEN-LAST:event_buttonChangeMemberActionPerformed
 
     private void comboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxStatusActionPerformed
@@ -938,14 +928,6 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void checkBoxTrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxTrainerActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxTrainerActionPerformed
-
-    private void comboBoxTrainedByActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxTrainedByActionPerformed
-
-    }//GEN-LAST:event_comboBoxTrainedByActionPerformed
-
-    private void comboBoxTrainedByMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxTrainedByMousePressed
-
-    }//GEN-LAST:event_comboBoxTrainedByMousePressed
 
     private void comboBoxTrainedByFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboBoxTrainedByFocusGained
         setTrainedBy(Controller.getTrainers());
