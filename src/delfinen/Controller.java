@@ -64,7 +64,8 @@ public class Controller {
         Member.Status status = Member.Status.valueOf(gui.getStatus().equals("Aktiv") ? "Active" : "Passive");
         boolean isCoach = gui.getTrainer();
 
-        if (gui.getMotionKonkurrence().equals("Motionist")) {
+        
+        if (gui.getMotionKonkurrence().equals("Motionist") || gui.getStatus().equals("Passive")) {
             newMember = new Member(name, email, adress, id, age, phoneNumber, status, isCoach);
         } else {
             ArrayList<Discipline> disciplines = new ArrayList<>();
