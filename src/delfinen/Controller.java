@@ -29,14 +29,23 @@ public class Controller {
     }
 
     public static void init() {
-        List<String> trainers = new ArrayList<>();
-        for (Member m : findMembers("\"isCoach\":True\"")) {
-            trainers.add(m.getName());
-        }
-        gui.setTrainedBy(trainers);
         gui.setVisible(true);
     }
 
+    public List<String> getTrainers(){
+    List<String> trainers = new ArrayList<>();
+        List<Member> buffer = findMembers("\"isCoach\":true");
+        
+        if(buffer == null || buffer.size() < 1){
+            trainers.add("Ingen trænere i systemet.");
+        }
+        for (Member m : buffer) {
+            trainers.add(m.getName());
+        }
+      
+        return trainers;
+    }
+    
     public static void addMember() {
         Member newMember = null;
         String name = gui.getNavn();
@@ -58,7 +67,7 @@ public class Controller {
             String sCoach = gui.getTrainedBy();
             Member coach = null;
 
-            for (Member m : findMembers("\"isCoach\":True\"")) {
+            for (Member m : findMembers("\"isCoach\":true")) {
                 if (m.getName().equals(sCoach)) {
                     coach = m;
                     break;
@@ -77,13 +86,12 @@ public class Controller {
         try {
             data.addMember(newMember);
             gui.displayPlainBlack("Medlem oprettet\n");
-        } catch (DataException e) {            
+        } catch (DataException e) {
             gui.displayBoldRed("Fejl - Medlem ikke oprettet.");
             if (DEBUG) {
                 e.printStackTrace();
             }
         }
-
     }
 
     public static List<Member> findMembers(String query) {
@@ -94,9 +102,11 @@ public class Controller {
             if (DEBUG) {
                 e.printStackTrace();
             }
-            gui.displayBoldRed("No members found.");
+            gui.displayBoldRed("Ingen medlemmer fundet.");
+        }
+        if (members == null || members.size() < 1) {
+            gui.displayBoldRed("Ingen medlemmer fundet.");            
         }
         return members;
     }
-
 }

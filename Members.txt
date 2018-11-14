@@ -1,16 +1,2 @@
 ﻿
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
-null
 {"name":"Lars Emil","email":"lm@delfinen.dk","address":"Ligustervænget 23, 2756 Liguster","id":1,"age":23,"phone":25854578,"status":"Active","isCoach":true}
-null
-{"name":"Træner tom","email":"lm@Delfinen.dk","address":"Ligustervænget 23, 2756 Liguster","id":2,"age":23,"phone":25854578,"status":"Active","isCoach":true}
-{"name":"Træner Ole","email":"lm@Delfinen.dk","address":"Ligustervænget 24, 2756 Liguster","id":3,"age":23,"phone":25854578,"status":"Active","isCoach":true}
