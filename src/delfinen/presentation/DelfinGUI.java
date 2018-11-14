@@ -820,8 +820,10 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void comboBoxMotionistKonkurrenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxMotionistKonkurrenceActionPerformed
         if (comboBoxMotionistKonkurrence.getSelectedItem().equals("Konkurrencesvømmer")) {
             panelDisciplin.setVisible(true);
+            comboBoxTrainedBy.setVisible(true);
         } else {
             panelDisciplin.setVisible(false);
+            comboBoxTrainedBy.setVisible(false);
         }
     }//GEN-LAST:event_comboBoxMotionistKonkurrenceActionPerformed
 
@@ -892,9 +894,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         if (comboBoxStatus.getSelectedItem().equals("Aktiv")) {
             comboBoxMotionistKonkurrence.setVisible(true);
             panelDisciplin.setVisible(true);
+            comboBoxTrainedBy.setVisible(true);
         } else {
             comboBoxMotionistKonkurrence.setVisible(false);
             panelDisciplin.setVisible(false);
+            comboBoxTrainedBy.setVisible(false);
         }
     }//GEN-LAST:event_comboBoxStatusActionPerformed
 
