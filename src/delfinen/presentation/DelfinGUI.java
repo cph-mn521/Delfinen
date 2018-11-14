@@ -68,6 +68,7 @@ public class DelfinGUI extends javax.swing.JFrame {
 //        textPaneMedlemsInfo.setText("");
 
         comboBoxTrainedBy.removeAllItems();
+        textPaneMedlemsInfo.setEditable(false);
     }
 
     /**
