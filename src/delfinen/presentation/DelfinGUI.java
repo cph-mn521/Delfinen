@@ -10,6 +10,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -774,14 +775,14 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public void setMedlemsInfo(String textPaneMedlemsInfo) {
-        displayFormatedText(this.textPaneMedlemsInfo, textPaneMedlemsInfo, FONT_NOTOSANS_PLAIN_12, Color.GREEN);
+        displayPlainBlack(textPaneMedlemsInfo);
     }
 
     public void setTrainer(boolean checkBoxTrainer) {
         this.checkBoxTrainer.setSelected(checkBoxTrainer);
     }
 
-    public void setTrainedBy(ArrayList<String> comboBoxTrainedBy) {
+    public void setTrainedBy(List<String> comboBoxTrainedBy) {
         for (String string : comboBoxTrainedBy) {
             this.comboBoxTrainedBy.addItem(string);
         }
@@ -819,8 +820,10 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void comboBoxMotionistKonkurrenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxMotionistKonkurrenceActionPerformed
         if (comboBoxMotionistKonkurrence.getSelectedItem().equals("Konkurrencesvømmer")) {
             panelDisciplin.setVisible(true);
+            comboBoxTrainedBy.setVisible(true);
         } else {
             panelDisciplin.setVisible(false);
+            comboBoxTrainedBy.setVisible(false);
         }
     }//GEN-LAST:event_comboBoxMotionistKonkurrenceActionPerformed
 
@@ -857,7 +860,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         if (Integer.parseInt(textFieldAlder.getText()) < 0
                 || Integer.parseInt(textFieldAlder.getText()) > 120) {
             textFieldAlder.setBackground(Color.red);
-            displayFormatedText(textPaneMedlemsInfo, err, FONT_NOTOSANS_PLAIN_12, Color.RED);
+            displayPlainRed(err);
         } else {
             clearFormatedText(textPaneMedlemsInfo);
             textFieldAlder.setBackground(Color.white);
@@ -891,9 +894,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         if (comboBoxStatus.getSelectedItem().equals("Aktiv")) {
             comboBoxMotionistKonkurrence.setVisible(true);
             panelDisciplin.setVisible(true);
+            comboBoxTrainedBy.setVisible(true);
         } else {
             comboBoxMotionistKonkurrence.setVisible(false);
             panelDisciplin.setVisible(false);
+            comboBoxTrainedBy.setVisible(false);
         }
     }//GEN-LAST:event_comboBoxStatusActionPerformed
 
@@ -916,7 +921,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return false;
         } else {
             tf.setBackground(Color.white);
-            textPaneMedlemsInfo.setText("");
+            clearFormatedText(textPaneMedlemsInfo);
             return true;
         }
     }
@@ -1050,13 +1055,6 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public SimpleAttributeSet displayFormat(Font font, Color color) {
-//        Font trb_18 = new Font("TimesRoman", Font.BOLD, 18);
-//        Font tri = new Font("TimesRoman", Font.ITALIC, 18);
-//        Font times_b_i = new Font("TimesRoman", Font.BOLD + Font.ITALIC, 18);
-//        Font h = new Font("Helvetica", Font.PLAIN, 18);
-//        Font c = new Font("Courier", Font.PLAIN, 18);
-//        Font d = new Font("Dialog", Font.PLAIN, 18);
-//        Font z = new Font("ZapfDingbats", Font.PLAIN, 18);
         SimpleAttributeSet sAS = new SimpleAttributeSet();
 
         StyleConstants.setFontFamily(sAS, font.getFamily());
