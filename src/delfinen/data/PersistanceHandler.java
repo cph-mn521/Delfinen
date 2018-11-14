@@ -22,10 +22,11 @@ public class PersistanceHandler {
     // Deklaration of filepaths.
     private final String DBMembers = "Members.txt";
     private final String DBRekords = "Records.txt";
-    private final String DBKontigents = "Kontigents.txt";
+    private final String DBSubscriptions = "Subscriptions.txt";
 
     private DataAccessor dam = new DataAccessorFile(DBMembers);
     private DataAccessor dar = new DataAccessorFile(DBRekords);
+    private DataAccessor dac = new DataAccessorFile(DBSubscriptions);
     private Gson gson = new Gson();
 
     public PersistanceHandler() {
@@ -35,7 +36,7 @@ public class PersistanceHandler {
     /**
      * Method for retrieving a list of all members in the Members.txt database.
      *
-     * @return members All members int the database.
+     * @return members All members in the database.
      * @throws DataException
      */
     public List<Member> getMembers() throws DataException {
@@ -51,7 +52,7 @@ public class PersistanceHandler {
             }
             return out;
         } catch (DataException e) {
-            throw new DataException();
+            throw new DataException(e.getMessage());
         }
     }
 
@@ -88,8 +89,8 @@ public class PersistanceHandler {
 
     /**
      * Method for adding a member to the Member database.      *
-     * @param Member Member to be added to the database.
-     * @throws DataException.
+     * @param obj   Member to be added to the database.
+     * @throws delfinen.data.DataException
      */
     public void addMember(Member obj) throws DataException {
         dam.addEntry(gson.toJson(obj));
@@ -124,7 +125,7 @@ public class PersistanceHandler {
             }
             return out;
         } catch (DataException e) {
-            throw new DataException();
+            throw new DataException(e.getMessage());
         }
     }
     
@@ -175,5 +176,16 @@ public class PersistanceHandler {
         }
 
     }
-
+    /*
+    public list<Subscription> getSubscriptions(){
+        List<Record> out = new ArrayList<>();
+    try{
+        List<String> jsons = dak.getEntries();
+        for(String json : jsons){
+            out.add(gson.fromJson(json,Subscription.class);
+        }
+    }catch(DataException e){
+        throw new DataException();
+    }
+    */
 }
