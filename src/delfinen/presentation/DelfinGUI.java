@@ -66,7 +66,6 @@ public class DelfinGUI extends javax.swing.JFrame {
 //        textFieldNavn.setText("");
 //        textFieldTelefon.setText("");
 //        textPaneMedlemsInfo.setText("");
-        setTrainedBy(Controller.getTrainers());
     }
 
     /**
@@ -261,6 +260,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         });
 
         comboBoxTrainedBy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "The Hoff", "Nodil Pedersen" }));
+        comboBoxTrainedBy.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                comboBoxTrainedByMousePressed(evt);
+            }
+        });
         comboBoxTrainedBy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxTrainedByActionPerformed(evt);
@@ -917,8 +921,12 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_checkBoxTrainerActionPerformed
 
     private void comboBoxTrainedByActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxTrainedByActionPerformed
-        // TODO add your handling code here:
+//        setTrainedBy(Controller.getTrainers());
     }//GEN-LAST:event_comboBoxTrainedByActionPerformed
+
+    private void comboBoxTrainedByMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboBoxTrainedByMousePressed
+        setTrainedBy(Controller.getTrainers());
+    }//GEN-LAST:event_comboBoxTrainedByMousePressed
     
     private boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf,
             String err) {
