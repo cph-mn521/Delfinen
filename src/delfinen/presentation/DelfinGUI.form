@@ -178,7 +178,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="buttonNewMember">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nyt Medlem"/>
+                <Property name="text" type="java.lang.String" value="Nyt/&#xe6;ndre medlem"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonNewMemberActionPerformed"/>

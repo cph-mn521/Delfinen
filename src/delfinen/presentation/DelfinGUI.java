@@ -123,7 +123,7 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         panelMain.setLayout(new java.awt.CardLayout());
 
-        buttonNewMember.setText("Nyt Medlem");
+        buttonNewMember.setText("Nyt/ændre medlem");
         buttonNewMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonNewMemberActionPerformed(evt);
