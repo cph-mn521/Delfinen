@@ -15,6 +15,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -95,6 +96,8 @@ public class DelfinGUI extends javax.swing.JFrame {
         checkBoxDisciplinRygcrawl = new javax.swing.JCheckBox();
         comboBoxStatus = new javax.swing.JComboBox<>();
         checkBoxTrainer = new javax.swing.JCheckBox();
+        comboBoxTrainedBy = new javax.swing.JComboBox<>();
+        jLabel13 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textPaneMedlemsInfo = new javax.swing.JTextPane();
         labelDelfinIcon = new javax.swing.JLabel();
@@ -250,6 +253,15 @@ public class DelfinGUI extends javax.swing.JFrame {
             }
         });
 
+        comboBoxTrainedBy.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "The Hoff", "Nodil Pedersen" }));
+        comboBoxTrainedBy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxTrainedByActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("Trænet af:");
+
         javax.swing.GroupLayout panelMedlemsDataLayout = new javax.swing.GroupLayout(panelMedlemsData);
         panelMedlemsData.setLayout(panelMedlemsDataLayout);
         panelMedlemsDataLayout.setHorizontalGroup(
@@ -279,11 +291,16 @@ public class DelfinGUI extends javax.swing.JFrame {
                         .addGap(7, 7, 7)
                         .addComponent(textFieldAlder)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkBoxTrainer)
+                        .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(panelMedlemsDataLayout.createSequentialGroup()
+                                .addComponent(checkBoxTrainer)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel13)
+                                .addGap(18, 18, 18)
+                                .addComponent(comboBoxTrainedBy, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(panelMedlemsDataLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
                                 .addComponent(comboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(comboBoxMotionistKonkurrence, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -298,7 +315,10 @@ public class DelfinGUI extends javax.swing.JFrame {
             panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMedlemsDataLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(checkBoxTrainer)
+                .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkBoxTrainer)
+                    .addComponent(comboBoxTrainedBy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -353,7 +373,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         panelMembersLayout.setHorizontalGroup(
             panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMembersLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelMembersLayout.createSequentialGroup()
                         .addComponent(labelDelfinIcon)
@@ -448,7 +468,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         panelAboutLayout.setVerticalGroup(
             panelAboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAboutLayout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
+                .addContainerGap(148, Short.MAX_VALUE)
                 .addComponent(panelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71))
         );
@@ -464,12 +484,12 @@ public class DelfinGUI extends javax.swing.JFrame {
             .addGroup(panelAccountLayout.createSequentialGroup()
                 .addGap(255, 255, 255)
                 .addComponent(jLabel12)
-                .addContainerGap(707, Short.MAX_VALUE))
+                .addContainerGap(722, Short.MAX_VALUE))
         );
         panelAccountLayout.setVerticalGroup(
             panelAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAccountLayout.createSequentialGroup()
-                .addContainerGap(277, Short.MAX_VALUE)
+                .addContainerGap(283, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addGap(182, 182, 182))
         );
@@ -485,14 +505,14 @@ public class DelfinGUI extends javax.swing.JFrame {
             .addGroup(panelResultsLayout.createSequentialGroup()
                 .addGap(347, 347, 347)
                 .addComponent(jLabel11)
-                .addContainerGap(615, Short.MAX_VALUE))
+                .addContainerGap(630, Short.MAX_VALUE))
         );
         panelResultsLayout.setVerticalGroup(
             panelResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelResultsLayout.createSequentialGroup()
                 .addGap(200, 200, 200)
                 .addComponent(jLabel11)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
 
         panelMain.add(panelResults, "panelResults");
@@ -561,7 +581,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -662,6 +682,10 @@ public class DelfinGUI extends javax.swing.JFrame {
         return checkBoxTrainer.isSelected();
     }
 
+    public String getComboBoxTrainedBy() {
+        return comboBoxTrainedBy.getSelectedItem().toString();
+    }
+
     public int getMemberPhoto() {
         try {
             int g = Integer.parseInt(labelMemberPhoto.getIcon()
@@ -757,6 +781,10 @@ public class DelfinGUI extends javax.swing.JFrame {
         this.checkBoxTrainer.setSelected(checkBoxTrainer);
     }
 
+    public void setComboBoxTrainedBy(ArrayList<String> comboBoxTrainedBy) {
+//        this.comboBoxTrainedBy = comboBoxTrainedBy;
+    }
+    
     public static int getEXIT_ON_CLOSE() {
         return EXIT_ON_CLOSE;
     }
@@ -871,6 +899,10 @@ public class DelfinGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxTrainerActionPerformed
 
+    private void comboBoxTrainedByActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxTrainedByActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxTrainedByActionPerformed
+
     private boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf,
             String err) {
         // check user input and set background accordingly
@@ -946,10 +978,12 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkBoxTrainer;
     private javax.swing.JComboBox<String> comboBoxMotionistKonkurrence;
     private javax.swing.JComboBox<String> comboBoxStatus;
+    private javax.swing.JComboBox<String> comboBoxTrainedBy;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
