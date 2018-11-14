@@ -34,8 +34,11 @@ public class PersistanceHandler {
 
     }
 
+    
+    ///////////////////////      MEMBER HANDLING       ////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////
     /**
-     * Method for retrieving a list of all members in the Members.txt database.
+     * Method for retrieving a list of all members in the Members database.
      *
      * @return members All members in the database.
      * @throws DataException
@@ -113,9 +116,13 @@ public class PersistanceHandler {
             dam.editEntry(gson.toJson(old), "");
         }
     }
+    
 
+    ///////////////////////      REKORDS HANDLING       ////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
+    
     /**
-     * Method for retrieving a list of all Records in the Records.txt database.
+     * Method for retrieving a list of all Records in the Records database.
      *
      * @return Records All members in the database.
      * @throws DataException
@@ -138,8 +145,8 @@ public class PersistanceHandler {
      * database for all entries with containing the query. * For more precise
      * searches, use the "ATTRIBUTE:"+"String" or "ATTRIBUTE:"+query
      *
-     * @param Query The wanted Query.
-     * @return records All members in the database with maching Attribute.
+     * @param Query         The wanted Query.
+     * @return records      All members in the database with maching Attribute.
      * @throws delfinen.data.DataException
      */
     public List<Record> searchRecord(String Query) throws DataException {
@@ -157,10 +164,10 @@ public class PersistanceHandler {
     }
 
     /**
-     * Method for adding a member to the Member database.
+     * Method for adding a Record to the Record database.
      *
      *
-     * @param obj Record to be added to the database.
+     * @param obj       Record to be added to the database.
      * @throws delfinen.data.DataException
      */
     public void addRecord(Record obj) throws DataException {
@@ -183,6 +190,16 @@ public class PersistanceHandler {
 
     }
 
+    
+    ///////////////////////      SUBSCRIPTION HANDLING       ////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    /**
+     * Method for retrieving a list of all Subscriptions in the Subscriptions database.
+     *
+     * @return out              All Subscriptions in the database.
+     * @throws DataException
+     */
     public List<Subscription> getSubscriptions() throws DataException {
         List<Subscription> out = new ArrayList<>();
         try {
@@ -196,6 +213,15 @@ public class PersistanceHandler {
         }
     }
     
+    /**
+     * Method for searching for keywords in the Subscription database. Searches the
+     * database for all entries with containing the query. * For more precise
+     * searches, use the "ATTRIBUTE:"+"String" or "ATTRIBUTE:"+query
+     *
+     * @param Query     The wanted Query.
+     * @return result   All members in the database with maching Attribute.
+     * @throws delfinen.data.DataException
+     */
     public List<Subscription> searhcSubscriptions(String Query) throws DataException{
         List<String> jsons = das.searchEntries(Query);
         List<Subscription> result= new ArrayList<>();
@@ -205,9 +231,25 @@ public class PersistanceHandler {
         return result;
     }
     
+    /**
+     * Method for adding a Subscription to the Subscription database.
+     *
+     *
+     * @param obj Record to be added to the database.
+     * @throws delfinen.data.DataException
+     */
     public void addSubscription(Subscription obj) throws DataException{
         das.addEntry(gson.toJson(obj));
     }
+    
+    /**
+     * Method for editing a Subscription. Can also be used to remove Subscription.
+     * if N is null, removes entry.
+     *
+     * @param old   The Subscription that you wish to modify.
+     * @param N     The Subscription you wish it should be. if null, removes the entry.
+     * @throws delfinen.data.DataException
+     */
     public void editSubscription(Subscription old,Subscription N) throws DataException{
         das.editEntry(gson.toJson(old), gson.toJson(N));
     }

@@ -58,6 +58,14 @@ public class DelfinGUI extends javax.swing.JFrame {
         textFieldNavn.setBackground(Color.white);
         textFieldTelefon.setBackground(Color.white);
         textPaneMedlemsInfo.setBackground(Color.white);
+//        textFieldEmail.setText("");
+//        textFieldAdresse.setText("");
+//        textFieldAlder.setText("");
+//        textFieldEmail.setText("");
+//        textFieldID.setText("");
+//        textFieldNavn.setText("");
+//        textFieldTelefon.setText("");
+//        textPaneMedlemsInfo.setText("");
 
     }
 

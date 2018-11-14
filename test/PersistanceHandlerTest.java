@@ -61,7 +61,6 @@ public class PersistanceHandlerTest {
         } catch (Exception e) {
             fail(e.getMessage());
         }
-
     }
     @Test
     public void testsearchMembers(){

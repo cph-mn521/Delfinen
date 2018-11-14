@@ -24,19 +24,19 @@ public class DataAccessorFile implements DataAccessor {
     private final String FileName;
     
     /**
-    Constructor for the class, used to assign the current database.
-    
-    @param FileName     The File to pull data from.
-    */
+    * Constructor for the class, used to assign the current database.
+    * 
+    * @param FileName     The File to pull data from.
+    **/
     public DataAccessorFile(String FileName) {
         this.FileName = FileName;
     }
     
     /**
-    Method for retrieving all entries in the current selected txt document. Will not return
-    blank entries
-    
-    @throws DataException.
+    * Method for retrieving all entries in the current selected txt document. Will not return
+    * blank entries
+    * 
+    * @throws delfinen.data.DataException
     */
     @Override
     public List<String> getEntries() throws DataException {
@@ -54,15 +54,15 @@ public class DataAccessorFile implements DataAccessor {
     }
     
     /**
-    Method for searching for keywords in the database. Searches the
-    database for all entries with containing the query.
-    
-    For more precise searches, knowledge of the data strukture is required.
-    
-    @param  Query               The wanted Query. 
-    @return machingEntries      All entries that contains the query.   
-    @throws DataException
-    */    
+    * Method for searching for keywords in the database. Searches the
+    * database for all entries with containing the query.
+    * 
+    * For more precise searches, knowledge of the data structure is required.
+    * 
+    * @param query                The wanted Query. 
+    * @return machingEntries      All entries that contains the query.   
+    * @throws DataException
+    **/    
     @Override
     public List<String> searchEntries(String query) throws DataException {
         String line = null;
@@ -81,12 +81,12 @@ public class DataAccessorFile implements DataAccessor {
     }
     
     /**
-    Method for adding a new entry to the currently selected file. New entry is
-    always appended, and will apear last in the database.
-    
-    @param  obj The object to add to the database 
-    @throws DataException
-    */
+    * Method for adding a new entry to the currently selected file. New entry is
+    * always appended, and will apear last in the database.
+    * 
+    * @param  obj The object to add to the database 
+    * @throws DataException
+    **/
     @Override
     public void addEntry(String obj) throws DataException {
         try {
