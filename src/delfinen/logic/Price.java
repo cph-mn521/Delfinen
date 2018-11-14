@@ -41,14 +41,12 @@ public class Price {
         return status;
     }
 
-    public Prices getPris() {
-        return pris;
+        public int getPris() {
+        return priceSubscription();
     }
-
     
     
-    
-    public int priceSubscription() {
+    private int priceSubscription() {
         if (status == Status.Passive) {
             return 500;
         } else {
