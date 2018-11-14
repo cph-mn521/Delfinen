@@ -27,7 +27,7 @@ import javax.swing.text.StyledDocument;
  * @author martin b.
  */
 public class DelfinGUI extends javax.swing.JFrame {
-
+    
     Font FONT_NOTOSANS_PLAIN_12 = new Font("notosans", Font.PLAIN, 12);
     Font FONT_NOTOSANS_BOLD_12 = new Font("notosans", Font.BOLD, 12);
     Font FONT_NOTOSANS_ITALIC_12 = new Font("notosans", Font.ITALIC, 12);
@@ -66,7 +66,7 @@ public class DelfinGUI extends javax.swing.JFrame {
 //        textFieldNavn.setText("");
 //        textFieldTelefon.setText("");
 //        textPaneMedlemsInfo.setText("");
-
+        setTrainedBy(Controller.getTrainers());
     }
 
     /**
@@ -601,7 +601,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     public String getStatus() {
         return comboBoxStatus.getSelectedItem().toString();
     }
-
+    
     public ArrayList<String> getDisciplin() {
         ArrayList<String> disc = new ArrayList<>();
         for (JCheckBox jCheckbox : discipliner) {
@@ -611,27 +611,27 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
         return disc;
     }
-
+    
     public boolean getDisciplinBryst() {
         return checkBoxDisciplinBryst.isSelected();
     }
-
+    
     public boolean getDisciplinButterfly() {
         return checkBoxDisciplinButterfly.isSelected();
     }
-
+    
     public boolean getDisciplinCrawl() {
         return checkBoxDisciplinCrawl.isSelected();
     }
-
+    
     public boolean getDisciplinRygcrawl() {
         return checkBoxDisciplinRygcrawl.isSelected();
     }
-
+    
     public String getMotionKonkurrence() {
         return comboBoxMotionistKonkurrence.getSelectedItem().toString();
     }
-
+    
     public String getMedlemsInfo() {
         if (textPaneMedlemsInfo.getBackground() == Color.white) {
             return textPaneMedlemsInfo.getText();
@@ -639,7 +639,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return "";
         }
     }
-
+    
     public String getAdresse() {
         if (textFieldAdresse.getBackground() == Color.white) {
             return textFieldAdresse.getText();
@@ -647,7 +647,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return "";
         }
     }
-
+    
     public int getAlder() {
         if (textFieldAlder.getBackground() == Color.white) {
             return Integer.parseInt(textFieldAlder.getText());
@@ -655,7 +655,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return 0;
         }
     }
-
+    
     public String getEmail() {
         if (textFieldEmail.getBackground() == Color.white) {
             return textFieldEmail.getText();
@@ -663,7 +663,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return "";
         }
     }
-
+    
     public int getID() {
         if (textFieldID.getBackground() == Color.white) {
             return Integer.parseInt(textFieldID.getText());
@@ -671,7 +671,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return 0;
         }
     }
-
+    
     public String getNavn() {
         if (textFieldNavn.getBackground() == Color.white) {
             return textFieldNavn.getText();
@@ -679,7 +679,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return "";
         }
     }
-
+    
     public int getTelefon() {
         if (textFieldTelefon.getBackground() == Color.white) {
             return Integer.parseInt(textFieldTelefon.getText());
@@ -687,15 +687,15 @@ public class DelfinGUI extends javax.swing.JFrame {
             return 0;
         }
     }
-
+    
     public boolean getTrainer() {
         return checkBoxTrainer.isSelected();
     }
-
+    
     public String getTrainedBy() {
         return comboBoxTrainedBy.getSelectedItem().toString();
     }
-
+    
     public int getMemberPhoto() {
         try {
             int g = Integer.parseInt(labelMemberPhoto.getIcon()
@@ -706,102 +706,102 @@ public class DelfinGUI extends javax.swing.JFrame {
             return 0;
         }
     }
-
+    
     public void setDisciplinCheckBoxes(ArrayList<String> disciplinList) {
         for (String disciplin : disciplinList) {
             switch (disciplin) {
                 case ("Brystsvømning"):
                     checkBoxDisciplinBryst.setSelected(true);
                     break;
-
+                
                 case ("Butterfly"):
                     checkBoxDisciplinButterfly.setSelected(true);
                     break;
-
+                
                 case ("Crawl"):
                     checkBoxDisciplinCrawl.setSelected(true);
                     break;
-
+                
                 default:
                     checkBoxDisciplinRygcrawl.setSelected(true);
                     break;
             }
         }
     }
-
+    
     public void setDisciplinBryst(boolean disciplinBryst) {
         this.checkBoxDisciplinBryst.setSelected(disciplinBryst);
     }
-
+    
     public void setDisciplinButterfly(boolean disciplinButterfly) {
         this.checkBoxDisciplinButterfly.setSelected(disciplinButterfly);
     }
-
+    
     public void setDisciplinCrawl(boolean disciplinCrawl) {
         this.checkBoxDisciplinCrawl.setSelected(disciplinCrawl);
     }
-
+    
     public void setDisciplinRygcrawl(boolean disciplinRygcrawl) {
         this.checkBoxDisciplinRygcrawl.setSelected(disciplinRygcrawl);
     }
-
+    
     public void setMotionistKonkurrence(String MotionistKonkurrence) {
         this.comboBoxMotionistKonkurrence.setSelectedItem(MotionistKonkurrence);
     }
-
+    
     public void setStatus(String statusAktivPassiv) {
         this.comboBoxStatus.setSelectedItem(statusAktivPassiv);
     }
-
+    
     public void setAdresse(String textFieldAdresse) {
         this.textFieldAdresse.setText(textFieldAdresse);
     }
-
+    
     public void setAlder(int textFieldAlder) {
         this.textFieldAlder.setText(String.valueOf(textFieldAlder));
     }
-
+    
     public void setEmail(String textFieldEmail) {
         this.textFieldEmail.setText(textFieldEmail);
     }
-
+    
     public void setMemberPhoto(int ID) {
         this.labelMemberPhoto.setIcon(new javax.swing.ImageIcon(getClass()
                 .getResource("/files/" + String.valueOf(ID) + ".jpg")));
         this.labelDelfinIcon.updateUI();
     }
-
+    
     public void setID(int textFieldID) {
         this.textFieldID.setText(String.valueOf(textFieldID));
     }
-
+    
     public void setNavn(String textFieldNavn) {
         this.textFieldNavn.setText(textFieldNavn);
     }
-
+    
     public void setTelefon(int textFieldTelefon) {
         this.textFieldTelefon.setText(String.valueOf(textFieldTelefon));
     }
-
+    
     public void setMedlemsInfo(String textPaneMedlemsInfo) {
         displayPlainBlack(textPaneMedlemsInfo);
     }
-
+    
     public void setTrainer(boolean checkBoxTrainer) {
         this.checkBoxTrainer.setSelected(checkBoxTrainer);
     }
-
+    
     public void setTrainedBy(List<String> comboBoxTrainedBy) {
         this.comboBoxTrainedBy.removeAllItems();
         for (String string : comboBoxTrainedBy) {
             this.comboBoxTrainedBy.addItem(string);
         }
     }
-
+    
     public static int getEXIT_ON_CLOSE() {
         return EXIT_ON_CLOSE;
     }
-
+    
     @Override
     public AccessibleContext getAccessibleContext() {
         return accessibleContext;
@@ -919,7 +919,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void comboBoxTrainedByActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxTrainedByActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxTrainedByActionPerformed
-
+    
     private boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf,
             String err) {
         // check user input and set background accordingly
@@ -935,7 +935,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return true;
         }
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -974,7 +974,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             }
         });
     }
-
+    
     public void go() {
         System.out.println("getMotion: " + getMotionKonkurrence());
         System.out.println("getStatus: " + getStatus());
@@ -1041,21 +1041,21 @@ public class DelfinGUI extends javax.swing.JFrame {
     public void displayPlainBlack(String text) {
         displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.black);
     }
-
+    
     public void displayPlainRed(String text) {
         displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.red);
     }
-
+    
     public void displayBoldRed(String text) {
         displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.red);
     }
-
+    
     public void displayBoldBlack(String text) {
         displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.black);
     }
-
+    
     public void displayFormatedText(JTextPane tp, String txt, Font font, Color color) {
-
+        
         StyledDocument doc = (StyledDocument) tp.getDocument();
         try {
             doc.insertString(doc.getLength(), txt, displayFormat(font, color));
@@ -1063,19 +1063,19 @@ public class DelfinGUI extends javax.swing.JFrame {
             System.out.println(ex);
         }
     }
-
+    
     public SimpleAttributeSet displayFormat(Font font, Color color) {
         SimpleAttributeSet sAS = new SimpleAttributeSet();
-
+        
         StyleConstants.setFontFamily(sAS, font.getFamily());
         StyleConstants.setFontSize(sAS, font.getSize());
         StyleConstants.setBold(sAS, font.isBold());
         StyleConstants.setItalic(sAS, font.isItalic());
         StyleConstants.setForeground(sAS, color);
-
+        
         return sAS;
     }
-
+    
     public void clearFormatedText(JTextPane tp) {
         tp.setText("");
     }

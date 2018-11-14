@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Martin Wulff
+ * @author Niels Bang
  */
 public class Controller {
 
@@ -36,7 +36,7 @@ public class Controller {
      * Returns a list of trainers.
      * @return 
      */
-    public List<String> getTrainers(){
+    public static List<String> getTrainers(){
     List<String> trainers = new ArrayList<>();
         List<Member> buffer = findMembers("\"isCoach\":true");        
         if(buffer == null || buffer.size() < 1){
@@ -44,8 +44,7 @@ public class Controller {
         }
         for (Member m : buffer) {
             trainers.add(m.getName());
-        }
-      
+        } 
         return trainers;
     }
     
@@ -64,7 +63,8 @@ public class Controller {
         Member.Status status = Member.Status.valueOf(gui.getStatus().equals("Aktiv") ? "Active" : "Passive");
         boolean isCoach = gui.getTrainer();
 
-        if (gui.getMotionKonkurrence().equals("Motionist")) {
+        
+        if (gui.getMotionKonkurrence().equals("Motionist") || gui.getStatus().equals("Passive")) {
             newMember = new Member(name, email, adress, id, age, phoneNumber, status, isCoach);
         } else {
             ArrayList<Discipline> disciplines = new ArrayList<>();
@@ -102,7 +102,7 @@ public class Controller {
     }
 
     /**
-     * Queries the database for a list of members that fufill a certain criteria.
+     * Queries the database for a list of members that fulfill a certain criteria.
      * @param query
      * @return 
      */
