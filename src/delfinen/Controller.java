@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Martin Wulff
+ * @author Niels Bang
  */
 public class Controller {
 
@@ -44,8 +44,7 @@ public class Controller {
         }
         for (Member m : buffer) {
             trainers.add(m.getName());
-        }
-      
+        } 
         return trainers;
     }
     
