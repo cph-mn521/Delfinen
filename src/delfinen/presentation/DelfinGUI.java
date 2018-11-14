@@ -916,7 +916,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSystemAccountActionPerformed
 
     private void buttonSearchMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchMemberActionPerformed
-        Controller
+        
     }//GEN-LAST:event_buttonSearchMemberActionPerformed
 
     private void buttonChangeMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangeMemberActionPerformed
