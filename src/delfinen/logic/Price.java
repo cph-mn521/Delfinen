@@ -18,7 +18,12 @@ public class Price {
         seniorPris,
         pensionistPris;
     }
-
+    
+    /**
+     * Constructor for a new price object. Calculates the price for the Age and Status.
+     * @param age       Integer. For this price.
+     * @param status    Enum. Status for this price.
+     */
     public Price(int age, Status status) {
         this.age = age;
         this.status = status;
@@ -32,20 +37,35 @@ public class Price {
             pris = Prices.pensionistPris;
         }
     }
-
+    
+    /**
+     * Getter for this price age.
+     * @return 
+     */
     public int getAge() {
         return age;
     }
 
+    /**
+     * Getter for this pice Status.
+     * @return 
+     */
     public Status getStatus() {
         return status;
     }
-
+    
+    /**
+     * Getter for this price actual price.
+     * @return    Integer. Actual price. Always integer.
+     */
         public int getPris() {
         return priceSubscription();
     }
     
-    
+    /**
+     * Function for returning the actual price of this object.
+     * @return Integer. Actual price. Always integer.
+     */
     private int priceSubscription() {
         if (status == Status.Passive) {
             return 500;
