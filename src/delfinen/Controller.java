@@ -25,12 +25,16 @@ public class Controller {
     private static boolean DEBUG = false;
 
     public static void main(String[] args) {
-        gui.setVisible(true);
-
+        init();
     }
 
     public static void init() {
-        gui.setTrainedBy(findMembers("\"isCoach\":true\""));
+        List<String> trainers = new ArrayList<>();
+        for (Member m : findMembers("\"isCoach\":true\"")) {
+            trainers.add(m.getName());
+        }
+        gui.setTrainedBy(trainers);
+        gui.setVisible(true);
     }
 
     public static void addMember() {
@@ -53,9 +57,9 @@ public class Controller {
             }
             String sCoach = gui.getTrainedBy();
             Member coach = null;
-            
+
             for (Member m : findMembers("\"isCoach\":true\"")) {
-                if (m.getName().equals(sCoach)){
+                if (m.getName().equals(sCoach)) {
                     coach = m;
                     break;
                 }
@@ -68,26 +72,17 @@ public class Controller {
                     gui.displayBoldRed("Trainer not found.");
                 }
             }
-
-            try {
-                data.addMember(newMember);
-                gui.displayPlainBlack("Medlem oprættet\n");
-            } catch (DataException e) {
-                e.printStackTrace();
-                gui.displayBoldRed("Fejl - Medlem ikke oprættet.");
-            }
-        }        
-    }
-        /*    
-    public static List<Member> getMembers() {
+        }
         try {
-            return data.getMembers();
+            data.addMember(newMember);
+            gui.displayPlainBlack("Medlem oprættet\n");
         } catch (DataException e) {
-
+            if(DEBUG) e.printStackTrace();
+            gui.displayBoldRed("Fejl - Medlem ikke oprættet.");
         }
 
     }
-         */
+
     public static List<Member> findMembers(String query) {
         List<Member> members = new ArrayList<>();
         try {
@@ -101,4 +96,5 @@ public class Controller {
         return members;
     }
 
+    
 }
