@@ -25,6 +25,15 @@ public class CompetitiveMember extends Member {
         this.coach = coach;
     }
 
+    public CompetitiveMember(String name, String email, String address, int id, int age, int phone, Status status, ArrayList<Discipline> disciplines, boolean isCoach,Member coach) throws CoachNotFoundException {
+        super(name, email, address, id, age, phone, status, isCoach);
+        this.disciplines = disciplines;
+        if (!coach.isCoach()) {
+            throw new CoachNotFoundException();
+        }
+        this.coach = coach;
+    }
+    
     public CompetitiveMember(String name, String email, String address, int id, int age, int phone, Status status, Discipline disciplines, Member coach) throws CoachNotFoundException {
         super(name, email, address, id, age, phone, status);
         this.disciplines.add(disciplines);
