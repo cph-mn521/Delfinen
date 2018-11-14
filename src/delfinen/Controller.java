@@ -32,10 +32,13 @@ public class Controller {
         gui.setVisible(true);
     }
 
+    /**
+     * Returns a list of trainers.
+     * @return 
+     */
     public List<String> getTrainers(){
     List<String> trainers = new ArrayList<>();
-        List<Member> buffer = findMembers("\"isCoach\":true");
-        
+        List<Member> buffer = findMembers("\"isCoach\":true");        
         if(buffer == null || buffer.size() < 1){
             trainers.add("Ingen trænere i systemet.");
         }
@@ -46,6 +49,10 @@ public class Controller {
         return trainers;
     }
     
+    
+    /**
+     * Passes a member to the PersistanceHandler, for storing and databasing.
+     */
     public static void addMember() {
         Member newMember = null;
         String name = gui.getNavn();
@@ -94,6 +101,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Queries the database for a list of members that fufill a certain criteria.
+     * @param query
+     * @return 
+     */
     public static List<Member> findMembers(String query) {
         List<Member> members = new ArrayList<>();
         try {
