@@ -33,10 +33,10 @@ public class PersistanceHandler {
     }
 
     /**
-    Method for retrieving a list of all members in the Members.txt database.
-    
-    * @return   members     All members int the database.
-    * @throws   DataException
+     * Method for retrieving a list of all members in the Members.txt database.
+     *
+     * @return members All members int the database.
+     * @throws DataException
      */
     public List<Member> getMembers() throws DataException {
         List<Member> out = new ArrayList<>();
@@ -56,15 +56,17 @@ public class PersistanceHandler {
     }
 
     /**
-    Method for searching for keywords in the member database. Searches the
-    database for all entries with containing the query. Can be used to fetch all
-    Competetive members, or all with a specific address, or all males etc. etc.
-    
-    For more precise searches, use the "ATTRIBUTE:"+"String" or "ATTRIBUTE:"+datatype
-    
-    @param  Query       The wanted Query. 
-    @return Members     All members in the database with maching Attribute.    
-    @throws DataException.
+     * Method for searching for keywords in the member database. Searches the
+     * database for all entries with containing the query. Can be used to fetch
+     * all Competetive members, or all with a specific address, or all males
+     * etc. etc.
+     *
+     * For more precise searches, use the "ATTRIBUTE:"+"String" or
+     * "ATTRIBUTE:"+datatype
+     *
+     * @param Query The wanted Query.
+     * @return Members All members in the database with maching Attribute.
+     * @throws DataException.
      */
     public List<Member> searchMember(String Query) throws DataException {
         try {
@@ -85,20 +87,19 @@ public class PersistanceHandler {
     }
 
     /**
-    Method for adding a member to the Member database. 
-    
-    @param  Member   Member to be added to the database.
-    @throws DataException.
+     * Method for adding a member to the Member database.      *
+     * @param Member Member to be added to the database.
+     * @throws DataException.
      */
     public void addMember(Member obj) throws DataException {
         dam.addEntry(gson.toJson(obj));
     }
 
     /**
-    Method for edeting a member. Can also be used to remove members.
-    
-    @param  old     The Member that you wish to modify.
-    @param  N       The Member you wish it should be. if null, removes the entry.
+     * Method for editing a member. Can also be used to remove members.
+     *
+     * @param old The Member that you wish to modify.
+     * @param N The Member you wish it should be. if null, removes the entry.
      */
     public void editMember(Member old, Member N) throws DataException {
         if (N != null) {
@@ -108,8 +109,12 @@ public class PersistanceHandler {
         }
     }
 
-    
-    
+    /**
+     * Method for retrieving a list of all Records in the Records.txt database.
+     *
+     * @return Records      All members in the database.
+     * @throws DataException
+     */
     public List<Record> getRecords() throws DataException {
         List<Record> out = new ArrayList<>();
         try {
@@ -122,7 +127,17 @@ public class PersistanceHandler {
             throw new DataException();
         }
     }
-
+    
+    /**
+     * Method for searching for keywords in the Records database. Searches the
+     * database for all entries with containing the query.     *
+     * For more precise searches, use the "ATTRIBUTE:"+"String" or
+     * "ATTRIBUTE:"+query
+     *
+     * @param   Query         The wanted Query.
+     * @return  records      All members in the database with maching Attribute.
+     * @throws DataException.
+     */
     public List<Record> searchRecord(String Query) throws DataException {
         try {
             List<String> json = dar.searchEntries(Query);
@@ -136,20 +151,29 @@ public class PersistanceHandler {
         }
 
     }
-
+    
+     /**
+     * Method for adding a member to the Member database.      *
+     * @param Record    Record to be added to the database.
+     * @throws DataException.
+     */
     public void addRecord(Record obj) throws DataException {
         dar.addEntry(gson.toJson(obj));
     }
-
+    
+     /**
+     * Method for editing a Record. Can also be used to remove Record.
+     *
+     * @param old   The Record that you wish to modify.
+     * @param N     The Record you wish it should be. if null, removes the entry.
+     */
     public void editRecord(Record old, Record N) throws DataException {
         if (N != null) {
             dar.editEntry(gson.toJson(old), gson.toJson(N));
         } else {
             dar.editEntry(gson.toJson(old), "");
         }
-        
+
     }
-    
-    
-    
+
 }
