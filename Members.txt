@@ -1,5 +1,5 @@
 {"name":"John Test","email":"abe@kat.dk","adress":"Reeeeee 3","id":1,"age":34,"phone":12345678,"status":"Active","isCoach":false}
-{"name":"Johnny Test","email":"kit@kat.dk","adress":"StReeeeet 3","id":2,"age":34,"phone":12345678,"status":"Active","isCoach":false}
-{"name":"Ikke John","email":"ny@mailt.dk","adress":"Anden Gade 23","id":3,"age":89,"phone":87654321,"status":"Passive","isCoach":false}
+{"name":"Johnny Test","email":"kit@kat.dk","address":"StReeeeet 3","id":2,"age":34,"phone":12345678,"status":"Active","isCoach":false,"isCompetitive":false}
+{"name":"Ikke John","email":"ny@mailt.dk","adress":"Anden Gade 23","id":3,"age":89,"phone":87654321,"status":"Passive","isCoach":true}
 
-{"coach":{"name":"Ikke John","email":"ny@mailt.dk","adress":"Anden Gade 23","id":3,"age":89,"phone":87654321,"status":"Passive","isCoach":false},"name":"david\"THE HASSLE!\" Hoff","email":"bay.wathc@watchit.com","adress":"The Bay","id":4,"age":25,"phone":12345677,"status":"Active","isCoach":false}
+{"coach":{"name":"Ikke John","email":"ny@mailt.dk","address":"Anden Gade 23","id":3,"age":89,"phone":87654321,"status":"Passive","isCoach":true,"isCompetitive":false},"name":"david\"THE HASSLE!\" Hoff","email":"bay.wathc@watchit.com","address":"The Bay","id":4,"age":25,"phone":12345677,"status":"Active","isCoach":false,"isCompetitive":true}
