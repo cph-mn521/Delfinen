@@ -707,6 +707,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     public void setMemberPhoto(int ID) {
         this.labelMemberPhoto.setIcon(new javax.swing.ImageIcon(getClass()
                 .getResource("/files/" + String.valueOf(ID) + ".jpg")));
+        this.labelDelfinIcon.updateUI();
     }
 
     public void setID(int textFieldID) {
