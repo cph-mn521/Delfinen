@@ -30,7 +30,7 @@ public class Controller {
 
     public static void init() {
         List<String> trainers = new ArrayList<>();
-        for (Member m : findMembers("\"isCoach\":true\"")) {
+        for (Member m : findMembers("\"isCoach\":True\"")) {
             trainers.add(m.getName());
         }
         gui.setTrainedBy(trainers);
@@ -58,7 +58,7 @@ public class Controller {
             String sCoach = gui.getTrainedBy();
             Member coach = null;
 
-            for (Member m : findMembers("\"isCoach\":true\"")) {
+            for (Member m : findMembers("\"isCoach\":True\"")) {
                 if (m.getName().equals(sCoach)) {
                     coach = m;
                     break;
