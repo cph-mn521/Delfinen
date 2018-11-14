@@ -266,8 +266,8 @@ public class MemberTest {
     public void testChangeMembership() throws CoachNotFoundException {
         boolean expected = false;
         testPerson1.changeCoachStatus();
-        testPerson4 = new CompetitiveMember("David Hassellhoff", "david@thehoff.com", "Hoffstreet 5", 1, 66, 12345678, Status.Active, Discipline.crawl, testPerson1);
-        //(Member) teestPerson4 = testPerson4.changeMembership();
+        Member testPerson4 = new CompetitiveMember("David Hassellhoff", "david@thehoff.com", "Hoffstreet 5", 1, 66, 12345678, Status.Active, Discipline.crawl, testPerson1);
+        testPerson4 = ((CompetitiveMember) testPerson4).changeMembership();
         boolean results = testPerson4.isCompetitive();
         assertEquals(expected, results);
 
@@ -332,9 +332,11 @@ public class MemberTest {
 
     /**
      * Test of setCoach, from CompetitiveMember class
+     * @throws CoachNotFoundException
      */
     @Test
-    public void testSetCoach() {
+    public void testSetCoach() throws CoachNotFoundException {
+        testPerson5 = new CompetitiveMember("Pamela Anderson", "pamela@anderson.com", "Hollywood 2", 9, 76, 98765432, Status.Active, Discipline.crawl, testCoach);
         Member expected = testPerson3;
         testPerson5.setCoach(testPerson3);
         assertEquals(expected, testPerson5.getCoach());
@@ -353,10 +355,14 @@ public class MemberTest {
         testPerson5.addDiscipline(Discipline.crawl);
     }
 
-    //@throws DisciplineException
+    /**
+     * @throws DisciplineException
+     * @throws CoachNotFoundException
+    */
     @Test
-    public void testAddDiscipline2() throws DisciplineException {
+    public void testAddDiscipline2() throws DisciplineException,CoachNotFoundException {
         int expected = 2;
+        testPerson5 = new CompetitiveMember("Pamela Anderson", "pamela@anderson.com", "Hollywood 2", 9, 76, 98765432, Status.Active, Discipline.crawl, testCoach);
         testPerson5.addDiscipline(Discipline.brystsvømning);
         int result = testPerson5.getDiscipline().size();
         assertEquals(expected, result);
@@ -364,19 +370,25 @@ public class MemberTest {
 
     /**
      * Test of getDiscipline, from CompetitiveMember class
+     * @throws CoachNotFoundException
      */
     @Test
-    public void testGetDiscipline() {
+    public void testGetDiscipline() throws CoachNotFoundException {
         Discipline expected = Discipline.crawl;
+        testPerson5 = new CompetitiveMember("Pamela Anderson", "pamela@anderson.com", "Hollywood 2", 9, 76, 98765432, Status.Active, Discipline.crawl, testCoach);
         ArrayList<Discipline> result = testPerson5.getDiscipline();
         assertEquals(expected, result.get(0));
     }
 
     /**
      * Test of removeDiscipline, from CompetitiveMember class
+     * @throws CoachNotFoundException
+     * @throws DisciplineNotFoundException
      */
     @Test
-    public void testRemoveDiscipline() {
-        fail();
+    public void testRemoveDiscipline() throws CoachNotFoundException, DisciplineNotFoundException {
+        testPerson5 = new CompetitiveMember("Pamela Anderson", "pamela@anderson.com", "Hollywood 2", 9, 76, 98765432, Status.Active, Discipline.crawl, testCoach);
+        testPerson5.removeDiscipline(Discipline.crawl);
+        assertTrue(testPerson5.getDiscipline().isEmpty());
     }
 }
