@@ -21,24 +21,12 @@ public class Subscription {
         return year;
     }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
-
     public Price getPrice() {
         return price;
     }
 
-    public void setPrice(Price price) {
-        this.price = price;
-    }
-
     public int getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
 }

@@ -270,7 +270,6 @@ public class MemberTest {
         testPerson4 = ((CompetitiveMember) testPerson4).changeMembership();
         boolean results = testPerson4.isCompetitive();
         assertEquals(expected, results);
-
     }
 
     /**
