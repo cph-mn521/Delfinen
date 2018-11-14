@@ -1,7 +1,7 @@
 package delfinen.presentation;
 
+import java.awt.Color;
 import java.util.ArrayList;
-import javax.accessibility.AccessibleContext;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -53,6 +53,25 @@ public class DelfinGUITest {
     }
 
     @Test
+    public void testGetMemberPhoto() {
+        System.out.println("getMemberPhoto");
+        DelfinGUI instance = new DelfinGUI();
+        int expResult = 1;
+        int result = instance.getMemberPhoto();
+        assertEquals(expResult, result);
+    }
+    
+        @Test
+    public void testSetMemberPhoto() {
+        System.out.println("setMemberPhoto");
+        DelfinGUI instance = new DelfinGUI();
+        int expResult = 2;
+        instance.setMemberPhoto(2);
+        int result = instance.getMemberPhoto();
+        assertEquals(expResult, result);
+    }
+    
+    @Test
     public void testDisciplin() {
         System.out.println("getDisciplin");
         DelfinGUI instance = new DelfinGUI();
@@ -62,13 +81,38 @@ public class DelfinGUITest {
         ArrayList<String> result;
         result = instance.getDisciplin();
         System.out.println("Discipliner to string: " + result);
-        
+
         for (String string : result) {
             System.out.println("Discipliner: " + string);
         }
         assertEquals(expResult, result);
     }
-    
+
+    @Test
+    public void testDisciplinCheckboxes() {
+        System.out.println("getDisciplinCheckboxes");
+        DelfinGUI instance = new DelfinGUI();
+        ArrayList<String> result = new ArrayList<>();
+        result.add("Brystsvømning");
+        result.add("Butterfly");
+        result.add("Rygcrawl");
+        instance.setDisciplinCheckBoxes(result);
+        ArrayList<String> expResult = new ArrayList<String>();
+        if (instance.getDisciplinBryst()) {
+            expResult.add("Brystsvømning");
+        }
+        if (instance.getDisciplinButterfly()) {
+            expResult.add("Butterfly");
+        }
+        if (instance.getDisciplinCrawl()) {
+            expResult.add("Crawl");
+        }
+        if (instance.getDisciplinRygcrawl()) {
+            expResult.add("Rygcrawl");
+        }
+        assertEquals(expResult, result);
+    }
+
     @Test
     public void testGetAdresse() {
         System.out.println("getAdresse");
@@ -95,6 +139,14 @@ public class DelfinGUITest {
         String result = instance.getEmail();
         assertEquals(expResult, result);
     }
+
+//    @Test
+//    public void testisEmail() {
+//        System.out.println("isEmail");
+//        DelfinGUI instance = new DelfinGUI();
+//        boolean result = (instance.getBackground() == Color.white);
+//        assertTrue(result);
+//    }
 
     @Test
     public void testGetID() {
@@ -123,49 +175,34 @@ public class DelfinGUITest {
         assertEquals(expResult, result);
     }
 
-    @Test
-    public void testGetEXIT_ON_CLOSE() {
-        System.out.println("getEXIT_ON_CLOSE");
-        int expResult = 0;
-        int result = DelfinGUI.getEXIT_ON_CLOSE();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testGetAccessibleContext() {
-        System.out.println("getAccessibleContext");
-        DelfinGUI instance = new DelfinGUI();
-        AccessibleContext expResult = null;
-        AccessibleContext result = instance.getAccessibleContext();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testEquals() {
-        System.out.println("equals");
-        Object obj = null;
-        DelfinGUI instance = new DelfinGUI();
-        boolean expResult = false;
-        boolean result = instance.equals(obj);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        DelfinGUI instance = new DelfinGUI();
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-
+//    @Test
+//    public void testGetEXIT_ON_CLOSE() {
+//        System.out.println("getEXIT_ON_CLOSE");
+//        int expResult = 0;
+//        int result = DelfinGUI.getEXIT_ON_CLOSE();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//    @Test
+//    public void testEquals() {
+//        System.out.println("equals");
+//        Object obj = null;
+//        DelfinGUI instance = new DelfinGUI();
+//        boolean expResult = false;
+//        boolean result = instance.equals(obj);result
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+//    @Test
+//    public void testToString() {
+//        System.out.println("toString");
+//        DelfinGUI instance = new DelfinGUI();
+//        String expResult = "";
+//        String result = instance.toString();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 }
