@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Member;
+import delfinen.logic.Record;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,17 +21,18 @@ public class PersistanceHandler {
 
     // Deklaration of filepaths.
     private final String DBMembers = "Members.txt";
-    private final String DBRekords = "Rekords.txt";
+    private final String DBRekords = "Records.txt";
     private final String DBKontigents = "Kontigents.txt";
-    
+
     private DataAccessor dam = new DataAccessorFile(DBMembers);
+    private DataAccessor dar = new DataAccessorFile(DBRekords);
     private Gson gson = new Gson();
 
     public PersistanceHandler() {
 
     }
 
-    /*
+    /**
     Method for retrieving a list of all members in the Members.txt database.
     
     * @return   members     All members int the database.
@@ -52,8 +54,8 @@ public class PersistanceHandler {
             throw new DataException();
         }
     }
-    
-    /*
+
+    /**
     Method for searching for keywords in the member database. Searches the
     database for all entries with containing the query. Can be used to fetch all
     Competetive members, or all with a specific address, or all males etc. etc.
@@ -63,7 +65,7 @@ public class PersistanceHandler {
     @param  Query       The wanted Query. 
     @return Members     All members in the database with maching Attribute.    
     @throws DataException.
-    */
+     */
     public List<Member> searchMember(String Query) throws DataException {
         try {
             List<String> json = dam.searchEntries(Query);
@@ -81,26 +83,73 @@ public class PersistanceHandler {
         }
 
     }
-    
-    
-    /*
+
+    /**
     Method for adding a member to the Member database. 
     
     @param  Member   Member to be added to the database.
     @throws DataException.
-    */
-    public void addMember(Member obj) throws DataException{
+     */
+    public void addMember(Member obj) throws DataException {
         dam.addEntry(gson.toJson(obj));
     }
-    
-    /*
+
+    /**
     Method for edeting a member. Can also be used to remove members.
     
     @param  old     The Member that you wish to modify.
     @param  N       The Member you wish it should be. if null, removes the entry.
-    */
-    public void editMember(Member old, Member N) throws DataException{
-        if(N!=null)dam.editEntry(gson.toJson(old), gson.toJson(N));
-        else dam.editEntry(gson.toJson(old), "");
+     */
+    public void editMember(Member old, Member N) throws DataException {
+        if (N != null) {
+            dam.editEntry(gson.toJson(old), gson.toJson(N));
+        } else {
+            dam.editEntry(gson.toJson(old), "");
+        }
     }
+
+    
+    
+    public List<Record> getRecords() throws DataException {
+        List<Record> out = new ArrayList<>();
+        try {
+            List<String> jsons = dar.getEntries();
+            for (String json : jsons) {
+                out.add(gson.fromJson(json, Record.class));
+            }
+            return out;
+        } catch (DataException e) {
+            throw new DataException();
+        }
+    }
+
+    public List<Record> searchRecord(String Query) throws DataException {
+        try {
+            List<String> json = dar.searchEntries(Query);
+            List<Record> records = new ArrayList<>();
+            for (String string : json) {
+                records.add(gson.fromJson(string, Record.class));
+            }
+            return records;
+        } catch (DataException e) {
+            throw new DataException(e.getMessage());
+        }
+
+    }
+
+    public void addRecord(Record obj) throws DataException {
+        dar.addEntry(gson.toJson(obj));
+    }
+
+    public void editRecord(Record old, Record N) throws DataException {
+        if (N != null) {
+            dar.editEntry(gson.toJson(old), gson.toJson(N));
+        } else {
+            dar.editEntry(gson.toJson(old), "");
+        }
+        
+    }
+    
+    
+    
 }
