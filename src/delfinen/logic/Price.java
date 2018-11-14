@@ -19,10 +19,6 @@ public class Price {
         pensionistPris;
     }
 
-    public Price(Status status) {
-        this.status = status;
-    }
-
     public Price(int age, Status status) {
         this.age = age;
         this.status = status;
@@ -37,6 +33,21 @@ public class Price {
         }
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public Prices getPris() {
+        return pris;
+    }
+
+    
+    
+    
     public int priceSubscription() {
         if (status == Status.Passive) {
             return 500;
