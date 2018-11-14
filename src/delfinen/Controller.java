@@ -36,7 +36,7 @@ public class Controller {
      * Returns a list of trainers.
      * @return 
      */
-    public List<String> getTrainers(){
+    public static List<String> getTrainers(){
     List<String> trainers = new ArrayList<>();
         List<Member> buffer = findMembers("\"isCoach\":true");        
         if(buffer == null || buffer.size() < 1){
@@ -102,7 +102,7 @@ public class Controller {
     }
 
     /**
-     * Queries the database for a list of members that fufill a certain criteria.
+     * Queries the database for a list of members that fulfill a certain criteria.
      * @param query
      * @return 
      */
