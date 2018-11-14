@@ -33,8 +33,8 @@ public class PersistanceHandler {
     /*
     Method for retrieving a list of all members in the Members.txt database.
     
-    * @return      ArrayList<Member>
-    * @throws      DataException
+    * @return   members     All members int the database.
+    * @throws   DataException
      */
     public List<Member> getMembers() throws DataException {
         List<Member> out = new ArrayList<>();
@@ -60,9 +60,9 @@ public class PersistanceHandler {
     
     For more precise searches, use the "ATTRIBUTE:"+"String" or "ATTRIBUTE:"+datatype
     
-    @param  Query The wanted Query. 
-    @return ArrayList<Member>    
-    @throws DataException
+    @param  Query       The wanted Query. 
+    @return Members     All members in the database with maching Attribute.    
+    @throws DataException.
     */
     public List<Member> searchMember(String Query) throws DataException {
         try {
@@ -86,7 +86,7 @@ public class PersistanceHandler {
     /*
     Method for adding a member to the Member database. 
     
-    @param Member   Member to be added to the database.
+    @param  Member   Member to be added to the database.
     @throws DataException.
     */
     public void addMember(Member obj) throws DataException{
@@ -97,13 +97,10 @@ public class PersistanceHandler {
     Method for edeting a member. Can also be used to remove members.
     
     @param  old     The Member that you wish to modify.
-    @param  N       The Member you wish it should be.
+    @param  N       The Member you wish it should be. if null, removes the entry.
     */
     public void editMember(Member old, Member N) throws DataException{
-        dam.editEntry(gson.toJson(old), gson.toJson(N));
+        if(N!=null)dam.editEntry(gson.toJson(old), gson.toJson(N));
+        else dam.editEntry(gson.toJson(old), "");
     }
-    
-    
-    
-
 }

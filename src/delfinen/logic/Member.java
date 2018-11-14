@@ -34,6 +34,18 @@ public class Member {
         this.status = status;
     }
     
+    public Member(String name, String email, String address, int id, int age, int phone, Status status, boolean isCoach) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.id = id;
+        this.age = age;
+        this.phone = phone;
+        this.status = status;
+        isCompetitive = false;
+        this.isCoach = isCoach;
+    }
+    
     public boolean equals(Member other) {
         if (this == other) {
             return true;
