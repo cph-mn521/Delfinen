@@ -85,7 +85,7 @@ public class Controller {
                 newMember = new CompetitiveMember(name, email, adress, id, age, phoneNumber, status, disciplines, isCoach, coach);
             } catch (CoachNotFoundException e) {
                 if (DEBUG) {
-                    gui.displayBoldRed("Træner ikke fundet.");
+                    gui.displayBoldRed("Træner ikke fundet.\n");
                     e.printStackTrace();
                     return;
                 }
@@ -95,7 +95,7 @@ public class Controller {
             data.addMember(newMember);
             gui.displayPlainBlack("Medlem oprettet\n");
         } catch (DataException e) {
-            gui.displayBoldRed("Fejl - Medlem ikke oprettet.");
+            gui.displayBoldRed("Fejl - Medlem ikke oprettet.\n");
             if (DEBUG) {
                 e.printStackTrace();
             }
@@ -115,11 +115,14 @@ public class Controller {
             if (DEBUG) {
                 e.printStackTrace();
             }
-            gui.displayBoldRed("Ingen medlemmer fundet.");
+            gui.displayBoldRed("Ingen medlemmer fundet.\n");
         }
         if (members == null || members.size() < 1) {
-            gui.displayBoldRed("Ingen medlemmer fundet.");            
+            gui.displayBoldRed("Ingen medlemmer fundet.\n");            
         }
         return members;
     }
+    
+    
+    
 }
