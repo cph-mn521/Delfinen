@@ -68,7 +68,11 @@ public class CompetitiveMember extends Member {
     }
 
     public Member changeMembership() {
-        return new Member(this.getName(), this.getEmail(), this.getAddress(), this.getId(), this.getAge(), this.getPhone(), this.getStatus());
+        if (this.isCoach()) {
+            return new Member(this.getName(), this.getEmail(), this.getAddress(), this.getId(), this.getAge(), this.getPhone(), this.getStatus(), true);
+        } else {
+            return new Member(this.getName(), this.getEmail(), this.getAddress(), this.getId(), this.getAge(), this.getPhone(), this.getStatus());
+        }
     }
 
 }
