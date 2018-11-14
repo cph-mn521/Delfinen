@@ -46,7 +46,7 @@ public class Price {
     }
     
     
-    public int priceSubscription() {
+    private int priceSubscription() {
         if (status == Status.Passive) {
             return 500;
         } else {
