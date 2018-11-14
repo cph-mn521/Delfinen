@@ -22,7 +22,7 @@ public class Controller {
      */
     private static DelfinGUI gui = new DelfinGUI();
     private static PersistanceHandler data = new PersistanceHandler();
-    private static boolean DEBUG = false;
+    private static boolean DEBUG = true;
 
     public static void main(String[] args) {
         init();
@@ -48,7 +48,7 @@ public class Controller {
         Member.Status status = Member.Status.valueOf(gui.getStatus().equals("Aktiv") ? "Active" : "Passive");
         boolean isCoach = gui.getTrainer();
 
-        if (gui.getMotionKonkurrence().equals("Motion")) {
+        if (gui.getMotionKonkurrence().equals("Motionist")) {
             newMember = new Member(name, email, adress, id, age, phoneNumber, status, isCoach);
         } else {
             ArrayList<Discipline> disciplines = new ArrayList<>();
@@ -68,17 +68,20 @@ public class Controller {
                 newMember = new CompetitiveMember(name, email, adress, id, age, phoneNumber, status, disciplines, isCoach, coach);
             } catch (CoachNotFoundException e) {
                 if (DEBUG) {
+                    gui.displayBoldRed("Træner ikke fundet.");
                     e.printStackTrace();
-                    gui.displayBoldRed("Trainer not found.");
+                    return;
                 }
             }
         }
         try {
             data.addMember(newMember);
-            gui.displayPlainBlack("Medlem oprættet\n");
-        } catch (DataException e) {
-            if(DEBUG) e.printStackTrace();
-            gui.displayBoldRed("Fejl - Medlem ikke oprættet.");
+            gui.displayPlainBlack("Medlem oprettet\n");
+        } catch (DataException e) {            
+            gui.displayBoldRed("Fejl - Medlem ikke oprettet.");
+            if (DEBUG) {
+                e.printStackTrace();
+            }
         }
 
     }
@@ -96,5 +99,4 @@ public class Controller {
         return members;
     }
 
-    
 }
