@@ -5,6 +5,7 @@
  */
 package delfinen.logic;
 
+import delfinen.logic.Member.Status;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,22 +18,25 @@ import static org.junit.Assert.*;
  * @author martin
  */
 public class SubscriptionIT {
-    
+
+    Price pris = new Price(25, Status.Active);
+    Subscription instance = new Subscription(2018, pris, 25, Status.Active);
+
     public SubscriptionIT() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -40,64 +44,25 @@ public class SubscriptionIT {
     @Test
     public void testGetYear() {
         System.out.println("getYear");
-        Subscription instance = null;
-        int expResult = 0;
+        int expResult = 2018;
         int result = instance.getYear();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testSetYear() {
-        System.out.println("setYear");
-        int year = 0;
-        Subscription instance = null;
-        instance.setYear(year);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testGetPrice() {
         System.out.println("getPrice");
-        Subscription instance = null;
-        Price expResult = null;
+        Price expResult = pris;
         Price result = instance.getPrice();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testSetPrice() {
-        System.out.println("setPrice");
-        Price price = null;
-        Subscription instance = null;
-        instance.setPrice(price);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     @Test
     public void testGetAge() {
         System.out.println("getAge");
-        Subscription instance = null;
-        int expResult = 0;
+        int expResult = 25;
         int result = instance.getAge();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
-    @Test
-    public void testSetAge() {
-        System.out.println("setAge");
-        int age = 0;
-        Subscription instance = null;
-        instance.setAge(age);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
