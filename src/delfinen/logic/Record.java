@@ -18,7 +18,7 @@ public class Record {
     private LocalDateTime date;
     private Member holder;
     private String event;
-    private Discipline discpiline;
+    private Discipline discipline;
     private int place;
 
     ///////////////////////      CONSTRUCTOR       /////////////////////////////
@@ -41,7 +41,7 @@ public class Record {
         this.holder = holder;
         this.event = event;
         this.place = place;
-        this.discpiline = discipline;
+        this.discipline = discipline;
     }
 
     ///////////////////////      GETTERS       /////////////////////////////////
@@ -97,7 +97,7 @@ public class Record {
      * @return
      */
     public Discipline getDiscpiline() {
-        return discpiline;
+        return discipline;
     }
 
     ///////////////////////      SETTERS       /////////////////////////////////

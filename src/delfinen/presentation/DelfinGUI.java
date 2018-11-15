@@ -236,7 +236,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             }
         });
 
-        textFieldNewResultsDate.setText("f.eks. dd-MM-yyyy HH:mm, 1-3-2017 12:30");
+        textFieldNewResultsDate.setText("f.eks. d-M-yyyy HH:mm, 1-03-2017 12:30");
         textFieldNewResultsDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsDateFocusGained(evt);
