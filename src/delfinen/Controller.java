@@ -33,7 +33,7 @@ public class Controller {
     }
 
     /**
-     * Passes a list of trainers from data to gui, and initializes the gui.
+     * Passes a list of trainers from data to gui, and activates the gui.
      */
     public static void init() {
         gui.setTrainedBy(getTrainers());
@@ -42,7 +42,6 @@ public class Controller {
 
     /**
      * Queries the PersistanceHandler for a list of trainers.
-     *
      * @return
      */
     public static List<String> getTrainers() {
@@ -136,79 +135,81 @@ public class Controller {
      */
     public static void search() {
         StringBuilder regQuery = new StringBuilder();
-        regQuery.append("\\{");
+        regQuery.append("^\\{");
         ArrayList<String> Search = new ArrayList<>();
         ArrayList<String> regex = new ArrayList<>();
         //regex.add("(\"disciplines\":(\\[.+\\]),\"coach\":(\\{.+\\}),)?");
-        regex.add("\"name\":\"(.+)\",");
-        regex.add("\"email\":\"(.+)\",");
-        regex.add("\"address\":\"(.+)\",");
-        regex.add("\"id\":(.+),");
-        regex.add("\"age\":(.+),");
-        regex.add("\"phone\":(.+),");
-        regex.add("\"status\":\"(.+)\",");
-        regex.add("\"isCoach\":(.+)");
+        regex.add("\"name\":\".+\",");
+        regex.add("\"email\":\".+\",");
+        regex.add("\"address\":\".+\",");
+        regex.add("\"id\":.+,");
+        regex.add("\"age\":.+,");
+        regex.add("\"phone\":.+,");
+        regex.add("\"status\":\".+\",");
+        regex.add("\"isCoach\":.+");
 
-        Member.Status status = Member.Status.valueOf(gui.getStatus());
+        String status = gui.getStatus().equals("Aktiv") ? "Active" : "Passive";
         String aktivitet = gui.getMotionKonkurrence();
-       
+
         if (aktivitet.equals("Konkurrencesvømmer")) {
             List<String> disciplines = gui.getDisciplin();
             List<Member> trainers = findMembers("\"isCoach\":true");
             String coach = gui.getTrainedBy();
-            Member Coach = trainers.get(trainers.indexOf(coach));
             int disSize = disciplines.size();
             if (disSize > 0) {
-                regQuery.append("(\"disciplines\":(\\[");
+                Member Coach = trainers.get(trainers.indexOf(coach));
+                regQuery.append("\"disciplines\":\\[");
                 for (int i = 0; i <= disSize; i++) {
                     regQuery.append("\"");
                     regQuery.append(disciplines.get(i));
-                    if (i == disSize - 1) {                       
+                    if (i == disSize - 1) {
                         regQuery.append("\"");
-                    } else {                        
+                    } else {
                         regQuery.append("\",");
                     }
                 }
                 Gson gson = new Gson();
-                regQuery.append("\\],\"coach\":(");
+                regQuery.append("\\],\"coach\":");
                 regQuery.append(gson.toJson(Coach));
-                regQuery.append("),)?");
+                regQuery.append(",");
             } else {
-                regQuery.append("(\"disciplines\":(\\[.+\\]),\"coach\":(\\{.+\\}),)?");
+                regQuery.append("(\"disciplines\":\\[.+\\],\"coach\":\\{.+\\},)");
             }
         }
         String name = gui.getNavn();
         String email = gui.getEmail();
         String address = gui.getAdresse();
-        String id = gui.getID() + "";
-        String age = gui.getAlder() + "";
-        String phone = gui.getTelefon() + "";
+        int id = gui.getID();
+        int age = gui.getAlder();
+        int phone = gui.getTelefon();
         String isCoach = gui.getTrainer() + "";
 
         Search.add(name);
         Search.add(email);
         Search.add(address);
-        Search.add(id);
-        Search.add(age);
-        Search.add(phone);
+        Search.add(id==0?"":id+"");
+        Search.add(age==0?"":age+"");
+        Search.add(phone==0?"":phone+"");
+        Search.add(status);
         Search.add(isCoach);
 
         int i = 0;
-        for (String s: Search) {
+        for (String s : Search) {
             if (s.isEmpty()) {
                 regQuery.append(regex.get(i));
+                i++;
                 continue;
+            } else {
+                regQuery.append(regex.get(i).replace(".+",s));
             }
-            regQuery.append(regex.get(i));
             i++;
         }
-        regQuery.append("\\}");
+        regQuery.append("\\}$");
 
         List<Object> result = data.customSearch(regQuery.toString());
-        for(Object o: result){
-            gui.displayPlainBlack(((Member) o).toString()+'\n');
+        for (Object o : result) {
+            gui.displayPlainBlack(((Member) o).toString() + '\n');
         }
-        
     }
 
     public static void change() {

@@ -7,10 +7,12 @@ package delfinen.data;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+
 import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Member;
 import delfinen.logic.Record;
 import delfinen.logic.Subscription;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -189,7 +191,6 @@ public class PersistanceHandler {
         }
 
     }
-
     
     ///////////////////////      SUBSCRIPTION HANDLING       ////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -255,6 +256,8 @@ public class PersistanceHandler {
     }
 
     public List<Object> customSearch(String query) {
+        
+        System.out.println(query);
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
