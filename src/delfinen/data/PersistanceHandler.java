@@ -30,6 +30,7 @@ public class PersistanceHandler {
     final DataAccessor dam = new DataAccessorFile(DBMembers);
     final DataAccessor dar = new DataAccessorFile(DBRekords);
     final DataAccessor das = new DataAccessorFile(DBSubscriptions);
+    final DataSearchEngine dse = new DataSearchEngine();
     final Gson gson = new Gson();
 
     public PersistanceHandler() {
@@ -254,10 +255,15 @@ public class PersistanceHandler {
         das.editEntry(gson.toJson(old), gson.toJson(N));
     }
 
-    public List<Object> customSearch(String query) {
-        
-        System.out.println(query);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * 
+     * @param query
+     * @param disciplines
+     * @param coach
+     * @return 
+     */
+    public List<Object> customSearch(ArrayList<String> query, List<String> disciplines, Member coach) {
+        return dse.Search(query, disciplines, coach);
     }
 
 }
