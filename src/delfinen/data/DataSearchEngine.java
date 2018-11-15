@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import delfinen.data.PersistanceHandler;
 
 /**
  *
@@ -19,7 +18,7 @@ import delfinen.data.PersistanceHandler;
  */
 public class DataSearchEngine {
 
-    private PersistanceHandler p = new PersistanceHandler();
+//    private PersistanceHandler p = new PersistanceHandler();
     private Gson gson = new Gson();
 
     /**
@@ -30,7 +29,7 @@ public class DataSearchEngine {
      * @return
      * @throws DataException
      */
-    public List<String> Search(ArrayList<String> Search, List<String> disciplines, Member Coach) throws DataException {
+    public List<String> Search(ArrayList<String> Search, List<String> disciplines, Member Coach, List<String> data) throws DataException {
         StringBuilder regQuery = new StringBuilder();
         regQuery.append("^\\{");
         List<String> matches = new ArrayList<>();
@@ -82,9 +81,7 @@ public class DataSearchEngine {
         }
         regQuery.append("\\}$");
 
-        List<String> data = p.dam.getEntries();
-
-        Pattern p = Pattern.compile(regQuery.toString(), Pattern.MULTILINE);
+        Pattern p = Pattern.compile(regQuery.toString());
 
         for (String s : data) {
             if (p.matcher(s).matches()) {

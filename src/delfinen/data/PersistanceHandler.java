@@ -103,7 +103,7 @@ public class PersistanceHandler {
      */
     public List<Member> searchMember(ArrayList<String> Query, List<String> Disciplines, Member Coach) throws DataException {
         List<Member> result = new ArrayList<>();
-        List<String> matches = dse.Search(Query, Disciplines, Coach);
+        List<String> matches = dse.Search(Query, Disciplines, Coach, dam.getEntries());
         for (String s : matches) {
             try {
                 result.add(gson.fromJson(s, Member.class));

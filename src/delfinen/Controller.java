@@ -177,8 +177,9 @@ public class Controller {
         if (result == null) {
             gui.displayPlainRed("Fejl - Ingen medlemmer fundet.");
         } else {
-            for (Object o : result) {
-                gui.displayPlainBlack(((Member) o).toString() + '\n');
+            for (Member m: result) {
+                //gui.displayPlainBlack(((Member) o).toString() + '\n');
+                System.out.println(m);
             }
         }
     }
