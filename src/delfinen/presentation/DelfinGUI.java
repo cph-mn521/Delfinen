@@ -27,7 +27,7 @@ import javax.swing.text.StyledDocument;
  * @author martin b.
  */
 public class DelfinGUI extends javax.swing.JFrame {
-
+    
     Font FONT_NOTOSANS_PLAIN_12 = new Font("notosans", Font.PLAIN, 12);
     Font FONT_NOTOSANS_BOLD_12 = new Font("notosans", Font.BOLD, 12);
     Font FONT_NOTOSANS_ITALIC_12 = new Font("notosans", Font.ITALIC, 12);
@@ -40,7 +40,7 @@ public class DelfinGUI extends javax.swing.JFrame {
      */
     public DelfinGUI() {
         initComponents();
-        
+
         //Int checkboxes
         discipliner.add(checkBoxDisciplinBryst);
         discipliner.add(checkBoxDisciplinButterfly);
@@ -68,7 +68,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         
         textPaneMedlemsInfo.setBackground(Color.white);
         textPaneMedlemsInfo.setText("");
-
+        
         comboBoxTrainedBy.removeAllItems();
         textPaneMedlemsInfo.setEditable(false);
     }
@@ -82,8 +82,22 @@ public class DelfinGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
+        dialogNewResults = new javax.swing.JDialog();
         jLabel11 = new javax.swing.JLabel();
+        buttonNewResultsClose = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        textFieldNewResultsDiscipline = new javax.swing.JTextField();
+        textFieldNewResultsPlace = new javax.swing.JTextField();
+        textFieldNewResultsDate = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        labelNewResultsMemberName = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        textFieldNewResultsTime = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         panelMain = new javax.swing.JPanel();
         panelMembers = new javax.swing.JPanel();
         panelMedlemsData = new javax.swing.JPanel();
@@ -142,26 +156,188 @@ public class DelfinGUI extends javax.swing.JFrame {
         menuHelp = new javax.swing.JMenu();
         menuHelpAbout = new javax.swing.JMenuItem();
 
-        jLabel11.setText("jLabel11");
+        dialogNewResults.setAlwaysOnTop(true);
+        dialogNewResults.setLocation(new java.awt.Point(400, 100));
+        dialogNewResults.setSize(new java.awt.Dimension(920, 415));
 
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLabel11)
-                .addContainerGap(303, Short.MAX_VALUE))
+        jLabel11.setText("Indtast nyt resultat");
+
+        buttonNewResultsClose.setText("Luk vindue");
+        buttonNewResultsClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonNewResultsCloseActionPerformed(evt);
+            }
+        });
+
+        jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
+
+        textFieldNewResultsDiscipline.setText("f.eks. Skanderborg Svømmestævne 20184");
+        textFieldNewResultsDiscipline.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldNewResultsDisciplineFocusGained(evt);
+            }
+        });
+        textFieldNewResultsDiscipline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNewResultsDisciplineActionPerformed(evt);
+            }
+        });
+
+        textFieldNewResultsPlace.setText("1");
+        textFieldNewResultsPlace.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldNewResultsPlaceFocusGained(evt);
+            }
+        });
+        textFieldNewResultsPlace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNewResultsPlaceActionPerformed(evt);
+            }
+        });
+
+        textFieldNewResultsDate.setText("f.eks. 23/dec-2108");
+        textFieldNewResultsDate.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldNewResultsDateFocusGained(evt);
+            }
+        });
+        textFieldNewResultsDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNewResultsDateActionPerformed(evt);
+            }
+        });
+
+        jLabel13.setText("date");
+
+        jLabel14.setText("event");
+
+        jLabel16.setText("place");
+
+        labelNewResultsMemberName.setText("navn");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Butterfly", "Crawl", "Rygcrawl", "Brystsvømning" }));
+
+        jLabel15.setText("discipline");
+
+        textFieldNewResultsTime.setText("f. eks. 1,23");
+        textFieldNewResultsTime.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                textFieldNewResultsTimeFocusGained(evt);
+            }
+        });
+        textFieldNewResultsTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNewResultsTimeActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("time");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldNewResultsDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(textFieldNewResultsDiscipline, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel16)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textFieldNewResultsTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textFieldNewResultsPlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNewResultsMemberName)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jDialog1Layout.createSequentialGroup()
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jComboBox1, textFieldNewResultsDate, textFieldNewResultsDiscipline, textFieldNewResultsPlace, textFieldNewResultsTime});
+
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(labelNewResultsMemberName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldNewResultsDiscipline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldNewResultsDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldNewResultsPlace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textFieldNewResultsTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButton1.setText("Send ny data");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout dialogNewResultsLayout = new javax.swing.GroupLayout(dialogNewResults.getContentPane());
+        dialogNewResults.getContentPane().setLayout(dialogNewResultsLayout);
+        dialogNewResultsLayout.setHorizontalGroup(
+            dialogNewResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogNewResultsLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(dialogNewResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(dialogNewResultsLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buttonNewResultsClose))
+                    .addGroup(dialogNewResultsLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(63, 63, 63)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(275, Short.MAX_VALUE))
+        );
+
+        dialogNewResultsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {buttonNewResultsClose, jButton1});
+
+        dialogNewResultsLayout.setVerticalGroup(
+            dialogNewResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogNewResultsLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel11)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addGroup(dialogNewResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(dialogNewResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonNewResultsClose)
+                    .addComponent(jButton1))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 150));
 
         panelMain.setLayout(new java.awt.CardLayout());
 
@@ -497,7 +673,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                     .addComponent(labelDelfinIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelMedlemsData, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                .addComponent(panelMedlemsData, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(panelMembersLayout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
@@ -706,7 +882,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     public String getStatus() {
         return comboBoxStatus.getSelectedItem().toString();
     }
-
+    
     public ArrayList<String> getDisciplin() {
         ArrayList<String> disc = new ArrayList<>();
         for (JCheckBox jCheckbox : discipliner) {
@@ -716,27 +892,34 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
         return disc;
     }
-
+    
+    
+    
+    
+    // #######################    Getters  ###############################
+    
+    
+    
     public boolean getDisciplinBryst() {
         return checkBoxDisciplinBryst.isSelected();
     }
-
+    
     public boolean getDisciplinButterfly() {
         return checkBoxDisciplinButterfly.isSelected();
     }
-
+    
     public boolean getDisciplinCrawl() {
         return checkBoxDisciplinCrawl.isSelected();
     }
-
+    
     public boolean getDisciplinRygcrawl() {
         return checkBoxDisciplinRygcrawl.isSelected();
     }
-
+    
     public String getMotionKonkurrence() {
         return comboBoxMotionistKonkurrence.getSelectedItem().toString();
     }
-
+    
     public String getMedlemsInfo() {
         if (textPaneMedlemsInfo.getBackground() == Color.white) {
             return textPaneMedlemsInfo.getText();
@@ -744,7 +927,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return "";
         }
     }
-
+    
     public String getAdresse() {
         if (textFieldAdresse.getBackground() == Color.white) {
             return textFieldAdresse.getText();
@@ -752,7 +935,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return "";
         }
     }
-
+    
     public int getAlder() {
         if (textFieldAlder.getBackground() == Color.white) {
             return Integer.parseInt(textFieldAlder.getText());
@@ -760,7 +943,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return 0;
         }
     }
-
+    
     public String getEmail() {
         if (textFieldEmail.getBackground() == Color.white) {
             return textFieldEmail.getText();
@@ -768,7 +951,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return "";
         }
     }
-
+    
     public int getID() {
         if (textFieldID.getBackground() == Color.white) {
             return Integer.parseInt(textFieldID.getText());
@@ -776,7 +959,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return 0;
         }
     }
-
+    
     public String getNavn() {
         if (textFieldNavn.getBackground() == Color.white) {
             return textFieldNavn.getText();
@@ -784,7 +967,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return "";
         }
     }
-
+    
     public int getTelefon() {
         if (textFieldTelefon.getBackground() == Color.white) {
             return Integer.parseInt(textFieldTelefon.getText());
@@ -792,15 +975,15 @@ public class DelfinGUI extends javax.swing.JFrame {
             return 0;
         }
     }
-
+    
     public boolean getTrainer() {
         return checkBoxTrainer.isSelected();
     }
-
+    
     public String getTrainedBy() {
         return comboBoxTrainedBy.getSelectedItem().toString();
     }
-
+    
     public int getMemberPhoto() {
         try {
             int g = Integer.parseInt(labelMemberPhoto.getIcon()
@@ -811,102 +994,114 @@ public class DelfinGUI extends javax.swing.JFrame {
             return 0;
         }
     }
-
+    
+    
+    
+    // #######################    SETTERS  ###############################
+    
+    
     public void setDisciplinCheckBoxes(ArrayList<String> disciplinList) {
         for (String disciplin : disciplinList) {
             switch (disciplin) {
                 case ("Brystsvømning"):
                     checkBoxDisciplinBryst.setSelected(true);
                     break;
-
+                
                 case ("Butterfly"):
                     checkBoxDisciplinButterfly.setSelected(true);
                     break;
-
+                
                 case ("Crawl"):
                     checkBoxDisciplinCrawl.setSelected(true);
                     break;
-
+                
                 default:
                     checkBoxDisciplinRygcrawl.setSelected(true);
                     break;
             }
         }
     }
-
+    
     public void setDisciplinBryst(boolean disciplinBryst) {
         this.checkBoxDisciplinBryst.setSelected(disciplinBryst);
     }
-
+    
     public void setDisciplinButterfly(boolean disciplinButterfly) {
         this.checkBoxDisciplinButterfly.setSelected(disciplinButterfly);
     }
-
+    
     public void setDisciplinCrawl(boolean disciplinCrawl) {
         this.checkBoxDisciplinCrawl.setSelected(disciplinCrawl);
     }
-
+    
     public void setDisciplinRygcrawl(boolean disciplinRygcrawl) {
         this.checkBoxDisciplinRygcrawl.setSelected(disciplinRygcrawl);
     }
-
+    
     public void setMotionistKonkurrence(String MotionistKonkurrence) {
         this.comboBoxMotionistKonkurrence.setSelectedItem(MotionistKonkurrence);
     }
-
+    
     public void setStatus(String statusAktivPassiv) {
         this.comboBoxStatus.setSelectedItem(statusAktivPassiv);
     }
-
+    
     public void setAdresse(String textFieldAdresse) {
         this.textFieldAdresse.setText(textFieldAdresse);
     }
-
+    
     public void setAlder(int textFieldAlder) {
         this.textFieldAlder.setText(String.valueOf(textFieldAlder));
     }
-
+    
     public void setEmail(String textFieldEmail) {
         this.textFieldEmail.setText(textFieldEmail);
     }
-
+    
     public void setMemberPhoto(int ID) {
         this.labelMemberPhoto.setIcon(new javax.swing.ImageIcon(getClass()
                 .getResource("/files/" + String.valueOf(ID) + ".jpg")));
         this.labelDelfinIcon.updateUI();
     }
-
+    
     public void setID(int textFieldID) {
         this.textFieldID.setText(String.valueOf(textFieldID));
     }
-
+    
     public void setNavn(String textFieldNavn) {
         this.textFieldNavn.setText(textFieldNavn);
     }
-
+    
     public void setTelefon(int textFieldTelefon) {
         this.textFieldTelefon.setText(String.valueOf(textFieldTelefon));
     }
-
+    
     public void setMedlemsInfo(String textPaneMedlemsInfo) {
         displayPlainBlack(textPaneMedlemsInfo);
     }
-
+    
     public void setTrainer(boolean checkBoxTrainer) {
         this.checkBoxTrainer.setSelected(checkBoxTrainer);
     }
-
+    
     public void setTrainedBy(List<String> comboBoxTrainedBy) {
         this.comboBoxTrainedBy.removeAllItems();
         for (String string : comboBoxTrainedBy) {
             this.comboBoxTrainedBy.addItem(string);
         }
     }
-
+    
+    
+    
+    
+    // #######################      ###############################
+    
+    
+    
     public static int getEXIT_ON_CLOSE() {
         return EXIT_ON_CLOSE;
     }
-
+    
     @Override
     public AccessibleContext getAccessibleContext() {
         return accessibleContext;
@@ -983,7 +1178,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             // input check, Regex for name
             regexUserInfoBackGroundColorSet("^\\w+(\\s\\w+)+$", textFieldNavn,
                     "Navnet skal være i formatet: xxxx yyyy zzzzz\n");
-
+            
         }
 
     }//GEN-LAST:event_textFieldNavnActionPerformed
@@ -1056,18 +1251,64 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     private void buttonNewMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewMemberActionPerformed
         
-        
         Controller.addMember();
     }//GEN-LAST:event_buttonNewMemberActionPerformed
 
     private void textFieldEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldEmailFocusLost
-   
+        
     }//GEN-LAST:event_textFieldEmailFocusLost
 
     private void buttonNewResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultActionPerformed
-        // TODO add your handling code here:
+        
+        dialogNewResults.setAlwaysOnTop(true);
+        dialogNewResults.setVisible(true);
+        labelNewResultsMemberName.setText(textFieldNavn.getText());
     }//GEN-LAST:event_buttonNewResultActionPerformed
 
+    private void buttonNewResultsCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultsCloseActionPerformed
+        dialogNewResults.setVisible(false);
+    }//GEN-LAST:event_buttonNewResultsCloseActionPerformed
+
+    private void textFieldNewResultsTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsTimeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldNewResultsTimeActionPerformed
+
+    private void textFieldNewResultsTimeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsTimeFocusGained
+        textFieldNewResultsTime.setText("");
+        textFieldNewResultsTime.setBackground(Color.white);
+    }//GEN-LAST:event_textFieldNewResultsTimeFocusGained
+
+    private void textFieldNewResultsDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsDateActionPerformed
+
+    }//GEN-LAST:event_textFieldNewResultsDateActionPerformed
+
+    private void textFieldNewResultsDisciplineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsDisciplineActionPerformed
+
+    }//GEN-LAST:event_textFieldNewResultsDisciplineActionPerformed
+
+    private void textFieldNewResultsPlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsPlaceActionPerformed
+
+    }//GEN-LAST:event_textFieldNewResultsPlaceActionPerformed
+
+    private void textFieldNewResultsDisciplineFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsDisciplineFocusGained
+        textFieldNewResultsDiscipline.setText("");
+        textFieldNewResultsDiscipline.setBackground(Color.white);
+    }//GEN-LAST:event_textFieldNewResultsDisciplineFocusGained
+
+    private void textFieldNewResultsDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsDateFocusGained
+        textFieldNewResultsDate.setText("");
+        textFieldNewResultsDate.setBackground(Color.white);
+    }//GEN-LAST:event_textFieldNewResultsDateFocusGained
+
+    private void textFieldNewResultsPlaceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsPlaceFocusGained
+        textFieldNewResultsPlace.setText("");
+        textFieldNewResultsPlace.setBackground(Color.white);
+    }//GEN-LAST:event_textFieldNewResultsPlaceFocusGained
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Controller.addResult();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
     private boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf,
             String err) {
         // check user input and set background accordingly
@@ -1083,7 +1324,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             return true;
         }
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -1118,12 +1359,12 @@ public class DelfinGUI extends javax.swing.JFrame {
             @Override
             public void run() {
                 new DelfinGUI().setVisible(true);
-                new DelfinGUI().go();
+//                new DelfinGUI().go(); // for testing
             }
         });
     }
-
-    public void go() {
+    
+    public void go() {                  // for testing
         System.out.println("getMotion: " + getMotionKonkurrence());
         System.out.println("getStatus: " + getStatus());
         setMemberPhoto(2);
@@ -1137,6 +1378,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonClose;
     private javax.swing.JButton buttonNewMember;
     private javax.swing.JButton buttonNewResult;
+    private javax.swing.JButton buttonNewResultsClose;
     private javax.swing.JButton buttonSearchMember;
     private javax.swing.JCheckBox checkBoxDisciplinBryst;
     private javax.swing.JCheckBox checkBoxDisciplinButterfly;
@@ -1146,10 +1388,17 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxMotionistKonkurrence;
     private javax.swing.JComboBox<String> comboBoxStatus;
     private javax.swing.JComboBox<String> comboBoxTrainedBy;
-    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog dialogNewResults;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1159,12 +1408,14 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelDelfinIcon;
     private javax.swing.JLabel labelDelfinIcon1;
     private javax.swing.JLabel labelDelfinIcon2;
     private javax.swing.JLabel labelDiscipliner;
     private javax.swing.JLabel labelMemberPhoto;
+    private javax.swing.JLabel labelNewResultsMemberName;
     private javax.swing.JLabel labelResults;
     private javax.swing.JLabel labelResults1;
     private javax.swing.JLabel labelTrainedBy;
@@ -1190,6 +1441,10 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldEmail;
     private javax.swing.JTextField textFieldID;
     private javax.swing.JTextField textFieldNavn;
+    private javax.swing.JTextField textFieldNewResultsDate;
+    private javax.swing.JTextField textFieldNewResultsDiscipline;
+    private javax.swing.JTextField textFieldNewResultsPlace;
+    private javax.swing.JTextField textFieldNewResultsTime;
     private javax.swing.JTextField textFieldTelefon;
     private javax.swing.JTextPane textPaneMedlemsInfo;
     // End of variables declaration//GEN-END:variables
@@ -1197,21 +1452,21 @@ public class DelfinGUI extends javax.swing.JFrame {
     public void displayPlainBlack(String text) {
         displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.black);
     }
-
+    
     public void displayPlainRed(String text) {
         displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.red);
     }
-
+    
     public void displayBoldRed(String text) {
         displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.red);
     }
-
+    
     public void displayBoldBlack(String text) {
         displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.black);
     }
-
+    
     public void displayFormatedText(JTextPane tp, String txt, Font font, Color color) {
-
+        
         StyledDocument doc = (StyledDocument) tp.getDocument();
         try {
             doc.insertString(doc.getLength(), txt, displayFormat(font, color));
@@ -1219,19 +1474,19 @@ public class DelfinGUI extends javax.swing.JFrame {
             System.out.println(ex);
         }
     }
-
+    
     public SimpleAttributeSet displayFormat(Font font, Color color) {
         SimpleAttributeSet sAS = new SimpleAttributeSet();
-
+        
         StyleConstants.setFontFamily(sAS, font.getFamily());
         StyleConstants.setFontSize(sAS, font.getSize());
         StyleConstants.setBold(sAS, font.isBold());
         StyleConstants.setItalic(sAS, font.isItalic());
         StyleConstants.setForeground(sAS, color);
-
+        
         return sAS;
     }
-
+    
     public void clearFormatedText(JTextPane tp) {
         tp.setText("");
     }
