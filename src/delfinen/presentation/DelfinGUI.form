@@ -472,7 +472,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <EmptySpace pref="84" max="32767" attributes="0"/>
+                                  <EmptySpace pref="60" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="panelDisciplin" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelDiscipliner" min="-2" max="-2" attributes="0"/>
@@ -1128,7 +1128,7 @@
                                   <Component id="ChangeAccountingYear" min="-2" pref="170" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="AccountingYear" min="-2" pref="102" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
