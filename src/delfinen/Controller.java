@@ -143,14 +143,15 @@ public class Controller {
         regex.add("\"name\":\"(.+)\",");
         regex.add("\"email\":\"(.+)\",");
         regex.add("\"address\":\"(.+)\",");
-        regex.add("\"id\":([0-9]+),");
-        regex.add("\"age\":([0-9]+),");
+        regex.add("\"id\":(.+),");
+        regex.add("\"age\":(.+),");
         regex.add("\"phone\":(.+),");
-        regex.add("\"status\":\"((?:Active|Passive))\",");
-        regex.add("\"isCoach\":((?:true|false))");
+        regex.add("\"status\":\"(.+)\",");
+        regex.add("\"isCoach\":(.+)");
 
         Member.Status status = Member.Status.valueOf(gui.getStatus());
         String aktivitet = gui.getMotionKonkurrence();
+       
         if (aktivitet.equals("Konkurrencesvømmer")) {
             List<String> disciplines = gui.getDisciplin();
             List<Member> trainers = findMembers("\"isCoach\":true");
@@ -193,18 +194,21 @@ public class Controller {
         Search.add(isCoach);
 
         int i = 0;
-        for (Object o : Search) {
-
-            if (o == null) {
+        for (String s: Search) {
+            if (s.isEmpty()) {
                 regQuery.append(regex.get(i));
                 continue;
             }
-            //regQuery += regex.get(i).replace(regex.get(i).substring(regex.get(i).indexOf('('),regex.get(i).indexOf(')')), );
+            regQuery.append(regex.get(i));
             i++;
         }
         regQuery.append("\\}");
 
         List<Object> result = data.customSearch(regQuery.toString());
+        for(Object o: result){
+            gui.displayPlainBlack(((Member) o).toString()+'\n');
+        }
+        
     }
 
     public static void change() {
