@@ -1714,11 +1714,8 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxStatus;
     private javax.swing.JComboBox<String> comboBoxTrainedBy;
     private javax.swing.JDialog dialogNewResults;
-<<<<<<< HEAD
-=======
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
->>>>>>> d192fcdc4fd398c459ed147c1c3a53e3b678659a
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
