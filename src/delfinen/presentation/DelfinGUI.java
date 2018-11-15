@@ -1169,15 +1169,15 @@ public class DelfinGUI extends javax.swing.JFrame {
     // #######################    Getters  ###############################
     // ###################################################################
     public String getNewResultEvent() {
-        return textFieldNewResultsEvent.toString();
+        return textFieldNewResultsEvent.getText();
     }
 
     public LocalDateTime getNewResultDate() {
-        return LocalDateTime.parse(textFieldNewResultsDate.toString(), DateTimeFormatter.ISO_DATE);
+        return LocalDateTime.parse(textFieldNewResultsDate.getText(), DateTimeFormatter.ISO_DATE);
     }
 
     public Discipline getNewResultDiscipline() {
-        switch (comboBoxNewResultsDisciplin.toString()) {
+        switch (comboBoxNewResultsDisciplin.getSelectedItem().toString()) {
 
             case "Rygcrawl":
                 return Discipline.Rygcrawl;
@@ -1194,11 +1194,11 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public int getNewResultPlace() {
-        return Integer.parseInt(textFieldNewResultsPlace.toString());
+        return Integer.parseInt(textFieldNewResultsPlace.getText());
     }
 
     public float getNewResultTime() {
-        return Float.parseFloat(textFieldNewResultsTime.toString());
+        return Float.parseFloat(textFieldNewResultsTime.getText());
     }
 
     public boolean getDisciplinBryst() {
@@ -1619,12 +1619,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldNewResultsPlaceFocusGained
 
     private void buttonNewResultsSendDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultsSendDataActionPerformed
-//        Controller.addResult();
-        System.out.println("textFieldNewResultsTime" + textFieldNewResultsTime.toString());
-        System.out.println("textFieldNewResultsDate" + textFieldNewResultsDate.toString());
-        System.out.println("textFieldNewResultsEvent" + textFieldNewResultsEvent.toString());
-        System.out.println("textFieldNewResultsPlace" + textFieldNewResultsPlace.toString());
-        System.out.println("comboBoxNewResultsDisciplin" + comboBoxNewResultsDisciplin.toString());
+        Controller.addResult();
     }//GEN-LAST:event_buttonNewResultsSendDataActionPerformed
 
     private boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf,
