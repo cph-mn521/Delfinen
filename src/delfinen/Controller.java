@@ -9,6 +9,7 @@ import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Discipline;
 
 import com.google.gson.Gson;
+import delfinen.logic.Accountant;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -61,6 +62,7 @@ public class Controller {
      * Passes a member to the PersistanceHandler, for storing and databasing.
      */
     public static void addMember() {
+        // Getting info from gui
         Member newMember = null;
         String name = gui.getNavn();
         String email = gui.getEmail();
@@ -70,8 +72,9 @@ public class Controller {
         int phoneNumber = gui.getTelefon();
         Member.Status status = Member.Status.valueOf(gui.getStatus().equals("Aktiv") ? "Active" : "Passive");
         boolean isCoach = gui.getTrainer();
-
-        if (gui.getMotionKonkurrence().equals("Motionist") || status == status.Passive) {
+        
+        //Checking for Member Type, then crating it.
+        if (gui.getMotionKonkurrence().equals("Motionist") || gui.getStatus().equals("Passive")) {
             newMember = new Member(name, email, adress, id, age, phoneNumber, status, isCoach);
         } else {
             ArrayList<Discipline> disciplines = new ArrayList<>();
@@ -80,7 +83,7 @@ public class Controller {
             }
             String sCoach = gui.getTrainedBy();
             Member coach = null;
-
+            //Coach Check.
             for (Member m : findMembers("\"isCoach\":true")) {
                 if (m.getName().equals(sCoach)) {
                     coach = m;
@@ -88,6 +91,7 @@ public class Controller {
                 }
             }
             try {
+                //Creating a competetive member.
                 newMember = new CompetitiveMember(name, email, adress, id, age, phoneNumber, status, disciplines, isCoach, coach);
             } catch (CoachNotFoundException e) {
                 if (DEBUG) {
@@ -97,7 +101,7 @@ public class Controller {
                 }
             }
         }
-        try {
+        try { // Ads member to database.
             data.addMember(newMember);
             gui.displayPlainBlack("Medlem oprettet\n");
         } catch (DataException e) {
@@ -112,7 +116,7 @@ public class Controller {
      * Queries the database for a list of members that fulfill a certain
      * criteria.
      *
-     * @param query
+     * @param query       criteria to fulfill.
      * @return
      */
     public static List<Member> findMembers(String query) {
@@ -192,4 +196,13 @@ public class Controller {
 
     }
 
+    public static void bookKeeping(int Year){
+        try {
+            Accountant Acc = new Accountant(data.searhcSubscriptions(Integer.toString(Year)),data.getMembers());
+            // Add gui plug inn here.
+        } catch (DataException e) {
+        }
+        
+    }
+    
 }
