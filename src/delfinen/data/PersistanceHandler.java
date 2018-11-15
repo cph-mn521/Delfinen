@@ -189,7 +189,6 @@ public class PersistanceHandler {
         } else {
             dar.editEntry(gson.toJson(old), "");
         }
-
     }
     
     ///////////////////////      SUBSCRIPTION HANDLING       ////////////////////////////////////////

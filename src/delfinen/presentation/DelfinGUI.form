@@ -2,6 +2,36 @@
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
+    <Container class="javax.swing.JDialog" name="jDialog1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="303" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="248" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="jLabel11">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel11"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuFile">
@@ -123,27 +153,22 @@
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
+                                  <Component id="panelMedlemsData" alignment="0" min="-2" pref="625" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="labelDelfinIcon" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="buttonSearchMember" max="32767" attributes="0"/>
-                                          <Component id="buttonChangeMember" max="32767" attributes="0"/>
-                                          <Component id="buttonNewMember" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
-                                      </Group>
+                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="panelMedlemsData" min="-2" pref="625" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" min="-2" pref="347" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="buttonNewResult" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="labelMemberPhoto" min="-2" pref="67" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="jScrollPane1" min="-2" pref="347" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -151,36 +176,30 @@
                               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="labelDelfinIcon" min="-2" pref="180" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="buttonNewMember" min="-2" pref="43" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="buttonChangeMember" min="-2" pref="43" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="buttonSearchMember" min="-2" pref="41" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="labelDelfinIcon" min="-2" pref="180" max="-2" attributes="0"/>
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="panelMedlemsData" pref="302" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="panelMedlemsData" pref="319" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="26" max="32767" attributes="0"/>
                       <Component id="jLabel9" min="-2" pref="65" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="labelMemberPhoto" min="-2" pref="78" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="labelMemberPhoto" min="-2" pref="78" max="-2" attributes="0"/>
+                          <Component id="buttonNewResult" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="344" max="-2" attributes="0"/>
                   </Group>
@@ -188,14 +207,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="buttonChangeMember">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="&#xc6;ndre medlem"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonChangeMemberActionPerformed"/>
-              </Events>
-            </Component>
             <Container class="javax.swing.JPanel" name="panelMedlemsData">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -576,14 +587,6 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="buttonSearchMember">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="S&#xf8;g medlem"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSearchMemberActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -607,14 +610,78 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="buttonNewMember">
+            <Component class="javax.swing.JButton" name="buttonNewResult">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nyt medlem"/>
+                <Property name="text" type="java.lang.String" value="Indtast resultat"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonNewMemberActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonNewResultActionPerformed"/>
               </Events>
             </Component>
+            <Container class="javax.swing.JPanel" name="jPanel1">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="buttonSearchMember" max="32767" attributes="0"/>
+                              <Component id="buttonChangeMember" max="32767" attributes="0"/>
+                              <Component id="buttonNewMember" alignment="0" min="-2" pref="173" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="buttonNewMember" min="-2" pref="43" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="buttonChangeMember" min="-2" pref="43" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="buttonSearchMember" min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JButton" name="buttonNewMember">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nyt medlem"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonNewMemberActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="buttonSearchMember">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="S&#xf8;g medlem"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonSearchMemberActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="buttonChangeMember">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="&#xc6;ndre medlem"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonChangeMemberActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelAbout">
@@ -637,7 +704,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="203" max="32767" attributes="0"/>
+                      <EmptySpace pref="209" max="32767" attributes="0"/>
                       <Component id="panelLogo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
@@ -724,7 +791,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="labelDelfinIcon1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="490" max="32767" attributes="0"/>
+                      <EmptySpace pref="514" max="32767" attributes="0"/>
                       <Component id="labelResults1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -738,7 +805,7 @@
                           <Component id="labelDelfinIcon1" min="-2" pref="180" max="-2" attributes="0"/>
                           <Component id="labelResults1" min="-2" pref="65" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="345" max="32767" attributes="0"/>
+                      <EmptySpace pref="351" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -779,7 +846,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="labelDelfinIcon2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="437" max="32767" attributes="0"/>
+                      <EmptySpace pref="461" max="32767" attributes="0"/>
                       <Component id="labelResults" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -798,7 +865,7 @@
                               <Component id="labelResults" min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="349" max="32767" attributes="0"/>
+                      <EmptySpace pref="355" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

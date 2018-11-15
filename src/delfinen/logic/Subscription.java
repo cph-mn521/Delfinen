@@ -1,32 +1,42 @@
 package delfinen.logic;
 
-import delfinen.logic.Member.Status;
-
 /**
  *
  * @author martin b.
  */
 public class Subscription {
     private int year;
-    private Price price;
-    private int age;
+    private Member holder;
+    private final float price;
 
-    public Subscription(int year, Price price, int age, Status status) {
+    public Subscription(int year, Member holder) {
         this.year = year;
-        this.price = price;
-        this.age = age;
+        this.holder = holder;
+        this.price = calcPrice();
     }
-
+    
+    
     public int getYear() {
-        return year;
+        return this.year;
     }
 
-    public Price getPrice() {
-        return price;
+    public float getPrice() {
+        return this.price;
     }
 
-    public int getAge() {
-        return age;
+    public Member getHolder() {
+        return holder;
     }
-
+    
+    private float calcPrice(){
+        int age = this.holder.getAge();
+        if (age < 18) {
+            return 1000;
+        }
+        if (age < 60) {
+            return 1600;
+        }
+        else return (float) (1600 * 0.75);
+        }
+        
 }
