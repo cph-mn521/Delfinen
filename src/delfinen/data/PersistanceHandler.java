@@ -253,4 +253,8 @@ public class PersistanceHandler {
         das.editEntry(gson.toJson(old), gson.toJson(N));
     }
 
+    public List<Object> customSearch(String query) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
