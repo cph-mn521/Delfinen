@@ -1,6 +1,6 @@
 package delfinen.logic;
 
-/**
+/** Possible Feature: Change prices to come from a potential data base. I.E Changeable.
  *
  * @author martin b. & Martin Wulff
  */

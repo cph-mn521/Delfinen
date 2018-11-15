@@ -3,7 +3,7 @@ package delfinen.logic;
 import delfinen.logic.Member.Status;
 import delfinen.logic.Price.Prices;
 
-/**
+/** Currently. Might be unused.
  *
  * @author martin b.
  */
