@@ -238,7 +238,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             }
         });
 
-        textFieldNewResultsDate.setText("f.eks. 23/dec-2108");
+        textFieldNewResultsDate.setText("f.eks. dd-MM-yyyy HH:mm, 1-3-2017 12:30");
         textFieldNewResultsDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsDateFocusGained(evt);
@@ -250,19 +250,19 @@ public class DelfinGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setText("date");
+        jLabel13.setText("Dato");
 
-        jLabel14.setText("event");
+        jLabel14.setText("Stævne");
 
-        jLabel16.setText("place");
+        jLabel16.setText("Placering");
 
         labelNewResultsMemberName.setText("navn");
 
         comboBoxNewResultsDisciplin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Butterfly", "Crawl", "Rygcrawl", "Brystsvømning" }));
 
-        jLabel15.setText("discipline");
+        jLabel15.setText("Disciplin");
 
-        textFieldNewResultsTime.setText("f. eks. 1,23");
+        textFieldNewResultsTime.setText("f. eks. 1.23");
         textFieldNewResultsTime.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsTimeFocusGained(evt);
@@ -274,7 +274,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setText("time");
+        jLabel12.setText("Tid");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -551,7 +551,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                                     .addComponent(jLabel1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                         .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelDisciplin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelDiscipliner)))
@@ -862,7 +862,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                         .addComponent(ChangeAccountingYear, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(AccountingYear, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 5, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         AccountingButtonsLayout.setVerticalGroup(
@@ -1173,7 +1173,9 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public LocalDateTime getNewResultDate() {
-        return LocalDateTime.parse(textFieldNewResultsDate.getText(), DateTimeFormatter.ISO_DATE);
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        LocalDateTime localdatetime = LocalDateTime.parse(textFieldNewResultsTime.getText(), format);
+        return localdatetime;
     }
 
     public Discipline getNewResultDiscipline() {
@@ -1392,14 +1394,14 @@ public class DelfinGUI extends javax.swing.JFrame {
     // #######################      ###############################
     //#######################    DISPLAY ACCOUNTING ############################
     // #########################################################################
-    public void dispAccounting(Accountant Acc){
+    public void dispAccounting(Accountant Acc) {
         BankPane.setText(Float.toString(Acc.getBank()));
         ExpectedBankPane.setText(Float.toString(Acc.getExpectedBank()));
         UnpaidSubscriptionsPane.setText(Integer.toString(Acc.getMissingPayments()));
         // Creating the list:
         List<Member> Debitors = Acc.getDebitors();
         String[] list = new String[Acc.getDebitors().size()];
-        for (int i = 0; i<Acc.getDebitors().size();i++) {
+        for (int i = 0; i < Acc.getDebitors().size(); i++) {
             StringBuilder str = new StringBuilder();
             str.append(Debitors.get(i).getName());
             str.append(", ");
@@ -1408,9 +1410,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
         DebitorList.setListData(list);
     }
-    
-    
-    
+
     public static int getEXIT_ON_CLOSE() {
         return EXIT_ON_CLOSE;
     }
@@ -1709,7 +1709,6 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxStatus;
     private javax.swing.JComboBox<String> comboBoxTrainedBy;
     private javax.swing.JDialog dialogNewResults;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
