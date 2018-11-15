@@ -6,7 +6,9 @@
 package delfinen.presentation;
 
 import delfinen.Controller;
+import delfinen.logic.Accountant;
 import delfinen.logic.Discipline;
+import delfinen.logic.Member;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -147,6 +149,41 @@ public class DelfinGUI extends javax.swing.JFrame {
         panelAccount = new javax.swing.JPanel();
         labelDelfinIcon1 = new javax.swing.JLabel();
         labelResults1 = new javax.swing.JLabel();
+        AccountingButtons = new javax.swing.JPanel();
+        ChangeAccountingYear = new javax.swing.JButton();
+        AccountingYear = new javax.swing.JTextField();
+        thisYear = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        BankPane = new javax.swing.JTextPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        ExpectedBankPane = new javax.swing.JTextPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        UnpaidSubscriptionsPane = new javax.swing.JTextPane();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        Restance = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        DebitorList = new javax.swing.JList<>();
+        jButton2 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
+        jLabel21 = new javax.swing.JLabel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        SelectedMemberPane = new javax.swing.JTextPane();
+        labelMemberPhoto6 = new javax.swing.JLabel();
+        labelMemberPhoto7 = new javax.swing.JLabel();
+        labelMemberPhoto8 = new javax.swing.JLabel();
+        labelMemberPhoto9 = new javax.swing.JLabel();
+        labelMemberPhoto10 = new javax.swing.JLabel();
+        labelMemberPhoto11 = new javax.swing.JLabel();
+        labelMemberPhoto12 = new javax.swing.JLabel();
+        labelMemberPhoto13 = new javax.swing.JLabel();
+        labelMemberPhoto14 = new javax.swing.JLabel();
+        labelMemberPhoto15 = new javax.swing.JLabel();
+        labelMemberPhoto16 = new javax.swing.JLabel();
+        labelMemberPhoto17 = new javax.swing.JLabel();
         panelResults = new javax.swing.JPanel();
         labelDelfinIcon2 = new javax.swing.JLabel();
         labelResults = new javax.swing.JLabel();
@@ -512,7 +549,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                                     .addComponent(jLabel1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                         .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelDisciplin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelDiscipliner)))
@@ -677,7 +714,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                     .addComponent(labelDelfinIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelMedlemsData, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+                .addComponent(panelMedlemsData, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(panelMembersLayout.createSequentialGroup()
                 .addContainerGap(26, Short.MAX_VALUE)
@@ -757,25 +794,255 @@ public class DelfinGUI extends javax.swing.JFrame {
         labelResults1.setFont(new java.awt.Font("Noto Sans", 0, 36)); // NOI18N
         labelResults1.setText("Kassen");
 
+        ChangeAccountingYear.setText("Se regnskab for år:");
+
+        AccountingYear.setText("jTextField1");
+
+        jScrollPane2.setViewportView(BankPane);
+
+        jScrollPane3.setViewportView(ExpectedBankPane);
+
+        jScrollPane4.setViewportView(UnpaidSubscriptionsPane);
+
+        jLabel17.setText("Nuværende Indkomst:");
+
+        jLabel18.setText("Forventede Indkomst:");
+
+        jLabel19.setText("Ubetalte Kontingenter:");
+
+        javax.swing.GroupLayout thisYearLayout = new javax.swing.GroupLayout(thisYear);
+        thisYear.setLayout(thisYearLayout);
+        thisYearLayout.setHorizontalGroup(
+            thisYearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, thisYearLayout.createSequentialGroup()
+                .addGroup(thisYearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(thisYearLayout.createSequentialGroup()
+                        .addGroup(thisYearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18)
+                            .addComponent(jLabel19))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(thisYearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane4)))
+        );
+        thisYearLayout.setVerticalGroup(
+            thisYearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(thisYearLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(thisYearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(thisYearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(thisYearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout AccountingButtonsLayout = new javax.swing.GroupLayout(AccountingButtons);
+        AccountingButtons.setLayout(AccountingButtonsLayout);
+        AccountingButtonsLayout.setHorizontalGroup(
+            AccountingButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AccountingButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AccountingButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(AccountingButtonsLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(thisYear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(AccountingButtonsLayout.createSequentialGroup()
+                        .addComponent(ChangeAccountingYear, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(AccountingYear, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        AccountingButtonsLayout.setVerticalGroup(
+            AccountingButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AccountingButtonsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AccountingButtonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ChangeAccountingYear)
+                    .addComponent(AccountingYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(thisYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        DebitorList.setBorder(javax.swing.BorderFactory.createTitledBorder("Medlemmer i Restance"));
+        DebitorList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane5.setViewportView(DebitorList);
+
+        jButton2.setText("Betal Kontingent");
+
+        jLabel20.setText("Medlem:");
+
+        jScrollPane6.setViewportView(jTextPane1);
+
+        jLabel21.setText("Manglende Betaling:");
+
+        jScrollPane7.setViewportView(SelectedMemberPane);
+
+        javax.swing.GroupLayout RestanceLayout = new javax.swing.GroupLayout(Restance);
+        Restance.setLayout(RestanceLayout);
+        RestanceLayout.setHorizontalGroup(
+            RestanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RestanceLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(RestanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5)
+                    .addGroup(RestanceLayout.createSequentialGroup()
+                        .addGroup(RestanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21)
+                            .addComponent(jLabel20))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(RestanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(jScrollPane7))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(RestanceLayout.createSequentialGroup()
+                        .addGap(0, 243, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        RestanceLayout.setVerticalGroup(
+            RestanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RestanceLayout.createSequentialGroup()
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(RestanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(RestanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(RestanceLayout.createSequentialGroup()
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addGroup(RestanceLayout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+
+        labelMemberPhoto6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
+        labelMemberPhoto6.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
+
+        labelMemberPhoto7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
+        labelMemberPhoto7.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
+
+        labelMemberPhoto8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
+        labelMemberPhoto8.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
+
+        labelMemberPhoto9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
+        labelMemberPhoto9.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
+
+        labelMemberPhoto10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
+        labelMemberPhoto10.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
+
+        labelMemberPhoto11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
+        labelMemberPhoto11.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
+
+        labelMemberPhoto12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
+        labelMemberPhoto12.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
+
+        labelMemberPhoto13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
+        labelMemberPhoto13.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
+
+        labelMemberPhoto14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
+        labelMemberPhoto14.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
+
+        labelMemberPhoto15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
+        labelMemberPhoto15.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
+
+        labelMemberPhoto16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
+        labelMemberPhoto16.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
+
+        labelMemberPhoto17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/1.jpg"))); // NOI18N
+        labelMemberPhoto17.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.lightGray, java.awt.Color.gray));
+
         javax.swing.GroupLayout panelAccountLayout = new javax.swing.GroupLayout(panelAccount);
         panelAccount.setLayout(panelAccountLayout);
         panelAccountLayout.setHorizontalGroup(
             panelAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelAccountLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelDelfinIcon1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 514, Short.MAX_VALUE)
-                .addComponent(labelResults1)
-                .addContainerGap())
+                .addGroup(panelAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelDelfinIcon1)
+                    .addComponent(AccountingButtons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Restance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelResults1)
+                    .addGroup(panelAccountLayout.createSequentialGroup()
+                        .addComponent(labelMemberPhoto6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelMemberPhoto7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelMemberPhoto8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelMemberPhoto9))
+                    .addGroup(panelAccountLayout.createSequentialGroup()
+                        .addComponent(labelMemberPhoto10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelMemberPhoto11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelMemberPhoto13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelMemberPhoto12))
+                    .addGroup(panelAccountLayout.createSequentialGroup()
+                        .addComponent(labelMemberPhoto14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelMemberPhoto15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelMemberPhoto17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelMemberPhoto16)))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         panelAccountLayout.setVerticalGroup(
             panelAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAccountLayout.createSequentialGroup()
+            .addGroup(panelAccountLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelDelfinIcon1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelResults1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(351, Short.MAX_VALUE))
+                    .addGroup(panelAccountLayout.createSequentialGroup()
+                        .addComponent(Restance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(panelAccountLayout.createSequentialGroup()
+                        .addComponent(labelDelfinIcon1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AccountingButtons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(34, 34, 34))
+                    .addGroup(panelAccountLayout.createSequentialGroup()
+                        .addComponent(labelResults1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelMemberPhoto10)
+                            .addComponent(labelMemberPhoto11)
+                            .addComponent(labelMemberPhoto13)
+                            .addComponent(labelMemberPhoto12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelMemberPhoto14)
+                            .addComponent(labelMemberPhoto15)
+                            .addComponent(labelMemberPhoto17)
+                            .addComponent(labelMemberPhoto16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelMemberPhoto6)
+                            .addComponent(labelMemberPhoto7)
+                            .addComponent(labelMemberPhoto8)
+                            .addComponent(labelMemberPhoto9))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         panelMain.add(panelAccount, "panelAccount");
@@ -1027,7 +1294,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
     }
 
-    // #######################    SETTERS  ###############################
+    // #######################    SETTERS MEMBER #########################
     // ###################################################################
     
     
@@ -1123,6 +1390,27 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     // #######################      ###############################
+    //#######################    DISPLAY ACCOUNTING ############################
+    // #########################################################################
+    public void dispAccounting(Accountant Acc){
+        BankPane.setText(Float.toString(Acc.getBank()));
+        ExpectedBankPane.setText(Float.toString(Acc.getExpectedBank()));
+        UnpaidSubscriptionsPane.setText(Integer.toString(Acc.getMissingPayments()));
+        // Creating the list:
+        List<Member> Debitors = Acc.getDebitors();
+        String[] list = new String[Acc.getDebitors().size()];
+        for (int i = 0; i<Acc.getDebitors().size();i++) {
+            StringBuilder str = new StringBuilder();
+            str.append(Debitors.get(i).getName());
+            str.append(", ");
+            str.append(Debitors.get(i).getAddress());
+            list[i] = str.toString();
+        }
+        DebitorList.setListData(list);
+    }
+    
+    
+    
     public static int getEXIT_ON_CLOSE() {
         return EXIT_ON_CLOSE;
     }
@@ -1399,6 +1687,15 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel AccountingButtons;
+    private javax.swing.JTextField AccountingYear;
+    private javax.swing.JTextPane BankPane;
+    private javax.swing.JButton ChangeAccountingYear;
+    private javax.swing.JList<String> DebitorList;
+    private javax.swing.JTextPane ExpectedBankPane;
+    private javax.swing.JPanel Restance;
+    private javax.swing.JTextPane SelectedMemberPane;
+    private javax.swing.JTextPane UnpaidSubscriptionsPane;
     private javax.swing.JButton buttonChangeMember;
     private javax.swing.JButton buttonClose;
     private javax.swing.JButton buttonNewMember;
@@ -1416,6 +1713,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxTrainedBy;
     private javax.swing.JDialog dialogNewResults;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1424,7 +1722,12 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1435,11 +1738,30 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel labelDelfinIcon;
     private javax.swing.JLabel labelDelfinIcon1;
     private javax.swing.JLabel labelDelfinIcon2;
     private javax.swing.JLabel labelDiscipliner;
     private javax.swing.JLabel labelMemberPhoto;
+    private javax.swing.JLabel labelMemberPhoto10;
+    private javax.swing.JLabel labelMemberPhoto11;
+    private javax.swing.JLabel labelMemberPhoto12;
+    private javax.swing.JLabel labelMemberPhoto13;
+    private javax.swing.JLabel labelMemberPhoto14;
+    private javax.swing.JLabel labelMemberPhoto15;
+    private javax.swing.JLabel labelMemberPhoto16;
+    private javax.swing.JLabel labelMemberPhoto17;
+    private javax.swing.JLabel labelMemberPhoto6;
+    private javax.swing.JLabel labelMemberPhoto7;
+    private javax.swing.JLabel labelMemberPhoto8;
+    private javax.swing.JLabel labelMemberPhoto9;
     private javax.swing.JLabel labelNewResultsMemberName;
     private javax.swing.JLabel labelResults;
     private javax.swing.JLabel labelResults1;
@@ -1472,6 +1794,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldNewResultsTime;
     private javax.swing.JTextField textFieldTelefon;
     private javax.swing.JTextPane textPaneMedlemsInfo;
+    private javax.swing.JPanel thisYear;
     // End of variables declaration//GEN-END:variables
 
     public void displayPlainBlack(String text) {
