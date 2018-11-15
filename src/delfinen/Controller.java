@@ -165,7 +165,7 @@ public class Controller {
         Search.add(status);
         Search.add(isCoach);
 
-        List<Object> result = data.customSearch(Search, disciplines, Coach);
+        List<Object> result = data.searchMember(Search, disciplines, Coach);
 
         for (Object o : result) {
             gui.displayPlainBlack(((Member) o).toString() + '\n');

@@ -105,8 +105,8 @@ public class DataAccessorFile implements DataAccessor {
     *Takes 2 parameters, bot of string type.
     *
     *@param  old     The entry to change.
-    *@param  N       The changed entry.
-    *@throws DataException.
+    *@param  N       The changed entry.    
+    *@throws DataException
     **/
     @Override
     public void editEntry(String old, String N) throws DataException {

@@ -93,6 +93,17 @@ public class PersistanceHandler {
         }
 
     }
+    /**
+     * 
+     * @param Query
+     * @param Disciplines
+     * @param Coach
+     * @return 
+     */
+    public List<Object> searchMember(ArrayList<String> Query, List<String> Disciplines, Member Coach) {
+        return dse.Search(Query, Disciplines, Coach);
+    }
+
 
     /**
      * Method for adding a member to the Member database.
@@ -255,15 +266,5 @@ public class PersistanceHandler {
         das.editEntry(gson.toJson(old), gson.toJson(N));
     }
 
-    /**
-     * 
-     * @param query
-     * @param disciplines
-     * @param coach
-     * @return 
-     */
-    public List<Object> customSearch(ArrayList<String> query, List<String> disciplines, Member coach) {
-        return dse.Search(query, disciplines, coach);
-    }
-
+    
 }
