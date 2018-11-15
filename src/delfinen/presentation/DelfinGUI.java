@@ -38,7 +38,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     Font FONT_NOTOSANS_BOLD_ITALIC_12 = new Font("notosans", Font.BOLD + Font.ITALIC, 12);
     ArrayList<JCheckBox> discipliner = new ArrayList<>();
     ArrayList<JTextField> textFields = new ArrayList<>();
-    
+
     private static boolean DEBUG = true;
 
     /**
@@ -323,7 +323,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addGap(63, 63, 63)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         dialogNewResultsLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {buttonNewResultsClose, jButton1});
@@ -339,7 +339,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                 .addGroup(dialogNewResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonNewResultsClose)
                     .addComponent(jButton1))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -931,8 +931,6 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public float getNewResultTime() {
-        System.out.println(textFieldNewResultsTime.toString());
-//        System.out.println(Float.parseFloat(textFieldNewResultsTime.toString()));
         return Float.parseFloat(textFieldNewResultsTime.toString());
     }
 
@@ -1333,7 +1331,8 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldNewResultsPlaceFocusGained
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Controller.addResult();
+//        Controller.addResult();
+        System.out.println(textFieldNewResultsTime.toString());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf,
@@ -1386,13 +1385,15 @@ public class DelfinGUI extends javax.swing.JFrame {
             @Override
             public void run() {
                 new DelfinGUI().setVisible(true);
-                new DelfinGUI().go(); // for testing
+                if (DEBUG) {
+                    new DelfinGUI().go();
+                }
             }
         });
     }
 
     public void go() {                  // for testing
-        System.out.println(Float.parseFloat(textFieldNewResultsTime.toString()));
+        System.out.println(textFieldNewResultsTime.toString());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
