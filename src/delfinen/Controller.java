@@ -10,15 +10,20 @@ import delfinen.logic.Discipline;
 
 import com.google.gson.Gson;
 import delfinen.logic.Accountant;
+import delfinen.logic.Record;
+import java.time.LocalDateTime;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 /**
  *
  * @author Niels Bang
+ * @author addResults martin b.
  */
 public class Controller {
 
@@ -72,7 +77,7 @@ public class Controller {
         int phoneNumber = gui.getTelefon();
         Member.Status status = Member.Status.valueOf(gui.getStatus().equals("Aktiv") ? "Active" : "Passive");
         boolean isCoach = gui.getTrainer();
-        
+
         //Checking for Member Type, then crating it.
         if (gui.getMotionKonkurrence().equals("Motionist") || gui.getStatus().equals("Passive")) {
             newMember = new Member(name, email, adress, id, age, phoneNumber, status, isCoach);
@@ -116,7 +121,7 @@ public class Controller {
      * Queries the database for a list of members that fulfill a certain
      * criteria.
      *
-     * @param query       criteria to fulfill.
+     * @param query criteria to fulfill.
      * @return
      */
     public static List<Member> findMembers(String query) {
@@ -140,6 +145,7 @@ public class Controller {
      */
     public static void search() {
         ArrayList<String> Search = new ArrayList<>();
+        List<Member> result = new ArrayList<>();
         Member Coach = null;
         List<String> disciplines = null;
         String status = gui.getStatus().equals("Aktiv") ? "Active" : "Passive";
@@ -169,10 +175,21 @@ public class Controller {
         Search.add(status);
         Search.add(isCoach);
 
-        List<Object> result = data.searchMember(Search, disciplines, Coach);
-
-        for (Object o : result) {
-            gui.displayPlainBlack(((Member) o).toString() + '\n');
+        try {
+            result = data.searchMember(Search, disciplines, Coach);
+        } catch (DataException e) {
+            if (DEBUG) {
+                e.printStackTrace();
+            }
+            gui.displayPlainRed("Fejl - Ingen medlemmer fundet.");
+        }
+        if (result == null || result.isEmpty()) {
+            gui.displayPlainRed("Fejl - Ingen medlemmer fundet.");
+        } else {
+            for (Member m: result) {
+                gui.displayPlainBlack(m.toString() + '\n');
+                
+            }
         }
     }
 
@@ -182,15 +199,48 @@ public class Controller {
 
     public static void addResult() {
 
+        float time = gui.getNewResultTime();
+        LocalDateTime date = gui.getNewResultDate();
+        Member holder = null;
+        String event = gui.getNewResultEvent();
+        Discipline discipline = gui.getNewResultDiscipline();
+        int place = gui.getNewResultPlace();
+
+        try {
+            for (Member member : data.searchMember(gui.getNavn())) {
+                if (gui.getID() == member.getId()) {
+                    holder = member;
+                }
+            }
+            if (holder == null) {
+                gui.displayBoldRed(gui.getNavn() + " er ikke fundet.\n");
+            }
+        } catch (DataException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+        }
+
+        try {
+            data.addRecord(new Record(time, date, holder, event, discipline, place));
+            gui.displayPlainBlack("Resultat oprettet\n");
+        } catch (DataException e) {
+            gui.displayBoldRed("Fejl - Ny resultat ikke oprettet.\n");
+            if (DEBUG) {
+                e.printStackTrace();
+            }
+        }
+        
+        
     }
 
-    public static void bookKeeping(int Year){
+    public static void bookKeeping(int Year) {
         try {
-            Accountant Acc = new Accountant(data.searhcSubscriptions(Integer.toString(Year)),data.getMembers());
+            Accountant Acc = new Accountant(data.searhcSubscriptions(Integer.toString(Year)), data.getMembers());
             // Add gui plug inn here.
         } catch (DataException e) {
         }
-        
+
     }
-    
+
 }
