@@ -26,6 +26,7 @@ public class DataSearchEngine {
      * @param Search
      * @param disciplines
      * @param Coach
+     * @param data
      * @return
      * @throws DataException
      */
@@ -33,10 +34,9 @@ public class DataSearchEngine {
         StringBuilder regQuery = new StringBuilder();
         regQuery.append("^\\{");
         List<String> matches = new ArrayList<>();
-
+        int disSize = 0;
+        
         ArrayList<String> regex = new ArrayList<>();
-        regex.add("\"disciplines\":\\[.+\\],");
-        regex.add("\"coach\":\\{.+\\},");
         regex.add("\"name\":\".+\",");
         regex.add("\"email\":\".+\",");
         regex.add("\"address\":\".+\",");
@@ -45,27 +45,27 @@ public class DataSearchEngine {
         regex.add("\"phone\":.+,");
         regex.add("\"status\":\".+\",");
         regex.add("\"isCoach\":.+");
-
         if (disciplines != null) {
-            int disSize = disciplines.size();
-            if (disSize > 0) {
-                regQuery.append("\"disciplines\":\\[");
-                for (int i = 0; i <= disSize; i++) {
+            disSize = disciplines.size();
+        }
+        
+        if (disSize > 0) {
+            regQuery.append("(\"disciplines\":\\[");
+            for (int i = 0; i <= disSize; i++) {
+                regQuery.append("\"");
+                regQuery.append(disciplines.get(i));
+                if (i == disSize - 1) {
                     regQuery.append("\"");
-                    regQuery.append(disciplines.get(i));
-                    if (i == disSize - 1) {
-                        regQuery.append("\"");
-                    } else {
-                        regQuery.append("\",");
-                    }
+                } else {
+                    regQuery.append("\",");
                 }
-
-                regQuery.append("\\],\"coach\":");
-                regQuery.append(gson.toJson(Coach));
-                regQuery.append(",");
-            } else {
-                regQuery.append("(\"disciplines\":\\[.+\\],\"coach\":\\{.+\\},)");
             }
+
+            regQuery.append("\\],\"coach\":");
+            regQuery.append(gson.toJson(Coach));
+            regQuery.append(")?,");
+        } else {
+            regQuery.append("(\"disciplines\":\\[.+\\],\"coach\":\\{.+\\},)?");
         }
 
         int i = 0;
@@ -81,6 +81,7 @@ public class DataSearchEngine {
         }
         regQuery.append("\\}$");
 
+        System.out.println(regQuery);
         Pattern p = Pattern.compile(regQuery.toString());
 
         for (String s : data) {

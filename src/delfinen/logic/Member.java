@@ -153,6 +153,11 @@ public class Member {
      * Getter for address field.
      * @return  this.address
      */
+    @Override
+    public String toString() {
+        return "Member{" + "name=" + name + ", email=" + email + ", address=" + address + ", id=" + id + ", age=" + age + ", phone=" + phone + ", status=" + status + ", isCoach=" + isCoach + "\n";
+    }
+
     public String getAddress() {
         return address;
     }

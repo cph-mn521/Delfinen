@@ -178,12 +178,12 @@ public class Controller {
             }
             gui.displayPlainRed("Fejl - Ingen medlemmer fundet.");
         }
-        if (result == null) {
+        if (result == null || result.isEmpty()) {
             gui.displayPlainRed("Fejl - Ingen medlemmer fundet.");
         } else {
             for (Member m: result) {
-                //gui.displayPlainBlack(((Member) o).toString() + '\n');
-                System.out.println(m);
+                gui.displayPlainBlack(m.toString() + '\n');
+                
             }
         }
     }
