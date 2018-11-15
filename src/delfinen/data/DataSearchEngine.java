@@ -80,8 +80,7 @@ public class DataSearchEngine {
             i++;
         }
         regQuery.append("\\}$");
-
-        System.out.println(regQuery);
+       
         Pattern p = Pattern.compile(regQuery.toString());
 
         for (String s : data) {
