@@ -193,5 +193,10 @@ public class CompetitiveMember extends Member {
     public boolean isCompetitive(){
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "CompetitiveMember{"+ super.toString() + "disciplines=" + disciplines + ", coach=" + coach + "}\n";
+    }
     
 }
