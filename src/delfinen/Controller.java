@@ -9,7 +9,6 @@ import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Discipline;
 
 import com.google.gson.Gson;
-import delfinen.data.jParser;
 import delfinen.logic.Accountant;
 import delfinen.logic.Record;
 import java.time.LocalDateTime;
