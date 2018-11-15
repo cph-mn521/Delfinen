@@ -38,6 +38,8 @@ public class DelfinGUI extends javax.swing.JFrame {
     Font FONT_NOTOSANS_BOLD_ITALIC_12 = new Font("notosans", Font.BOLD + Font.ITALIC, 12);
     ArrayList<JCheckBox> discipliner = new ArrayList<>();
     ArrayList<JTextField> textFields = new ArrayList<>();
+    
+    private static boolean DEBUG = true;
 
     /**
      * Creates new form DelfinGUI
@@ -175,7 +177,7 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
 
-        textFieldNewResultsDiscipline.setText("f.eks. Skanderborg Svømmestævne 20184");
+        textFieldNewResultsDiscipline.setText("f.eks. Skanderborg Svømmestævne 2018");
         textFieldNewResultsDiscipline.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsDisciplineFocusGained(evt);
@@ -299,7 +301,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Send ny data");
+        jButton1.setText("Gem ny data");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -929,6 +931,8 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public float getNewResultTime() {
+        System.out.println(textFieldNewResultsTime.toString());
+//        System.out.println(Float.parseFloat(textFieldNewResultsTime.toString()));
         return Float.parseFloat(textFieldNewResultsTime.toString());
     }
 
@@ -1029,8 +1033,6 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     // #######################    SETTERS  ###############################
     // ###################################################################
-    
-    
     public void setDisciplinCheckBoxes(ArrayList<String> disciplinList) {
         for (String disciplin : disciplinList) {
             switch (disciplin) {
@@ -1384,18 +1386,13 @@ public class DelfinGUI extends javax.swing.JFrame {
             @Override
             public void run() {
                 new DelfinGUI().setVisible(true);
-//                new DelfinGUI().go(); // for testing
+                new DelfinGUI().go(); // for testing
             }
         });
     }
 
     public void go() {                  // for testing
-        System.out.println("getMotion: " + getMotionKonkurrence());
-        System.out.println("getStatus: " + getStatus());
-        setMemberPhoto(2);
-        System.out.println("getMemberPhoto: " + labelMemberPhoto.getIcon().toString());
-        System.out.println("getMemberPhoto: " + labelMemberPhoto.getIcon()
-                .toString().split("files")[1].substring(1).split(".jpg")[0]);
+        System.out.println(Float.parseFloat(textFieldNewResultsTime.toString()));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

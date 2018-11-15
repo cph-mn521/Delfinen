@@ -153,7 +153,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="textFieldNewResultsDiscipline">
               <Properties>
-                <Property name="text" type="java.lang.String" value="f.eks. Skanderborg Sv&#xf8;mmest&#xe6;vne 20184"/>
+                <Property name="text" type="java.lang.String" value="f.eks. Skanderborg Sv&#xf8;mmest&#xe6;vne 2018"/>
               </Properties>
               <Events>
                 <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldNewResultsDisciplineFocusGained"/>
@@ -236,7 +236,7 @@
         </Container>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Send ny data"/>
+            <Property name="text" type="java.lang.String" value="Gem ny data"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
