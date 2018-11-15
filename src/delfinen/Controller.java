@@ -9,6 +9,7 @@ import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Discipline;
 
 import com.google.gson.Gson;
+import delfinen.data.jParser;
 import delfinen.logic.Accountant;
 import delfinen.logic.Record;
 import java.time.LocalDateTime;
@@ -44,6 +45,7 @@ public class Controller {
     public static void init() {
         gui.setTrainedBy(getTrainers());
         gui.setVisible(true);
+
     }
 
     /**
@@ -78,7 +80,7 @@ public class Controller {
         Member.Status status = Member.Status.valueOf(gui.getStatus().equals("Aktiv") ? "Active" : "Passive");
         boolean isCoach = gui.getTrainer();
 
-        //Checking for Member Type, then crating it.
+        //Checking for Member Type, then creating it.
         if (gui.getMotionKonkurrence().equals("Motionist") || gui.getStatus().equals("Passive")) {
             newMember = new Member(name, email, adress, id, age, phoneNumber, status, isCoach);
         } else {
@@ -230,9 +232,8 @@ public class Controller {
                 e.printStackTrace();
             }
         }
-        
-        
     }
+    
 
     public static void bookKeeping(int Year) {
         try {

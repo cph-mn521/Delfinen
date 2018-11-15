@@ -11,7 +11,6 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -238,7 +237,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             }
         });
 
-        textFieldNewResultsDate.setText("f.eks. d-M-yyyy HH:mm, 1-03-2017 12:30");
+        textFieldNewResultsDate.setText("f.eks. d-m-åååå tt:mm, 1-03-2017 12:30");
         textFieldNewResultsDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsDateFocusGained(evt);
@@ -1842,6 +1841,14 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     public void displayBoldBlack(String text) {
         displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.black);
+    }
+
+    public void displayPlainGreen(String text) {
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.green);
+    }
+
+    public void displayBoldGreen(String text) {
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.green);
     }
 
     public void displayFormatedText(JTextPane tp, String txt, Font font, Color color) {

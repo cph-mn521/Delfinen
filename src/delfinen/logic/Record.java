@@ -138,4 +138,14 @@ public class Record {
         this.event = event;
     }
 
+    
+    /**
+     * Auto genereret toString
+     * @return 
+     */
+    @Override
+    public String toString() {
+        return "Record{" + "time=" + time + ", date=" + date + ", holder=" + holder + ", event=" + event + ", discipline=" + discipline + ", place=" + place + '}';
+    }
+
 }
