@@ -22,6 +22,7 @@ import java.util.List;
 public class DataAccessorFile implements DataAccessor {
 
     private final String FileName;
+    private File fil;
     
     /**
     * Constructor for the class, used to assign the current database.
@@ -29,6 +30,7 @@ public class DataAccessorFile implements DataAccessor {
     * @param FileName     The File to pull data from.
     **/
     public DataAccessorFile(String FileName) {
+        fil = new File(FileName);
         this.FileName = FileName;
     }
     
@@ -82,7 +84,7 @@ public class DataAccessorFile implements DataAccessor {
     
     /**
     * Method for adding a new entry to the currently selected file. New entry is
-    * always appended, and will apear last in the database.
+    * always appended, and will appear last in the database.
     * 
     * @param  obj The object to add to the database 
     * @throws DataException
@@ -113,7 +115,7 @@ public class DataAccessorFile implements DataAccessor {
         try {
             List<String> newFile = getEntries();
             String lines = "";
-            BufferedWriter writer = new BufferedWriter(new FileWriter(FileName, false));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(FileName, fil.exists())); //Append when file exists, make when false
             for (String string : newFile) {
                 if (string.equals(old)) {
                     lines += N+"\r\n";

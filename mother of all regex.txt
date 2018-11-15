@@ -1,1 +1,0 @@
-^\{("disciplines":(\[.+\]),"coach":(\{.+\}),)?"name":"(.+)","email":"(.+)","address":"(.+)","id":([0-9]+),"age":([0-9]+),"phone":(.+),"status":"((?:Active|Passive))","isCoach":((?:true|false))\}$
