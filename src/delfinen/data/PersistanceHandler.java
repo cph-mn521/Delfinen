@@ -65,8 +65,8 @@ public class PersistanceHandler {
     /**
      * Method for searching for keywords in the member database. Searches the
      * database for all entries with containing the query. Can be used to fetch
-     * all Competetive members, or all with a specific address, or all males
-     * etc. etc.
+     * all Competetive members, or all with a specific address, or all mails
+     * etc.
      *
      * For more precise searches, use the "ATTRIBUTE:"+"String" or
      * "ATTRIBUTE:"+datatype
@@ -94,7 +94,8 @@ public class PersistanceHandler {
     }
 
     /**
-     *
+     *Method for in depth search / selection of members.
+     * 
      * @param Query
      * @param Disciplines
      * @param Coach
