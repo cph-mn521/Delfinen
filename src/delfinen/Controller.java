@@ -196,15 +196,15 @@ public class Controller {
         for (Object o : Search) {
 
             if (o == null) {
-                regQuery += regex.get(i);
+                regQuery.append(regex.get(i));
                 continue;
             }
             //regQuery += regex.get(i).replace(regex.get(i).substring(regex.get(i).indexOf('('),regex.get(i).indexOf(')')), );
             i++;
         }
-        regQuery += "\\}";
+        regQuery.append("\\}");
 
-        List<Object> result = data.customSearch(regQuery);
+        List<Object> result = data.customSearch(regQuery.toString());
     }
 
     public static void change() {
