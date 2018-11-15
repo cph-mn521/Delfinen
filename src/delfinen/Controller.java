@@ -187,9 +187,17 @@ public class Controller {
         if (result == null || result.isEmpty()) {
             gui.displayPlainRed("Fejl - Ingen medlemmer fundet.");
         } else {
-            for (Member m: result) {
-                gui.displayPlainBlack(m.toString() + '\n');
-                
+            for (Member m : result) {
+                if (result.size() == 1) {
+                    gui.setAdresse(m.getAddress());
+                    gui.setAlder(m.getAge());
+                    gui.setEmail(m.getEmail());
+                    gui.setNavn(m.getName());
+                    gui.setID(m.getId());
+                    gui.setTelefon(m.getPhone());
+                } else {
+                    gui.displayPlainBlack(m.toString() + '\n');
+                }
             }
         }
     }
@@ -232,7 +240,6 @@ public class Controller {
             }
         }
     }
-    
 
     public static void bookKeeping(int Year) {
         try {
