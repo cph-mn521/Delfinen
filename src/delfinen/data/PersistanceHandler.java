@@ -37,7 +37,6 @@ public class PersistanceHandler {
 
     }
 
-    
     ///////////////////////      MEMBER HANDLING       ////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////
     /**
@@ -93,26 +92,36 @@ public class PersistanceHandler {
         }
 
     }
+
     /**
-     * 
+     *
      * @param Query
      * @param Disciplines
      * @param Coach
-     * @return 
-     */
-    public List<Object> searchMember(ArrayList<String> Query, List<String> Disciplines, Member Coach) {
-        return dse.Search(Query, Disciplines, Coach);
-    }
-
-
-    /**
-     * Method for adding a member to the Member database.
-     *
-     *
-     * @param obj Member to be added to the database.
+     * @return
      * @throws delfinen.data.DataException
      */
-    public void addMember(Member obj) throws DataException {
+    public List<Member> searchMember(ArrayList<String> Query, List<String> Disciplines, Member Coach) throws DataException {
+        List<Member> result = new ArrayList<>();
+        List<String> matches = dse.Search(Query, Disciplines, Coach);
+        for (String s : matches) {
+            try {
+                result.add(gson.fromJson(s, Member.class));
+            } catch (JsonSyntaxException e) {
+                result.add(gson.fromJson(s, CompetitiveMember.class));
+            }
+        }
+        return result;
+    }
+
+/**
+ * Method for adding a member to the Member database.
+ *
+ *
+ * @param obj Member to be added to the database.
+ * @throws delfinen.data.DataException
+ */
+public void addMember(Member obj) throws DataException {
         dam.addEntry(gson.toJson(obj));
     }
 
@@ -145,8 +154,11 @@ public class PersistanceHandler {
         List<Record> out = new ArrayList<>();
         try {
             List<String> jsons = dar.getEntries();
-            for (String json : jsons) {
-                out.add(gson.fromJson(json, Record.class));
+            
+
+for (String json : jsons) {
+                out.add(gson.fromJson(json, Record.class
+));
             }
             return out;
         } catch (DataException e) {
@@ -167,8 +179,11 @@ public class PersistanceHandler {
         try {
             List<String> json = dar.searchEntries(Query);
             List<Record> records = new ArrayList<>();
-            json.forEach((string) -> {
-                records.add(gson.fromJson(string, Record.class));
+            json
+
+.forEach((string) -> {
+                records.add(gson.fromJson(string, Record.class
+));
             });
             return records;
         } catch (DataException e) {
@@ -216,8 +231,11 @@ public class PersistanceHandler {
         List<Subscription> out = new ArrayList<>();
         try {
             List<String> jsons = das.getEntries();
-            for (String json : jsons) {
-                out.add(gson.fromJson(json, Subscription.class));
+            
+
+for (String json : jsons) {
+                out.add(gson.fromJson(json, Subscription.class
+));
             }
             return out;
         } catch (DataException e) {
@@ -237,8 +255,11 @@ public class PersistanceHandler {
     public List<Subscription> searhcSubscriptions(String Query) throws DataException{
         List<String> jsons = das.searchEntries(Query);
         List<Subscription> result= new ArrayList<>();
-        for (String json : jsons) {
-            result.add(gson.fromJson(json, Subscription.class));
+        
+
+for (String json : jsons) {
+            result.add(gson.fromJson(json, Subscription.class
+));
         }
         return result;
     }

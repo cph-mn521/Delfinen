@@ -6,12 +6,12 @@
 package delfinen.data;
 
 import com.google.gson.Gson;
-import static delfinen.Controller.findMembers;
 import delfinen.logic.Member;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import delfinen.data.PersistanceHandler;
 
 /**
  *
@@ -19,9 +19,21 @@ import java.util.regex.Pattern;
  */
 public class DataSearchEngine {
 
-    public List<Object> Search(ArrayList<String> Search, List<String> disciplines, Member Coach) {
+    private PersistanceHandler p = new PersistanceHandler();
+    private Gson gson = new Gson();
+
+    /**
+     *
+     * @param Search
+     * @param disciplines
+     * @param Coach
+     * @return
+     * @throws DataException
+     */
+    public List<String> Search(ArrayList<String> Search, List<String> disciplines, Member Coach) throws DataException {
         StringBuilder regQuery = new StringBuilder();
         regQuery.append("^\\{");
+        List<String> matches = new ArrayList<>();
 
         ArrayList<String> regex = new ArrayList<>();
         regex.add("\"disciplines\":\\[.+\\],");
@@ -48,7 +60,7 @@ public class DataSearchEngine {
                         regQuery.append("\",");
                     }
                 }
-                Gson gson = new Gson();
+
                 regQuery.append("\\],\"coach\":");
                 regQuery.append(gson.toJson(Coach));
                 regQuery.append(",");
@@ -70,7 +82,16 @@ public class DataSearchEngine {
         }
         regQuery.append("\\}$");
 
-        return null;
+        List<String> data = p.dam.getEntries();
 
+        Pattern p = Pattern.compile(regQuery.toString(), Pattern.MULTILINE);
+
+        for (String s : data) {
+            if (p.matcher(s).matches()) {
+                matches.add(s);
+            }
+        }
+
+        return matches;
     }
 }

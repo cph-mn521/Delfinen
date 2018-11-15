@@ -71,7 +71,7 @@ public class Controller {
         Member.Status status = Member.Status.valueOf(gui.getStatus().equals("Aktiv") ? "Active" : "Passive");
         boolean isCoach = gui.getTrainer();
 
-        if (gui.getMotionKonkurrence().equals("Motionist") || gui.getStatus().equals("Passive")) {
+        if (gui.getMotionKonkurrence().equals("Motionist") || status == status.Passive) {
             newMember = new Member(name, email, adress, id, age, phoneNumber, status, isCoach);
         } else {
             ArrayList<Discipline> disciplines = new ArrayList<>();
@@ -136,6 +136,7 @@ public class Controller {
      */
     public static void search() {
         ArrayList<String> Search = new ArrayList<>();
+        List<Member> result = new ArrayList<>();
         Member Coach = null;
         List<String> disciplines = null;
         String status = gui.getStatus().equals("Aktiv") ? "Active" : "Passive";
@@ -165,10 +166,20 @@ public class Controller {
         Search.add(status);
         Search.add(isCoach);
 
-        List<Object> result = data.searchMember(Search, disciplines, Coach);
-
-        for (Object o : result) {
-            gui.displayPlainBlack(((Member) o).toString() + '\n');
+        try {
+            result = data.searchMember(Search, disciplines, Coach);
+        } catch (DataException e) {
+            if (DEBUG) {
+                e.printStackTrace();
+            }
+            gui.displayPlainRed("Fejl - Ingen medlemmer fundet.");
+        }
+        if (result == null) {
+            gui.displayPlainRed("Fejl - Ingen medlemmer fundet.");
+        } else {
+            for (Object o : result) {
+                gui.displayPlainBlack(((Member) o).toString() + '\n');
+            }
         }
     }
 
