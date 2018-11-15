@@ -1,2 +1,4 @@
 
 {"time":1.23,"date":{"date":{"year":2018,"month":3,"day":1},"time":{"hour":12,"minute":30,"second":0,"nano":0}},"event":"Skanderborg 2018","discipline":"Butterfly","place":1}
+{"time":1.24,"date":{"date":{"year":2017,"month":12,"day":10},"time":{"hour":12,"minute":30,"second":0,"nano":0}},"event":"Sønderborg 2017","discipline":"Crawl","place":2}
+{"time":1.26,"date":{"date":{"year":2017,"month":12,"day":10},"time":{"hour":12,"minute":20,"second":0,"nano":0}},"holder":{"name":"Niels Bang","email":"Niels@mail.dk","address":"123Gade 2, 2800 kgs lyngby","id":5,"age":21,"phone":12345678,"status":"Active","isCoach":false},"event":"Sønderborg 2017","discipline":"Butterfly","place":3}

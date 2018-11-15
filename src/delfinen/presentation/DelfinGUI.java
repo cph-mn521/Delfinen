@@ -1,7 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
  */
 package delfinen.presentation;
 
@@ -13,6 +11,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -49,7 +47,9 @@ public class DelfinGUI extends javax.swing.JFrame {
     public DelfinGUI() {
         initComponents();
 
-        //Int checkboxes
+        /**
+         * Init checkboxes
+         */
         discipliner.add(checkBoxDisciplinBryst);
         discipliner.add(checkBoxDisciplinButterfly);
         discipliner.add(checkBoxDisciplinCrawl);
@@ -59,7 +59,9 @@ public class DelfinGUI extends javax.swing.JFrame {
         checkBoxDisciplinCrawl.setSelected(false);
         checkBoxDisciplinRygcrawl.setSelected(false);
 
-        //init textfields
+        /**
+         * Init textfields
+         */
         textFields.add(textFieldEmail);
         textFields.add(textFieldAdresse);
         textFields.add(textFieldAlder);
@@ -240,11 +242,6 @@ public class DelfinGUI extends javax.swing.JFrame {
         textFieldNewResultsDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsDateFocusGained(evt);
-            }
-        });
-        textFieldNewResultsDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldNewResultsDateActionPerformed(evt);
             }
         });
 
@@ -1524,7 +1521,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             textFieldNavn.setBackground(Color.pink);
         } else {
             // input check, Regex for name
-            regexUserInfoBackGroundColorSet("^\\w+(\\s\\w+)+$", textFieldNavn,
+            regexUserInfoBackGroundColorSet("^\\w+$", textFieldNavn,
                     "Navnet skal være i formatet: xxxx yyyy zzzzz\n");
 
         }
@@ -1626,10 +1623,6 @@ public class DelfinGUI extends javax.swing.JFrame {
         textFieldNewResultsTime.setBackground(Color.white);
     }//GEN-LAST:event_textFieldNewResultsTimeFocusGained
 
-    private void textFieldNewResultsDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsDateActionPerformed
-
-    }//GEN-LAST:event_textFieldNewResultsDateActionPerformed
-
     private void textFieldNewResultsEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsEventActionPerformed
 
     }//GEN-LAST:event_textFieldNewResultsEventActionPerformed
@@ -1646,6 +1639,10 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void textFieldNewResultsDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsDateFocusGained
         textFieldNewResultsDate.setText("");
         textFieldNewResultsDate.setBackground(Color.white);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy HH:mm");
+        LocalDateTime dateTime = LocalDateTime.now();
+        String formattedDateTime = dateTime.format(formatter);
+        textFieldNewResultsDate.setText(formattedDateTime);
     }//GEN-LAST:event_textFieldNewResultsDateFocusGained
 
     private void textFieldNewResultsPlaceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsPlaceFocusGained
