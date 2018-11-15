@@ -8,6 +8,8 @@ import delfinen.logic.Member;
 import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Discipline;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
@@ -40,6 +42,7 @@ public class Controller {
 
     /**
      * Queries the PersistanceHandler for a list of trainers.
+     *
      * @return
      */
     public static List<String> getTrainers() {
@@ -127,44 +130,16 @@ public class Controller {
         }
         return members;
     }
-    
+
     /**
-     * 
+     *
      */
     public static void search() {
-        String regQuery = "\\{";
-        ArrayList<Object> Search = new ArrayList<>();
-        ArrayList<String> regex  = new ArrayList<>();
-        Member.Status status = Member.Status.valueOf(gui.getStatus());
-        String aktivitet = gui.getMotionKonkurrence();
-        if (aktivitet.equals("Konkurrencesvømmer")) {
-            List<Discipline> disciplines = new ArrayList<>();
-            for (String s : gui.getDisciplin()) {
-                disciplines.add(Discipline.valueOf(s));
-            }
-            List<Member> trainers = findMembers("\"isCoach\":true");
-            String coach = gui.getTrainedBy();
-            Member Coach = trainers.get(trainers.indexOf(coach));
-            Search.add(disciplines);
-            Search.add(Coach);
-        }
-        String name = gui.getNavn();
-        String email = gui.getEmail();
-        String address = gui.getAdresse();
-        int id = gui.getID();
-        int age = gui.getAlder();
-        int phone = gui.getTelefon();
-        boolean isCoach = gui.getTrainer();
-        
-        Search.add(name);
-        Search.add(email);
-        Search.add(address);
-        Search.add(id);
-        Search.add(age);
-        Search.add(phone);
-        Search.add(isCoach);
-        
-        regex.add("(\"disciplines\":(\\[.+\\]),\"coach\":(\\{.+\\}),)?");
+        StringBuilder regQuery = new StringBuilder();
+        regQuery.append("\\{");
+        ArrayList<String> Search = new ArrayList<>();
+        ArrayList<String> regex = new ArrayList<>();
+        //regex.add("(\"disciplines\":(\\[.+\\]),\"coach\":(\\{.+\\}),)?");
         regex.add("\"name\":\"(.+)\",");
         regex.add("\"email\":\"(.+)\",");
         regex.add("\"address\":\"(.+)\",");
@@ -172,19 +147,63 @@ public class Controller {
         regex.add("\"age\":([0-9]+),");
         regex.add("\"phone\":(.+),");
         regex.add("\"status\":\"((?:Active|Passive))\",");
-        regex.add("\"isCoach\":((?:true|false))");     
+        regex.add("\"isCoach\":((?:true|false))");
+
+        Member.Status status = Member.Status.valueOf(gui.getStatus());
+        String aktivitet = gui.getMotionKonkurrence();
+        if (aktivitet.equals("Konkurrencesvømmer")) {
+            List<String> disciplines = gui.getDisciplin();
+            List<Member> trainers = findMembers("\"isCoach\":true");
+            String coach = gui.getTrainedBy();
+            Member Coach = trainers.get(trainers.indexOf(coach));
+            int disSize = disciplines.size();
+            if (disSize > 0) {
+                regQuery.append("(\"disciplines\":(\\[");
+                for (int i = 0; i <= disSize; i++) {
+                    regQuery.append("\"");
+                    regQuery.append(disciplines.get(i));
+                    if (i == disSize - 1) {                       
+                        regQuery.append("\"");
+                    } else {                        
+                        regQuery.append("\",");
+                    }
+                }
+                Gson gson = new Gson();
+                regQuery.append("\\],\"coach\":(");
+                regQuery.append(gson.toJson(Coach));
+                regQuery.append("),)?");
+            } else {
+                regQuery.append("(\"disciplines\":(\\[.+\\]),\"coach\":(\\{.+\\}),)?");
+            }
+        }
+        String name = gui.getNavn();
+        String email = gui.getEmail();
+        String address = gui.getAdresse();
+        String id = gui.getID() + "";
+        String age = gui.getAlder() + "";
+        String phone = gui.getTelefon() + "";
+        String isCoach = gui.getTrainer() + "";
+
+        Search.add(name);
+        Search.add(email);
+        Search.add(address);
+        Search.add(id);
+        Search.add(age);
+        Search.add(phone);
+        Search.add(isCoach);
+
         int i = 0;
-        for(Object o : Search){
-            
-            if(o == null){             
-                regQuery +=regex.get(i);
+        for (Object o : Search) {
+
+            if (o == null) {
+                regQuery += regex.get(i);
                 continue;
             }
             //regQuery += regex.get(i).replace(regex.get(i).substring(regex.get(i).indexOf('('),regex.get(i).indexOf(')')), );
             i++;
         }
         regQuery += "\\}";
-        
+
         List<Object> result = data.customSearch(regQuery);
     }
 
