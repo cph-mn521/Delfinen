@@ -14,10 +14,10 @@ import java.util.List;
  */
 public class Accountant {
 
-    private final ArrayList<Subscription> Budget;
-    private final ArrayList<Member> Members;
+    private final List<Subscription> Budget;
+    private final List<Member> Members;
     private final int MissingPayments;
-    private ArrayList<Member> Debitors;
+    private List<Member> Debitors;
     private final float Bank;
     private final float ExpectedBank;
 
@@ -76,8 +76,8 @@ public class Accountant {
      * Method for finding all members without a paid subscription
      * @return  ArrayList. contains members without a subscription.
      */
-    public ArrayList<Member> Restance() {
-        ArrayList<Member> temp = Members;
+    public List<Member> Restance() {
+        List<Member> temp = Members;
         for (Subscription Sub : Budget) {
             if (temp.contains(Sub.getHolder())) {
                 temp.remove(Sub.getHolder());
@@ -96,7 +96,7 @@ public class Accountant {
         return MissingPayments;
     }
 
-    public ArrayList<Member> getDebitors() {
+    public List<Member> getDebitors() {
         return Debitors;
     }
 

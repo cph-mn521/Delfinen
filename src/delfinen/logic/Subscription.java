@@ -5,8 +5,8 @@ package delfinen.logic;
  * @author martin b. & Martin Wulff
  */
 public class Subscription {
-    private int year;
-    private Member holder;
+    private int year; // Is not a LocalDateTime obj since it would be overkill. Could be changed to sutch if we change to season based system.
+    private Member holder; 
     private final float price;
 
     
