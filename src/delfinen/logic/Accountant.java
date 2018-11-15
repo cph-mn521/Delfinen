@@ -6,6 +6,7 @@
 package delfinen.logic;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -26,7 +27,7 @@ public class Accountant {
      * @param Budget        List of all subscriptions to be taken into consideration. Should be for same period of time.
      * @param Members       List of all current members. Used to find debitors and calculate expected revenue.
      */
-    public Accountant(ArrayList<Subscription> Budget, ArrayList<Member> Members) {
+    public Accountant(List<Subscription> Budget, List<Member> Members) {
         this.Budget = Budget;
         this.Members = Members;
         this.MissingPayments = Members.size() - Budget.size();
