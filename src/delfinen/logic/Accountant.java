@@ -32,14 +32,13 @@ public class Accountant {
         this.Members = Members;
         this.MissingPayments = Members.size() - Budget.size();
         this.Bank = calcBudget();
-        
+        this.Debitors = Restance();
         switch (MissingPayments){
             case 0:
                 this.ExpectedBank = this.Bank;
                 break;
             default:
-                this.Debitors = Restance();
-                this.ExpectedBank = calcExpectedBank();
+                this.ExpectedBank = this.Bank+calcExpectedBank();
         }
     }
 
@@ -76,18 +75,44 @@ public class Accountant {
      * Method for finding all members without a paid subscription
      * @return  ArrayList. contains members without a subscription.
      */
-    public List<Member> Restance() {
-        List<Member> temp = Members;
-        for (Subscription Sub : Budget) {
-            if (temp.contains(Sub.getHolder())) {
-                temp.remove(Sub.getHolder());
+  
+    private List<Member> Restance(){
+        List<Member> Out = new ArrayList<>();
+        boolean flag;
+        for(int i = 0; i < Members.size();i++){
+            System.out.println("i = "+i);
+            flag = true;
+            for(int j = 0; j< Budget.size();j++){
+                System.out.println("j ="+ j);
+                if(Members.get(i).equals(Budget.get(j).getHolder())){
+                    flag = false;
+                    System.out.println("foo");
+                }
+            }
+            if(flag){
+                Out.add(Members.get(i));
+                System.out.println("bar");
             }
         }
-        return temp;
-
+        return Out;
     }
-
-    
+    /* Den her metode tro åbenbart den er skrevet i c.....
+    private List<Member> Restance() {
+        List<Member> temp = Members;
+        for (Subscription Sub : Budget) {
+            Member TM = Sub.getHolder();
+            
+            if (temp.contains(TM)) {
+                System.out.println("bo");
+                temp.remove(TM);
+                System.out.println(temp.size());
+                
+            }
+        }
+        System.out.println(temp.size());
+        return temp;
+    }
+    */
     
     ///////////////////////      GETTERS AND SETTERS       /////////////////////
     ////////////////////////////////////////////////////////////////////////////    
