@@ -182,10 +182,10 @@ public class Controller {
             if (DEBUG) {
                 e.printStackTrace();
             }
-            gui.displayPlainRed("Fejl - Ingen medlemmer fundet.");
+            gui.displayPlainRed("Fejl - Ingen medlemmer fundet.\n");
         }
         if (result == null || result.isEmpty()) {
-            gui.displayPlainRed("Fejl - Ingen medlemmer fundet.");
+            gui.displayPlainRed("Fejl - Ingen medlemmer fundet.\n");
         } else {
             for (Member m : result) {
                 if (result.size() == 1) {
@@ -197,7 +197,7 @@ public class Controller {
                     gui.setTelefon(m.getPhone());
                     try {
                         for (Record rec : data.searchRecord(m.getName())){
-                            gui.displayPlainGreen(rec.toString());
+                            gui.displayPlainBlue(rec.toString() + '\n');
                         }
                         
                     } catch (DataException ex) {

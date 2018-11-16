@@ -6,6 +6,7 @@
 package delfinen.logic;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -138,14 +139,17 @@ public class Record {
         this.event = event;
     }
 
-    
     /**
-     * Auto genereret toString
-     * @return 
+     * toString
+     *
+     * @return string
      */
     @Override
     public String toString() {
-        return "Record{" + "time=" + time + ", date=" + date + ", holder=" + holder + ", event=" + event + ", discipline=" + discipline + ", place=" + place + '}';
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy HH:mm");
+        LocalDateTime dateTime = date;
+        String formattedDateTime = dateTime.format(formatter);
+        return "d. " + formattedDateTime + "-- Tid: " + time + ", Disciplin: " + discipline + ", Sted: " + event + ", Placering: " + place;
     }
 
 }

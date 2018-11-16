@@ -243,6 +243,11 @@ public class DelfinGUI extends javax.swing.JFrame {
                 textFieldNewResultsDateFocusGained(evt);
             }
         });
+        textFieldNewResultsDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldNewResultsDateActionPerformed(evt);
+            }
+        });
 
         jLabel13.setText("Dato");
 
@@ -369,7 +374,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel22)
-                        .addContainerGap(25, Short.MAX_VALUE))))
+                        .addContainerGap(26, Short.MAX_VALUE))))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -582,7 +587,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                                     .addComponent(jLabel1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                         .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelDisciplin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelDiscipliner)))
@@ -717,26 +722,25 @@ public class DelfinGUI extends javax.swing.JFrame {
         panelMembersLayout.setHorizontalGroup(
             panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMembersLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelMedlemsData, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelMembersLayout.createSequentialGroup()
+                        .addComponent(labelDelfinIcon)
+                        .addGap(30, 30, 30)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(36, 36, 36)
                 .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelMembersLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelMedlemsData, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelMembersLayout.createSequentialGroup()
-                                .addComponent(labelDelfinIcon)
-                                .addGap(30, 30, 30)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(36, 36, 36)
-                        .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelMembersLayout.createSequentialGroup()
-                                .addComponent(buttonNewResult)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelMemberPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(73, 73, 73))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMembersLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9)))
+                        .addComponent(buttonNewResult)
+                        .addGap(108, 108, 108)
+                        .addComponent(labelMemberPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 199, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMembersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelMembersLayout.setVerticalGroup(
@@ -750,7 +754,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                 .addComponent(panelMedlemsData, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(panelMembersLayout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -1520,8 +1524,8 @@ public class DelfinGUI extends javax.swing.JFrame {
             textFieldNavn.setBackground(Color.pink);
         } else {
             // input check, Regex for name
-            regexUserInfoBackGroundColorSet("^\\w+$", textFieldNavn,
-                    "Navnet skal være i formatet: xxxx yyyy zzzzz\n");
+            regexUserInfoBackGroundColorSet("^\\w+(\\s\\w+)?+$", textFieldNavn,
+                    "Navnet skal være i formatet: xxxx, eller xxx yyyy mfl.\n");
 
         }
 
@@ -1652,6 +1656,10 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void buttonNewResultsSendDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultsSendDataActionPerformed
         Controller.addResult();
     }//GEN-LAST:event_buttonNewResultsSendDataActionPerformed
+
+    private void textFieldNewResultsDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldNewResultsDateActionPerformed
 
     private boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf,
             String err) {
@@ -1849,6 +1857,15 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     public void displayBoldGreen(String text) {
         displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.green);
+    }
+    
+    
+    public void displayPlainBlue(String text) {
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.blue);
+    }
+
+    public void displayBoldBlue(String text) {
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.blue);
     }
 
     public void displayFormatedText(JTextPane tp, String txt, Font font, Color color) {
