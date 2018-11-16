@@ -180,20 +180,28 @@ public class DelfinGUImethods {
      * textField NewResults
      *
      */
+    
     /**
      *
      */
     public void textFieldNewResultsDate() {
-        textFieldNewResultsClearWhiteBackground();
+        DelfinGUI.textFieldNewResultsDate.setText("");
+        DelfinGUI.textFieldNewResultsDate.setBackground(Color.white);
         textFieldNewResultsDate.setText(formatDate("d-M-yyyy HH:mm"));
     }
 
     /**
      *
      */
-    public void textFieldNewResultsClearWhiteBackground() {
+    public void textFieldNewResultsTime() {
         DelfinGUI.textFieldNewResultsTime.setText("");
         DelfinGUI.textFieldNewResultsTime.setBackground(Color.white);
+    }
+    
+    /**
+     *
+     */
+    public void textFieldNewResultsClearWhiteBackground() {
     }
 
     /**
@@ -273,11 +281,11 @@ public class DelfinGUImethods {
         Matcher matcher = pattern.matcher(tf.getText());
         if (!matcher.matches()) {
             tf.setBackground(Color.red);
-            displayFormatedText(DelfinGUI.textPaneMedlemsInfo, err, FONT_NOTOSANS_PLAIN_12, Color.RED);
+//            displayFormatedText(DelfinGUI.textPaneMedlemsInfo, err, FONT_NOTOSANS_PLAIN_12, Color.RED);
             return false;
         } else {
             tf.setBackground(Color.white);
-            clearFormatedText(DelfinGUI.textPaneMedlemsInfo);
+//            clearFormatedText(DelfinGUI.textPaneMedlemsInfo);
             return true;
         }
     }
