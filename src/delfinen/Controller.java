@@ -195,6 +195,14 @@ public class Controller {
                     gui.setNavn(m.getName());
                     gui.setID(m.getId());
                     gui.setTelefon(m.getPhone());
+                    try {
+                        for (Record rec : data.searchRecord(m.getName())){
+                            gui.displayPlainGreen(rec.toString());
+                        }
+                        
+                    } catch (DataException ex) {
+                        ex.printStackTrace();
+                    }
                 } else {
                     gui.displayPlainBlack(m.toString() + '\n');
                 }
