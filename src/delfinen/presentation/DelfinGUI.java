@@ -1264,11 +1264,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
     }
 
-    public int getAlder() {
+    public String getAlder() {
         if (textFieldAlder.getBackground() == Color.white) {
-            return Integer.parseInt(textFieldAlder.getText());
+            return textFieldAlder.getText();
         } else {
-            return 0;
+            return "";
         }
     }
 
@@ -1280,11 +1280,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
     }
 
-    public int getID() {
+    public String getID() {
         if (textFieldID.getBackground() == Color.white) {
-            return Integer.parseInt(textFieldID.getText());
+            return textFieldID.getText();
         } else {
-            return 0;
+            return "";
         }
     }
 
@@ -1296,11 +1296,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
     }
 
-    public int getTelefon() {
+    public String getTelefon() {
         if (textFieldTelefon.getBackground() == Color.white) {
-            return Integer.parseInt(textFieldTelefon.getText());
+            return textFieldTelefon.getText();
         } else {
-            return 0;
+            return "";
         }
     }
 
