@@ -7,19 +7,16 @@ import delfinen.logic.CoachNotFoundException;
 import delfinen.logic.Member;
 import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Discipline;
-
-import com.google.gson.Gson;
 import delfinen.logic.Accountant;
 import delfinen.logic.Record;
+
 import delfinen.presentation.DelfinGUImethods;
 import java.time.LocalDateTime;
 
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 /**
  *

@@ -7,7 +7,7 @@ package delfinen.logic;
 
 /**
  *
- * @author Lord
+ * @author Niels Bang
  */
 public enum Discipline {
     Butterfly,

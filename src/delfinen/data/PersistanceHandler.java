@@ -19,6 +19,7 @@ import java.util.List;
 /**
  *
  * @author Martin Wulff
+ * @searchMembers overload Niels Bang
  */
 public class PersistanceHandler {
 

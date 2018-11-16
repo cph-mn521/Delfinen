@@ -22,7 +22,8 @@ public class DataSearchEngine {
     private Gson gson = new Gson();
 
     /**
-     *
+     * A method for a partial fuzzy search for members in the filesystem.
+     * 
      * @param Search
      * @param disciplines
      * @param Coach
@@ -80,8 +81,7 @@ public class DataSearchEngine {
             i++;
         }
         regQuery.append("\\}$");
-
-        System.out.println(regQuery);
+       
         Pattern p = Pattern.compile(regQuery.toString());
 
         for (String s : data) {
