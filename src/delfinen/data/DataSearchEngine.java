@@ -48,9 +48,7 @@ public class DataSearchEngine {
         regex.add("\"isCoach\":.+");
         if (disciplines != null) {
             disSize = disciplines.size();
-        }
-
-        if (disSize > 0) {
+        } else if (disSize > 0) {
             regQuery.append("(\"disciplines\":\\[");
             for (int i = 0; i <= disSize; i++) {
                 regQuery.append("\"");
@@ -76,7 +74,7 @@ public class DataSearchEngine {
                 i++;
                 continue;
             } else {
-                regQuery.append(regex.get(i).replace(".+", s));
+                regQuery.append(regex.get(i).replace(".+", ".*" + s + ".*"));
             }
             i++;
         }
