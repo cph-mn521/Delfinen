@@ -54,18 +54,18 @@ public class AccountantT {
         this.S2 = TS2;
     }
 
-    /*
+
     @Test
     public void testAccountantConstruct() {
-        Accountant A1 = new Accountant(S1, Members);
+        Accountant A1 = new Accountant(S1, M1);
 
         assertNotNull(A1);
     }
 
     @Test
     public void testGetBank() {
-        Accountant A1 = new Accountant(S1, Members);
-        Accountant A2 = new Accountant(S2, Members);
+        Accountant A1 = new Accountant(S1, M1);
+        Accountant A2 = new Accountant(S2, M1);
 
         assertNotNull(A1.getBank());
         assertTrue(A1.getBank() > 0);
@@ -74,8 +74,8 @@ public class AccountantT {
 
     @Test
     public void testExpectedBank() {
-        Accountant A1 = new Accountant(S1, Members);
-        Accountant A2 = new Accountant(S2, Members);
+        Accountant A1 = new Accountant(S1, M1);
+        Accountant A2 = new Accountant(S2, M1);
 
         assertNotNull(A2.getExpectedBank());
         assertTrue(A1.getExpectedBank() == A2.getExpectedBank());
@@ -83,20 +83,20 @@ public class AccountantT {
 
     @Test
     public void testMissingPayments() {
-        Accountant A1 = new Accountant(S1, Members);
-        Accountant A2 = new Accountant(S2, Members);
-        
-        assertNotEquals(A1.getMissingPayments(),0);
-        assertNotEquals(A2.getMissingPayments(),2);
+        Accountant A1 = new Accountant(S1, M1);
+        Accountant A2 = new Accountant(S2, M1);
+
+              
+        assertEquals(A1.getMissingPayments(),0);
+        assertEquals(A2.getMissingPayments(),2);
 
     }
-     */
+
     @Test
     public void testDebitors() {
         Accountant A1 = new Accountant(S1, M1); //NICE! helt rigtigt i guess
         Accountant A2 = new Accountant(S2, M1);
-        System.out.println(A1.getDebitors().size());
-        System.out.println(A2.getDebitors().size());
+
         //List<Member> eh = A2.getDebitors();
 
         assertNotEquals(A1.getDebitors().size(), A2.getDebitors().size());

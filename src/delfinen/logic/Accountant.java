@@ -80,36 +80,27 @@ public class Accountant {
         List<Member> Out = new ArrayList<>();
         boolean flag;
         for(int i = 0; i < Members.size();i++){
-            System.out.println("i = "+i);
             flag = true;
             for(int j = 0; j< Budget.size();j++){
-                System.out.println("j ="+ j);
                 if(Members.get(i).equals(Budget.get(j).getHolder())){
                     flag = false;
-                    System.out.println("foo");
                 }
             }
             if(flag){
-                Out.add(Members.get(i));
-                System.out.println("bar");
+                Out.add(Members.get(i));    
             }
         }
         return Out;
     }
-    /* Den her metode tro åbenbart den er skrevet i c.....
+    /* Den her metode tro åbenbart den er skrevet i C..... ihvertfald i JUnit Tests.
     private List<Member> Restance() {
         List<Member> temp = Members;
         for (Subscription Sub : Budget) {
-            Member TM = Sub.getHolder();
-            
+            Member TM = Sub.getHolder();            
             if (temp.contains(TM)) {
-                System.out.println("bo");
-                temp.remove(TM);
-                System.out.println(temp.size());
-                
+                temp.remove(TM);                
             }
         }
-        System.out.println(temp.size());
         return temp;
     }
     */
