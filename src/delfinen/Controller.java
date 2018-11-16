@@ -29,7 +29,7 @@ public class Controller {
     private static DelfinGUImethods guim = new DelfinGUImethods();
 
     private static PersistanceHandler data = new PersistanceHandler();
-    private static boolean DEBUG = true;
+    public static boolean DEBUG = true;
 
     public static void main(String[] args) {
         init();
@@ -86,7 +86,7 @@ public class Controller {
         boolean isCoach = gui.getTrainer();
 
         //Checking for Member Type, then creating it.
-        if (gui.getMotionKonkurrence().equals("Motionist") || gui.getStatus().equals("Passive")) {
+        if (gui.getMotionKonkurrence().equals("Motionist")) {
             newMember = new Member(name, email, adress, id, age, phoneNumber, status, isCoach);
         } else {
             ArrayList<Discipline> disciplines = new ArrayList<>();
@@ -172,7 +172,6 @@ public class Controller {
         String email = gui.getEmail();
         String address = gui.getAdresse();
         String isCoach = gui.getTrainer() + "";
-
         Search.add(strFormatter(name));
         Search.add(strFormatter(email));
         Search.add(strFormatter(address));
@@ -329,7 +328,6 @@ public class Controller {
                 ch[i] = (char) (ch[i] + 'a' - 'A');
             }
         }
-
         // Convert the char array to equivalent String
         String st = new String(ch);
         return st;
