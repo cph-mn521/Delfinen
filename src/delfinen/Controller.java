@@ -39,6 +39,7 @@ public class Controller {
     public static void init() {
         gui.setTrainedBy(getTrainers());
         gui.setVisible(true);
+
     }
 
     /**
@@ -73,7 +74,7 @@ public class Controller {
         Member.Status status = Member.Status.valueOf(gui.getStatus().equals("Aktiv") ? "Active" : "Passive");
         boolean isCoach = gui.getTrainer();
 
-        //Checking for Member Type, then crating it.
+        //Checking for Member Type, then creating it.
         if (gui.getMotionKonkurrence().equals("Motionist") || gui.getStatus().equals("Passive")) {
             newMember = new Member(name, email, adress, id, age, phoneNumber, status, isCoach);
         } else {
@@ -181,9 +182,25 @@ public class Controller {
         if (result == null || result.isEmpty()) {
             gui.displayPlainRed("Fejl - Ingen medlemmer fundet.\n");
         } else {
-            for (Member m: result) {
-                gui.displayPlainBlack(m.toString() + '\n');
-                
+            for (Member m : result) {
+                if (result.size() == 1) {
+                    gui.setAdresse(m.getAddress());
+                    gui.setAlder(m.getAge());
+                    gui.setEmail(m.getEmail());
+                    gui.setNavn(m.getName());
+                    gui.setID(m.getId());
+                    gui.setTelefon(m.getPhone());
+                    try {
+                        for (Record rec : data.searchRecord(m.getName())){
+                            gui.displayPlainBlue(rec.toString() + '\n');
+                        }
+                        
+                    } catch (DataException ex) {
+                        ex.printStackTrace();
+                    }
+                } else {
+                    gui.displayPlainBlack(m.toString() + '\n');
+                }
             }
         }
     }
@@ -225,8 +242,6 @@ public class Controller {
                 e.printStackTrace();
             }
         }
-        
-        
     }
 
     public static void bookKeeping(int Year) {

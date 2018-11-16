@@ -94,8 +94,8 @@ public class PersistanceHandler {
     }
 
     /**
-     *Method for in depth search / selection of members.
-     * 
+     * Method for in depth search / selection of members.
+     *
      * @param Query
      * @param Disciplines
      * @param Coach
@@ -115,14 +115,14 @@ public class PersistanceHandler {
         return result;
     }
 
-/**
- * Method for adding a member to the Member database.
- *
- *
- * @param obj Member to be added to the database.
- * @throws delfinen.data.DataException
- */
-public void addMember(Member obj) throws DataException {
+    /**
+     * Method for adding a member to the Member database.
+     *
+     *
+     * @param obj Member to be added to the database.
+     * @throws delfinen.data.DataException
+     */
+    public void addMember(Member obj) throws DataException {
         dam.addEntry(gson.toJson(obj));
     }
 
@@ -140,11 +140,9 @@ public void addMember(Member obj) throws DataException {
             dam.editEntry(gson.toJson(old), "");
         }
     }
-    
 
     ///////////////////////      REKORDS HANDLING       ////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////
-    
     /**
      * Method for retrieving a list of all Records in the Records database.
      *
@@ -155,11 +153,10 @@ public void addMember(Member obj) throws DataException {
         List<Record> out = new ArrayList<>();
         try {
             List<String> jsons = dar.getEntries();
-            
 
-for (String json : jsons) {
+            for (String json : jsons) {
                 out.add(gson.fromJson(json, Record.class
-));
+                ));
             }
             return out;
         } catch (DataException e) {
@@ -172,8 +169,8 @@ for (String json : jsons) {
      * database for all entries with containing the query. * For more precise
      * searches, use the "ATTRIBUTE:"+"String" or "ATTRIBUTE:"+query
      *
-     * @param Query         The wanted Query.
-     * @return records      All members in the database with maching Attribute.
+     * @param Query The wanted Query.
+     * @return records All members in the database with maching Attribute.
      * @throws delfinen.data.DataException
      */
     public List<Record> searchRecord(String Query) throws DataException {
@@ -181,11 +178,10 @@ for (String json : jsons) {
             List<String> json = dar.searchEntries(Query);
             List<Record> records = new ArrayList<>();
             json
-
-.forEach((string) -> {
-                records.add(gson.fromJson(string, Record.class
-));
-            });
+                    .forEach((string) -> {
+                        records.add(gson.fromJson(string, Record.class
+                        ));
+                    });
             return records;
         } catch (DataException e) {
             throw new DataException(e.getMessage());
@@ -197,7 +193,7 @@ for (String json : jsons) {
      * Method for adding a Record to the Record database.
      *
      *
-     * @param obj       Record to be added to the database.
+     * @param obj Record to be added to the database.
      * @throws delfinen.data.DataException
      */
     public void addRecord(Record obj) throws DataException {
@@ -218,53 +214,51 @@ for (String json : jsons) {
             dar.editEntry(gson.toJson(old), "");
         }
     }
-    
+
     ///////////////////////      SUBSCRIPTION HANDLING       ////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////
-    
     /**
-     * Method for retrieving a list of all Subscriptions in the Subscriptions database.
+     * Method for retrieving a list of all Subscriptions in the Subscriptions
+     * database.
      *
-     * @return out              All Subscriptions in the database.
+     * @return out All Subscriptions in the database.
      * @throws DataException
      */
     public List<Subscription> getSubscriptions() throws DataException {
         List<Subscription> out = new ArrayList<>();
         try {
             List<String> jsons = das.getEntries();
-            
 
-for (String json : jsons) {
+            for (String json : jsons) {
                 out.add(gson.fromJson(json, Subscription.class
-));
+                ));
             }
             return out;
         } catch (DataException e) {
             throw new DataException(e.getMessage());
         }
     }
-    
+
     /**
-     * Method for searching for keywords in the Subscription database. Searches the
-     * database for all entries with containing the query. * For more precise
-     * searches, use the "ATTRIBUTE:"+"String" or "ATTRIBUTE:"+query
+     * Method for searching for keywords in the Subscription database. Searches
+     * the database for all entries with containing the query. * For more
+     * precise searches, use the "ATTRIBUTE:"+"String" or "ATTRIBUTE:"+query
      *
-     * @param Query     The wanted Query.
-     * @return result   All members in the database with maching Attribute.
+     * @param Query The wanted Query.
+     * @return result All members in the database with maching Attribute.
      * @throws delfinen.data.DataException
      */
-    public List<Subscription> searhcSubscriptions(String Query) throws DataException{
+    public List<Subscription> searhcSubscriptions(String Query) throws DataException {
         List<String> jsons = das.searchEntries(Query);
-        List<Subscription> result= new ArrayList<>();
-        
+        List<Subscription> result = new ArrayList<>();
 
-for (String json : jsons) {
+        for (String json : jsons) {
             result.add(gson.fromJson(json, Subscription.class
-));
+            ));
         }
         return result;
     }
-    
+
     /**
      * Method for adding a Subscription to the Subscription database.
      *
@@ -272,21 +266,21 @@ for (String json : jsons) {
      * @param obj Record to be added to the database.
      * @throws delfinen.data.DataException
      */
-    public void addSubscription(Subscription obj) throws DataException{
+    public void addSubscription(Subscription obj) throws DataException {
         das.addEntry(gson.toJson(obj));
     }
-    
+
     /**
-     * Method for editing a Subscription. Can also be used to remove Subscription.
-     * if N is null, removes entry.
+     * Method for editing a Subscription. Can also be used to remove
+     * Subscription. if N is null, removes entry.
      *
-     * @param old   The Subscription that you wish to modify.
-     * @param N     The Subscription you wish it should be. if null, removes the entry.
+     * @param old The Subscription that you wish to modify.
+     * @param N The Subscription you wish it should be. if null, removes the
+     * entry.
      * @throws delfinen.data.DataException
      */
-    public void editSubscription(Subscription old,Subscription N) throws DataException{
+    public void editSubscription(Subscription old, Subscription N) throws DataException {
         das.editEntry(gson.toJson(old), gson.toJson(N));
     }
 
-    
 }

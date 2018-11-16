@@ -6,6 +6,7 @@
 package delfinen.logic;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -18,7 +19,7 @@ public class Record {
     private LocalDateTime date;
     private Member holder;
     private String event;
-    private Discipline discpiline;
+    private Discipline discipline;
     private int place;
 
     ///////////////////////      CONSTRUCTOR       /////////////////////////////
@@ -41,7 +42,7 @@ public class Record {
         this.holder = holder;
         this.event = event;
         this.place = place;
-        this.discpiline = discipline;
+        this.discipline = discipline;
     }
 
     ///////////////////////      GETTERS       /////////////////////////////////
@@ -97,7 +98,7 @@ public class Record {
      * @return
      */
     public Discipline getDiscpiline() {
-        return discpiline;
+        return discipline;
     }
 
     ///////////////////////      SETTERS       /////////////////////////////////
@@ -136,6 +137,19 @@ public class Record {
      */
     public void setEvent(String event) {
         this.event = event;
+    }
+
+    /**
+     * toString
+     *
+     * @return string
+     */
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy HH:mm");
+        LocalDateTime dateTime = date;
+        String formattedDateTime = dateTime.format(formatter);
+        return "d. " + formattedDateTime + "-- Tid: " + time + ", Disciplin: " + discipline + ", Sted: " + event + ", Placering: " + place;
     }
 
 }
