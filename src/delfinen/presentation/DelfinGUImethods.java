@@ -101,7 +101,7 @@ public class DelfinGUImethods {
             textFieldAdresse.setBackground(Color.pink);
         } else {
             // input check, Regex for address
-            regexUserInfoBackGroundColorSet("^.+,\\s+\\d{4}.+$", textFieldAdresse,
+            regexUserInfoBackGroundColorSet("^.+,(\\s+)?\\d{4}.+$", textFieldAdresse,
                     "Adresse skal være i formatet: adresse, 2938 Bynavn\n");
         }
     }
@@ -157,7 +157,7 @@ public class DelfinGUImethods {
             textFieldNavn.setBackground(Color.pink);
         } else {
             // input check, Regex for name
-            regexUserInfoBackGroundColorSet("^\\w+(\\s\\w+)?+$", textFieldNavn,
+            regexUserInfoBackGroundColorSet("^\\w+((\\s\\w+)+)?$", textFieldNavn,
                     "Navnet skal være i formatet: xxxx, eller xxx yyyy mfl.\n");
         }
     }
@@ -180,7 +180,6 @@ public class DelfinGUImethods {
      * textField NewResults
      *
      */
-    
     /**
      *
      */
@@ -197,7 +196,7 @@ public class DelfinGUImethods {
         DelfinGUI.textFieldNewResultsTime.setText("");
         DelfinGUI.textFieldNewResultsTime.setBackground(Color.white);
     }
-    
+
     /**
      *
      */

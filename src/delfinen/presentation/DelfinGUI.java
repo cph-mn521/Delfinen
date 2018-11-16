@@ -418,6 +418,11 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         textFieldTelefon.setText("25854578");
         textFieldTelefon.setNextFocusableComponent(checkBoxDisciplinButterfly);
+        textFieldTelefon.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textFieldTelefonCaretUpdate(evt);
+            }
+        });
         textFieldTelefon.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 textFieldTelefonFocusLost(evt);
@@ -452,6 +457,11 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         textFieldID.setText("1");
         textFieldID.setNextFocusableComponent(textFieldNavn);
+        textFieldID.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textFieldIDCaretUpdate(evt);
+            }
+        });
         textFieldID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 textFieldIDFocusLost(evt);
@@ -491,6 +501,11 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         textFieldAdresse.setText("Ligustervænget 23, 2756 Liguster");
         textFieldAdresse.setNextFocusableComponent(textFieldEmail);
+        textFieldAdresse.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textFieldAdresseCaretUpdate(evt);
+            }
+        });
         textFieldAdresse.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 textFieldAdresseFocusLost(evt);
@@ -504,6 +519,11 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         textFieldNavn.setText("Lars Emil");
         textFieldNavn.setNextFocusableComponent(textFieldAdresse);
+        textFieldNavn.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textFieldNavnCaretUpdate(evt);
+            }
+        });
         textFieldNavn.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 textFieldNavnFocusLost(evt);
@@ -1273,10 +1293,9 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     // #######################    Getters  ###############################
     // #######################   Members   ###############################
-    
     public String getStatus() {
         switch (comboBoxStatus.getSelectedItem().toString()) {
-            case "Aktive":
+            case "Aktiv":
                 return "Active";
 
             default:
@@ -1607,7 +1626,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonNewResultsCloseActionPerformed
 
     private void textFieldNewResultsTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsTimeActionPerformed
-        
+
     }//GEN-LAST:event_textFieldNewResultsTimeActionPerformed
 
     private void textFieldNewResultsTimeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsTimeFocusGained
@@ -1676,6 +1695,22 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void textFieldEmailCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textFieldEmailCaretUpdate
         GUIm.textFieldEmail();
     }//GEN-LAST:event_textFieldEmailCaretUpdate
+
+    private void textFieldNavnCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textFieldNavnCaretUpdate
+        GUIm.textFieldNavn();
+    }//GEN-LAST:event_textFieldNavnCaretUpdate
+
+    private void textFieldTelefonCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textFieldTelefonCaretUpdate
+        GUIm.textFieldTelefon();
+    }//GEN-LAST:event_textFieldTelefonCaretUpdate
+
+    private void textFieldAdresseCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textFieldAdresseCaretUpdate
+        GUIm.textFieldAdresse();
+    }//GEN-LAST:event_textFieldAdresseCaretUpdate
+
+    private void textFieldIDCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textFieldIDCaretUpdate
+        GUIm.textFieldID();
+    }//GEN-LAST:event_textFieldIDCaretUpdate
 
     @Override
     public int hashCode() {
