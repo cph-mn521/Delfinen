@@ -47,7 +47,8 @@ public class MemberTest {
     public void nullTestEquals() {
         assertFalse(testPerson1 == null);
     }
-
+    
+    
     /**
      * Test of getName method, of class Member.
      */

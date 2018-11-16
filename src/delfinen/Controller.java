@@ -1,6 +1,7 @@
 package delfinen;
 
 import delfinen.presentation.DelfinGUI;
+import delfinen.presentation.DelfinGUImethods;
 import delfinen.data.PersistanceHandler;
 import delfinen.data.DataException;
 import delfinen.logic.CoachNotFoundException;
@@ -25,6 +26,8 @@ public class Controller {
      * @param args the command line arguments
      */
     private static DelfinGUI gui = new DelfinGUI();
+    private static DelfinGUImethods guim = new DelfinGUImethods();
+
     private static PersistanceHandler data = new PersistanceHandler();
     private static boolean DEBUG = true;
 
@@ -33,7 +36,7 @@ public class Controller {
     }
 
     /**
-     * Passes a list of trainers from data to gui, and activates the gui.
+     * Passes a list of trainers from data to guim, and activates the guim.
      */
     public static void init() {
         gui.setTrainedBy(getTrainers());
@@ -62,14 +65,23 @@ public class Controller {
      * Passes a member to the PersistanceHandler, for storing and databasing.
      */
     public static void addMember() {
-        // Getting info from gui
+        // Getting info from guim
         Member newMember = null;
-        String name = gui.getNavn();
-        String email = gui.getEmail();
-        String adress = gui.getAdresse();
-        int id = gui.getID();
-        int age = gui.getAlder();
-        int phoneNumber = gui.getTelefon();
+        String name = strFormatter(gui.getNavn());
+        String email = strFormatter(gui.getEmail());
+        String adress = strFormatter(gui.getAdresse());
+        int id, age, phoneNumber;
+        try {
+            id = Integer.parseInt(gui.getID());
+            age = Integer.parseInt(gui.getAlder());
+            phoneNumber = Integer.parseInt(gui.getTelefon());
+        } catch (NumberFormatException e) {
+            guim.displayBoldRed("Fejl i indtastningerne!");
+            if (DEBUG) {
+                e.printStackTrace();
+            }
+            return;
+        }
         Member.Status status = Member.Status.valueOf(gui.getStatus().equals("Aktiv") ? "Active" : "Passive");
         boolean isCoach = gui.getTrainer();
 
@@ -95,7 +107,7 @@ public class Controller {
                 newMember = new CompetitiveMember(name, email, adress, id, age, phoneNumber, status, disciplines, isCoach, coach);
             } catch (CoachNotFoundException e) {
                 if (DEBUG) {
-                    gui.displayBoldRed("Træner ikke fundet.\n");
+                    guim.displayBoldRed("Træner ikke fundet.\n");
                     e.printStackTrace();
                     return;
                 }
@@ -103,9 +115,9 @@ public class Controller {
         }
         try { // Ads member to database.
             data.addMember(newMember);
-            gui.displayPlainBlack("Medlem oprettet\n");
+            guim.displayPlainBlack("Medlem oprettet\n");
         } catch (DataException e) {
-            gui.displayBoldRed("Fejl - Medlem ikke oprettet.\n");
+            guim.displayBoldRed("Fejl - Medlem ikke oprettet.\n");
             if (DEBUG) {
                 e.printStackTrace();
             }
@@ -127,16 +139,18 @@ public class Controller {
             if (DEBUG) {
                 e.printStackTrace();
             }
-            gui.displayBoldRed("Ingen medlemmer fundet.\n");
+            guim.displayBoldRed("Ingen medlemmer fundet.\n");
         }
         if (members == null || members.size() < 1) {
-            gui.displayBoldRed("Ingen medlemmer fundet.\n");
+            guim.displayBoldRed("Ingen medlemmer fundet.\n");
         }
         return members;
     }
 
     /**
-     *
+     * A method for creating an array with information to be searched for. Takes
+     * information from the gui, and passes it to the PersistanceHandler for a
+     * fuzzy search in the filesystem.
      */
     public static void search() {
         ArrayList<String> Search = new ArrayList<>();
@@ -156,17 +170,14 @@ public class Controller {
         String name = gui.getNavn();
         String email = gui.getEmail();
         String address = gui.getAdresse();
-        int id = gui.getID();
-        int age = gui.getAlder();
-        int phone = gui.getTelefon();
         String isCoach = gui.getTrainer() + "";
 
-        Search.add(name);
-        Search.add(email);
-        Search.add(address);
-        Search.add(id == 0 ? "" : id + "");
-        Search.add(age == 0 ? "" : age + "");
-        Search.add(phone == 0 ? "" : phone + "");
+        Search.add(strFormatter(name));
+        Search.add(strFormatter(email));
+        Search.add(strFormatter(address));
+        Search.add(gui.getID());
+        Search.add(gui.getAlder());
+        Search.add(gui.getTelefon());
         Search.add(status);
         Search.add(isCoach);
 
@@ -176,10 +187,10 @@ public class Controller {
             if (DEBUG) {
                 e.printStackTrace();
             }
-            gui.displayPlainRed("Fejl - Ingen medlemmer fundet.\n");
+            guim.displayPlainRed("Fejl - Ingen medlemmer fundet.\n");
         }
         if (result == null || result.isEmpty()) {
-            gui.displayPlainRed("Fejl - Ingen medlemmer fundet.\n");
+            guim.displayPlainRed("Fejl - Ingen medlemmer fundet.\n");
         } else {
             for (Member m : result) {
                 if (result.size() == 1) {
@@ -189,16 +200,15 @@ public class Controller {
                     gui.setNavn(m.getName());
                     gui.setID(m.getId());
                     gui.setTelefon(m.getPhone());
-                    try {
-                        for (Record rec : data.searchRecord(m.getName())){
-                            gui.displayPlainBlue(rec.toString() + '\n');
+                    try { // write records for searched member
+                        for (Record rec : data.searchRecord(m.getName())) {
+                            guim.displayPlainBlue(rec.toString() + '\n');
                         }
-                        
                     } catch (DataException ex) {
                         ex.printStackTrace();
                     }
                 } else {
-                    gui.displayPlainBlack(m.toString() + '\n');
+                    guim.displayPlainBlack(m.toString() + '\n');
                 }
             }
         }
@@ -219,12 +229,20 @@ public class Controller {
 
         try {
             for (Member member : data.searchMember(gui.getNavn())) {
-                if (gui.getID() == member.getId()) {
+                if (Integer.parseInt(gui.getID()) == member.getId()) {
                     holder = member;
+
+                    try {
+                        if (Integer.parseInt(gui.getID()) == member.getId()) {
+                            holder = member;
+                        }
+                    } catch (NumberFormatException e) {
+                        guim.displayPlainRed("Kun tal i ID-boksen.\n");
+                    }
                 }
             }
             if (holder == null) {
-                gui.displayBoldRed(gui.getNavn() + " er ikke fundet.\n");
+                guim.displayBoldRed(gui.getNavn() + " er ikke fundet.\n");
             }
         } catch (DataException ex) {
             if (DEBUG) {
@@ -234,22 +252,56 @@ public class Controller {
 
         try {
             data.addRecord(new Record(time, date, holder, event, discipline, place));
-            gui.displayPlainBlack("Resultat oprettet\n");
+            guim.displayPlainBlack("Resultat oprettet\n");
         } catch (DataException e) {
-            gui.displayBoldRed("Fejl - Ny resultat ikke oprettet.\n");
+            guim.displayBoldRed("Fejl - Ny resultat ikke oprettet.\n");
             if (DEBUG) {
                 e.printStackTrace();
             }
         }
     }
 
+    /**
+     * Method for formatting Strings to a known format. Takes a string and
+     * capitalizes the first letter of every word.
+     *
+     * @param str The String to be formattet.
+     * @return The formatted String.
+     */
+    static String strFormatter(String str) {
+        // Create a char array of given String 
+        char ch[] = str.toCharArray();
+        for (int i = 0; i < str.length(); i++) {
+
+            // If first character of a word is found 
+            if (i == 0 && ch[i] != ' '
+                    || ch[i] != ' ' && ch[i - 1] == ' ') {
+
+                // If it is in lower-case 
+                if (ch[i] >= 'a' && ch[i] <= 'z') {
+
+                    // Convert into Upper-case 
+                    ch[i] = (char) (ch[i] - 'a' + 'A');
+                }
+            } // If apart from first character 
+            // Any one is in Upper-case 
+            else if (ch[i] >= 'A' && ch[i] <= 'Z') // Convert into Lower-Case 
+            {
+                ch[i] = (char) (ch[i] + 'a' - 'A');
+            }
+        }
+
+        // Convert the char array to equivalent String 
+        String st = new String(ch);
+        return st;
+    }
+
     public static void bookKeeping(int Year) {
         try {
             Accountant Acc = new Accountant(data.searhcSubscriptions(Integer.toString(Year)), data.getMembers());
-            // Add gui plug inn here.
+            // Add guim plug inn here.
         } catch (DataException e) {
+
         }
-
     }
-
 }
