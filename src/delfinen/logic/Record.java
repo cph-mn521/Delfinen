@@ -149,7 +149,9 @@ public class Record {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy HH:mm");
         LocalDateTime dateTime = date;
         String formattedDateTime = dateTime.format(formatter);
-        return "d. " + formattedDateTime + "-- Tid: " + time + ", Disciplin: " + discipline + ", Sted: " + event + ", Placering: " + place;
+        return discipline + ", Tid: " + time + ", " + formattedDateTime
+                + ", " + event
+                + ", " + place + ". plads.";
     }
 
 }

@@ -11,6 +11,7 @@ import delfinen.logic.Discipline;
 import com.google.gson.Gson;
 import delfinen.logic.Accountant;
 import delfinen.logic.Record;
+import delfinen.presentation.DelfinGUImethods;
 import java.time.LocalDateTime;
 
 import java.util.List;
@@ -31,6 +32,8 @@ public class Controller {
      * @param args the command line arguments
      */
     private static DelfinGUI gui = new DelfinGUI();
+    private static DelfinGUImethods guim = new DelfinGUImethods();
+    
     private static PersistanceHandler data = new PersistanceHandler();
     private static boolean DEBUG = true;
 
@@ -39,7 +42,7 @@ public class Controller {
     }
 
     /**
-     * Passes a list of trainers from data to gui, and activates the gui.
+     * Passes a list of trainers from data to guim, and activates the guim.
      */
     public static void init() {
         gui.setTrainedBy(getTrainers());
@@ -68,7 +71,7 @@ public class Controller {
      * Passes a member to the PersistanceHandler, for storing and databasing.
      */
     public static void addMember() {
-        // Getting info from gui
+        // Getting info from guim
         Member newMember = null;
         String name = gui.getNavn();
         String email = gui.getEmail();
@@ -101,7 +104,7 @@ public class Controller {
                 newMember = new CompetitiveMember(name, email, adress, id, age, phoneNumber, status, disciplines, isCoach, coach);
             } catch (CoachNotFoundException e) {
                 if (DEBUG) {
-                    gui.displayBoldRed("Træner ikke fundet.\n");
+                    guim.displayBoldRed("Træner ikke fundet.\n");
                     e.printStackTrace();
                     return;
                 }
@@ -109,9 +112,9 @@ public class Controller {
         }
         try { // Ads member to database.
             data.addMember(newMember);
-            gui.displayPlainBlack("Medlem oprettet\n");
+            guim.displayPlainBlack("Medlem oprettet\n");
         } catch (DataException e) {
-            gui.displayBoldRed("Fejl - Medlem ikke oprettet.\n");
+            guim.displayBoldRed("Fejl - Medlem ikke oprettet.\n");
             if (DEBUG) {
                 e.printStackTrace();
             }
@@ -133,10 +136,10 @@ public class Controller {
             if (DEBUG) {
                 e.printStackTrace();
             }
-            gui.displayBoldRed("Ingen medlemmer fundet.\n");
+            guim.displayBoldRed("Ingen medlemmer fundet.\n");
         }
         if (members == null || members.size() < 1) {
-            gui.displayBoldRed("Ingen medlemmer fundet.\n");
+            guim.displayBoldRed("Ingen medlemmer fundet.\n");
         }
         return members;
     }
@@ -182,10 +185,10 @@ public class Controller {
             if (DEBUG) {
                 e.printStackTrace();
             }
-            gui.displayPlainRed("Fejl - Ingen medlemmer fundet.\n");
+            guim.displayPlainRed("Fejl - Ingen medlemmer fundet.\n");
         }
         if (result == null || result.isEmpty()) {
-            gui.displayPlainRed("Fejl - Ingen medlemmer fundet.\n");
+            guim.displayPlainRed("Fejl - Ingen medlemmer fundet.\n");
         } else {
             for (Member m : result) {
                 if (result.size() == 1) {
@@ -195,16 +198,15 @@ public class Controller {
                     gui.setNavn(m.getName());
                     gui.setID(m.getId());
                     gui.setTelefon(m.getPhone());
-                    try {
+                    try { // write records for searched member
                         for (Record rec : data.searchRecord(m.getName())){
-                            gui.displayPlainBlue(rec.toString() + '\n');
+                            guim.displayPlainBlue(rec.toString() + '\n');
                         }
-                        
                     } catch (DataException ex) {
                         ex.printStackTrace();
                     }
                 } else {
-                    gui.displayPlainBlack(m.toString() + '\n');
+                    guim.displayPlainBlack(m.toString() + '\n');
                 }
             }
         }
@@ -225,12 +227,13 @@ public class Controller {
 
         try {
             for (Member member : data.searchMember(gui.getNavn())) {
+                
                 if (gui.getID() == member.getId()) {
                     holder = member;
                 }
             }
             if (holder == null) {
-                gui.displayBoldRed(gui.getNavn() + " er ikke fundet.\n");
+                guim.displayBoldRed(gui.getNavn() + " er ikke fundet.\n");
             }
         } catch (DataException ex) {
             if (DEBUG) {
@@ -240,9 +243,9 @@ public class Controller {
 
         try {
             data.addRecord(new Record(time, date, holder, event, discipline, place));
-            gui.displayPlainBlack("Resultat oprettet\n");
+            guim.displayPlainBlack("Resultat oprettet\n");
         } catch (DataException e) {
-            gui.displayBoldRed("Fejl - Ny resultat ikke oprettet.\n");
+            guim.displayBoldRed("Fejl - Ny resultat ikke oprettet.\n");
             if (DEBUG) {
                 e.printStackTrace();
             }
@@ -252,7 +255,7 @@ public class Controller {
     public static void bookKeeping(int Year) {
         try {
             Accountant Acc = new Accountant(data.searhcSubscriptions(Integer.toString(Year)), data.getMembers());
-            // Add gui plug inn here.
+            // Add guim plug inn here.
         } catch (DataException e) {
         }
 

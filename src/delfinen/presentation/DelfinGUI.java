@@ -9,21 +9,13 @@ import delfinen.logic.Discipline;
 import delfinen.logic.Member;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JCheckBox;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -31,13 +23,10 @@ import javax.swing.text.StyledDocument;
  */
 public class DelfinGUI extends javax.swing.JFrame {
 
-    Font FONT_NOTOSANS_PLAIN_12 = new Font("notosans", Font.PLAIN, 12);
-    Font FONT_NOTOSANS_BOLD_12 = new Font("notosans", Font.BOLD, 12);
-    Font FONT_NOTOSANS_ITALIC_12 = new Font("notosans", Font.ITALIC, 12);
-    Font FONT_NOTOSANS_BOLD_ITALIC_12 = new Font("notosans", Font.BOLD + Font.ITALIC, 12);
     ArrayList<JCheckBox> discipliner = new ArrayList<>();
     ArrayList<JTextField> textFields = new ArrayList<>();
 
+    public DelfinGUImethods GUIm  = new DelfinGUImethods();
     private static boolean DEBUG = true;
 
     /**
@@ -225,7 +214,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             }
         });
 
-        textFieldNewResultsPlace.setText("1");
+        textFieldNewResultsPlace.setText("f.eks. 1");
         textFieldNewResultsPlace.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsPlaceFocusGained(evt);
@@ -237,7 +226,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             }
         });
 
-        textFieldNewResultsDate.setText("f.eks. d-m-åååå tt:mm, 1-03-2017 12:30");
+        textFieldNewResultsDate.setText("format d-m-åååå tt:mm, f.eks.  1-03-2017 12:30");
         textFieldNewResultsDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsDateFocusGained(evt);
@@ -1202,7 +1191,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     // #######################    Getters  ###############################
-    // ###################################################################
+    // #######################  New results ##############################
     public String getNewResultEvent() {
         return textFieldNewResultsEvent.getText();
     }
@@ -1238,6 +1227,8 @@ public class DelfinGUI extends javax.swing.JFrame {
         return Float.parseFloat(textFieldNewResultsTime.getText());
     }
 
+    // #######################    Getters  ###############################
+    // #######################   Members   ###############################
     public boolean getDisciplinBryst() {
         return checkBoxDisciplinBryst.isSelected();
     }
@@ -1412,7 +1403,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public void setMedlemsInfo(String textPaneMedlemsInfo) {
-        displayPlainBlack(textPaneMedlemsInfo);
+        GUIm.displayPlainBlack(textPaneMedlemsInfo);
     }
 
     public void setTrainer(boolean checkBoxTrainer) {
@@ -1446,7 +1437,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         DebitorList.setListData(list);
     }
 
-    public static int getEXIT_ON_CLOSE() {
+    public int getEXIT_ON_CLOSE() {
         return EXIT_ON_CLOSE;
     }
 
@@ -1456,9 +1447,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     private void textFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldIDActionPerformed
-        // input check, Regex for ID
-        regexUserInfoBackGroundColorSet("^\\d+$", textFieldID,
-                "ID skal være et tal større end 0\n");
+        GUIm.textFieldID();
     }//GEN-LAST:event_textFieldIDActionPerformed
 
     private void menuFileCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFileCloseActionPerformed
@@ -1494,7 +1483,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             textFieldTelefon.setBackground(Color.pink);
         } else {
             // input check, Regex for Telephone
-            regexUserInfoBackGroundColorSet("^\\d+$", textFieldTelefon,
+            GUIm.regexUserInfoBackGroundColorSet("^\\d+$", textFieldTelefon,
                     "Telefonnummer skal være i formatet: 12345678\n");
         }
     }//GEN-LAST:event_textFieldTelefonActionPerformed
@@ -1504,7 +1493,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             textFieldEmail.setBackground(Color.pink);
         } else {
             // input check, Regex for email
-            regexUserInfoBackGroundColorSet("^.+@.+\\..+$", textFieldEmail,
+            GUIm.regexUserInfoBackGroundColorSet("^.+@.+\\..+$", textFieldEmail,
                     "Email skal være i formatet: xx@yy.zz\n");
         }
     }//GEN-LAST:event_textFieldEmailActionPerformed
@@ -1514,7 +1503,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             textFieldAdresse.setBackground(Color.pink);
         } else {
             // input check, Regex for address
-            regexUserInfoBackGroundColorSet("^.+,\\s+\\d{4}.+$", textFieldAdresse,
+            GUIm.regexUserInfoBackGroundColorSet("^.+,\\s+\\d{4}.+$", textFieldAdresse,
                     "Adresse skal være i formatet: adresse, 2938 Bynavn\n");
         }
     }//GEN-LAST:event_textFieldAdresseActionPerformed
@@ -1524,7 +1513,7 @@ public class DelfinGUI extends javax.swing.JFrame {
             textFieldNavn.setBackground(Color.pink);
         } else {
             // input check, Regex for name
-            regexUserInfoBackGroundColorSet("^\\w+(\\s\\w+)?+$", textFieldNavn,
+            GUIm.regexUserInfoBackGroundColorSet("^\\w+(\\s\\w+)?+$", textFieldNavn,
                     "Navnet skal være i formatet: xxxx, eller xxx yyyy mfl.\n");
 
         }
@@ -1537,14 +1526,14 @@ public class DelfinGUI extends javax.swing.JFrame {
         } else {
             // input check, Regex for address
             String err = "Alder skal være et tal mellem 0 og 120 år\n";
-            regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder,
+            GUIm.regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder,
                     err);
             if (Integer.parseInt(textFieldAlder.getText()) < 0
                     || Integer.parseInt(textFieldAlder.getText()) > 120) {
                 textFieldAlder.setBackground(Color.red);
-                displayPlainRed(err);
+                GUIm.displayPlainRed(err);
             } else {
-                clearFormatedText(textPaneMedlemsInfo);
+                GUIm.clearFormatedText(textPaneMedlemsInfo);
                 textFieldAlder.setBackground(Color.white);
             }
         }
@@ -1598,7 +1587,6 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_comboBoxTrainedByFocusGained
 
     private void buttonNewMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewMemberActionPerformed
-
         Controller.addMember();
     }//GEN-LAST:event_buttonNewMemberActionPerformed
 
@@ -1607,7 +1595,6 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldEmailFocusLost
 
     private void buttonNewResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultActionPerformed
-
         dialogNewResults.setAlwaysOnTop(true);
         dialogNewResults.setVisible(true);
         labelNewResultsMemberName.setText(textFieldNavn.getText());
@@ -1654,28 +1641,15 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldNewResultsPlaceFocusGained
 
     private void buttonNewResultsSendDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultsSendDataActionPerformed
+        dialogNewResults.setAlwaysOnTop(false);
         Controller.addResult();
+        dialogNewResults.setVisible(false);
+
     }//GEN-LAST:event_buttonNewResultsSendDataActionPerformed
 
     private void textFieldNewResultsDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldNewResultsDateActionPerformed
-
-    private boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf,
-            String err) {
-        // check user input and set background accordingly
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(tf.getText());
-        if (!matcher.matches()) {
-            tf.setBackground(Color.red);
-            displayFormatedText(textPaneMedlemsInfo, err, FONT_NOTOSANS_PLAIN_12, Color.RED);
-            return false;
-        } else {
-            tf.setBackground(Color.white);
-            clearFormatedText(textPaneMedlemsInfo);
-            return true;
-        }
-    }
 
     @Override
     public int hashCode() {
@@ -1821,76 +1795,18 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelMedlemsData;
     private javax.swing.JPanel panelMembers;
     private javax.swing.JPanel panelResults;
-    private javax.swing.JTextField textFieldAdresse;
-    private javax.swing.JTextField textFieldAlder;
-    private javax.swing.JTextField textFieldEmail;
-    private javax.swing.JTextField textFieldID;
-    private javax.swing.JTextField textFieldNavn;
+    public static javax.swing.JTextField textFieldAdresse;
+    public static javax.swing.JTextField textFieldAlder;
+    public static javax.swing.JTextField textFieldEmail;
+    public static javax.swing.JTextField textFieldID;
+    public static javax.swing.JTextField textFieldNavn;
     private javax.swing.JTextField textFieldNewResultsDate;
     private javax.swing.JTextField textFieldNewResultsEvent;
     private javax.swing.JTextField textFieldNewResultsPlace;
     private javax.swing.JTextField textFieldNewResultsTime;
-    private javax.swing.JTextField textFieldTelefon;
-    private javax.swing.JTextPane textPaneMedlemsInfo;
+    public static javax.swing.JTextField textFieldTelefon;
+    public static javax.swing.JTextPane textPaneMedlemsInfo;
     private javax.swing.JPanel thisYear;
     // End of variables declaration//GEN-END:variables
 
-    public void displayPlainBlack(String text) {
-        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.black);
-    }
-
-    public void displayPlainRed(String text) {
-        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.red);
-    }
-
-    public void displayBoldRed(String text) {
-        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.red);
-    }
-
-    public void displayBoldBlack(String text) {
-        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.black);
-    }
-
-    public void displayPlainGreen(String text) {
-        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.green);
-    }
-
-    public void displayBoldGreen(String text) {
-        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.green);
-    }
-    
-    
-    public void displayPlainBlue(String text) {
-        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.blue);
-    }
-
-    public void displayBoldBlue(String text) {
-        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.blue);
-    }
-
-    public void displayFormatedText(JTextPane tp, String txt, Font font, Color color) {
-
-        StyledDocument doc = (StyledDocument) tp.getDocument();
-        try {
-            doc.insertString(doc.getLength(), txt, displayFormat(font, color));
-        } catch (BadLocationException ex) {
-            System.out.println(ex);
-        }
-    }
-
-    public SimpleAttributeSet displayFormat(Font font, Color color) {
-        SimpleAttributeSet sAS = new SimpleAttributeSet();
-
-        StyleConstants.setFontFamily(sAS, font.getFamily());
-        StyleConstants.setFontSize(sAS, font.getSize());
-        StyleConstants.setBold(sAS, font.isBold());
-        StyleConstants.setItalic(sAS, font.isItalic());
-        StyleConstants.setForeground(sAS, color);
-
-        return sAS;
-    }
-
-    public void clearFormatedText(JTextPane tp) {
-        tp.setText("");
-    }
 }
