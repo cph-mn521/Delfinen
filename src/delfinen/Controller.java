@@ -7,11 +7,10 @@ import delfinen.logic.CoachNotFoundException;
 import delfinen.logic.Member;
 import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Discipline;
-
 import delfinen.logic.Accountant;
 import delfinen.logic.Record;
-import java.time.LocalDateTime;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
 

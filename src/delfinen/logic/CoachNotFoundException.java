@@ -7,7 +7,7 @@ package delfinen.logic;
 
 /**
  *
- * @author Lord
+ * @author Niels Bang
  */
 public class CoachNotFoundException extends Exception {
 

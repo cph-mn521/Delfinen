@@ -22,7 +22,8 @@ public class DataSearchEngine {
     private Gson gson = new Gson();
 
     /**
-     *
+     * A method for a partial fuzzy search for members in the filesystem.
+     * 
      * @param Search
      * @param disciplines
      * @param Coach
