@@ -9,7 +9,9 @@ public class Subscription {
     private Member holder; 
     private final float price;
 
-    
+    /*
+    TOKEN CHANGE FOR GIT
+    */
     /**
      * Constructor for a subscription. Contains the year the subscription was payed for.
      * the holder of the subscription and from this calculates what price the holder had to pay.
