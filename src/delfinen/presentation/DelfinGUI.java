@@ -417,6 +417,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         jLabel3.setText("Status");
 
         textFieldTelefon.setText("25854578");
+        textFieldTelefon.setNextFocusableComponent(checkBoxDisciplinButterfly);
         textFieldTelefon.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 textFieldTelefonFocusLost(evt);
@@ -429,6 +430,13 @@ public class DelfinGUI extends javax.swing.JFrame {
         });
 
         textFieldAlder.setText("23");
+        textFieldAlder.setFocusCycleRoot(true);
+        textFieldAlder.setNextFocusableComponent(textFieldID);
+        textFieldAlder.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textFieldAlderCaretUpdate(evt);
+            }
+        });
         textFieldAlder.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 textFieldAlderFocusLost(evt);
@@ -443,9 +451,10 @@ public class DelfinGUI extends javax.swing.JFrame {
         jLabel2.setText("Navn");
 
         textFieldID.setText("1");
+        textFieldID.setNextFocusableComponent(textFieldNavn);
         textFieldID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                textFieldTelefonFocusLost(evt);
+                textFieldIDFocusLost(evt);
             }
         });
         textFieldID.addActionListener(new java.awt.event.ActionListener() {
@@ -457,6 +466,12 @@ public class DelfinGUI extends javax.swing.JFrame {
         jLabel1.setText("ID");
 
         textFieldEmail.setText("lm@delfinen.dk");
+        textFieldEmail.setNextFocusableComponent(textFieldTelefon);
+        textFieldEmail.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textFieldEmailCaretUpdate(evt);
+            }
+        });
         textFieldEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 textFieldEmailFocusLost(evt);
@@ -475,6 +490,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         jLabel4.setText("Email");
 
         textFieldAdresse.setText("Ligustervænget 23, 2756 Liguster");
+        textFieldAdresse.setNextFocusableComponent(textFieldEmail);
         textFieldAdresse.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 textFieldAdresseFocusLost(evt);
@@ -487,6 +503,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         });
 
         textFieldNavn.setText("Lars Emil");
+        textFieldNavn.setNextFocusableComponent(textFieldAdresse);
         textFieldNavn.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 textFieldNavnFocusLost(evt);
@@ -500,6 +517,7 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         comboBoxMotionistKonkurrence.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Motionist", "Konkurrencesvømmer" }));
         comboBoxMotionistKonkurrence.setSelectedIndex(1);
+        comboBoxMotionistKonkurrence.setNextFocusableComponent(comboBoxTrainedBy);
         comboBoxMotionistKonkurrence.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxMotionistKonkurrenceActionPerformed(evt);
@@ -509,14 +527,18 @@ public class DelfinGUI extends javax.swing.JFrame {
         panelDisciplin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         checkBoxDisciplinBryst.setText("Brystsvømning");
+        checkBoxDisciplinBryst.setNextFocusableComponent(comboBoxStatus);
 
         checkBoxDisciplinButterfly.setSelected(true);
         checkBoxDisciplinButterfly.setText("Butterfly");
+        checkBoxDisciplinButterfly.setNextFocusableComponent(checkBoxDisciplinCrawl);
 
         checkBoxDisciplinCrawl.setText("Crawl");
+        checkBoxDisciplinCrawl.setNextFocusableComponent(checkBoxDisciplinRygcrawl);
 
         checkBoxDisciplinRygcrawl.setSelected(true);
         checkBoxDisciplinRygcrawl.setText("Rygcrawl");
+        checkBoxDisciplinRygcrawl.setNextFocusableComponent(checkBoxDisciplinBryst);
 
         javax.swing.GroupLayout panelDisciplinLayout = new javax.swing.GroupLayout(panelDisciplin);
         panelDisciplin.setLayout(panelDisciplinLayout);
@@ -546,6 +568,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         );
 
         comboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aktiv", "Passiv" }));
+        comboBoxStatus.setNextFocusableComponent(checkBoxTrainer);
         comboBoxStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxStatusActionPerformed(evt);
@@ -553,6 +576,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         });
 
         checkBoxTrainer.setText("Er træner");
+        checkBoxTrainer.setNextFocusableComponent(comboBoxMotionistKonkurrence);
         checkBoxTrainer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkBoxTrainerActionPerformed(evt);
@@ -1210,20 +1234,6 @@ public class DelfinGUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public String getStatus() {
-        return comboBoxStatus.getSelectedItem().toString();
-    }
-
-    public ArrayList<String> getDisciplin() {
-        ArrayList<String> disc = new ArrayList<>();
-        for (JCheckBox jCheckbox : discipliner) {
-            if (jCheckbox.isSelected()) {
-                disc.add(jCheckbox.getText());
-            }
-        }
-        return disc;
-    }
-
     // #######################    Getters  ###############################
     // #######################  New results ##############################
     public String getNewResultEvent() {
@@ -1263,6 +1273,27 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     // #######################    Getters  ###############################
     // #######################   Members   ###############################
+    
+    public String getStatus() {
+        switch (comboBoxStatus.getSelectedItem().toString()) {
+            case "Aktive":
+                return "Active";
+
+            default:
+                return "Passive";
+        }
+    }
+
+    public ArrayList<String> getDisciplin() {
+        ArrayList<String> disc = new ArrayList<>();
+        for (JCheckBox jCheckbox : discipliner) {
+            if (jCheckbox.isSelected()) {
+                disc.add(jCheckbox.getText());
+            }
+        }
+        return disc;
+    }
+
     public boolean getDisciplinBryst() {
         return checkBoxDisciplinBryst.isSelected();
     }
@@ -1562,7 +1593,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonNewMemberActionPerformed
 
     private void textFieldEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldEmailFocusLost
-
+        GUIm.textFieldEmail();
     }//GEN-LAST:event_textFieldEmailFocusLost
 
     private void buttonNewResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultActionPerformed
@@ -1633,6 +1664,18 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void buttonClearMemberInfoFieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClearMemberInfoFieldsActionPerformed
         GUIm.ClearFieldToPink();
     }//GEN-LAST:event_buttonClearMemberInfoFieldsActionPerformed
+
+    private void textFieldIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldIDFocusLost
+        GUIm.textFieldID();
+    }//GEN-LAST:event_textFieldIDFocusLost
+
+    private void textFieldAlderCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textFieldAlderCaretUpdate
+        GUIm.textFieldAlder();
+    }//GEN-LAST:event_textFieldAlderCaretUpdate
+
+    private void textFieldEmailCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textFieldEmailCaretUpdate
+        GUIm.textFieldEmail();
+    }//GEN-LAST:event_textFieldEmailCaretUpdate
 
     @Override
     public int hashCode() {

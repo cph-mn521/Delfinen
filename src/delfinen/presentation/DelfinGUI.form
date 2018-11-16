@@ -647,6 +647,9 @@
                 <Component class="javax.swing.JTextField" name="textFieldTelefon">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="25854578"/>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="checkBoxDisciplinButterfly"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldTelefonFocusLost"/>
@@ -659,8 +662,13 @@
                 <Component class="javax.swing.JTextField" name="textFieldAlder">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="23"/>
+                    <Property name="focusCycleRoot" type="boolean" value="true"/>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="textFieldID"/>
+                    </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="textFieldAlderCaretUpdate"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldAlderFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldAlderActionPerformed"/>
                   </Events>
@@ -676,9 +684,12 @@
                 <Component class="javax.swing.JTextField" name="textFieldID">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="1"/>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="textFieldNavn"/>
+                    </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldTelefonFocusLost"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldIDFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldIDActionPerformed"/>
                   </Events>
                   <AuxValues>
@@ -693,8 +704,12 @@
                 <Component class="javax.swing.JTextField" name="textFieldEmail">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="lm@delfinen.dk"/>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="textFieldTelefon"/>
+                    </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="textFieldEmailCaretUpdate"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldEmailFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldEmailActionPerformed"/>
                   </Events>
@@ -720,6 +735,9 @@
                 <Component class="javax.swing.JTextField" name="textFieldAdresse">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ligusterv&#xe6;nget 23, 2756 Liguster"/>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="textFieldEmail"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldAdresseFocusLost"/>
@@ -732,6 +750,9 @@
                 <Component class="javax.swing.JTextField" name="textFieldNavn">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Lars Emil"/>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="textFieldAdresse"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldNavnFocusLost"/>
@@ -750,6 +771,9 @@
                       </StringArray>
                     </Property>
                     <Property name="selectedIndex" type="int" value="1"/>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="comboBoxTrainedBy"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboBoxMotionistKonkurrenceActionPerformed"/>
@@ -806,6 +830,9 @@
                     <Component class="javax.swing.JCheckBox" name="checkBoxDisciplinBryst">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Brystsv&#xf8;mning"/>
+                        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                          <ComponentRef name="comboBoxStatus"/>
+                        </Property>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -815,6 +842,9 @@
                       <Properties>
                         <Property name="selected" type="boolean" value="true"/>
                         <Property name="text" type="java.lang.String" value="Butterfly"/>
+                        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                          <ComponentRef name="checkBoxDisciplinCrawl"/>
+                        </Property>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -823,6 +853,9 @@
                     <Component class="javax.swing.JCheckBox" name="checkBoxDisciplinCrawl">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Crawl"/>
+                        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                          <ComponentRef name="checkBoxDisciplinRygcrawl"/>
+                        </Property>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -832,6 +865,9 @@
                       <Properties>
                         <Property name="selected" type="boolean" value="true"/>
                         <Property name="text" type="java.lang.String" value="Rygcrawl"/>
+                        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                          <ComponentRef name="checkBoxDisciplinBryst"/>
+                        </Property>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -847,6 +883,9 @@
                         <StringItem index="1" value="Passiv"/>
                       </StringArray>
                     </Property>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="checkBoxTrainer"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboBoxStatusActionPerformed"/>
@@ -859,6 +898,9 @@
                 <Component class="javax.swing.JCheckBox" name="checkBoxTrainer">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Er tr&#xe6;ner"/>
+                    <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="comboBoxMotionistKonkurrence"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBoxTrainerActionPerformed"/>
