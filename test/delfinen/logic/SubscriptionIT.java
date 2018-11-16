@@ -1,5 +1,6 @@
 package delfinen.logic;
 
+
 import delfinen.logic.Member.Status;
 import org.junit.After;
 import org.junit.AfterClass;
