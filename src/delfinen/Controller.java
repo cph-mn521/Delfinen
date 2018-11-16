@@ -1,6 +1,7 @@
 package delfinen;
 
 import delfinen.presentation.DelfinGUI;
+import delfinen.presentation.DelfinGUImethods;
 import delfinen.data.PersistanceHandler;
 import delfinen.data.DataException;
 import delfinen.logic.CoachNotFoundException;
@@ -9,9 +10,6 @@ import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Discipline;
 import delfinen.logic.Accountant;
 import delfinen.logic.Record;
-
-import delfinen.presentation.DelfinGUImethods;
-import java.time.LocalDateTime;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -72,12 +70,18 @@ public class Controller {
         String name = strFormatter(gui.getNavn());
         String email = strFormatter(gui.getEmail());
         String adress = strFormatter(gui.getAdresse());
-        
-        int id = Integer.parseInt(gui.getID());
-        int age = Integer.parseInt(gui.getAlder());
-        int phoneNumber = Integer.parseInt(gui.getTelefon());
-        
-        
+        int id, age, phoneNumber;
+        try {
+            id = Integer.parseInt(gui.getID());
+            age = Integer.parseInt(gui.getAlder());
+            phoneNumber = Integer.parseInt(gui.getTelefon());
+        } catch (NumberFormatException e) {
+            guim.displayBoldRed("Fejl i indtastningerne!");
+            if (DEBUG) {
+                e.printStackTrace();
+            }
+            return;
+        }
         Member.Status status = Member.Status.valueOf(gui.getStatus().equals("Aktiv") ? "Active" : "Passive");
         boolean isCoach = gui.getTrainer();
 
@@ -144,9 +148,9 @@ public class Controller {
     }
 
     /**
-     * A method for creating an array with information to be searched for.
-     * Takes information from the gui, and passes it to the PersistanceHandler
-     * for a fuzzy search in the filesystem.
+     * A method for creating an array with information to be searched for. Takes
+     * information from the gui, and passes it to the PersistanceHandler for a
+     * fuzzy search in the filesystem.
      */
     public static void search() {
         ArrayList<String> Search = new ArrayList<>();
@@ -166,17 +170,14 @@ public class Controller {
         String name = gui.getNavn();
         String email = gui.getEmail();
         String address = gui.getAdresse();
-        int id = gui.getID();
-        int age = gui.getAlder();
-        int phone = gui.getTelefon();
         String isCoach = gui.getTrainer() + "";
 
         Search.add(strFormatter(name));
         Search.add(strFormatter(email));
         Search.add(strFormatter(address));
-        Search.add(id == 0 ? "" : id + "");
-        Search.add(age == 0 ? "" : age + "");
-        Search.add(phone == 0 ? "" : phone + "");
+        Search.add(gui.getID());
+        Search.add(gui.getAlder());
+        Search.add(gui.getTelefon());
         Search.add(status);
         Search.add(isCoach);
 
@@ -229,8 +230,12 @@ public class Controller {
         try {
             for (Member member : data.searchMember(gui.getNavn())) {
 
-                if (gui.getID() == member.getId()) {
-                    holder = member;
+                try {
+                    if (Integer.parseInt(gui.getID()) == member.getId()) {
+                        holder = member;
+                    }
+                } catch (NumberFormatException e) {
+                    guim.displayPlainRed("Kun tal i ID-boksen.\n");
                 }
             }
             if (holder == null) {
