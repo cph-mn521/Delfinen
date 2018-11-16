@@ -26,7 +26,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     ArrayList<JCheckBox> discipliner = new ArrayList<>();
     ArrayList<JTextField> textFields = new ArrayList<>();
 
-    public DelfinGUImethods GUIm  = new DelfinGUImethods();
+    public DelfinGUImethods GUIm = new DelfinGUImethods();
     private static boolean DEBUG = true;
 
     /**
@@ -1348,11 +1348,11 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public void setDisciplinBryst(boolean disciplinBryst) {
-        this.checkBoxDisciplinBryst.setSelected(disciplinBryst);
+        checkBoxDisciplinBryst.setSelected(disciplinBryst);
     }
 
     public void setDisciplinButterfly(boolean disciplinButterfly) {
-        this.checkBoxDisciplinButterfly.setSelected(disciplinButterfly);
+        checkBoxDisciplinButterfly.setSelected(disciplinButterfly);
     }
 
     public void setDisciplinCrawl(boolean disciplinCrawl) {
@@ -1464,78 +1464,27 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_menuHelpAboutActionPerformed
 
     private void comboBoxMotionistKonkurrenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxMotionistKonkurrenceActionPerformed
-        if (comboBoxMotionistKonkurrence.getSelectedItem().equals("Konkurrencesvømmer")) {
-            panelDisciplin.setVisible(true);
-            comboBoxTrainedBy.setVisible(true);
-            labelTrainedBy.setVisible(true);
-            labelDiscipliner.setVisible(true);
-        } else {
-            panelDisciplin.setVisible(false);
-            comboBoxTrainedBy.setVisible(false);
-            labelTrainedBy.setVisible(false);
-            labelDiscipliner.setVisible(false);
-        }
+        GUIm.comboBoxMotionistKonkurrence();
     }//GEN-LAST:event_comboBoxMotionistKonkurrenceActionPerformed
 
     private void textFieldTelefonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldTelefonActionPerformed
-        if (textFieldTelefon.getText().isEmpty()) {
-            textFieldTelefon.setBackground(Color.pink);
-        } else {
-            // input check, Regex for Telephone
-            GUIm.regexUserInfoBackGroundColorSet("^\\d+$", textFieldTelefon,
-                    "Telefonnummer skal være i formatet: 12345678\n");
-        }
+        GUIm.textFieldTelefonActionPerformed();
     }//GEN-LAST:event_textFieldTelefonActionPerformed
 
     private void textFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldEmailActionPerformed
-        if (textFieldEmail.getText().isEmpty()) {
-            textFieldEmail.setBackground(Color.pink);
-        } else {
-            // input check, Regex for email
-            GUIm.regexUserInfoBackGroundColorSet("^.+@.+\\..+$", textFieldEmail,
-                    "Email skal være i formatet: xx@yy.zz\n");
-        }
+        GUIm.textFieldEmail();
     }//GEN-LAST:event_textFieldEmailActionPerformed
 
     private void textFieldAdresseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAdresseActionPerformed
-        if (textFieldAdresse.getText().isEmpty()) {
-            textFieldAdresse.setBackground(Color.pink);
-        } else {
-            // input check, Regex for address
-            GUIm.regexUserInfoBackGroundColorSet("^.+,\\s+\\d{4}.+$", textFieldAdresse,
-                    "Adresse skal være i formatet: adresse, 2938 Bynavn\n");
-        }
+        GUIm.textFieldAdresse();
     }//GEN-LAST:event_textFieldAdresseActionPerformed
 
     private void textFieldNavnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNavnActionPerformed
-        if (textFieldNavn.getText().isEmpty()) {
-            textFieldNavn.setBackground(Color.pink);
-        } else {
-            // input check, Regex for name
-            GUIm.regexUserInfoBackGroundColorSet("^\\w+(\\s\\w+)?+$", textFieldNavn,
-                    "Navnet skal være i formatet: xxxx, eller xxx yyyy mfl.\n");
-
-        }
-
+        GUIm.textFieldNavn();
     }//GEN-LAST:event_textFieldNavnActionPerformed
 
     private void textFieldAlderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAlderActionPerformed
-        if (textFieldAlder.getText().isEmpty()) {
-            textFieldAlder.setBackground(Color.pink);
-        } else {
-            // input check, Regex for address
-            String err = "Alder skal være et tal mellem 0 og 120 år\n";
-            GUIm.regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder,
-                    err);
-            if (Integer.parseInt(textFieldAlder.getText()) < 0
-                    || Integer.parseInt(textFieldAlder.getText()) > 120) {
-                textFieldAlder.setBackground(Color.red);
-                GUIm.displayPlainRed(err);
-            } else {
-                GUIm.clearFormatedText(textPaneMedlemsInfo);
-                textFieldAlder.setBackground(Color.white);
-            }
-        }
+        GUIm.textFieldAlder();
     }//GEN-LAST:event_textFieldAlderActionPerformed
 
     private void menuSystemResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSystemResultsActionPerformed
@@ -1562,19 +1511,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonChangeMemberActionPerformed
 
     private void comboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxStatusActionPerformed
-        if (comboBoxStatus.getSelectedItem().equals("Aktiv")) {
-            comboBoxMotionistKonkurrence.setVisible(true);
-            panelDisciplin.setVisible(true);
-            comboBoxTrainedBy.setVisible(true);
-            labelTrainedBy.setVisible(true);
-            labelDiscipliner.setVisible(true);
-        } else {
-            comboBoxMotionistKonkurrence.setVisible(false);
-            panelDisciplin.setVisible(false);
-            comboBoxTrainedBy.setVisible(false);
-            labelTrainedBy.setVisible(false);
-            labelDiscipliner.setVisible(false);
-        }
+        GUIm.comboBoxStatus();
     }//GEN-LAST:event_comboBoxStatusActionPerformed
 
     private void checkBoxTrainerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxTrainerActionPerformed
@@ -1608,8 +1545,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldNewResultsTimeActionPerformed
 
     private void textFieldNewResultsTimeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsTimeFocusGained
-        textFieldNewResultsTime.setText("");
-        textFieldNewResultsTime.setBackground(Color.white);
+        GUIm.textFieldNewResultsClearWhiteBackground();
     }//GEN-LAST:event_textFieldNewResultsTimeFocusGained
 
     private void textFieldNewResultsEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsEventActionPerformed
@@ -1621,22 +1557,15 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldNewResultsPlaceActionPerformed
 
     private void textFieldNewResultsEventFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsEventFocusGained
-        textFieldNewResultsEvent.setText("");
-        textFieldNewResultsEvent.setBackground(Color.white);
+        GUIm.textFieldNewResultsClearWhiteBackground();
     }//GEN-LAST:event_textFieldNewResultsEventFocusGained
 
     private void textFieldNewResultsDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsDateFocusGained
-        textFieldNewResultsDate.setText("");
-        textFieldNewResultsDate.setBackground(Color.white);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy HH:mm");
-        LocalDateTime dateTime = LocalDateTime.now();
-        String formattedDateTime = dateTime.format(formatter);
-        textFieldNewResultsDate.setText(formattedDateTime);
+        GUIm.textFieldNewResultsDate();
     }//GEN-LAST:event_textFieldNewResultsDateFocusGained
 
     private void textFieldNewResultsPlaceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsPlaceFocusGained
-        textFieldNewResultsPlace.setText("");
-        textFieldNewResultsPlace.setBackground(Color.white);
+        GUIm.textFieldNewResultsClearWhiteBackground();
     }//GEN-LAST:event_textFieldNewResultsPlaceFocusGained
 
     private void buttonNewResultsSendDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultsSendDataActionPerformed
@@ -1712,15 +1641,15 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonNewResultsClose;
     private javax.swing.JButton buttonNewResultsSendData;
     private javax.swing.JButton buttonSearchMember;
-    private javax.swing.JCheckBox checkBoxDisciplinBryst;
-    private javax.swing.JCheckBox checkBoxDisciplinButterfly;
-    private javax.swing.JCheckBox checkBoxDisciplinCrawl;
-    private javax.swing.JCheckBox checkBoxDisciplinRygcrawl;
-    private javax.swing.JCheckBox checkBoxTrainer;
-    private javax.swing.JComboBox<String> comboBoxMotionistKonkurrence;
-    private javax.swing.JComboBox<String> comboBoxNewResultsDisciplin;
-    private javax.swing.JComboBox<String> comboBoxStatus;
-    private javax.swing.JComboBox<String> comboBoxTrainedBy;
+    public static javax.swing.JCheckBox checkBoxDisciplinBryst;
+    public static javax.swing.JCheckBox checkBoxDisciplinButterfly;
+    public static javax.swing.JCheckBox checkBoxDisciplinCrawl;
+    public static javax.swing.JCheckBox checkBoxDisciplinRygcrawl;
+    public static javax.swing.JCheckBox checkBoxTrainer;
+    public static javax.swing.JComboBox<String> comboBoxMotionistKonkurrence;
+    public static javax.swing.JComboBox<String> comboBoxNewResultsDisciplin;
+    public static javax.swing.JComboBox<String> comboBoxStatus;
+    public static javax.swing.JComboBox<String> comboBoxTrainedBy;
     private javax.swing.JDialog dialogNewResults;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -1759,7 +1688,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelDelfinIcon;
     private javax.swing.JLabel labelDelfinIcon1;
     private javax.swing.JLabel labelDelfinIcon2;
-    private javax.swing.JLabel labelDiscipliner;
+    public static javax.swing.JLabel labelDiscipliner;
     private javax.swing.JLabel labelMemberPhoto;
     private javax.swing.JLabel labelMemberPhoto10;
     private javax.swing.JLabel labelMemberPhoto11;
@@ -1773,10 +1702,10 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelMemberPhoto7;
     private javax.swing.JLabel labelMemberPhoto8;
     private javax.swing.JLabel labelMemberPhoto9;
-    private javax.swing.JLabel labelNewResultsMemberName;
+    public static javax.swing.JLabel labelNewResultsMemberName;
     private javax.swing.JLabel labelResults;
     private javax.swing.JLabel labelResults1;
-    private javax.swing.JLabel labelTrainedBy;
+    public static javax.swing.JLabel labelTrainedBy;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuFile;
     private javax.swing.JMenuItem menuFileClose;
@@ -1788,7 +1717,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuSystemResults;
     private javax.swing.JPanel panelAbout;
     private javax.swing.JPanel panelAccount;
-    private javax.swing.JPanel panelDisciplin;
+    public static javax.swing.JPanel panelDisciplin;
     private javax.swing.JPanel panelLogo;
     private javax.swing.JPanel panelMain;
     private javax.swing.JPanel panelMedlemsData;
@@ -1799,10 +1728,10 @@ public class DelfinGUI extends javax.swing.JFrame {
     public static javax.swing.JTextField textFieldEmail;
     public static javax.swing.JTextField textFieldID;
     public static javax.swing.JTextField textFieldNavn;
-    private javax.swing.JTextField textFieldNewResultsDate;
-    private javax.swing.JTextField textFieldNewResultsEvent;
-    private javax.swing.JTextField textFieldNewResultsPlace;
-    private javax.swing.JTextField textFieldNewResultsTime;
+    public static javax.swing.JTextField textFieldNewResultsDate;
+    public static javax.swing.JTextField textFieldNewResultsEvent;
+    public static javax.swing.JTextField textFieldNewResultsPlace;
+    public static javax.swing.JTextField textFieldNewResultsTime;
     public static javax.swing.JTextField textFieldTelefon;
     public static javax.swing.JTextPane textPaneMedlemsInfo;
     private javax.swing.JPanel thisYear;
