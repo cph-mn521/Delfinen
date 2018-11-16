@@ -222,8 +222,7 @@ public class Controller {
 
         try {
             for (Member member : data.searchMember(gui.getNavn())) {
-                
-                if (gui.getID() == member.getId()) {
+                if (Integer.parseInt(gui.getID()) == member.getId()) {
                     holder = member;
                 }
             }
