@@ -15,8 +15,13 @@ import static org.junit.Assert.*;
  */
 public class SubscriptionIT {
 
-    Price pris = new Price(25, Status.Active);
-    Subscription instance = new Subscription(2018, pris, 25, Status.Active);
+    private Member p1 = new Member("John Test", "abe@kat.dk", "Testgade 3", 2, 34, 12345678, Member.Status.Active);
+    private Member p2 = new Member("John Test", "abe@kat.dk", "Testgade 3", 2, 62, 12345678, Member.Status.Active, true);
+    private Member p3 = new Member("Ikke John", "ny@mailt.dk", "Anden Gade 23", 4, 89, 87654321, Member.Status.Passive);
+    private Subscription S1 = new Subscription(1, p1);
+    private Subscription S2 = new Subscription(2, p2);
+    private Subscription S3 = new Subscription(3, p3);
+    
 
     public SubscriptionIT() {
     }
@@ -39,26 +44,29 @@ public class SubscriptionIT {
 
     @Test
     public void testGetYear() {
-        System.out.println("getYear");
-        int expResult = 2018;
-        int result = instance.getYear();
-        assertEquals(expResult, result);
+        assertEquals(S1.getYear(), 1);
+        assertEquals(S2.getYear(), 2);
+        assertEquals(S3.getYear(), 3);
     }
 
     @Test
     public void testGetPrice() {
-        System.out.println("getPrice");
-        Price expResult = pris;
-        Price result = instance.getPrice();
-        assertEquals(expResult, result);
+        float e1 = 1600;
+        float e2 =  (float) (1600 * 0.75);
+        float e3 = 500;
+        
+        assertTrue(S1.getPrice()== e1);
+        assertTrue(S2.getPrice()== e2);
+        assertTrue(S3.getPrice()== e3);
+        
     }
 
     @Test
-    public void testGetAge() {
-        System.out.println("getAge");
-        int expResult = 25;
-        int result = instance.getAge();
-        assertEquals(expResult, result);
+    public void testGetHolder() {
+        
+        assertTrue(S1.getHolder().equals(p1));
+        assertTrue(S2.getHolder().equals(p2));
+        assertTrue(S3.getHolder().equals(p3));
     }
 
 }
