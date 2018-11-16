@@ -229,13 +229,16 @@ public class Controller {
 
         try {
             for (Member member : data.searchMember(gui.getNavn())) {
+                if (Integer.parseInt(gui.getID()) == member.getId()) {
+                    holder = member;
 
-                try {
-                    if (Integer.parseInt(gui.getID()) == member.getId()) {
-                        holder = member;
+                    try {
+                        if (Integer.parseInt(gui.getID()) == member.getId()) {
+                            holder = member;
+                        }
+                    } catch (NumberFormatException e) {
+                        guim.displayPlainRed("Kun tal i ID-boksen.\n");
                     }
-                } catch (NumberFormatException e) {
-                    guim.displayPlainRed("Kun tal i ID-boksen.\n");
                 }
             }
             if (holder == null) {

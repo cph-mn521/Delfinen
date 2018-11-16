@@ -40,6 +40,20 @@ public class DelfinGUImethods {
 
     /**
      * ************************************************************************************
+     * button methods
+     */
+    /**
+     *
+     */
+    public void ClearFieldToPink() {
+        for (JTextField textField : DelfinGUI.textFields) {
+            textField.setText("");
+            textField.setBackground(Color.pink);
+        }
+    }
+
+    /**
+     * ************************************************************************************
      * comboBox methods
      */
     /**
@@ -79,7 +93,6 @@ public class DelfinGUImethods {
      * ************************************************************************************
      * textfield Member methods
      */
-    
     /**
      *
      */
@@ -152,7 +165,7 @@ public class DelfinGUImethods {
     /**
      *
      */
-    public void textFieldTelefonActionPerformed() {
+    public void textFieldTelefon() {
         if (textFieldTelefon.getText().isEmpty()) {
             textFieldTelefon.setBackground(Color.pink);
         } else {
@@ -167,7 +180,6 @@ public class DelfinGUImethods {
      * textField NewResults
      *
      */
-    
     /**
      *
      */
