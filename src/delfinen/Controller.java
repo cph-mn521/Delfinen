@@ -82,7 +82,7 @@ public class Controller {
             }
             return;
         }
-        Member.Status status = Member.Status.valueOf(gui.getStatus().equals("Aktiv") ? "Active" : "Passive");
+        Member.Status status = Member.Status.valueOf(gui.getStatus());
         boolean isCoach = gui.getTrainer();
 
         //Checking for Member Type, then creating it.
@@ -150,14 +150,15 @@ public class Controller {
     /**
      * A method for creating an array with information to be searched for. Takes
      * information from the gui, and passes it to the PersistanceHandler for a
-     * fuzzy search in the filesystem.
+     * fuzzy search in the filesystem. If there's any results this method
+     * handles passing information about the results to the gui.
      */
     public static void search() {
         ArrayList<String> Search = new ArrayList<>();
         List<Member> result = new ArrayList<>();
         Member Coach = null;
         List<String> disciplines = null;
-        String status = gui.getStatus().equals("Aktiv") ? "Active" : "Passive";
+        String status = gui.getStatus();
         String aktivitet = gui.getMotionKonkurrence();
 
         if (aktivitet.equals("Konkurrencesvømmer")) {
@@ -214,10 +215,48 @@ public class Controller {
         }
     }
 
+    /**
+     * Method for retrieving a member by ID from the gui, and editing that
+     * member in the filesystem.
+     */
     public static void change() {
+        List<Member> members = findMembers(",\"id\":" + gui.getID() + ",");
+        Member old = null;
+        if (members == null || members.size() > 1) {
 
+        } else {
+            old = members.get(0);
+        }
+
+        int id, age, phone;
+        try {
+            id = Integer.parseInt(gui.getID());
+            age = Integer.parseInt(gui.getAlder());
+            phone = Integer.parseInt(gui.getTelefon());
+        } catch (NumberFormatException e) {
+            if (DEBUG) {
+                e.printStackTrace();
+            }
+            guim.displayPlainRed("Fejl i indtastet data! - Prøv igen.\n");
+            return;
+        }
+        Member.Status status = Member.Status.valueOf(gui.getStatus());
+        Member N = new Member(gui.getNavn(), gui.getEmail(), gui.getAdresse(), id, age, phone, status, gui.getTrainer());
+
+        try {
+            data.editMember(old, N);
+        } catch (DataException e) {
+            if (DEBUG) {
+                e.printStackTrace();
+                guim.displayPlainRed("Medlem ikke fundet! - Prøv igen. \n");
+            }
+        }
     }
 
+    /**
+     * Klog og indsigtsgivende kommentar der grundtigt beskriver følgende
+     * funktion indsættes her.
+     */
     public static void addResult() {
 
         float time = gui.getNewResultTime();
@@ -269,29 +308,29 @@ public class Controller {
      * @return The formatted String.
      */
     static String strFormatter(String str) {
-        // Create a char array of given String 
+        // Create a char array of given String
         char ch[] = str.toCharArray();
         for (int i = 0; i < str.length(); i++) {
 
-            // If first character of a word is found 
+            // If first character of a word is found
             if (i == 0 && ch[i] != ' '
                     || ch[i] != ' ' && ch[i - 1] == ' ') {
 
-                // If it is in lower-case 
+                // If it is in lower-case
                 if (ch[i] >= 'a' && ch[i] <= 'z') {
 
-                    // Convert into Upper-case 
+                    // Convert into Upper-case
                     ch[i] = (char) (ch[i] - 'a' + 'A');
                 }
-            } // If apart from first character 
-            // Any one is in Upper-case 
-            else if (ch[i] >= 'A' && ch[i] <= 'Z') // Convert into Lower-Case 
+            } // If apart from first character
+            // Any one is in Upper-case
+            else if (ch[i] >= 'A' && ch[i] <= 'Z') // Convert into Lower-Case
             {
                 ch[i] = (char) (ch[i] + 'a' - 'A');
             }
         }
 
-        // Convert the char array to equivalent String 
+        // Convert the char array to equivalent String
         String st = new String(ch);
         return st;
     }
