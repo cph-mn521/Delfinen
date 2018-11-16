@@ -22,4 +22,6 @@ public interface DataAccessor {
     
     public void editEntry(String old,String N) throws DataException;
     
+    
+    
 }

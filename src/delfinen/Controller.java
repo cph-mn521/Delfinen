@@ -13,7 +13,6 @@ import delfinen.logic.Record;
 import delfinen.presentation.DelfinGUImethods;
 import java.time.LocalDateTime;
 
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class Controller {
      */
     private static DelfinGUI gui = new DelfinGUI();
     private static DelfinGUImethods guim = new DelfinGUImethods();
-    
+
     private static PersistanceHandler data = new PersistanceHandler();
     private static boolean DEBUG = true;
 
@@ -70,12 +69,15 @@ public class Controller {
     public static void addMember() {
         // Getting info from guim
         Member newMember = null;
-        String name = gui.getNavn();
-        String email = gui.getEmail();
-        String adress = gui.getAdresse();
-        int id = gui.getID();
-        int age = gui.getAlder();
-        int phoneNumber = gui.getTelefon();
+        String name = strFormatter(gui.getNavn());
+        String email = strFormatter(gui.getEmail());
+        String adress = strFormatter(gui.getAdresse());
+        
+        int id = Integer.parseInt(gui.getID());
+        int age = Integer.parseInt(gui.getAlder());
+        int phoneNumber = Integer.parseInt(gui.getTelefon());
+        
+        
         Member.Status status = Member.Status.valueOf(gui.getStatus().equals("Aktiv") ? "Active" : "Passive");
         boolean isCoach = gui.getTrainer();
 
@@ -142,7 +144,9 @@ public class Controller {
     }
 
     /**
-     *
+     * A method for creating an array with information to be searched for.
+     * Takes information from the gui, and passes it to the PersistanceHandler
+     * for a fuzzy search in the filesystem.
      */
     public static void search() {
         ArrayList<String> Search = new ArrayList<>();
@@ -167,9 +171,9 @@ public class Controller {
         int phone = gui.getTelefon();
         String isCoach = gui.getTrainer() + "";
 
-        Search.add(name);
-        Search.add(email);
-        Search.add(address);
+        Search.add(strFormatter(name));
+        Search.add(strFormatter(email));
+        Search.add(strFormatter(address));
         Search.add(id == 0 ? "" : id + "");
         Search.add(age == 0 ? "" : age + "");
         Search.add(phone == 0 ? "" : phone + "");
@@ -196,7 +200,7 @@ public class Controller {
                     gui.setID(m.getId());
                     gui.setTelefon(m.getPhone());
                     try { // write records for searched member
-                        for (Record rec : data.searchRecord(m.getName())){
+                        for (Record rec : data.searchRecord(m.getName())) {
                             guim.displayPlainBlue(rec.toString() + '\n');
                         }
                     } catch (DataException ex) {
@@ -224,7 +228,7 @@ public class Controller {
 
         try {
             for (Member member : data.searchMember(gui.getNavn())) {
-                
+
                 if (gui.getID() == member.getId()) {
                     holder = member;
                 }
@@ -249,13 +253,47 @@ public class Controller {
         }
     }
 
+    /**
+     * Method for formatting Strings to a known format. Takes a string and
+     * capitalizes the first letter of every word.
+     *
+     * @param str The String to be formattet.
+     * @return The formatted String.
+     */
+    static String strFormatter(String str) {
+        // Create a char array of given String 
+        char ch[] = str.toCharArray();
+        for (int i = 0; i < str.length(); i++) {
+
+            // If first character of a word is found 
+            if (i == 0 && ch[i] != ' '
+                    || ch[i] != ' ' && ch[i - 1] == ' ') {
+
+                // If it is in lower-case 
+                if (ch[i] >= 'a' && ch[i] <= 'z') {
+
+                    // Convert into Upper-case 
+                    ch[i] = (char) (ch[i] - 'a' + 'A');
+                }
+            } // If apart from first character 
+            // Any one is in Upper-case 
+            else if (ch[i] >= 'A' && ch[i] <= 'Z') // Convert into Lower-Case 
+            {
+                ch[i] = (char) (ch[i] + 'a' - 'A');
+            }
+        }
+
+        // Convert the char array to equivalent String 
+        String st = new String(ch);
+        return st;
+    }
+
     public static void bookKeeping(int Year) {
         try {
             Accountant Acc = new Accountant(data.searhcSubscriptions(Integer.toString(Year)), data.getMembers());
             // Add guim plug inn here.
         } catch (DataException e) {
+
         }
-
     }
-
 }

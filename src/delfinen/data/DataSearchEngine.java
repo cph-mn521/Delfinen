@@ -23,7 +23,7 @@ public class DataSearchEngine {
 
     /**
      * A method for a partial fuzzy search for members in the filesystem.
-     * 
+     *
      * @param Search
      * @param disciplines
      * @param Coach
@@ -36,7 +36,7 @@ public class DataSearchEngine {
         regQuery.append("^\\{");
         List<String> matches = new ArrayList<>();
         int disSize = 0;
-        
+
         ArrayList<String> regex = new ArrayList<>();
         regex.add("\"name\":\".+\",");
         regex.add("\"email\":\".+\",");
@@ -49,7 +49,7 @@ public class DataSearchEngine {
         if (disciplines != null) {
             disSize = disciplines.size();
         }
-        
+
         if (disSize > 0) {
             regQuery.append("(\"disciplines\":\\[");
             for (int i = 0; i <= disSize; i++) {
@@ -81,7 +81,7 @@ public class DataSearchEngine {
             i++;
         }
         regQuery.append("\\}$");
-       
+
         Pattern p = Pattern.compile(regQuery.toString());
 
         for (String s : data) {

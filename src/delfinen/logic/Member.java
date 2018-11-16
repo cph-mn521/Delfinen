@@ -82,7 +82,6 @@ public class Member {
     /**
      * Method for asserting if two Members are the same.
      * 
-     * 
      * @param other     The Other Member to compare with.
      * @return 
      */
