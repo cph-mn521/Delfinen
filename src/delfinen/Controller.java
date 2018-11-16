@@ -11,8 +11,6 @@ import delfinen.logic.Accountant;
 import delfinen.logic.Record;
 
 import delfinen.presentation.DelfinGUImethods;
-import java.time.LocalDateTime;
-
 
 import java.time.LocalDateTime;
 import java.util.List;
