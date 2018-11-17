@@ -168,7 +168,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         accountTextFieldRestance = new javax.swing.JTextPane();
         jLabel21 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        accountTextFieldSelectedMemberPane = new javax.swing.JTextPane();
+        accountTextFieldSelectedMember = new javax.swing.JTextPane();
         labelMemberPhoto9 = new javax.swing.JLabel();
         panelResults = new javax.swing.JPanel();
         labelDelfinIcon2 = new javax.swing.JLabel();
@@ -932,6 +932,8 @@ public class DelfinGUI extends javax.swing.JFrame {
             }
         });
 
+        accountTextFieldAccountingYear.setText("2018");
+
         jScrollPane2.setViewportView(accountTextFieldAccountBank);
 
         jScrollPane3.setViewportView(accountTextFieldExpectedBank);
@@ -1013,6 +1015,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         jScrollPane5.setViewportView(accountListDebitor);
 
         accountButtonPaySubscription.setText("Betal Kontingent");
+        accountButtonPaySubscription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                accountButtonPaySubscriptionActionPerformed(evt);
+            }
+        });
 
         jLabel20.setText("Medlem:");
 
@@ -1020,7 +1027,8 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         jLabel21.setText("Manglende Betaling:");
 
-        jScrollPane7.setViewportView(accountTextFieldSelectedMemberPane);
+        accountTextFieldSelectedMember.setText("Niels Bang");
+        jScrollPane7.setViewportView(accountTextFieldSelectedMember);
 
         javax.swing.GroupLayout accountPanelRestanceLayout = new javax.swing.GroupLayout(accountPanelRestance);
         accountPanelRestance.setLayout(accountPanelRestanceLayout);
@@ -1400,7 +1408,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public String getAccountTextFieldSelectedMemberPane() {
-        return accountTextFieldSelectedMemberPane.getText();
+        return accountTextFieldSelectedMember.getText();
     }
 
     public String getAccountTextFieldUnpaidSubscriptions() {
@@ -1527,7 +1535,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public void setAccountTextFieldSelectedMemberPane(String accountTextFieldSelectedMemberPane) {
-        this.accountTextFieldSelectedMemberPane.setText(accountTextFieldSelectedMemberPane);
+        this.accountTextFieldSelectedMember.setText(accountTextFieldSelectedMemberPane);
     }
 
     public void setAccountTextFieldUnpaidSubscriptions(String accountTextFieldUnpaidSubscriptions) {
@@ -1776,6 +1784,10 @@ public class DelfinGUI extends javax.swing.JFrame {
         Controller.bookKeeping();
     }//GEN-LAST:event_accountButtonChangeAccountingYearActionPerformed
 
+    private void accountButtonPaySubscriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountButtonPaySubscriptionActionPerformed
+        Controller.paySubscription();
+    }//GEN-LAST:event_accountButtonPaySubscriptionActionPerformed
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -1837,7 +1849,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JTextField accountTextFieldAccountingYear;
     private javax.swing.JTextPane accountTextFieldExpectedBank;
     private javax.swing.JTextPane accountTextFieldRestance;
-    private javax.swing.JTextPane accountTextFieldSelectedMemberPane;
+    private javax.swing.JTextPane accountTextFieldSelectedMember;
     private javax.swing.JTextPane accountTextFieldUnpaidSubscriptions;
     private javax.swing.JButton buttonChangeMember;
     private javax.swing.JButton buttonClearMemberInfoFields;

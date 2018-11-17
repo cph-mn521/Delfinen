@@ -23,23 +23,24 @@ public class DataAccessorFile implements DataAccessor {
 
     private final String FileName;
     private File fil;
-    
+
     /**
-    * Constructor for the class, used to assign the current database.
-    * 
-    * @param FileName     The File to pull data from.
-    **/
+     * Constructor for the class, used to assign the current database.
+     *
+     * @param FileName The File to pull data from.
+    *
+     */
     public DataAccessorFile(String FileName) {
         fil = new File(FileName);
         this.FileName = FileName;
     }
-    
+
     /**
-    * Method for retrieving all entries in the current selected txt document. Will not return
-    * blank entries
-    * 
-    * @throws delfinen.data.DataException
-    */
+     * Method for retrieving all entries in the current selected txt document.
+     * Will not return blank entries
+     *
+     * @throws delfinen.data.DataException
+     */
     @Override
     public List<String> getEntries() throws DataException {
         String line = null;
@@ -47,24 +48,28 @@ public class DataAccessorFile implements DataAccessor {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FileName));
             while ((line = reader.readLine()) != null) {
-                if(!line.equals(""))Output.add(line);
+                if (!line.equals("")) {
+                    Output.add(line);
+                }
             }
             return Output;
         } catch (IOException e) {
-            throw new DataException();
+//            throw new DataException();
+            return Output;
         }
     }
-    
+
     /**
-    * Method for searching for keywords in the database. Searches the
-    * database for all entries with containing the query.
-    * 
-    * For more precise searches, knowledge of the data structure is required.
-    * 
-    * @param query                The wanted Query. 
-    * @return machingEntries      All entries that contains the query.   
-    * @throws DataException
-    **/    
+     * Method for searching for keywords in the database. Searches the database
+     * for all entries with containing the query.
+     *
+     * For more precise searches, knowledge of the data structure is required.
+     *
+     * @param query The wanted Query.
+     * @return machingEntries All entries that contains the query.
+     * @throws DataException
+    *
+     */
     @Override
     public List<String> searchEntries(String query) throws DataException {
         String line = null;
@@ -78,21 +83,27 @@ public class DataAccessorFile implements DataAccessor {
             }
             return machingEntries;
         } catch (IOException e) {
-            throw new DataException();
+//            throw new DataException();
+            if (machingEntries.size() == 0) {
+                return (this.getEntries());
+            } else {
+                return machingEntries;
+            }
         }
     }
-    
+
     /**
-    * Method for adding a new entry to the currently selected file. New entry is
-    * always appended, and will appear last in the database.
-    * 
-    * @param  obj The object to add to the database 
-    * @throws DataException
-    **/
+     * Method for adding a new entry to the currently selected file. New entry
+     * is always appended, and will appear last in the database.
+     *
+     * @param obj The object to add to the database
+     * @throws DataException
+    *
+     */
     @Override
     public void addEntry(String obj) throws DataException {
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(FileName, true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(FileName, fil.exists()));
             writer.newLine();
             writer.write(obj);
             writer.close();
@@ -100,16 +111,17 @@ public class DataAccessorFile implements DataAccessor {
             throw new DataException();
         }
     }
-    
+
     /**
-    *Method for edeting an entry in the databse. Works by finding the object to 
-    *change, and then we writing the file to match the new signature.
-    *Takes 2 parameters, bot of string type.
+     * Method for editing an entry in the database. Works by finding the object
+     * to change, and then we writing the file to match the new signature. Takes
+     * 2 parameters, both of string type.
+     *
+     * @param old The entry to change.
+     * @param N The changed entry.
+     * @throws DataException
     *
-    *@param  old     The entry to change.
-    *@param  N       The changed entry.    
-    *@throws DataException
-    **/
+     */
     @Override
     public void editEntry(String old, String N) throws DataException {
         try {
@@ -118,9 +130,10 @@ public class DataAccessorFile implements DataAccessor {
             BufferedWriter writer = new BufferedWriter(new FileWriter(FileName, fil.exists())); //Append when file exists, make when false
             for (String string : newFile) {
                 if (string.equals(old)) {
-                    lines += N+"\r\n";
+                    lines += N + "\r\n";
+                } else {
+                    lines += string + "\r\n";
                 }
-                else lines +=string +"\r\n";
             }
             writer.write(lines);
             writer.flush();

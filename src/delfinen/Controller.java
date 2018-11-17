@@ -10,10 +10,13 @@ import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Discipline;
 import delfinen.logic.Accountant;
 import delfinen.logic.Record;
+import delfinen.logic.Subscription;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -207,7 +210,7 @@ public class Controller {
                                 guim.displayPlainBlue(rec.toString() + '\n');
                             }
                             guim.displayPlainBlack("\n");
-                        } else{
+                        } else {
                             guim.displayPlainBlack("Ingen resultater.\n");
                         }
                     } catch (DataException ex) {
@@ -339,15 +342,38 @@ public class Controller {
         return st;
     }
 
+    /**
+     *
+     */
     public static void bookKeeping() {
-        
-        int year = Integer.parseInt(gui.getAccountTextFieldAccountingYear());
-                
-        try {
-            Accountant Acc = new Accountant(data.searchSubscriptions(Integer.toString(year)), data.getMembers());
-            // Add guim plug inn here.
-        } catch (DataException e) {
 
+        int year = Integer.parseInt(gui.getAccountTextFieldAccountingYear());
+
+        try {
+            Accountant acc = new Accountant(data.searchSubscriptions(Integer.toString(year)), data.getMembers());
+            ArrayList<String> listDebitorNames = new ArrayList<>();
+            for (int i = 1; i < acc.getDebitors().size(); i++) { // index 0 is null
+                listDebitorNames.add(acc.getDebitors().get(i).getName()); 
+            }
+            gui.setAccountListDebitor(listDebitorNames);
+        } catch (DataException e) {
+            e.printStackTrace();
         }
+    }
+
+    /**
+     *
+     */
+    public static void paySubscription() {
+        int year = Integer.parseInt(gui.getAccountTextFieldAccountingYear());
+        String memberName = gui.getAccountTextFieldSelectedMemberPane();
+        try {
+            Member member = data.searchMember(memberName).get(0);
+            gui.setAccountTextFieldRestance(data.searchSubscriptions(memberName).get(0).toString());
+        } catch (DataException ex) {
+            ex.printStackTrace();
+        }
+        float restance = Integer.parseInt(gui.getAccountTextFieldRestance());
+
     }
 }

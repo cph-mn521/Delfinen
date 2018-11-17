@@ -1320,6 +1320,9 @@
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="accountTextFieldAccountingYear">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="2018"/>
+                  </Properties>
                 </Component>
                 <Container class="javax.swing.JPanel" name="thisYear">
 
@@ -1505,6 +1508,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Betal Kontingent"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="accountButtonPaySubscriptionActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel20">
                   <Properties>
@@ -1534,7 +1540,10 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTextPane" name="accountTextFieldSelectedMemberPane">
+                    <Component class="javax.swing.JTextPane" name="accountTextFieldSelectedMember">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Niels Bang"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
