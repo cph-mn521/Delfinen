@@ -110,14 +110,13 @@ public class DelfinGUImethods {
      * textfield Member methods
      */
     /**
-     *
+     * input check, Regex for address
      */
     public void textFieldAdresse() {
         if (textFieldAdresse.getText().isEmpty()) {
             textFieldAdresse.setBackground(Color.pink);
         } else {
-            // input check, Regex for address
-            regexUserInfoBackGroundColorSet("^.+,(\\s+)?\\d{4}.+$", textFieldAdresse);
+            regexUserInfoBackGroundColorSet("^\\w+((\\s.+)+)?,(\\s)?\\d{4}\\s\\w+((\\s\\w+)+)?$", textFieldAdresse);
         }
     }
 
@@ -133,9 +132,11 @@ public class DelfinGUImethods {
             if (Integer.parseInt(textFieldAlder.getText()) < 0
                     || Integer.parseInt(textFieldAlder.getText()) > 120) {
                 textFieldAlder.setBackground(Color.red);
+                textFieldAlder.setForeground(Color.white);
             } else {
                 clearFormatedText(textPaneMedlemsInfo);
                 textFieldAlder.setBackground(Color.white);
+                textFieldAlder.setForeground(Color.black);
             }
         }
     }
@@ -148,7 +149,7 @@ public class DelfinGUImethods {
             textFieldEmail.setBackground(Color.pink);
         } else {
             // input check, Regex for email
-            regexUserInfoBackGroundColorSet("^.+@.+\\..+$", textFieldEmail);
+            regexUserInfoBackGroundColorSet("^\\w+@\\w+\\.\\w+$", textFieldEmail);
         }
     }
 
@@ -157,6 +158,13 @@ public class DelfinGUImethods {
      */
     public void textFieldID() {
         regexUserInfoBackGroundColorSet("^\\d+$", DelfinGUI.textFieldID);
+        if (Integer.parseInt(textFieldID.getText()) < 0) {
+            textFieldID.setBackground(Color.red);
+            textFieldID.setForeground(Color.white);
+        } else {
+            textFieldID.setBackground(Color.white);
+            textFieldID.setForeground(Color.black);
+        }
     }
 
     /**
@@ -179,7 +187,7 @@ public class DelfinGUImethods {
             textFieldTelefon.setBackground(Color.pink);
         } else {
             // input check, Regex for Telephone
-            regexUserInfoBackGroundColorSet("^\\d+$", textFieldTelefon);
+            regexUserInfoBackGroundColorSet("^(\\+)?\\d+$", textFieldTelefon);
         }
     }
 
@@ -203,7 +211,7 @@ public class DelfinGUImethods {
         if (textFieldNewResultsDate.getText().isEmpty()) {
             textFieldNewResultsDate.setBackground(Color.pink);
         } else {
-            regexUserInfoBackGroundColorSet("^\\d({2})?.\\d({2})?.\\d{4}\\s\\d{2}:\\d{2}$", textFieldNewResultsDate);
+            regexUserInfoBackGroundColorSet("^\\d{1,2}\\.\\d{1,2}\\.\\d{4}\\s\\d{2}:\\d{2}", textFieldNewResultsDate);
         }
     }
 
@@ -221,7 +229,7 @@ public class DelfinGUImethods {
         if (textFieldNewResultsEvent.getText().isEmpty()) {
             textFieldNewResultsEvent.setBackground(Color.pink);
         } else {
-            regexUserInfoBackGroundColorSet("^\\w+(\\d+)?(\\s)?$", textFieldNewResultsEvent);
+            regexUserInfoBackGroundColorSet("^.+(\\s+)?(.+)?$", textFieldNewResultsEvent);
         }
     }
 
@@ -239,11 +247,14 @@ public class DelfinGUImethods {
         if (textFieldNewResultsPlace.getText().isEmpty()) {
             textFieldNewResultsPlace.setBackground(Color.pink);
         } else {
-            regexUserInfoBackGroundColorSet("^\\d+$", textFieldNewResultsPlace);
-            if (Integer.parseInt(textFieldNewResultsPlace.getText()) < 0) {
-                textFieldNewResultsPlace.setBackground(Color.red);
-            } else {
-                textFieldNewResultsPlace.setBackground(Color.white);
+            if (regexUserInfoBackGroundColorSet("^\\d+$", textFieldNewResultsPlace)) {
+                if (Integer.parseInt(textFieldNewResultsPlace.getText()) < 0) {
+                    textFieldNewResultsPlace.setBackground(Color.red);
+                    textFieldNewResultsPlace.setForeground(Color.white);
+                } else {
+                    textFieldNewResultsPlace.setBackground(Color.white);
+                    textFieldNewResultsPlace.setForeground(Color.black);
+                }
             }
         }
     }
@@ -262,11 +273,14 @@ public class DelfinGUImethods {
         if (textFieldNewResultsTime.getText().isEmpty()) {
             textFieldNewResultsTime.setBackground(Color.pink);
         } else {
-            regexUserInfoBackGroundColorSet("^\\d+$", textFieldNewResultsTime);
-            if (Float.parseFloat(textFieldNewResultsTime.getText()) < 0) {
-                textFieldNewResultsTime.setBackground(Color.red);
-            } else {
-                textFieldNewResultsTime.setBackground(Color.white);
+            if (regexUserInfoBackGroundColorSet("^\\d+(\\.\\d+)?$", textFieldNewResultsTime)) {
+                if (Float.parseFloat(textFieldNewResultsTime.getText()) < 0) {
+                    textFieldNewResultsTime.setBackground(Color.red);
+                    textFieldNewResultsTime.setForeground(Color.white);
+                } else {
+                    textFieldNewResultsTime.setBackground(Color.white);
+                    textFieldNewResultsTime.setForeground(Color.black);
+                }
             }
         }
     }
@@ -277,6 +291,7 @@ public class DelfinGUImethods {
     public void textFieldNewResultsClearWhiteBackground(JTextField tf) {
         tf.setText("");
         tf.setBackground(Color.white);
+        tf.setForeground(Color.black);
     }
 
     /**

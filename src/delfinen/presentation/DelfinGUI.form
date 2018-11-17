@@ -190,6 +190,7 @@
                     <Property name="text" type="java.lang.String" value="f.eks. Skanderborg Sv&#xf8;mmest&#xe6;vne 2018"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="textFieldNewResultsEventCaretUpdate"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldNewResultsEventFocusGained"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldNewResultsEventFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldNewResultsEventActionPerformed"/>
@@ -203,6 +204,7 @@
                     <Property name="text" type="java.lang.String" value="f.eks. 1"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="textFieldNewResultsPlaceCaretUpdate"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldNewResultsPlaceFocusGained"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldNewResultsPlaceFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldNewResultsPlaceActionPerformed"/>
@@ -216,6 +218,7 @@
                     <Property name="text" type="java.lang.String" value="format d-m-&#xe5;&#xe5;&#xe5;&#xe5; tt:mm, f.eks.  1-03-2017 12:30"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="textFieldNewResultsDateCaretUpdate"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldNewResultsDateFocusGained"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldNewResultsDateFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldNewResultsDateActionPerformed"/>
@@ -276,6 +279,7 @@
                     <Property name="text" type="java.lang.String" value="f. eks. 1.23"/>
                   </Properties>
                   <Events>
+                    <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="textFieldNewResultsTimeCaretUpdate"/>
                     <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldNewResultsTimeFocusGained"/>
                     <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="textFieldNewResultsTimeFocusLost"/>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldNewResultsTimeActionPerformed"/>
@@ -563,7 +567,7 @@
                                       </Group>
                                       <Component id="buttonClearMemberInfoFields" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="47" max="32767" attributes="0"/>
+                                  <EmptySpace pref="17" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="panelDisciplin" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelDiscipliner" min="-2" max="-2" attributes="0"/>
@@ -595,7 +599,7 @@
                               <Component id="checkBoxTrainer" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="comboBoxMotionistKonkurrence" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="42" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">

@@ -201,6 +201,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
 
         textFieldNewResultsEvent.setText("f.eks. Skanderborg Svømmestævne 2018");
+        textFieldNewResultsEvent.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textFieldNewResultsEventCaretUpdate(evt);
+            }
+        });
         textFieldNewResultsEvent.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsEventFocusGained(evt);
@@ -216,6 +221,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         });
 
         textFieldNewResultsPlace.setText("f.eks. 1");
+        textFieldNewResultsPlace.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textFieldNewResultsPlaceCaretUpdate(evt);
+            }
+        });
         textFieldNewResultsPlace.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsPlaceFocusGained(evt);
@@ -231,6 +241,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         });
 
         textFieldNewResultsDate.setText("format d-m-åååå tt:mm, f.eks.  1-03-2017 12:30");
+        textFieldNewResultsDate.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textFieldNewResultsDateCaretUpdate(evt);
+            }
+        });
         textFieldNewResultsDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsDateFocusGained(evt);
@@ -259,6 +274,11 @@ public class DelfinGUI extends javax.swing.JFrame {
         jLabel15.setText("Disciplin");
 
         textFieldNewResultsTime.setText("f. eks. 1.23");
+        textFieldNewResultsTime.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                textFieldNewResultsTimeCaretUpdate(evt);
+            }
+        });
         textFieldNewResultsTime.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsTimeFocusGained(evt);
@@ -665,7 +685,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(buttonClearMemberInfoFields, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                         .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelDisciplin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelDiscipliner)))
@@ -694,7 +714,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                     .addComponent(comboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkBoxTrainer)
                     .addComponent(comboBoxMotionistKonkurrence, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 42, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelMedlemsDataLayout.createSequentialGroup()
                         .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1734,6 +1754,22 @@ public class DelfinGUI extends javax.swing.JFrame {
     private void textFieldNewResultsTimeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsTimeFocusLost
         GUIm.textFieldNewResultsTime();
     }//GEN-LAST:event_textFieldNewResultsTimeFocusLost
+
+    private void textFieldNewResultsEventCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textFieldNewResultsEventCaretUpdate
+        GUIm.textFieldNewResultsEvent();
+    }//GEN-LAST:event_textFieldNewResultsEventCaretUpdate
+
+    private void textFieldNewResultsDateCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textFieldNewResultsDateCaretUpdate
+        GUIm.textFieldNewResultsDate();
+    }//GEN-LAST:event_textFieldNewResultsDateCaretUpdate
+
+    private void textFieldNewResultsPlaceCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textFieldNewResultsPlaceCaretUpdate
+        GUIm.textFieldNewResultsPlace();
+    }//GEN-LAST:event_textFieldNewResultsPlaceCaretUpdate
+
+    private void textFieldNewResultsTimeCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_textFieldNewResultsTimeCaretUpdate
+        GUIm.textFieldNewResultsTime();
+    }//GEN-LAST:event_textFieldNewResultsTimeCaretUpdate
 
     @Override
     public int hashCode() {
