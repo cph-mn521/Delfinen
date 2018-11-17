@@ -370,18 +370,14 @@ public class Controller {
         int year = Integer.parseInt(gui.getAccountTextFieldAccountingYear());
         String memberName = gui.getAccountTextFieldSelectedMemberPane();
         try {
-            Member member = data.searchMember(memberName).get(0);
-            Subscription sub = new Subscription(year, member);
-            List<Subscription> budget = new ArrayList<>();
-            List<Member> members = new ArrayList<>();
-            budget.add(sub);
-            members.add(member);
-            Accountant acc = new Accountant(budget, members);
-            gui.setAccountTextFieldRestance(String.valueOf(acc.getBank()));
+            for (Subscription memSub :  data.searchSubscriptions(memberName)) {
+//                memSub.
+            }
+            guim.displayPlainBlack("Abonnement betalt for ");
+            guim.displayPlainGreen(memberName + ".\n");
         } catch (DataException ex) {
             ex.printStackTrace();
         }
-        float restance = Integer.parseInt(gui.getAccountTextFieldRestance());
 
     }
 
