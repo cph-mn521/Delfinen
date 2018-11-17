@@ -201,8 +201,14 @@ public class Controller {
                     gui.setID(m.getId());
                     gui.setTelefon(m.getPhone());
                     try { // write records for searched member
-                        for (Record rec : data.searchRecord(m.getName())) {
-                            guim.displayPlainBlue(rec.toString() + '\n');
+                        if (data.searchRecord(m.getName()).size() > 0) {
+                            guim.displayBoldBlack("Disciplin: \tTid: \tDato: \t\tStævne: \t\tPlacering: \n");
+                            for (Record rec : data.searchRecord(m.getName())) {
+                                guim.displayPlainBlue(rec.toString() + '\n');
+                            }
+                            guim.displayPlainBlack("\n");
+                        } else{
+                            guim.displayPlainBlack("Ingen resultater.");
                         }
                     } catch (DataException ex) {
                         ex.printStackTrace();
