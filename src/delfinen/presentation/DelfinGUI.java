@@ -205,6 +205,9 @@ public class DelfinGUI extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsEventFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                textFieldNewResultsEventFocusLost(evt);
+            }
         });
         textFieldNewResultsEvent.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,6 +220,9 @@ public class DelfinGUI extends javax.swing.JFrame {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsPlaceFocusGained(evt);
             }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                textFieldNewResultsPlaceFocusLost(evt);
+            }
         });
         textFieldNewResultsPlace.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,6 +234,9 @@ public class DelfinGUI extends javax.swing.JFrame {
         textFieldNewResultsDate.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsDateFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                textFieldNewResultsDateFocusLost(evt);
             }
         });
         textFieldNewResultsDate.addActionListener(new java.awt.event.ActionListener() {
@@ -253,6 +262,9 @@ public class DelfinGUI extends javax.swing.JFrame {
         textFieldNewResultsTime.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 textFieldNewResultsTimeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                textFieldNewResultsTimeFocusLost(evt);
             }
         });
         textFieldNewResultsTime.addActionListener(new java.awt.event.ActionListener() {
@@ -361,7 +373,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel22)
-                        .addContainerGap(26, Short.MAX_VALUE))))
+                        .addContainerGap(25, Short.MAX_VALUE))))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -653,7 +665,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(buttonClearMemberInfoFields, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelDisciplin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelDiscipliner)))
@@ -1616,52 +1628,47 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldEmailFocusLost
 
     private void buttonNewResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultActionPerformed
-        dialogNewResults.setAlwaysOnTop(true);
-        dialogNewResults.setVisible(true);
-        labelNewResultsMemberName.setText(textFieldNavn.getText());
+        GUIm.buttonNewResult();
     }//GEN-LAST:event_buttonNewResultActionPerformed
 
     private void buttonNewResultsCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultsCloseActionPerformed
-        dialogNewResults.setVisible(false);
+        GUIm.buttonNewResultsClose();
     }//GEN-LAST:event_buttonNewResultsCloseActionPerformed
 
     private void textFieldNewResultsTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsTimeActionPerformed
-
+        GUIm.textFieldNewResultsTime();
     }//GEN-LAST:event_textFieldNewResultsTimeActionPerformed
 
     private void textFieldNewResultsTimeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsTimeFocusGained
-        GUIm.textFieldNewResultsClearWhiteBackground();
+        GUIm.textField_FocusGained_NewResultsTime();
     }//GEN-LAST:event_textFieldNewResultsTimeFocusGained
 
     private void textFieldNewResultsEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsEventActionPerformed
-
+        GUIm.textFieldNewResultsEvent();
     }//GEN-LAST:event_textFieldNewResultsEventActionPerformed
 
     private void textFieldNewResultsPlaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsPlaceActionPerformed
-
+        GUIm.textFieldNewResultsPlace();
     }//GEN-LAST:event_textFieldNewResultsPlaceActionPerformed
 
     private void textFieldNewResultsEventFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsEventFocusGained
-        GUIm.textFieldNewResultsClearWhiteBackground();
+        GUIm.textField_FocusGained_NewResultsEvent();
     }//GEN-LAST:event_textFieldNewResultsEventFocusGained
 
     private void textFieldNewResultsDateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsDateFocusGained
-        GUIm.textFieldNewResultsDate();
+        GUIm.textField_FocusGained_NewResultsDate();
     }//GEN-LAST:event_textFieldNewResultsDateFocusGained
 
     private void textFieldNewResultsPlaceFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsPlaceFocusGained
-        GUIm.textFieldNewResultsClearWhiteBackground();
+        GUIm.textField_FocusGained_NewResultsPlace();
     }//GEN-LAST:event_textFieldNewResultsPlaceFocusGained
 
     private void buttonNewResultsSendDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultsSendDataActionPerformed
-        dialogNewResults.setAlwaysOnTop(false);
-        Controller.addResult();
-        dialogNewResults.setVisible(false);
-
+        GUIm.buttonNewResultsSendData();
     }//GEN-LAST:event_buttonNewResultsSendDataActionPerformed
 
     private void textFieldNewResultsDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNewResultsDateActionPerformed
-        // TODO add your handling code here:
+        GUIm.textFieldNewResultsDate();
     }//GEN-LAST:event_textFieldNewResultsDateActionPerformed
 
     private void textFieldAlderFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldAlderFocusLost
@@ -1712,6 +1719,22 @@ public class DelfinGUI extends javax.swing.JFrame {
         GUIm.textFieldID();
     }//GEN-LAST:event_textFieldIDCaretUpdate
 
+    private void textFieldNewResultsEventFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsEventFocusLost
+        GUIm.textFieldNewResultsEvent();
+    }//GEN-LAST:event_textFieldNewResultsEventFocusLost
+
+    private void textFieldNewResultsDateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsDateFocusLost
+        GUIm.textFieldNewResultsDate();
+    }//GEN-LAST:event_textFieldNewResultsDateFocusLost
+
+    private void textFieldNewResultsPlaceFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsPlaceFocusLost
+        GUIm.textFieldNewResultsPlace();
+    }//GEN-LAST:event_textFieldNewResultsPlaceFocusLost
+
+    private void textFieldNewResultsTimeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_textFieldNewResultsTimeFocusLost
+        GUIm.textFieldNewResultsTime();
+    }//GEN-LAST:event_textFieldNewResultsTimeFocusLost
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -1739,18 +1762,24 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        //</editor-fold>
+        if (Integer.parseInt(textFieldAlder.getText()) < 0
+                || Integer.parseInt(textFieldAlder.getText()) > 120) {
+            textFieldNewResultsEvent.setBackground(Color.red);
+        } else {
+            textFieldNewResultsEvent.setBackground(Color.white);
+            //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new DelfinGUI().setVisible(true);
-                if (DEBUG) {
-                    new DelfinGUI().go();
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    new DelfinGUI().setVisible(true);
+                    if (DEBUG) {
+                        new DelfinGUI().go();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     public void go() {                  // for testing
@@ -1773,7 +1802,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonNewMember;
     private javax.swing.JButton buttonNewResult;
     private javax.swing.JButton buttonNewResultsClose;
-    private javax.swing.JButton buttonNewResultsSendData;
+    public static javax.swing.JButton buttonNewResultsSendData;
     private javax.swing.JButton buttonSearchMember;
     public static javax.swing.JCheckBox checkBoxDisciplinBryst;
     public static javax.swing.JCheckBox checkBoxDisciplinButterfly;
@@ -1784,7 +1813,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     public static javax.swing.JComboBox<String> comboBoxNewResultsDisciplin;
     public static javax.swing.JComboBox<String> comboBoxStatus;
     public static javax.swing.JComboBox<String> comboBoxTrainedBy;
-    private javax.swing.JDialog dialogNewResults;
+    public static javax.swing.JDialog dialogNewResults;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

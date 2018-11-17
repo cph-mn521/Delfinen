@@ -208,7 +208,7 @@ public class Controller {
                             }
                             guim.displayPlainBlack("\n");
                         } else{
-                            guim.displayPlainBlack("Ingen resultater.");
+                            guim.displayPlainBlack("Ingen resultater.\n");
                         }
                     } catch (DataException ex) {
                         ex.printStackTrace();
