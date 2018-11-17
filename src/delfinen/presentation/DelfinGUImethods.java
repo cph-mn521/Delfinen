@@ -1,11 +1,17 @@
 package delfinen.presentation;
 
 import delfinen.Controller;
+import delfinen.data.DataException;
+import delfinen.logic.Accountant;
+import delfinen.logic.Member;
+import delfinen.logic.Subscription;
 import static delfinen.presentation.DelfinGUI.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JTextField;
@@ -104,11 +110,28 @@ public class DelfinGUImethods {
             labelDiscipliner.setVisible(false);
         }
     }
-
+    
+    /**
+     * ************************************************************************************
+     * List Account methods
+     */
+    
+    /**
+     * 
+     */
+        public void accountListDebitor() {
+        accountTextFieldSelectedMember.setText("");
+        accountTextFieldSelectedMember.setText(accountListDebitor.getSelectedValue());
+        accountTextFieldRestance.setText("");
+        Controller.restancePerMember();
+    }
+    
+    
     /**
      * ************************************************************************************
      * textfield Member methods
      */
+        
     /**
      * input check, Regex for address
      */
@@ -376,4 +399,7 @@ public class DelfinGUImethods {
             return true;
         }
     }
+    
+
+    
 }

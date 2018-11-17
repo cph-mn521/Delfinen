@@ -1012,6 +1012,16 @@ public class DelfinGUI extends javax.swing.JFrame {
         );
 
         accountListDebitor.setBorder(javax.swing.BorderFactory.createTitledBorder("Medlemmer i Restance"));
+        accountListDebitor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                accountListDebitorFocusGained(evt);
+            }
+        });
+        accountListDebitor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                accountListDebitorMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(accountListDebitor);
 
         accountButtonPaySubscription.setText("Betal Kontingent");
@@ -1043,10 +1053,13 @@ public class DelfinGUI extends javax.swing.JFrame {
                             .addComponent(jLabel21)
                             .addComponent(jLabel20))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(accountPanelRestanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                            .addComponent(jScrollPane7))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(accountPanelRestanceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(accountPanelRestanceLayout.createSequentialGroup()
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                .addGap(156, 156, 156))
+                            .addGroup(accountPanelRestanceLayout.createSequentialGroup()
+                                .addComponent(jScrollPane7)
+                                .addContainerGap())))
                     .addGroup(accountPanelRestanceLayout.createSequentialGroup()
                         .addGap(0, 243, Short.MAX_VALUE)
                         .addComponent(accountButtonPaySubscription, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -1788,6 +1801,14 @@ public class DelfinGUI extends javax.swing.JFrame {
         Controller.paySubscription();
     }//GEN-LAST:event_accountButtonPaySubscriptionActionPerformed
 
+    private void accountListDebitorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_accountListDebitorFocusGained
+        GUIm.accountListDebitor();
+    }//GEN-LAST:event_accountListDebitorFocusGained
+
+    private void accountListDebitorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accountListDebitorMouseClicked
+        GUIm.accountListDebitor();
+    }//GEN-LAST:event_accountListDebitorMouseClicked
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -1843,14 +1864,14 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JPanel AccountingButtons;
     private javax.swing.JButton accountButtonChangeAccountingYear;
     private javax.swing.JButton accountButtonPaySubscription;
-    private javax.swing.JList<String> accountListDebitor;
+    public static javax.swing.JList<String> accountListDebitor;
     private javax.swing.JPanel accountPanelRestance;
-    private javax.swing.JTextPane accountTextFieldAccountBank;
-    private javax.swing.JTextField accountTextFieldAccountingYear;
-    private javax.swing.JTextPane accountTextFieldExpectedBank;
-    private javax.swing.JTextPane accountTextFieldRestance;
-    private javax.swing.JTextPane accountTextFieldSelectedMember;
-    private javax.swing.JTextPane accountTextFieldUnpaidSubscriptions;
+    public static javax.swing.JTextPane accountTextFieldAccountBank;
+    public static javax.swing.JTextField accountTextFieldAccountingYear;
+    public static javax.swing.JTextPane accountTextFieldExpectedBank;
+    public static javax.swing.JTextPane accountTextFieldRestance;
+    public static javax.swing.JTextPane accountTextFieldSelectedMember;
+    public static javax.swing.JTextPane accountTextFieldUnpaidSubscriptions;
     private javax.swing.JButton buttonChangeMember;
     private javax.swing.JButton buttonClearMemberInfoFields;
     private javax.swing.JButton buttonClose;

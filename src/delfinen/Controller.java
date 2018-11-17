@@ -11,6 +11,8 @@ import delfinen.logic.Discipline;
 import delfinen.logic.Accountant;
 import delfinen.logic.Record;
 import delfinen.logic.Subscription;
+import static delfinen.presentation.DelfinGUI.accountTextFieldAccountingYear;
+import static delfinen.presentation.DelfinGUI.accountTextFieldSelectedMember;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -353,7 +355,7 @@ public class Controller {
             Accountant acc = new Accountant(data.searchSubscriptions(Integer.toString(year)), data.getMembers());
             ArrayList<String> listDebitorNames = new ArrayList<>();
             for (int i = 1; i < acc.getDebitors().size(); i++) { // index 0 is null
-                listDebitorNames.add(acc.getDebitors().get(i).getName()); 
+                listDebitorNames.add(acc.getDebitors().get(i).getName());
             }
             gui.setAccountListDebitor(listDebitorNames);
         } catch (DataException e) {
@@ -369,11 +371,34 @@ public class Controller {
         String memberName = gui.getAccountTextFieldSelectedMemberPane();
         try {
             Member member = data.searchMember(memberName).get(0);
-            gui.setAccountTextFieldRestance(data.searchSubscriptions(memberName).get(0).toString());
+            Subscription sub = new Subscription(year, member);
+            List<Subscription> budget = new ArrayList<>();
+            List<Member> members = new ArrayList<>();
+            budget.add(sub);
+            members.add(member);
+            Accountant acc = new Accountant(budget, members);
+            gui.setAccountTextFieldRestance(String.valueOf(acc.getBank()));
         } catch (DataException ex) {
             ex.printStackTrace();
         }
         float restance = Integer.parseInt(gui.getAccountTextFieldRestance());
 
+    }
+
+    public static void restancePerMember() {
+        int year = Integer.parseInt(accountTextFieldAccountingYear.getText());
+        String memberName = accountTextFieldSelectedMember.getText();
+        try {
+            Member member = data.searchMember(memberName).get(0);
+            Subscription sub = new Subscription(year, member);
+            List<Subscription> budget = new ArrayList<>();
+            List<Member> members = new ArrayList<>();
+            budget.add(sub);
+            members.add(member);
+            Accountant acc = new Accountant(budget, members);
+            gui.setAccountTextFieldRestance(String.valueOf(acc.getBank()));
+        } catch (DataException ex) {
+            ex.printStackTrace();
+        }
     }
 }
