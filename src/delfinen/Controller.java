@@ -77,6 +77,14 @@ public class Controller {
         String adress = strFormatter(gui.getAdresse());
         int id, age, phoneNumber;
         try {
+            id = data.getMembers().size() + 1;
+            gui.textFieldID.setText(String.valueOf(id));
+        } catch (DataException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+        }
+        try {
             id = Integer.parseInt(gui.getID());
             age = Integer.parseInt(gui.getAlder());
             phoneNumber = Integer.parseInt(gui.getTelefon());

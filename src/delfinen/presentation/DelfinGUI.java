@@ -463,7 +463,7 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         textFieldAlder.setText("23");
         textFieldAlder.setFocusCycleRoot(true);
-        textFieldAlder.setNextFocusableComponent(textFieldID);
+        textFieldAlder.setNextFocusableComponent(textFieldNavn);
         textFieldAlder.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 textFieldAlderCaretUpdate(evt);
@@ -1242,7 +1242,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }
 
     public LocalDateTime getNewResultDate() {
-        DateTimeFormatter format = DateTimeFormatter.ofPattern("d-M-yyyy HH:mm");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("d.M.yyyy HH:mm");
         LocalDateTime localdatetime = LocalDateTime.parse(textFieldNewResultsDate.getText(), format);
         return localdatetime;
     }

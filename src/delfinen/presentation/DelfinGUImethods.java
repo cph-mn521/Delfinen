@@ -110,28 +110,25 @@ public class DelfinGUImethods {
             labelDiscipliner.setVisible(false);
         }
     }
-    
+
     /**
      * ************************************************************************************
      * List Account methods
      */
-    
     /**
-     * 
+     *
      */
-        public void accountListDebitor() {
+    public void accountListDebitor() {
         accountTextFieldSelectedMember.setText("");
         accountTextFieldSelectedMember.setText(accountListDebitor.getSelectedValue());
         accountTextFieldRestance.setText("");
         Controller.restancePerMember();
     }
-    
-    
+
     /**
      * ************************************************************************************
      * textfield Member methods
      */
-        
     /**
      * input check, Regex for address
      */
@@ -180,36 +177,35 @@ public class DelfinGUImethods {
      * input check, Regex for ID
      */
     public void textFieldID() {
-        regexUserInfoBackGroundColorSet("^\\d+$", DelfinGUI.textFieldID);
-        if (Integer.parseInt(textFieldID.getText()) < 0) {
-            textFieldID.setBackground(Color.red);
-            textFieldID.setForeground(Color.white);
-        } else {
-            textFieldID.setBackground(Color.white);
-            textFieldID.setForeground(Color.black);
+        if (regexUserInfoBackGroundColorSet("^\\d+$", DelfinGUI.textFieldID)) {
+            if (Integer.parseInt(textFieldID.getText()) < 0) {
+                textFieldID.setBackground(Color.red);
+                textFieldID.setForeground(Color.white);
+            } else {
+                textFieldID.setBackground(Color.white);
+                textFieldID.setForeground(Color.black);
+            }
         }
     }
 
     /**
-     *
+     *  input check, Regex for name
      */
     public void textFieldNavn() {
         if (textFieldNavn.getText().isEmpty()) {
             textFieldNavn.setBackground(Color.pink);
         } else {
-            // input check, Regex for name
-            regexUserInfoBackGroundColorSet("^\\w+((\\s\\w+)+)?$", textFieldNavn);
+            regexUserInfoBackGroundColorSet("^.+(\\s.+)*$", textFieldNavn);
         }
     }
 
     /**
-     *
+     *  input check, Regex for Telephone
      */
     public void textFieldTelefon() {
         if (textFieldTelefon.getText().isEmpty()) {
             textFieldTelefon.setBackground(Color.pink);
         } else {
-            // input check, Regex for Telephone
             regexUserInfoBackGroundColorSet("^(\\+)?\\d+$", textFieldTelefon);
         }
     }
@@ -399,7 +395,5 @@ public class DelfinGUImethods {
             return true;
         }
     }
-    
 
-    
 }
