@@ -339,9 +339,12 @@ public class Controller {
         return st;
     }
 
-    public static void bookKeeping(int Year) {
+    public static void bookKeeping() {
+        
+        int year = Integer.parseInt(gui.getAccountTextFieldAccountingYear());
+                
         try {
-            Accountant Acc = new Accountant(data.searhcSubscriptions(Integer.toString(Year)), data.getMembers());
+            Accountant Acc = new Accountant(data.searhcSubscriptions(Integer.toString(year)), data.getMembers());
             // Add guim plug inn here.
         } catch (DataException e) {
 
