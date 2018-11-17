@@ -250,7 +250,7 @@ public class PersistanceHandler {
      * @throws delfinen.data.DataException
      */
     public List<Subscription> searchSubscriptions(String Query) throws DataException {
-        List<String> jsons = das.searchEntries(Query);
+         List<String> jsons = das.searchEntries(Query);
         List<Subscription> result = new ArrayList<>();
 
         for (String json : jsons) {

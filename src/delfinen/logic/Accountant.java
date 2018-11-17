@@ -83,7 +83,7 @@ public class Accountant {
     private List<Member> Restance() {
         List<Member> Out = new ArrayList<>();
         boolean flag;
-        for (int i = 0; i < Members.size(); i++) {
+        for (int i = 1; i < Members.size()-1; i++) {
             flag = true;
             for (int j = 0; j < Budget.size(); j++) {
                 if (Members.get(i).equals(Budget.get(j).getHolder())) {

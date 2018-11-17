@@ -369,13 +369,30 @@ public class Controller {
     public static void paySubscription() {
         int year = Integer.parseInt(gui.getAccountTextFieldAccountingYear());
         String memberName = gui.getAccountTextFieldSelectedMemberPane();
+        boolean payed = false;
         try {
-            for (Subscription memSub :  data.searchSubscriptions(memberName)) {
-//                memSub.
+            Member member = data.searchMember(memberName).get(0);
+            List<Subscription> subs = new ArrayList<>();
+//            subs=null;
+            subs = data.searchSubscriptions(memberName);
+            if (subs != null) {
+                for (Subscription memSub : subs) {
+                    if (memSub.getYear() == year) {
+                        payed = true;
+                    }
+                }
+
             }
-            guim.displayPlainBlack("Abonnement betalt for ");
-            guim.displayPlainGreen(memberName + ".\n");
+            if (!payed) {
+                data.addSubscription(new Subscription(year, member));
+                guim.displayPlainBlack("Abonnement betalt for ");
+                guim.displayPlainGreen(memberName + ".\n");
+            }
         } catch (DataException ex) {
+            guim.displayBoldRed("Der sket en fejl under betaling af ");
+            guim.displayBoldBlack(memberName);
+            guim.displayBoldRed("'s betaling for året ");
+            guim.displayBoldBlack(year + ".\n");
             ex.printStackTrace();
         }
 
