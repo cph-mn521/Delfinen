@@ -6,7 +6,9 @@ import delfinen.logic.Accountant;
 import delfinen.logic.Member;
 import delfinen.logic.Subscription;
 import static delfinen.presentation.DelfinGUI.*;
+import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JTable;
+import static javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -113,6 +117,25 @@ public class DelfinGUImethods {
 
     /**
      * ************************************************************************************
+     * Menu
+     */
+    /**
+     * When Resultater is pressed
+     */
+    public void menuSystemResults() {
+        CardLayout card = (CardLayout) panelMain.getLayout();
+        card.show(panelMain, "panelResults");
+
+
+        accountTableTopFem.setAutoResizeMode(AUTO_RESIZE_ALL_COLUMNS); 
+        accountTableTopFem.setValueAt("Hejsa hejsa hejsa ehsja", 0, 0);
+        accountTableTopFem.setPreferredScrollableViewportSize(new Dimension(500, 70));
+        accountTableTopFem.setFillsViewportHeight(true);
+
+    }
+
+    /**
+     * ************************************************************************************
      * List Account methods
      */
     /**
@@ -189,7 +212,7 @@ public class DelfinGUImethods {
     }
 
     /**
-     *  input check, Regex for name
+     * input check, Regex for name
      */
     public void textFieldNavn() {
         if (textFieldNavn.getText().isEmpty()) {
@@ -200,7 +223,7 @@ public class DelfinGUImethods {
     }
 
     /**
-     *  input check, Regex for Telephone
+     * input check, Regex for Telephone
      */
     public void textFieldTelefon() {
         if (textFieldTelefon.getText().isEmpty()) {
