@@ -10,6 +10,7 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import static java.awt.image.ImageObserver.ERROR;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -123,20 +124,22 @@ public class DelfinGUImethods {
     /**
      * When Resultater is pressed
      */
+    public void menuSystemMembers() {
+        CardLayout card = (CardLayout) panelMain.getLayout();
+        card.show(panelMain, "panelMembers");
+    }
+
     public void menuSystemResults(String[][] rygCrawl, String[][] crawl,
             String[][] brystSvoemning, String[][] butterfly) {
         CardLayout card = (CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelResults");
-        
-        
-        
-            for (int j = 0; j < 4; j++) {
-                accountTableTopFem.setValueAt(rygCrawl[1][j], j, 0);
-                accountTableTopFem.setValueAt(crawl[1][j], j, 1);
-                accountTableTopFem.setValueAt(brystSvoemning[1][j], j, 2);
-                accountTableTopFem.setValueAt(butterfly[1][j], j, 3);
-            }
 
+        for (int j = 0; j < 4; j++) {
+            resultsTableTopFem.setValueAt(rygCrawl[1][j], j, 0);
+            resultsTableTopFem.setValueAt(crawl[1][j], j, 1);
+            resultsTableTopFem.setValueAt(brystSvoemning[1][j], j, 2);
+            resultsTableTopFem.setValueAt(butterfly[1][j], j, 3);
+        }
     }
 
     /**
@@ -339,6 +342,24 @@ public class DelfinGUImethods {
         tf.setText("");
         tf.setBackground(Color.white);
         tf.setForeground(Color.black);
+    }
+
+    /**
+     * *************************************************************************
+     * results selection from table
+     *
+     */
+    /**
+     *
+     */
+    public void changeToMemberAndSearch() {
+        JTable tab = resultsTableTopFem;
+        String member = tab.getValueAt(tab.getSelectedRow(),
+                tab.getSelectedColumn()).toString();
+        ClearFieldToPink();
+        textFieldNavn.setText(member);
+        Controller.search();
+        menuSystemMembers(); // change to members layer
     }
 
     /**
