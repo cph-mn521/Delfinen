@@ -11,14 +11,13 @@ import delfinen.logic.Discipline;
 import delfinen.logic.Accountant;
 import delfinen.logic.Record;
 import delfinen.logic.Subscription;
+import delfinen.logic.TopFive;
 import static delfinen.presentation.DelfinGUI.accountTextFieldAccountingYear;
 import static delfinen.presentation.DelfinGUI.accountTextFieldSelectedMember;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -421,5 +420,51 @@ public class Controller {
         } catch (DataException ex) {
             ex.printStackTrace();
         }
+    }
+
+    /**
+     *
+     */
+    public static void collectTopFiveResults() {
+        TopFive t5BrystSvoemning = new TopFive();
+        TopFive t5Crawl = new TopFive();
+        TopFive t5RygCrawl = new TopFive();
+        TopFive t5Butterfly = new TopFive();
+
+        try {
+            for (Record record : data.searchRecord("Brystsvømning")) {
+                try {
+                    t5BrystSvoemning.checkAndChangetopFive(record.getTime(), record.getHolder().getName());
+                } catch (NullPointerException e) {
+                    t5BrystSvoemning.checkAndChangetopFive(0, ""); // send dummy result
+                }
+            }
+            for (Record record : data.searchRecord("Crawl")) {
+                try {
+                    t5Crawl.checkAndChangetopFive(record.getTime(), record.getHolder().getName());
+                } catch (NullPointerException e) {
+                    t5Crawl.checkAndChangetopFive(0, ""); // send dummy result
+                }
+            }
+            for (Record record : data.searchRecord("RygCrawl")) {
+                try {
+                    t5RygCrawl.checkAndChangetopFive(record.getTime(), record.getHolder().getName());
+                } catch (NullPointerException e) {
+                    t5RygCrawl.checkAndChangetopFive(0, ""); // send dummy result
+                }
+            }
+            for (Record record : data.searchRecord("Butterfly")) {
+                try {
+                    t5Butterfly.checkAndChangetopFive(record.getTime(), record.getHolder().getName());
+                } catch (NullPointerException e) {
+                    t5Butterfly.checkAndChangetopFive(0, ""); // send dummy result
+                }
+            }
+            guim.menuSystemResults(t5RygCrawl.getTopFive(), t5Crawl.getTopFive(),
+                    t5BrystSvoemning.getTopFive(), t5Butterfly.getTopFive());
+        } catch (DataException ex) {
+            ex.printStackTrace();
+        }
+
     }
 }

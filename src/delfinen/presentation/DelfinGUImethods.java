@@ -13,6 +13,7 @@ import java.awt.Font;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -122,15 +123,19 @@ public class DelfinGUImethods {
     /**
      * When Resultater is pressed
      */
-    public void menuSystemResults() {
+    public void menuSystemResults(String[][] rygCrawl, String[][] crawl,
+            String[][] brystSvoemning, String[][] butterfly) {
         CardLayout card = (CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelResults");
-
-
-        accountTableTopFem.setAutoResizeMode(AUTO_RESIZE_ALL_COLUMNS); 
-        accountTableTopFem.setValueAt("Hejsa hejsa hejsa ehsja", 0, 0);
-        accountTableTopFem.setPreferredScrollableViewportSize(new Dimension(500, 70));
-        accountTableTopFem.setFillsViewportHeight(true);
+        
+        
+        
+            for (int j = 0; j < 4; j++) {
+                accountTableTopFem.setValueAt(rygCrawl[1][j], j, 0);
+                accountTableTopFem.setValueAt(crawl[1][j], j, 1);
+                accountTableTopFem.setValueAt(brystSvoemning[1][j], j, 2);
+                accountTableTopFem.setValueAt(butterfly[1][j], j, 3);
+            }
 
     }
 
