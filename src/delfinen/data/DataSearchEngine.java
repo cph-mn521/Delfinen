@@ -33,9 +33,9 @@ public class DataSearchEngine {
      */
     public List<String> Search(ArrayList<String> Search, List<String> disciplines, Member Coach, List<String> data, boolean isCompetitive) throws DataException {
         StringBuilder regQuery = new StringBuilder();
+        StringBuilder disciplineString = new StringBuilder();
         regQuery.append("^\\{");
         List<String> matches = new ArrayList<>();
-        int disSize = 0;
 
         ArrayList<String> regex = new ArrayList<>();
         regex.add("\"name\":\".+\",");
@@ -46,25 +46,21 @@ public class DataSearchEngine {
         regex.add("\"phone\":.+,");
         regex.add("\"status\":\".+\",");
         regex.add("\"isCoach\":.+");
-        if (disciplines != null) {
-            disSize = disciplines.size();
-        }
-        if (disSize > 0) {
+
+        if (isCompetitive) {
             regQuery.append("\"disciplines\":\\[");
-            for (int i = 0; i < disSize; i++) {
-                regQuery.append("\"");
-                regQuery.append(disciplines.get(i));
-                if (i >= disSize - 1) {
-                    regQuery.append("\\]\"");
-                } else {
-                    regQuery.append("\",");
-                }
-            }
-
-        } else {
-            regQuery.append("\"disciplines\":\\[.+\\],");
         }
+        if (disciplines == null || disciplines.size() > 0) {
+            regQuery.append("\"");
+        }
+        for (String s : disciplines) {
+            regQuery.append("\"");
+            regQuery.append(s);
+            regQuery.append("\",");
+        }
+        regQuery.append("\\]\"");
 
+        regQuery.append("\"disciplines\":\\[.+\\],");
         if (Coach != null) {
             regQuery.append("\\],\"coach\":\\");
             regQuery.append(gson.toJson(Coach).replace("}", "\\}"));
@@ -84,7 +80,9 @@ public class DataSearchEngine {
             }
             i++;
         }
-        regQuery.append("\\}$");
+
+        regQuery.append(
+                "\\}$");
 
         if (delfinen.Controller.DEBUG) {
             System.out.println(regQuery);
