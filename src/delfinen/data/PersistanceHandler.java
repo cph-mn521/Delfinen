@@ -249,8 +249,8 @@ public class PersistanceHandler {
      * @return result All members in the database with maching Attribute.
      * @throws delfinen.data.DataException
      */
-    public List<Subscription> searhcSubscriptions(String Query) throws DataException {
-        List<String> jsons = das.searchEntries(Query);
+    public List<Subscription> searchSubscriptions(String Query) throws DataException {
+         List<String> jsons = das.searchEntries(Query);
         List<Subscription> result = new ArrayList<>();
 
         for (String json : jsons) {

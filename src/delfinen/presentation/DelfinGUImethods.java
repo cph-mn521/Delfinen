@@ -1,24 +1,25 @@
 package delfinen.presentation;
 
-import static delfinen.presentation.DelfinGUI.comboBoxMotionistKonkurrence;
-import static delfinen.presentation.DelfinGUI.comboBoxStatus;
-import static delfinen.presentation.DelfinGUI.comboBoxTrainedBy;
-import static delfinen.presentation.DelfinGUI.labelDiscipliner;
-import static delfinen.presentation.DelfinGUI.labelTrainedBy;
-import static delfinen.presentation.DelfinGUI.panelDisciplin;
-import static delfinen.presentation.DelfinGUI.textFieldAdresse;
-import static delfinen.presentation.DelfinGUI.textFieldAlder;
-import static delfinen.presentation.DelfinGUI.textFieldEmail;
-import static delfinen.presentation.DelfinGUI.textFieldNavn;
-import static delfinen.presentation.DelfinGUI.textFieldNewResultsDate;
-import static delfinen.presentation.DelfinGUI.textFieldTelefon;
-import static delfinen.presentation.DelfinGUI.textPaneMedlemsInfo;
+import delfinen.Controller;
+import delfinen.data.DataException;
+import delfinen.logic.Accountant;
+import delfinen.logic.Member;
+import delfinen.logic.Subscription;
+import static delfinen.presentation.DelfinGUI.*;
+import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import static java.awt.image.ImageObserver.ERROR;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JTable;
+import static javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -46,10 +47,37 @@ public class DelfinGUImethods {
      *
      */
     public void ClearFieldToPink() {
-        for (JTextField textField : DelfinGUI.textFields) {
+        for (JTextField textField : textFields) {
             textField.setText("");
             textField.setBackground(Color.pink);
         }
+    }
+
+    /**
+     *
+     */
+    public void buttonNewResult() {
+        dialogNewResults.setAlwaysOnTop(true);
+        dialogNewResults.setVisible(true);
+        labelNewResultsMemberName.setText(textFieldNavn.getText());
+    }
+
+    /**
+     *
+     */
+    public void buttonNewResultsClose() {
+        dialogNewResults.setAlwaysOnTop(false);
+        dialogNewResults.setVisible(false);
+    }
+
+    /**
+     *
+     */
+    public void buttonNewResultsSendData() {
+//        dialogNewResults.setAlwaysOnTop(false);
+        Controller.addResult();
+//        dialogNewResults.setVisible(false);
+
     }
 
     /**
@@ -91,88 +119,157 @@ public class DelfinGUImethods {
 
     /**
      * ************************************************************************************
-     * textfield Member methods
+     * Menu
      */
     /**
-     *
+     * When Resultater is pressed
      */
-    public void textFieldAdresse() {
-        if (textFieldAdresse.getText().isEmpty()) {
-            textFieldAdresse.setBackground(Color.pink);
-        } else {
-            // input check, Regex for address
-            regexUserInfoBackGroundColorSet("^.+,(\\s+)?\\d{4}.+$", textFieldAdresse,
-                    "Adresse skal være i formatet: adresse, 2938 Bynavn\n");
+    public void menuSystemMembers() {
+        CardLayout card = (CardLayout) panelMain.getLayout();
+        card.show(panelMain, "panelMembers");
+    }
+
+    public void menuSystemResults(String[][] rygCrawl, String[][] crawl,
+            String[][] brystSvoemning, String[][] butterfly) {
+        CardLayout card = (CardLayout) panelMain.getLayout();
+        card.show(panelMain, "panelResults");
+
+        for (int j = 0; j < 4; j++) {
+            resultsTableTopFem.setValueAt(rygCrawl[1][j], j, 0);
+            resultsTableTopFem.setValueAt(crawl[1][j], j, 1);
+            resultsTableTopFem.setValueAt(brystSvoemning[1][j], j, 2);
+            resultsTableTopFem.setValueAt(butterfly[1][j], j, 3);
         }
     }
 
     /**
-     *
+     * ************************************************************************************
+     * List Account methods
+     */
+    /**
+     * input check, Regex for address
+     */
+    public void accountListDebitor() {
+        accountTextFieldSelectedMember.setText("");
+        accountTextFieldSelectedMember.setText(accountListDebitor.getSelectedValue());
+        accountTextFieldRestance.setText("");
+        Controller.restancePerMember();
+    }
+
+    /**
+     * ************************************************************************************
+     * textfield Member methods
+     */
+    /**
+     * input check, Regex for address
+     */
+    public void textFieldAdresse() {
+<<<<<<< HEAD
+        regexUserInfoBackGroundColorSet("^.+,(\\s+)?\\d{4}.+$", textFieldAdresse,
+                "Adresse skal være i formatet: adresse, 2938 Bynavn\n");
+=======
+        if (textFieldAdresse.getText().isEmpty()) {
+            textFieldAdresse.setBackground(Color.pink);
+        } else {
+            regexUserInfoBackGroundColorSet("^\\w+((\\s.+)+)?,(\\s)?\\d{4}\\s\\w+((\\s\\w+)+)?$", textFieldAdresse);
+        }
+>>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
+    }
+
+    /**
+     * input check, Regex for address
      */
     public void textFieldAlder() {
+<<<<<<< HEAD
+        String err = "Alder skal være et tal mellem 0 og 120 år\n";
+        regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder,
+                err);
+        if (!textFieldAlder.getText().equals("")) {
+=======
         if (textFieldAlder.getText().isEmpty()) {
             textFieldAlder.setBackground(Color.pink);
         } else {
-            // input check, Regex for address
-            String err = "Alder skal være et tal mellem 0 og 120 år\n";
-            regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder,
-                    err);
+            // 
+            regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder);
+>>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
             if (Integer.parseInt(textFieldAlder.getText()) < 0
                     || Integer.parseInt(textFieldAlder.getText()) > 120) {
                 textFieldAlder.setBackground(Color.red);
-                displayPlainRed(err);
+                textFieldAlder.setForeground(Color.white);
             } else {
                 clearFormatedText(textPaneMedlemsInfo);
                 textFieldAlder.setBackground(Color.white);
+                textFieldAlder.setForeground(Color.black);
             }
         }
     }
 
     /**
-     *
+     * input check, Regex for email
      */
     public void textFieldEmail() {
+<<<<<<< HEAD
+        regexUserInfoBackGroundColorSet("^.+@.+\\..+$", textFieldEmail,
+                "Email skal være i formatet: xx@yy.zz\n");
+=======
         if (textFieldEmail.getText().isEmpty()) {
             textFieldEmail.setBackground(Color.pink);
         } else {
             // input check, Regex for email
-            regexUserInfoBackGroundColorSet("^.+@.+\\..+$", textFieldEmail,
-                    "Email skal være i formatet: xx@yy.zz\n");
+            regexUserInfoBackGroundColorSet("^\\w+@\\w+\\.\\w+$", textFieldEmail);
         }
+>>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
     }
 
     /**
      * input check, Regex for ID
      */
     public void textFieldID() {
-        regexUserInfoBackGroundColorSet("^\\d+$", DelfinGUI.textFieldID,
-                "ID skal være et tal større end 0\n");
+        if (regexUserInfoBackGroundColorSet("^\\d+$", DelfinGUI.textFieldID)) {
+            if (Integer.parseInt(textFieldID.getText()) < 0) {
+                textFieldID.setBackground(Color.red);
+                textFieldID.setForeground(Color.white);
+            } else {
+                textFieldID.setBackground(Color.white);
+                textFieldID.setForeground(Color.black);
+            }
+        }
     }
 
     /**
-     *
+<<<<<<< HEAD
+     * input check, Regex for Name
+     */
+    public void textFieldNavn() {
+
+        regexUserInfoBackGroundColorSet("^\\w+((\\s\\w+)+)?$", textFieldNavn,
+                "Navnet skal være i formatet: xxxx, eller xxx yyyy mfl.\n");
+=======
+     * input check, Regex for name
      */
     public void textFieldNavn() {
         if (textFieldNavn.getText().isEmpty()) {
             textFieldNavn.setBackground(Color.pink);
         } else {
-            // input check, Regex for name
-            regexUserInfoBackGroundColorSet("^\\w+((\\s\\w+)+)?$", textFieldNavn,
-                    "Navnet skal være i formatet: xxxx, eller xxx yyyy mfl.\n");
+            regexUserInfoBackGroundColorSet("^.+(\\s.+)*$", textFieldNavn);
         }
+>>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
     }
 
     /**
-     *
+     * input check, Regex for Telephone
      */
     public void textFieldTelefon() {
+<<<<<<< HEAD
+        regexUserInfoBackGroundColorSet("^\\d+$", textFieldTelefon,
+                "Telefonnummer skal være i formatet: 12345678\n");
+=======
         if (textFieldTelefon.getText().isEmpty()) {
             textFieldTelefon.setBackground(Color.pink);
         } else {
-            // input check, Regex for Telephone
-            regexUserInfoBackGroundColorSet("^\\d+$", textFieldTelefon,
-                    "Telefonnummer skal være i formatet: 12345678\n");
+            regexUserInfoBackGroundColorSet("^(\\+)?\\d+$", textFieldTelefon);
         }
+>>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
     }
 
     /**
@@ -183,24 +280,117 @@ public class DelfinGUImethods {
     /**
      *
      */
-    public void textFieldNewResultsDate() {
-        DelfinGUI.textFieldNewResultsDate.setText("");
-        DelfinGUI.textFieldNewResultsDate.setBackground(Color.white);
+    public void textField_FocusGained_NewResultsDate() {
+        textFieldNewResultsClearWhiteBackground(textFieldNewResultsDate);
         textFieldNewResultsDate.setText(formatDate("d-M-yyyy HH:mm"));
     }
 
     /**
-     *
+     * input check, Regex for Date
      */
-    public void textFieldNewResultsTime() {
-        DelfinGUI.textFieldNewResultsTime.setText("");
-        DelfinGUI.textFieldNewResultsTime.setBackground(Color.white);
+    public void textFieldNewResultsDate() {
+        if (textFieldNewResultsDate.getText().isEmpty()) {
+            textFieldNewResultsDate.setBackground(Color.pink);
+        } else {
+            regexUserInfoBackGroundColorSet("^\\d{1,2}\\.\\d{1,2}\\.\\d{4}\\s\\d{2}:\\d{2}", textFieldNewResultsDate);
+        }
     }
 
     /**
      *
      */
-    public void textFieldNewResultsClearWhiteBackground() {
+    public void textField_FocusGained_NewResultsEvent() {
+        textFieldNewResultsClearWhiteBackground(textFieldNewResultsEvent);
+    }
+
+    /**
+     * input check, Regex for Event
+     */
+    public void textFieldNewResultsEvent() {
+        if (textFieldNewResultsEvent.getText().isEmpty()) {
+            textFieldNewResultsEvent.setBackground(Color.pink);
+        } else {
+            regexUserInfoBackGroundColorSet("^.+(\\s+)?(.+)?$", textFieldNewResultsEvent);
+        }
+    }
+
+    /**
+     *
+     */
+    public void textField_FocusGained_NewResultsPlace() {
+        textFieldNewResultsClearWhiteBackground(textFieldNewResultsPlace);
+    }
+
+    /**
+     * input check, Regex for Ranking
+     */
+    public void textFieldNewResultsPlace() {
+        if (textFieldNewResultsPlace.getText().isEmpty()) {
+            textFieldNewResultsPlace.setBackground(Color.pink);
+        } else {
+            if (regexUserInfoBackGroundColorSet("^\\d+$", textFieldNewResultsPlace)) {
+                if (Integer.parseInt(textFieldNewResultsPlace.getText()) < 0) {
+                    textFieldNewResultsPlace.setBackground(Color.red);
+                    textFieldNewResultsPlace.setForeground(Color.white);
+                } else {
+                    textFieldNewResultsPlace.setBackground(Color.white);
+                    textFieldNewResultsPlace.setForeground(Color.black);
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    public void textField_FocusGained_NewResultsTime() {
+        textFieldNewResultsClearWhiteBackground(textFieldNewResultsTime);
+    }
+
+    /**
+     * input check, Regex for Time
+     */
+    public void textFieldNewResultsTime() {
+        if (textFieldNewResultsTime.getText().isEmpty()) {
+            textFieldNewResultsTime.setBackground(Color.pink);
+        } else {
+            if (regexUserInfoBackGroundColorSet("^\\d+(\\.\\d+)?$", textFieldNewResultsTime)) {
+                if (Float.parseFloat(textFieldNewResultsTime.getText()) < 0) {
+                    textFieldNewResultsTime.setBackground(Color.red);
+                    textFieldNewResultsTime.setForeground(Color.white);
+                } else {
+                    textFieldNewResultsTime.setBackground(Color.white);
+                    textFieldNewResultsTime.setForeground(Color.black);
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    public void textFieldNewResultsClearWhiteBackground(JTextField tf) {
+        tf.setText("");
+        tf.setBackground(Color.white);
+        tf.setForeground(Color.black);
+    }
+
+    /**
+     * *************************************************************************
+     * results selection from table
+     *
+     */
+    /**
+     *
+     */
+    public void changeToMemberAndSearch() {
+        JTable tab = resultsTableTopFem;
+        String member = tab.getValueAt(tab.getSelectedRow(),
+                tab.getSelectedColumn()).toString();
+        ClearFieldToPink();
+        textFieldNavn.setText(member);
+        Controller.search();
+        menuSystemMembers(); // change to members layer
     }
 
     /**
@@ -216,35 +406,35 @@ public class DelfinGUImethods {
     }
 
     public void displayPlainBlack(String text) {
-        displayFormatedText(DelfinGUI.textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.black);
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.black);
     }
 
     public void displayPlainRed(String text) {
-        displayFormatedText(DelfinGUI.textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.red);
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.red);
     }
 
     public void displayBoldRed(String text) {
-        displayFormatedText(DelfinGUI.textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.red);
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.red);
     }
 
     public void displayBoldBlack(String text) {
-        displayFormatedText(DelfinGUI.textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.black);
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.black);
     }
 
     public void displayPlainGreen(String text) {
-        displayFormatedText(DelfinGUI.textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.green);
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.green);
     }
 
     public void displayBoldGreen(String text) {
-        displayFormatedText(DelfinGUI.textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.green);
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.green);
     }
 
     public void displayPlainBlue(String text) {
-        displayFormatedText(DelfinGUI.textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.blue);
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.blue);
     }
 
     public void displayBoldBlue(String text) {
-        displayFormatedText(DelfinGUI.textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.blue);
+        displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.blue);
     }
 
     public void displayFormatedText(JTextPane tp, String txt, Font font, Color color) {
@@ -273,19 +463,27 @@ public class DelfinGUImethods {
         tp.setText("");
     }
 
-    public boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf,
-            String err) {
+    public boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf) {
         // check user input and set background accordingly
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(tf.getText());
         if (!matcher.matches()) {
             tf.setBackground(Color.red);
+<<<<<<< HEAD
+            tf.setForeground(Color.white);
 //            displayFormatedText(DelfinGUI.textPaneMedlemsInfo, err, FONT_NOTOSANS_PLAIN_12, Color.RED);
             return false;
         } else {
             tf.setBackground(Color.white);
+            tf.setForeground(Color.black);
 //            clearFormatedText(DelfinGUI.textPaneMedlemsInfo);
+=======
+            return false;
+        } else {
+            tf.setBackground(Color.white);
+>>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
             return true;
         }
     }
+
 }
