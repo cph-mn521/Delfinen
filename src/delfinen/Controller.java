@@ -379,6 +379,22 @@ public class Controller {
             e.printStackTrace();
         }
     }
+    
+    public static String SubscriptionValue(String Member){
+        String memberName = gui.getAccountTextFieldSelectedMemberPane();
+        try {
+            Member member = data.searchMember(memberName).get(0);
+            Subscription sub = new Subscription(0, member);
+            return Float.toString(sub.getPrice());
+        } catch (DataException ex) {
+            
+            guim.displayBoldRed("Der sket en fejl i udregning af ");
+            guim.displayBoldBlack(Member);
+            guim.displayBoldRed("'s udestående for nuværende sæson.");
+            ex.printStackTrace();
+            return " ";
+        }
+    }
 
     /**
      *

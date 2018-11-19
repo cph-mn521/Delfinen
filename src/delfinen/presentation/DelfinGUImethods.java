@@ -152,8 +152,9 @@ public class DelfinGUImethods {
     public void accountListDebitor() {
         accountTextFieldSelectedMember.setText("");
         accountTextFieldSelectedMember.setText(accountListDebitor.getSelectedValue());
-        accountTextFieldRestance.setText("");
+        accountTextFieldRestance.setText(Controller.SubscriptionValue(accountListDebitor.getSelectedValue()));
         Controller.restancePerMember();
+        
     }
 
     /**
