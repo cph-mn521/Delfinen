@@ -2,5 +2,18 @@
 {"year":2018,"holder":{"name":"Martin Martinsen","email":"hj@fio.dk","address":"Ligust 2, 2937 Hjørring","id":4,"age":23,"phone":25252525,"status":"Active","isCoach":true},"price":1600.0}
 {"year":2018,"holder":{"name":"Hansine Hansinesen","email":"jl@delfinen.dk","address":"Ligustervej 12, 2765 Liguster","id":5,"age":12,"phone":25854578,"status":"Active","isCoach":false},"price":1000.0}
 {"year":2017,"holder":{"name":"Hansine Hansinesen","email":"jl@delfinen.dk","address":"Ligustervej 12, 2765 Liguster","id":5,"age":12,"phone":25854578,"status":"Active","isCoach":false},"price":1000.0}
+{"year":2018,"holder":{"name":"Niels Bang","email":"Niels@mail.dk","address":"123Gade 2, 2800 kgs lyngby","id":6,"age":21,"phone":12345678,"status":"Active","isCoach":false},"price":1600.0}
+{"year":2016,"holder":{"name":"Hans Larsen","email":"Hm@delfinen.dk","address":"Liguster 12, 2450 Valby","id":11,"age":26,"phone":12526452,"status":"Active","isCoach":false},"price":1600.0}
+{"year":2018,"holder":{"name":"Georg Larsen","email":"Hm@delfinen.dk","address":"Liguster 12, 2450 Valby","id":12,"age":26,"phone":12526452,"status":"Active","isCoach":false},"price":1600.0}
+{"year":2018,"holder":{"name":"Hans Madsen","email":"Hm@delfinen.dk","address":"Liguster 12, 2450 Valby","id":10,"age":26,"phone":12526452,"status":"Active","isCoach":false},"price":1600.0}
+{"year":2018,"holder":{"name":"Hanse Hansinesen","email":"hjh@fgjkj.dk","address":"Ligustervej 1, 2987 Ligust","id":7,"age":12,"phone":25252525,"status":"Active","isCoach":true},"price":1000.0}
+{"year":2016,"holder":{"name":"Hans Madsen","email":"Hm@delfinen.dk","address":"Liguster 12, 2450 Valby","id":10,"age":26,"phone":12526452,"status":"Active","isCoach":false},"price":1600.0}
+{"year":2016,"holder":{"name":"Jørgen Madsen","email":"Hj@delfinen.dk","address":"Liguster 12, 2450 Valby","id":9,"age":12,"phone":12526452,"status":"Active","isCoach":false},"price":1000.0}
+{"year":2016,"holder":{"name":"Niels Bang","email":"Niels@mail.dk","address":"123Gade 2, 2800 kgs lyngby","id":6,"age":21,"phone":12345678,"status":"Active","isCoach":false},"price":1600.0}
+{"year":2018,"holder":{"name":"Jørgen Madsen","email":"Hj@delfinen.dk","address":"Liguster 12, 2450 Valby","id":9,"age":12,"phone":12526452,"status":"Active","isCoach":false},"price":1000.0}
+{"year":2018,"holder":{"name":"Hans Larsen","email":"Hm@delfinen.dk","address":"Liguster 12, 2450 Valby","id":11,"age":26,"phone":12526452,"status":"Active","isCoach":false},"price":1600.0}
+{"year":2018,"holder":{"name":"Hans Kål","email":"lm@mail.dk","address":"Heuheuheu 23, 2756 Liguster","id":2,"age":23,"phone":25854572,"status":"Active","isCoach":true},"price":1600.0}
 {"year":2018,"holder":{"name":"Lars Emil","email":"lm@delfinen.dk","address":"Ligustervænget 23, 2756 Liguster","id":1,"age":23,"phone":25854578,"status":"Active","isCoach":true},"price":1600.0}
-{"year":2018,"holder":{"name":"Niels Bang","email":"Nej@123.dk","address":"Fuckregexsearchvej 2, 1234 Lort","id":3,"age":21,"phone":12345678,"status":"Active","isCoach":false},"price":1600.0}
+{"year":2017,"holder":{"name":"Niels Bang","email":"Nej@123.dk","address":"Fuckregexsearchvej 2, 1234 Lort","id":3,"age":21,"phone":12345678,"status":"Active","isCoach":false},"price":1600.0}
+{"year":2017,"holder":{"name":"Lars Emil","email":"lm@delfinen.dk","address":"Ligustervænget 23, 2756 Liguster","id":1,"age":23,"phone":25854578,"status":"Active","isCoach":true},"price":1600.0}
+

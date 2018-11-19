@@ -74,9 +74,9 @@ public class DataAccesorTest {
 
             assertTrue(DAW.getEntries().size() == 0);
             DAW.addEntry("reee");
-            assertTrue(DAW.getEntries().size() == 2);
+            assertTrue(DAW.getEntries().size() == 1);
             DAW.addEntry("woooo");
-            assertTrue(DAW.getEntries().size() == 3);
+            assertTrue(DAW.getEntries().size() == 2);
 
         } catch (Exception e) {
             fail(e.getMessage());

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package delfinen.logic;
 
 import java.time.LocalDateTime;
@@ -149,9 +144,8 @@ public class Record {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy HH:mm");
         LocalDateTime dateTime = date;
         String formattedDateTime = dateTime.format(formatter);
-        return discipline + "\t" + time + "\t" + formattedDateTime
-                + "\t" + event
-                + "\t" + place + ". plads.";
+        // Formatting fits with small info box on members page
+        return String.format("%-17s %-6s %-18s %-30s %-12s", discipline, time, formattedDateTime,
+                event, place+".");
     }
-
 }
