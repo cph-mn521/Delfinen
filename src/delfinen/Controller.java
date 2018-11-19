@@ -164,8 +164,12 @@ public class Controller {
         if (aktivitet.equals("Konkurrencesvømmer")) {
             disciplines = gui.getDisciplin();
             List<Member> trainers = findMembers("\"isCoach\":true");
+            ArrayList<String> names = new ArrayList<>();
+            for (Member m : trainers) {
+                names.add(m.getName());
+            }
             String coach = gui.getTrainedBy();
-            Coach = trainers.get(trainers.indexOf(coach));
+            Coach = trainers.get(names.indexOf(coach));
         }
 
         String name = gui.getNavn();

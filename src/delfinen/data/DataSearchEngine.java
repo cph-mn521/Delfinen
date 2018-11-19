@@ -48,9 +48,10 @@ public class DataSearchEngine {
         regex.add("\"isCoach\":.+");
         if (disciplines != null) {
             disSize = disciplines.size();
-        } else if (disSize > 0) {
-            regQuery.append("(\"disciplines\":\\[");
-            for (int i = 0; i <= disSize; i++) {
+        }
+        if (disSize > 0) {
+            regQuery.append("\"disciplines\":\\[");
+            for (int i = 0; i < disSize; i++) {
                 regQuery.append("\"");
                 regQuery.append(disciplines.get(i));
                 if (i == disSize - 1) {
@@ -62,9 +63,9 @@ public class DataSearchEngine {
 
             regQuery.append("\\],\"coach\":");
             regQuery.append(gson.toJson(Coach));
-            regQuery.append(")?,");
+            regQuery.append(",");
         } else {
-            regQuery.append("(\"disciplines\":\\[.+\\],\"coach\":\\{.+\\},)?");
+            regQuery.append("\"disciplines\":\\[.+\\],\"coach\":\\{.+\\},");
         }
 
         int i = 0;
