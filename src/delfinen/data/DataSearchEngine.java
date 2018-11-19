@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 import delfinen.logic.Member;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -24,16 +23,16 @@ public class DataSearchEngine {
     /**
      * A method for a partial fuzzy search for members in the filesystem.
      *
-     * @param Search
-     * @param disciplines
-     * @param Coach
-     * @param data
+     * @param Search List of data to be searched for.
+     * @param disciplines List of disciplines for competitive members.
+     * @param Coach The coach of competitive members.
+     * @param data List of members.
+     * @param isCompetitive True if there's searched for competitive members.
      * @return
      * @throws DataException
      */
     public List<String> Search(ArrayList<String> Search, List<String> disciplines, Member Coach, List<String> data, boolean isCompetitive) throws DataException {
         StringBuilder regQuery = new StringBuilder();
-        StringBuilder disciplineString = new StringBuilder();
         regQuery.append("^\\{");
         List<String> matches = new ArrayList<>();
 
@@ -49,26 +48,28 @@ public class DataSearchEngine {
 
         if (isCompetitive) {
             regQuery.append("\"disciplines\":\\[");
-        }
-        if (disciplines == null || disciplines.size() > 0) {
-            regQuery.append("\"");
-        }
-        for (String s : disciplines) {
-            regQuery.append("\"");
-            regQuery.append(s);
-            regQuery.append("\",");
-        }
-        regQuery.append("\\]\"");
 
-        regQuery.append("\"disciplines\":\\[.+\\],");
-        if (Coach != null) {
-            regQuery.append("\\],\"coach\":\\");
-            regQuery.append(gson.toJson(Coach).replace("}", "\\}"));
-            regQuery.append(",");
-        } else {
-            regQuery.append("\"coach\":\\{.+\\},");
+            if (disciplines != null) {
+                if (disciplines.size() > 0) {
+                    for (String s : disciplines) {
+                        regQuery.append(".*\"");
+                        regQuery.append(s);
+                        regQuery.append("\".*,");
+                    }
+                    regQuery.deleteCharAt(regQuery.lastIndexOf("\".*,") + 3);
+                    regQuery.append("\\],");
+                } else {
+                    regQuery.append(".+\\],");
+                }
+            }
+            if (Coach != null) {
+                regQuery.append("\"coach\":\\");
+                regQuery.append(gson.toJson(Coach).replace("}", "\\}"));
+                regQuery.append(",");
+            } else {
+                regQuery.append("\"coach\":\\{.+\\},");
+            }
         }
-
         int i = 0;
         for (String s : Search) {
             if (s.isEmpty()) {
