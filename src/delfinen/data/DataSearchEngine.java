@@ -31,7 +31,7 @@ public class DataSearchEngine {
      * @return
      * @throws DataException
      */
-    public List<String> Search(ArrayList<String> Search, List<String> disciplines, Member Coach, List<String> data) throws DataException {
+    public List<String> Search(ArrayList<String> Search, List<String> disciplines, Member Coach, List<String> data, boolean isCompetitive) throws DataException {
         StringBuilder regQuery = new StringBuilder();
         regQuery.append("^\\{");
         List<String> matches = new ArrayList<>();
@@ -54,18 +54,23 @@ public class DataSearchEngine {
             for (int i = 0; i < disSize; i++) {
                 regQuery.append("\"");
                 regQuery.append(disciplines.get(i));
-                if (i == disSize - 1) {
-                    regQuery.append("\"");
+                if (i >= disSize - 1) {
+                    regQuery.append("\\]\"");
                 } else {
                     regQuery.append("\",");
                 }
             }
 
-            regQuery.append("\\],\"coach\":");
-            regQuery.append(gson.toJson(Coach));
+        } else {
+            regQuery.append("\"disciplines\":\\[.+\\],");
+        }
+
+        if (Coach != null) {
+            regQuery.append("\\],\"coach\":\\");
+            regQuery.append(gson.toJson(Coach).replace("}", "\\}"));
             regQuery.append(",");
         } else {
-            regQuery.append("\"disciplines\":\\[.+\\],\"coach\":\\{.+\\},");
+            regQuery.append("\"coach\":\\{.+\\},");
         }
 
         int i = 0;

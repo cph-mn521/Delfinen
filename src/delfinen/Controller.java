@@ -172,8 +172,10 @@ public class Controller {
         List<String> disciplines = null;
         String status = gui.getStatus();
         String aktivitet = gui.getMotionKonkurrence();
+        Boolean isCompetitive = false;
 
         if (aktivitet.equals("Konkurrencesvømmer")) {
+            isCompetitive = true;
             disciplines = gui.getDisciplin();
             List<Member> trainers = findMembers("\"isCoach\":true");
             ArrayList<String> names = new ArrayList<>();
@@ -198,7 +200,7 @@ public class Controller {
         Search.add(isCoach);
 
         try {
-            result = data.searchMember(Search, disciplines, Coach);
+            result = data.searchMember(Search, disciplines, Coach, isCompetitive);
         } catch (DataException e) {
             if (DEBUG) {
                 e.printStackTrace();
