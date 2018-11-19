@@ -367,10 +367,14 @@ public class Controller {
         try {
             Accountant acc = new Accountant(data.searchSubscriptions(Integer.toString(year)), data.getMembers());
             ArrayList<String> listDebitorNames = new ArrayList<>();
-            for (int i = 1; i < acc.getDebitors().size(); i++) { // index 0 is null
+            for (int i = 0; i < acc.getDebitors().size(); i++) { // index 0 is null
                 listDebitorNames.add(acc.getDebitors().get(i).getName());
             }
             gui.setAccountListDebitor(listDebitorNames);
+            gui.setAccountTextFieldAccountBank(Float.toString(acc.getBank()));
+            gui.setAccountTextFieldExpectedBank(Float.toString(acc.getExpectedBank()));
+            gui.setAccountTextFieldUnpaidSubscriptions(Integer.toString(acc.getMissingPayments()));
+            
         } catch (DataException e) {
             e.printStackTrace();
         }
