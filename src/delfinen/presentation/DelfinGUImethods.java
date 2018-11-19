@@ -164,43 +164,27 @@ public class DelfinGUImethods {
      * input check, Regex for address
      */
     public void textFieldAdresse() {
-<<<<<<< HEAD
-        regexUserInfoBackGroundColorSet("^.+,(\\s+)?\\d{4}.+$", textFieldAdresse,
-                "Adresse skal være i formatet: adresse, 2938 Bynavn\n");
-=======
         if (textFieldAdresse.getText().isEmpty()) {
             textFieldAdresse.setBackground(Color.pink);
         } else {
             regexUserInfoBackGroundColorSet("^\\w+((\\s.+)+)?,(\\s)?\\d{4}\\s\\w+((\\s\\w+)+)?$", textFieldAdresse);
         }
->>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
+
     }
 
     /**
      * input check, Regex for address
      */
     public void textFieldAlder() {
-<<<<<<< HEAD
-        String err = "Alder skal være et tal mellem 0 og 120 år\n";
-        regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder,
-                err);
-        if (!textFieldAlder.getText().equals("")) {
-=======
-        if (textFieldAlder.getText().isEmpty()) {
-            textFieldAlder.setBackground(Color.pink);
+
+        if (Integer.parseInt(textFieldAlder.getText()) < 0
+                || Integer.parseInt(textFieldAlder.getText()) > 120) {
+            textFieldAlder.setBackground(Color.red);
+            textFieldAlder.setForeground(Color.white);
         } else {
-            // 
-            regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder);
->>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
-            if (Integer.parseInt(textFieldAlder.getText()) < 0
-                    || Integer.parseInt(textFieldAlder.getText()) > 120) {
-                textFieldAlder.setBackground(Color.red);
-                textFieldAlder.setForeground(Color.white);
-            } else {
-                clearFormatedText(textPaneMedlemsInfo);
-                textFieldAlder.setBackground(Color.white);
-                textFieldAlder.setForeground(Color.black);
-            }
+            clearFormatedText(textPaneMedlemsInfo);
+            textFieldAlder.setBackground(Color.white);
+            textFieldAlder.setForeground(Color.black);
         }
     }
 
@@ -208,17 +192,13 @@ public class DelfinGUImethods {
      * input check, Regex for email
      */
     public void textFieldEmail() {
-<<<<<<< HEAD
-        regexUserInfoBackGroundColorSet("^.+@.+\\..+$", textFieldEmail,
-                "Email skal være i formatet: xx@yy.zz\n");
-=======
         if (textFieldEmail.getText().isEmpty()) {
             textFieldEmail.setBackground(Color.pink);
         } else {
             // input check, Regex for email
             regexUserInfoBackGroundColorSet("^\\w+@\\w+\\.\\w+$", textFieldEmail);
         }
->>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
+
     }
 
     /**
@@ -237,14 +217,6 @@ public class DelfinGUImethods {
     }
 
     /**
-<<<<<<< HEAD
-     * input check, Regex for Name
-     */
-    public void textFieldNavn() {
-
-        regexUserInfoBackGroundColorSet("^\\w+((\\s\\w+)+)?$", textFieldNavn,
-                "Navnet skal være i formatet: xxxx, eller xxx yyyy mfl.\n");
-=======
      * input check, Regex for name
      */
     public void textFieldNavn() {
@@ -253,23 +225,18 @@ public class DelfinGUImethods {
         } else {
             regexUserInfoBackGroundColorSet("^.+(\\s.+)*$", textFieldNavn);
         }
->>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
+
     }
 
     /**
      * input check, Regex for Telephone
      */
     public void textFieldTelefon() {
-<<<<<<< HEAD
-        regexUserInfoBackGroundColorSet("^\\d+$", textFieldTelefon,
-                "Telefonnummer skal være i formatet: 12345678\n");
-=======
         if (textFieldTelefon.getText().isEmpty()) {
             textFieldTelefon.setBackground(Color.pink);
         } else {
             regexUserInfoBackGroundColorSet("^(\\+)?\\d+$", textFieldTelefon);
         }
->>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
     }
 
     /**
@@ -469,7 +436,7 @@ public class DelfinGUImethods {
         Matcher matcher = pattern.matcher(tf.getText());
         if (!matcher.matches()) {
             tf.setBackground(Color.red);
-<<<<<<< HEAD
+
             tf.setForeground(Color.white);
 //            displayFormatedText(DelfinGUI.textPaneMedlemsInfo, err, FONT_NOTOSANS_PLAIN_12, Color.RED);
             return false;
@@ -477,11 +444,7 @@ public class DelfinGUImethods {
             tf.setBackground(Color.white);
             tf.setForeground(Color.black);
 //            clearFormatedText(DelfinGUI.textPaneMedlemsInfo);
-=======
-            return false;
-        } else {
-            tf.setBackground(Color.white);
->>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
+
             return true;
         }
     }
