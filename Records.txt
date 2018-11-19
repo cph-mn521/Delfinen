@@ -23,3 +23,5 @@
 {"time":1.55,"date":{"date":{"year":2018,"month":11,"day":18},"time":{"hour":15,"minute":31,"second":0,"nano":0}},"holder":{"name":"Hans Larsen","email":"Hm@delfinen.dk","address":"Liguster 12, 2450 Valby","id":11,"age":26,"phone":12526452,"status":"Active","isCoach":false},"event":"Valby 2018","discipline":"Brystsvømning","place":5}
 {"time":1.55,"date":{"date":{"year":2018,"month":11,"day":18},"time":{"hour":15,"minute":31,"second":0,"nano":0}},"holder":{"name":"Hans Larsen","email":"Hm@delfinen.dk","address":"Liguster 12, 2450 Valby","id":11,"age":26,"phone":12526452,"status":"Active","isCoach":false},"event":"Valby 2018","discipline":"Rygcrawl","place":5}
 >>>>>>> 22da2011c83ce7468fcb99976844f0216c187b94
+
+{"time":1.23,"date":{"date":{"year":2018,"month":11,"day":19},"time":{"hour":15,"minute":39,"second":0,"nano":0}},"event":"e12e23","discipline":"Butterfly","place":1}

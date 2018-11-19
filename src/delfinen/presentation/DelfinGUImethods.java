@@ -250,7 +250,7 @@ public class DelfinGUImethods {
      */
     public void textField_FocusGained_NewResultsDate() {
         textFieldNewResultsClearWhiteBackground(textFieldNewResultsDate);
-        textFieldNewResultsDate.setText(formatDate("d-M-yyyy HH:mm"));
+        textFieldNewResultsDate.setText(formatDate("d.M.yyyy HH:mm"));
     }
 
     /**
