@@ -1,0 +1,4 @@
+
+{"year":2018,"holder":{"name":"Martin Martinsen","email":"hj@fio.dk","address":"Ligust 2, 2937 Hjørring","id":4,"age":23,"phone":25252525,"status":"Active","isCoach":true},"price":1600.0}
+{"year":2018,"holder":{"name":"Hansine Hansinesen","email":"jl@delfinen.dk","address":"Ligustervej 12, 2765 Liguster","id":5,"age":12,"phone":25854578,"status":"Active","isCoach":false},"price":1000.0}
+{"year":2017,"holder":{"name":"Hansine Hansinesen","email":"jl@delfinen.dk","address":"Ligustervej 12, 2765 Liguster","id":5,"age":12,"phone":25854578,"status":"Active","isCoach":false},"price":1000.0}

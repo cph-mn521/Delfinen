@@ -22,10 +22,13 @@ public class Accountant {
     private final float ExpectedBank;
 
     /**
-     *Constructor for an Accountant. Takes a list of subscriptions and list of members
-     *and calculates all required information a book keeper need.
-     * @param Budget        List of all subscriptions to be taken into consideration. Should be for same period of time.
-     * @param Members       List of all current members. Used to find debitors and calculate expected revenue.
+     * Constructor for an Accountant. Takes a list of subscriptions and list of
+     * members and calculates all required information a book keeper need.
+     *
+     * @param Budget List of all subscriptions to be taken into consideration.
+     * Should be for same period of time.
+     * @param Members List of all current members. Used to find debitors and
+     * calculate expected revenue.
      */
     public Accountant(List<Subscription> Budget, List<Member> Members) {
         this.Budget = Budget;
@@ -33,20 +36,20 @@ public class Accountant {
         this.MissingPayments = Members.size() - Budget.size();
         this.Bank = calcBudget();
         this.Debitors = Restance();
-        switch (MissingPayments){
+        switch (MissingPayments) {
             case 0:
                 this.ExpectedBank = this.Bank;
                 break;
             default:
-                this.ExpectedBank = this.Bank+calcExpectedBank();
+                this.ExpectedBank = this.Bank + calcExpectedBank();
         }
     }
 
-    
-    
     /**
-     * Method for finding how mutch is in the bank at the moment. Simple sum function.
-     * @return      Float. Sum of budget.price.
+     * Method for finding how mutch is in the bank at the moment. Simple sum
+     * function.
+     *
+     * @return Float. Sum of budget.price.
      */
     private float calcBudget() {
         float runsum = 0;
@@ -57,41 +60,43 @@ public class Accountant {
     }
 
     /**
-     * Method for calculating Expected budget, when every member pays their bills.
-     * Simple sum function.
-     * 
-     * @return      Sum of all Debitors supposed subscription.price
+     * Method for calculating Expected budget, when every member pays their
+     * bills. Simple sum function.
+     *
+     * @return Sum of all Debitors supposed subscription.price
      */
-    private float calcExpectedBank(){
+    private float calcExpectedBank() {
         float runsum = 0;
         for (Member Debitor : Debitors) {
-            runsum += new Subscription(0,Debitor).getPrice();
+            if (Debitor != null) { // added check for nulldom
+                runsum += new Subscription(0, Debitor).getPrice();
+            }
         }
         return runsum;
     }
-    
-    
+
     /**
      * Method for finding all members without a paid subscription
-     * @return  ArrayList. contains members without a subscription.
+     *
+     * @return ArrayList. contains members without a subscription.
      */
-  
-    private List<Member> Restance(){
+    private List<Member> Restance() {
         List<Member> Out = new ArrayList<>();
         boolean flag;
-        for(int i = 0; i < Members.size();i++){
+        for (int i = 1; i < Members.size()-1; i++) {
             flag = true;
-            for(int j = 0; j< Budget.size();j++){
-                if(Members.get(i).equals(Budget.get(j).getHolder())){
+            for (int j = 0; j < Budget.size(); j++) {
+                if (Members.get(i).equals(Budget.get(j).getHolder())) {
                     flag = false;
                 }
             }
-            if(flag){
-                Out.add(Members.get(i));    
+            if (flag) {
+                Out.add(Members.get(i));
             }
         }
         return Out;
     }
+
     /* Den her metode tro åbenbart den er skrevet i C..... ihvertfald i JUnit Tests.
     private List<Member> Restance() {
         List<Member> temp = Members;
@@ -103,11 +108,10 @@ public class Accountant {
         }
         return temp;
     }
-    */
-    
+     */
+
     ///////////////////////      GETTERS AND SETTERS       /////////////////////
     ////////////////////////////////////////////////////////////////////////////    
-    
     public int getMissingPayments() {
         return MissingPayments;
     }
@@ -119,8 +123,8 @@ public class Accountant {
     public float getBank() {
         return Bank;
     }
-    
-        public float getExpectedBank() {
+
+    public float getExpectedBank() {
         return ExpectedBank;
     }
 }

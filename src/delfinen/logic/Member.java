@@ -16,7 +16,7 @@ import java.util.Objects;
  * 
  * A class for handling, and representing a Member of the swimming club "Delfinen"
  * Contains Standard information about the person and a status showing if they are
- * active or passive, or i fhtey are a coach.
+ * active or passive, or if they are a coach.
  */
 public class Member {
     //Preloc of required member Atributes.

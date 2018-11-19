@@ -10,6 +10,10 @@ import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Discipline;
 import delfinen.logic.Accountant;
 import delfinen.logic.Record;
+import delfinen.logic.Subscription;
+import delfinen.logic.TopFive;
+import static delfinen.presentation.DelfinGUI.accountTextFieldAccountingYear;
+import static delfinen.presentation.DelfinGUI.accountTextFieldSelectedMember;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -71,6 +75,14 @@ public class Controller {
         String email = strFormatter(gui.getEmail());
         String adress = strFormatter(gui.getAdresse());
         int id, age, phoneNumber;
+        try {
+            id = data.getMembers().size() + 1;
+            gui.textFieldID.setText(String.valueOf(id));
+        } catch (DataException ex) {
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
+        }
         try {
             id = Integer.parseInt(gui.getID());
             age = Integer.parseInt(gui.getAlder());
@@ -201,8 +213,14 @@ public class Controller {
                     gui.setID(m.getId());
                     gui.setTelefon(m.getPhone());
                     try { // write records for searched member
-                        for (Record rec : data.searchRecord(m.getName())) {
-                            guim.displayPlainBlue(rec.toString() + '\n');
+                        if (data.searchRecord(m.getName()).size() > 0) {
+                            guim.displayBoldBlack("Disciplin: \tTid: \tDato: \t\tStævne: \t\tPlacering: \n");
+                            for (Record rec : data.searchRecord(m.getName())) {
+                                guim.displayPlainBlue(rec.toString() + '\n');
+                            }
+                            guim.displayPlainBlack("\n");
+                        } else {
+                            guim.displayPlainBlack("Ingen resultater.\n");
                         }
                     } catch (DataException ex) {
                         ex.printStackTrace();
@@ -333,12 +351,120 @@ public class Controller {
         return st;
     }
 
-    public static void bookKeeping(int Year) {
-        try {
-            Accountant Acc = new Accountant(data.searhcSubscriptions(Integer.toString(Year)), data.getMembers());
-            // Add guim plug inn here.
-        } catch (DataException e) {
+    /**
+     *
+     */
+    public static void bookKeeping() {
 
+        int year = Integer.parseInt(gui.getAccountTextFieldAccountingYear());
+
+        try {
+            Accountant acc = new Accountant(data.searchSubscriptions(Integer.toString(year)), data.getMembers());
+            ArrayList<String> listDebitorNames = new ArrayList<>();
+            for (int i = 1; i < acc.getDebitors().size(); i++) { // index 0 is null
+                listDebitorNames.add(acc.getDebitors().get(i).getName());
+            }
+            gui.setAccountListDebitor(listDebitorNames);
+        } catch (DataException e) {
+            e.printStackTrace();
         }
+    }
+
+    /**
+     *
+     */
+    public static void paySubscription() {
+        int year = Integer.parseInt(gui.getAccountTextFieldAccountingYear());
+        String memberName = gui.getAccountTextFieldSelectedMemberPane();
+        boolean payed = false;
+        try {
+            Member member = data.searchMember(memberName).get(0);
+            List<Subscription> subs = new ArrayList<>();
+//            subs=null;
+            subs = data.searchSubscriptions(memberName);
+            if (subs != null) {
+                for (Subscription memSub : subs) {
+                    if (memSub.getYear() == year) {
+                        payed = true;
+                    }
+                }
+
+            }
+            if (!payed) {
+                data.addSubscription(new Subscription(year, member));
+                guim.displayPlainBlack("Abonnement betalt for ");
+                guim.displayPlainGreen(memberName + ".\n");
+            }
+        } catch (DataException ex) {
+            guim.displayBoldRed("Der sket en fejl under betaling af ");
+            guim.displayBoldBlack(memberName);
+            guim.displayBoldRed("'s betaling for året ");
+            guim.displayBoldBlack(year + ".\n");
+            ex.printStackTrace();
+        }
+
+    }
+
+    public static void restancePerMember() {
+        int year = Integer.parseInt(accountTextFieldAccountingYear.getText());
+        String memberName = accountTextFieldSelectedMember.getText();
+        try {
+            Member member = data.searchMember(memberName).get(0);
+            Subscription sub = new Subscription(year, member);
+            List<Subscription> budget = new ArrayList<>();
+            List<Member> members = new ArrayList<>();
+            budget.add(sub);
+            members.add(member);
+            Accountant acc = new Accountant(budget, members);
+            gui.setAccountTextFieldRestance(String.valueOf(acc.getBank()));
+        } catch (DataException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
+     *
+     */
+    public static void collectTopFiveResults() {
+        TopFive t5BrystSvoemning = new TopFive();
+        TopFive t5Crawl = new TopFive();
+        TopFive t5RygCrawl = new TopFive();
+        TopFive t5Butterfly = new TopFive();
+
+        try {
+            for (Record record : data.searchRecord("Brystsvømning")) {
+                try {
+                    t5BrystSvoemning.checkAndChangetopFive(record.getTime(), record.getHolder().getName());
+                } catch (NullPointerException e) {
+                    t5BrystSvoemning.checkAndChangetopFive(0, ""); // send dummy result
+                }
+            }
+            for (Record record : data.searchRecord("Crawl")) {
+                try {
+                    t5Crawl.checkAndChangetopFive(record.getTime(), record.getHolder().getName());
+                } catch (NullPointerException e) {
+                    t5Crawl.checkAndChangetopFive(0, ""); // send dummy result
+                }
+            }
+            for (Record record : data.searchRecord("RygCrawl")) {
+                try {
+                    t5RygCrawl.checkAndChangetopFive(record.getTime(), record.getHolder().getName());
+                } catch (NullPointerException e) {
+                    t5RygCrawl.checkAndChangetopFive(0, ""); // send dummy result
+                }
+            }
+            for (Record record : data.searchRecord("Butterfly")) {
+                try {
+                    t5Butterfly.checkAndChangetopFive(record.getTime(), record.getHolder().getName());
+                } catch (NullPointerException e) {
+                    t5Butterfly.checkAndChangetopFive(0, ""); // send dummy result
+                }
+            }
+            guim.menuSystemResults(t5RygCrawl.getTopFive(), t5Crawl.getTopFive(),
+                    t5BrystSvoemning.getTopFive(), t5Butterfly.getTopFive());
+        } catch (DataException ex) {
+            ex.printStackTrace();
+        }
+
     }
 }
