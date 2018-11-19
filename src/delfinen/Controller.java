@@ -172,12 +172,18 @@ public class Controller {
         List<String> disciplines = null;
         String status = gui.getStatus();
         String aktivitet = gui.getMotionKonkurrence();
+        Boolean isCompetitive = false;
 
         if (aktivitet.equals("Konkurrencesvømmer")) {
+            isCompetitive = true;
             disciplines = gui.getDisciplin();
             List<Member> trainers = findMembers("\"isCoach\":true");
+            ArrayList<String> names = new ArrayList<>();
+            for (Member m : trainers) {
+                names.add(m.getName());
+            }
             String coach = gui.getTrainedBy();
-            Coach = trainers.get(trainers.indexOf(coach));
+            Coach = trainers.get(names.indexOf(coach));
         }
 
         String name = gui.getNavn();
@@ -194,7 +200,7 @@ public class Controller {
         Search.add(isCoach);
 
         try {
-            result = data.searchMember(Search, disciplines, Coach);
+            result = data.searchMember(Search, disciplines, Coach, isCompetitive);
         } catch (DataException e) {
             if (DEBUG) {
                 e.printStackTrace();
@@ -380,8 +386,28 @@ public class Controller {
                 listDebitorNames.add(acc.getDebitors().get(i).getName());
             }
             gui.setAccountListDebitor(listDebitorNames);
+            gui.setAccountTextFieldAccountBank(Float.toString(acc.getBank()));
+            gui.setAccountTextFieldExpectedBank(Float.toString(acc.getExpectedBank()));
+            gui.setAccountTextFieldUnpaidSubscriptions(Integer.toString(acc.getMissingPayments()));
+            
         } catch (DataException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public static String SubscriptionValue(String Member){
+        String memberName = gui.getAccountTextFieldSelectedMemberPane();
+        try {
+            Member member = data.searchMember(memberName).get(0);
+            Subscription sub = new Subscription(0, member);
+            return Float.toString(sub.getPrice());
+        } catch (DataException ex) {
+            
+            guim.displayBoldRed("Der sket en fejl i udregning af ");
+            guim.displayBoldBlack(Member);
+            guim.displayBoldRed("'s udestående for nuværende sæson.");
+            ex.printStackTrace();
+            return " ";
         }
     }
 

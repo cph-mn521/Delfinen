@@ -137,13 +137,14 @@ public class DelfinGUImethods {
      * List Account methods
      */
     /**
-     *
+     * input check, Regex for address
      */
     public void accountListDebitor() {
         accountTextFieldSelectedMember.setText("");
         accountTextFieldSelectedMember.setText(accountListDebitor.getSelectedValue());
-        accountTextFieldRestance.setText("");
+        accountTextFieldRestance.setText(Controller.SubscriptionValue(accountListDebitor.getSelectedValue()));
         Controller.restancePerMember();
+        
     }
 
     /**
@@ -159,31 +160,27 @@ public class DelfinGUImethods {
         } else {
             regexUserInfoBackGroundColorSet("^.+((\\s.+)+)?,(\\s)?\\d{4}\\s.+((\\s.+)+)?$", textFieldAdresse);
         }
+
     }
 
     /**
      * input check, Regex for address
      */
     public void textFieldAlder() {
-        if (textFieldAlder.getText().isEmpty()) {
-            textFieldAlder.setBackground(Color.pink);
+
+        if (Integer.parseInt(textFieldAlder.getText()) < 0
+                || Integer.parseInt(textFieldAlder.getText()) > 120) {
+            textFieldAlder.setBackground(Color.red);
+            textFieldAlder.setForeground(Color.white);
         } else {
-            // 
-            regexUserInfoBackGroundColorSet("^\\d+$", textFieldAlder);
-            if (Integer.parseInt(textFieldAlder.getText()) < 0
-                    || Integer.parseInt(textFieldAlder.getText()) > 120) {
-                textFieldAlder.setBackground(Color.red);
-                textFieldAlder.setForeground(Color.white);
-            } else {
-                clearFormatedText(textPaneMedlemsInfo);
-                textFieldAlder.setBackground(Color.white);
-                textFieldAlder.setForeground(Color.black);
-            }
+            clearFormatedText(textPaneMedlemsInfo);
+            textFieldAlder.setBackground(Color.white);
+            textFieldAlder.setForeground(Color.black);
         }
     }
 
     /**
-     *
+     * input check, Regex for email
      */
     public void textFieldEmail() {
         if (textFieldEmail.getText().isEmpty()) {
@@ -192,6 +189,7 @@ public class DelfinGUImethods {
             // input check, Regex for email
             regexUserInfoBackGroundColorSet("^\\w+@\\w+\\.\\w+$", textFieldEmail);
         }
+
     }
 
     /**
@@ -218,6 +216,7 @@ public class DelfinGUImethods {
         } else {
             regexUserInfoBackGroundColorSet("^.+(\\s.+)*$", textFieldNavn);
         }
+
     }
 
     /**
@@ -428,9 +427,15 @@ public class DelfinGUImethods {
         Matcher matcher = pattern.matcher(tf.getText());
         if (!matcher.matches()) {
             tf.setBackground(Color.red);
+
+            tf.setForeground(Color.white);
+//            displayFormatedText(DelfinGUI.textPaneMedlemsInfo, err, FONT_NOTOSANS_PLAIN_12, Color.RED);
             return false;
         } else {
             tf.setBackground(Color.white);
+            tf.setForeground(Color.black);
+//            clearFormatedText(DelfinGUI.textPaneMedlemsInfo);
+
             return true;
         }
     }

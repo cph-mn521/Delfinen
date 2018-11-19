@@ -60,8 +60,8 @@ public class DelfinGUITest {
         int result = instance.getMemberPhoto();
         assertEquals(expResult, result);
     }
-    
-        @Test
+
+    @Test
     public void testSetMemberPhoto() {
         System.out.println("setMemberPhoto");
         DelfinGUI instance = new DelfinGUI();
@@ -70,7 +70,7 @@ public class DelfinGUITest {
         int result = instance.getMemberPhoto();
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testDisciplin() {
         System.out.println("getDisciplin");
@@ -126,8 +126,8 @@ public class DelfinGUITest {
     public void testGetAlder() {
         System.out.println("getAlder");
         DelfinGUI instance = new DelfinGUI();
-        int expResult = 23;
-        int result = instance.getAlder();
+        String expResult = 23 + "";
+        String result = instance.getAlder();
         assertEquals(expResult, result);
     }
 
@@ -147,13 +147,12 @@ public class DelfinGUITest {
 //        boolean result = (instance.getBackground() == Color.white);
 //        assertTrue(result);
 //    }
-
     @Test
     public void testGetID() {
         System.out.println("getID");
         DelfinGUI instance = new DelfinGUI();
-        int expResult = 1;
-        int result = instance.getID();
+        String expResult = 1 + "";
+        String result = instance.getID() + "";
         assertEquals(expResult, result);
     }
 
@@ -170,8 +169,8 @@ public class DelfinGUITest {
     public void testGetTelefon() {
         System.out.println("getTelefon");
         DelfinGUI instance = new DelfinGUI();
-        int expResult = 25854578;
-        int result = instance.getTelefon();
+        String expResult = 25854578 + "";
+        String result = instance.getTelefon() + "";
         assertEquals(expResult, result);
     }
 

@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 import delfinen.logic.Member;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -24,18 +23,18 @@ public class DataSearchEngine {
     /**
      * A method for a partial fuzzy search for members in the filesystem.
      *
-     * @param Search
-     * @param disciplines
-     * @param Coach
-     * @param data
+     * @param Search List of data to be searched for.
+     * @param disciplines List of disciplines for competitive members.
+     * @param Coach The coach of competitive members.
+     * @param data List of members.
+     * @param isCompetitive True if there's searched for competitive members.
      * @return
      * @throws DataException
      */
-    public List<String> Search(ArrayList<String> Search, List<String> disciplines, Member Coach, List<String> data) throws DataException {
+    public List<String> Search(ArrayList<String> Search, List<String> disciplines, Member Coach, List<String> data, boolean isCompetitive) throws DataException {
         StringBuilder regQuery = new StringBuilder();
         regQuery.append("^\\{");
         List<String> matches = new ArrayList<>();
-        int disSize = 0;
 
         ArrayList<String> regex = new ArrayList<>();
         regex.add("\"name\":\".+\",");
@@ -46,27 +45,31 @@ public class DataSearchEngine {
         regex.add("\"phone\":.+,");
         regex.add("\"status\":\".+\",");
         regex.add("\"isCoach\":.+");
-        if (disciplines != null) {
-            disSize = disciplines.size();
-        } else if (disSize > 0) {
-            regQuery.append("(\"disciplines\":\\[");
-            for (int i = 0; i <= disSize; i++) {
-                regQuery.append("\"");
-                regQuery.append(disciplines.get(i));
-                if (i == disSize - 1) {
-                    regQuery.append("\"");
+
+        if (isCompetitive) {
+            regQuery.append("\"disciplines\":\\[");
+
+            if (disciplines != null) {
+                if (disciplines.size() > 0) {
+                    for (String s : disciplines) {
+                        regQuery.append(".*\"");
+                        regQuery.append(s);
+                        regQuery.append("\".*,");
+                    }
+                    regQuery.deleteCharAt(regQuery.lastIndexOf("\".*,") + 3);
+                    regQuery.append("\\],");
                 } else {
-                    regQuery.append("\",");
+                    regQuery.append(".+\\],");
                 }
             }
-
-            regQuery.append("\\],\"coach\":");
-            regQuery.append(gson.toJson(Coach));
-            regQuery.append(")?,");
-        } else {
-            regQuery.append("(\"disciplines\":\\[.+\\],\"coach\":\\{.+\\},)?");
+            if (Coach != null) {
+                regQuery.append("\"coach\":\\");
+                regQuery.append(gson.toJson(Coach).replace("}", "\\}"));
+                regQuery.append(",");
+            } else {
+                regQuery.append("\"coach\":\\{.+\\},");
+            }
         }
-
         int i = 0;
         for (String s : Search) {
             if (s.isEmpty()) {
@@ -78,7 +81,9 @@ public class DataSearchEngine {
             }
             i++;
         }
-        regQuery.append("\\}$");
+
+        regQuery.append(
+                "\\}$");
 
         if (delfinen.Controller.DEBUG) {
             System.out.println(regQuery);

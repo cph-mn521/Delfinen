@@ -103,9 +103,9 @@ public class PersistanceHandler {
      * @return
      * @throws delfinen.data.DataException
      */
-    public List<Member> searchMember(ArrayList<String> Query, List<String> Disciplines, Member Coach) throws DataException {
+    public List<Member> searchMember(ArrayList<String> Query, List<String> Disciplines, Member Coach, boolean isCompetitive) throws DataException {
         List<Member> result = new ArrayList<>();
-        List<String> matches = dse.Search(Query, Disciplines, Coach, dam.getEntries());
+        List<String> matches = dse.Search(Query, Disciplines, Coach, dam.getEntries(), isCompetitive);
         for (String s : matches) {
             try {
                 result.add(gson.fromJson(s, Member.class));
@@ -250,7 +250,7 @@ public class PersistanceHandler {
      * @throws delfinen.data.DataException
      */
     public List<Subscription> searchSubscriptions(String Query) throws DataException {
-         List<String> jsons = das.searchEntries(Query);
+        List<String> jsons = das.searchEntries(Query);
         List<Subscription> result = new ArrayList<>();
 
         for (String json : jsons) {
