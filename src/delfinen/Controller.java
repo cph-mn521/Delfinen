@@ -214,7 +214,9 @@ public class Controller {
                     gui.setTelefon(m.getPhone());
                     try { // write records for searched member
                         if (data.searchRecord(m.getName()).size() > 0) {
-                            guim.displayBoldBlack("Disciplin: \tTid: \tDato: \t\tStævne: \t\tPlacering: \n");
+                            // Formatting fits with small info box on members page
+                            guim.displayBoldBlack(String.format("%-17s %-6s %-18s %-30s %-12s\n", "Disciplin:", "Time:", "Dato:",
+                                    "Stævne:", "Placering:"));
                             for (Record rec : data.searchRecord(m.getName())) {
                                 guim.displayPlainBlue(rec.toString() + '\n');
                             }
@@ -222,6 +224,19 @@ public class Controller {
                         } else {
                             guim.displayPlainBlack("Ingen resultater.\n");
                         }
+                        try {
+                            int year = 2018;
+                            Accountant acc = new Accountant(data.searchSubscriptions(Integer.toString(2018)), data.getMembers());;
+                            for (int i = 0; i < acc.getDebitors().size(); i++) { // index 0 is null
+                                if (acc.getDebitors().get(i).getName().equals(m.getName())) {
+
+                                    guim.displayBoldRed(m.getName() + " skylder abonnement for " + year + ".\n");
+                                }
+                            }
+                        } catch (DataException e) {
+                            e.printStackTrace();
+                        }
+
                     } catch (DataException ex) {
                         ex.printStackTrace();
                     }
@@ -361,7 +376,7 @@ public class Controller {
         try {
             Accountant acc = new Accountant(data.searchSubscriptions(Integer.toString(year)), data.getMembers());
             ArrayList<String> listDebitorNames = new ArrayList<>();
-            for (int i = 1; i < acc.getDebitors().size(); i++) { // index 0 is null
+            for (int i = 0; i < acc.getDebitors().size(); i++) { // index 0 is null
                 listDebitorNames.add(acc.getDebitors().get(i).getName());
             }
             gui.setAccountListDebitor(listDebitorNames);
@@ -423,6 +438,8 @@ public class Controller {
     }
 
     /**
+     * Collect top 5 results for all members of all time and send it to Results
+     * page
      *
      */
     public static void collectTopFiveResults() {
@@ -446,7 +463,7 @@ public class Controller {
                     t5Crawl.checkAndChangetopFive(0, ""); // send dummy result
                 }
             }
-            for (Record record : data.searchRecord("RygCrawl")) {
+            for (Record record : data.searchRecord("Rygcrawl")) {
                 try {
                     t5RygCrawl.checkAndChangetopFive(record.getTime(), record.getHolder().getName());
                 } catch (NullPointerException e) {

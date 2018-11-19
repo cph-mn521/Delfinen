@@ -1,7 +1,5 @@
 package delfinen.logic;
 
-import java.util.Arrays;
-
 /**
  * Class for keeping score on topFive recordholders
  *

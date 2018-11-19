@@ -1,25 +1,15 @@
 package delfinen.presentation;
 
 import delfinen.Controller;
-import delfinen.data.DataException;
-import delfinen.logic.Accountant;
-import delfinen.logic.Member;
-import delfinen.logic.Subscription;
 import static delfinen.presentation.DelfinGUI.*;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import static java.awt.image.ImageObserver.ERROR;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JTable;
-import static javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -34,10 +24,10 @@ import javax.swing.text.StyledDocument;
  */
 public class DelfinGUImethods {
 
-    Font FONT_NOTOSANS_PLAIN_12 = new Font("notosans", Font.PLAIN, 12);
-    Font FONT_NOTOSANS_BOLD_12 = new Font("notosans", Font.BOLD, 12);
-    Font FONT_NOTOSANS_ITALIC_12 = new Font("notosans", Font.ITALIC, 12);
-    Font FONT_NOTOSANS_BOLD_ITALIC_12 = new Font("notosans", Font.BOLD + Font.ITALIC, 12);
+    Font FONT_NOTOSANS_PLAIN_12 = new Font("monospaced", Font.PLAIN, 12);
+    Font FONT_NOTOSANS_BOLD_12 = new Font("monospaced", Font.BOLD, 12);
+    Font FONT_NOTOSANS_ITALIC_12 = new Font("monospaced", Font.ITALIC, 12);
+    Font FONT_NOTOSANS_BOLD_ITALIC_12 = new Font("monospaced", Font.BOLD + Font.ITALIC, 12);
 
     /**
      * ************************************************************************************
@@ -167,7 +157,7 @@ public class DelfinGUImethods {
         if (textFieldAdresse.getText().isEmpty()) {
             textFieldAdresse.setBackground(Color.pink);
         } else {
-            regexUserInfoBackGroundColorSet("^\\w+((\\s.+)+)?,(\\s)?\\d{4}\\s\\w+((\\s\\w+)+)?$", textFieldAdresse);
+            regexUserInfoBackGroundColorSet("^.+((\\s.+)+)?,(\\s)?\\d{4}\\s.+((\\s.+)+)?$", textFieldAdresse);
         }
     }
 
