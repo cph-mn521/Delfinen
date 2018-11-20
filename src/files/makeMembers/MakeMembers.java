@@ -23,6 +23,8 @@ import java.util.List;
  */
 public class MakeMembers {
 
+    private DataFile dat = new DataFile();
+    private randomNumbers ran;
     private static PersistanceHandler data = new PersistanceHandler();
 
     /**
@@ -38,8 +40,6 @@ public class MakeMembers {
 
             // Getting info from guim
             Member newMember = null;
-            randomNumbers ran;
-            DataFile dat = new DataFile();
             String name = dat.getRandomName();
             System.out.println(name);
             ran = new randomNumbers((76));
@@ -96,56 +96,75 @@ public class MakeMembers {
         }
     }
 
-//    /**
-//     * Klog og indsigtsgivende kommentar der grundtigt beskriver følgende
-//     * funktion indsættes her.
-//     */
-//    public static void addResult() {
-//
-//        float time = gui.getNewResultTime();
-//        LocalDateTime date = gui.getNewResultDate();
-//        Member holder = null;
-//        String event = gui.getNewResultEvent();
-//        Discipline discipline = gui.getNewResultDiscipline();
-//        int place = gui.getNewResultPlace();
-//
-//        try {
-//            for (Member member : data.searchMember(gui.getNavn())) {
-//                if (Integer.parseInt(gui.getID()) == member.getId()) {
-//                    holder = member;
-//
-//                    try {
-//                        if (Integer.parseInt(gui.getID()) == member.getId()) {
-//                            holder = member;
-//                        }
-//                    } catch (NumberFormatException e) {
-//                        guim.displayPlainRed("Kun tal i ID-boksen.\n");
-//                    }
-//                }
-//            }
-//            if (holder == null) {
-//                guim.displayBoldRed(gui.getNavn() + " er ikke fundet.\n");
-//            }
-//        } catch (DataException ex) {
-//            if (DEBUG) {
-//                ex.printStackTrace();
-//            }
-//        }
-//
-//        try {
-//            data.addRecord(new Record(time, date, holder, event, discipline, place));
-//            guim.displayPlainBlack("Resultat oprettet\n");
-//        } catch (DataException e) {
-//            guim.displayBoldRed("Fejl - Ny resultat ikke oprettet.\n");
-//            if (DEBUG) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
-//
-//}
+    /**
+     * Klog og indsigtsgivende kommentar der grundtigt beskriver følgende
+     * funktion indsættes her.
+     */
+    public void addResult() {
 
-public static void main(String[] args) {
-        new MakeMembers().addMember();
+//        
+//        //Time and date
+//        ran = new randomNumbers((27));
+//        int day = ran.getRandom();
+//        
+//        ran = new randomNumbers((11));
+//        int month = ran.getRandom();
+//        
+//        ran = new randomNumbers((2018));
+//        int year = ran.getRandom();
+//        
+//        ran = new randomNumbers((23));
+//        int hour = ran.getRandom();
+//
+//        ran = new randomNumbers((59));
+//        int min = ran.getRandom();
+        for (int i = 0; i < dat.memberNumbersSize() - 1; i++) {
+            ran = new randomNumbers((5));
+            float time = ran.getRandomFloat();
+            LocalDateTime date = LocalDateTime.now();
+            Member holder = null;
+            String event = dat.getRandomPlace();
+            ran = new randomNumbers((15));
+            int place = ran.getRandom();
+
+            try {
+                String name = dat.getMemberName(i);
+                while (name == "") {
+                    try {
+                        name = dat.getMemberName(i++);
+                    } catch (Exception e) {
+
+                        e.printStackTrace();
+                    }
+
+                }
+                for (Member member : data.searchMember(name)) {
+                    if (member.getName().equals(name)) {
+                        holder = member;
+                    }
+                }
+
+            } catch (DataException ex) {
+                ex.printStackTrace();
+            }
+
+            try {
+                Discipline discipline = Discipline.Brystsvømning;
+                data.addRecord(new Record(time, date, holder, event, discipline, place));
+                discipline = Discipline.Butterfly;
+                data.addRecord(new Record(time, date, holder, event, discipline, place));
+                discipline = Discipline.Crawl;
+                data.addRecord(new Record(time, date, holder, event, discipline, place));
+                discipline = Discipline.Rygcrawl;
+                data.addRecord(new Record(time, date, holder, event, discipline, place));
+            } catch (DataException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+//        new MakeMembers().addMember();
+        new MakeMembers().addResult();
     }
 }

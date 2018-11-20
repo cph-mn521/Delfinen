@@ -10,6 +10,7 @@ import java.util.Random;
 public class randomNumbers {
 
     private int max;
+    private int min;
     private Random rand = new Random();
 
     public randomNumbers(int max) {
@@ -26,4 +27,8 @@ public class randomNumbers {
         return value;
     }
 
+    public float getRandomFloat() {
+        Float value = rand.nextFloat() * max;
+        return value;
+    }
 }

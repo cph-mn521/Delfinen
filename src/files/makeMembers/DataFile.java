@@ -35,19 +35,43 @@ public class DataFile {
         return fileContent;
     }
 
+    public int memberNumbersSize(){
+        file = "Members.txt";
+        return getFileContent().size();
+    }
+    
+    public String getMemberName(int memberNumber) {
+
+        file = "Members.txt";
+        int k = getFileContent().size();
+        if (memberNumber>k){
+            k=memberNumber;
+        }
+        String name = getFileContent().get(memberNumber);
+        return name;
+    }
+
     public String getRandomName() {
         randomNumbers rand;
         file = "src/files/makeMembers/forenames.txt";
         int k = getFileContent().size();
-        rand = new randomNumbers(k-1);
+        rand = new randomNumbers(k - 1);
         String foreName = getFileContent().get(rand.getRandom());
 
         file = "src/files/makeMembers/surnames.txt";
         k = getFileContent().size();
-        rand = new randomNumbers(k-1);
+        rand = new randomNumbers(k - 1);
         String surname = getFileContent().get(rand.getRandom());
 
         return foreName + " " + surname;
     }
 
+    public String getRandomPlace() {
+        randomNumbers rand;
+        file = "src/files/makeMembers/place.txt";
+        int k = getFileContent().size();
+        rand = new randomNumbers(k - 1);
+
+        return getFileContent().get(rand.getRandom());
+    }
 }
