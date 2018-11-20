@@ -98,6 +98,14 @@ public class DelfinGUI extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         buttonNewResultsClose = new javax.swing.JButton();
         panelMain = new javax.swing.JPanel();
+        panelWelcome = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        labelDelfinIcon3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        buttonMembers = new javax.swing.JButton();
+        buttonEconomi = new javax.swing.JButton();
+        buttonResults = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
         panelMembers = new javax.swing.JPanel();
         panelMedlemsData = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -433,6 +441,117 @@ public class DelfinGUI extends javax.swing.JFrame {
 
         panelMain.setLayout(new java.awt.CardLayout());
 
+        jPanel5.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        labelDelfinIcon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/files/images/delfin.jpg"))); // NOI18N
+        labelDelfinIcon3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.setName("Vælg et emne"); // NOI18N
+
+        buttonMembers.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        buttonMembers.setText("Medlemmer");
+        buttonMembers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonMembersActionPerformed(evt);
+            }
+        });
+
+        buttonEconomi.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        buttonEconomi.setText("Økonomi");
+        buttonEconomi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEconomiActionPerformed(evt);
+            }
+        });
+
+        buttonResults.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        buttonResults.setText("Resultater");
+        buttonResults.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonResultsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonEconomi)
+                    .addComponent(buttonMembers)
+                    .addComponent(buttonResults))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {buttonEconomi, buttonMembers, buttonResults});
+
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonMembers)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonEconomi)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttonResults)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel25.setFont(new java.awt.Font("Noto Sans", 0, 24)); // NOI18N
+        jLabel25.setText("Velkommen til Delfinens administrationssystem");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(labelDelfinIcon3))
+                            .addComponent(jLabel25)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelDelfinIcon3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelWelcomeLayout = new javax.swing.GroupLayout(panelWelcome);
+        panelWelcome.setLayout(panelWelcomeLayout);
+        panelWelcomeLayout.setHorizontalGroup(
+            panelWelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelWelcomeLayout.createSequentialGroup()
+                .addGap(251, 251, 251)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(256, Short.MAX_VALUE))
+        );
+        panelWelcomeLayout.setVerticalGroup(
+            panelWelcomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelWelcomeLayout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
+        );
+
+        panelMain.add(panelWelcome, "card6");
+
         panelMedlemsData.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         panelMedlemsData.setMaximumSize(new java.awt.Dimension(595, 226));
         panelMedlemsData.setMinimumSize(new java.awt.Dimension(595, 226));
@@ -679,7 +798,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(buttonClearMemberInfoFields, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelDisciplin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelDiscipliner)))
@@ -708,7 +827,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                     .addComponent(comboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkBoxTrainer)
                     .addComponent(comboBoxMotionistKonkurrence, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 36, Short.MAX_VALUE)
+                .addGap(0, 48, Short.MAX_VALUE)
                 .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelMedlemsDataLayout.createSequentialGroup()
                         .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -831,13 +950,13 @@ public class DelfinGUI extends javax.swing.JFrame {
                     .addGroup(panelMembersLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(panelMedlemsData, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
                 .addGroup(panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelMembersLayout.createSequentialGroup()
                         .addGap(122, 122, 122)
                         .addComponent(labelMemberPhoto)))
-                .addGap(0, 24, Short.MAX_VALUE))
+                .addGap(0, 148, Short.MAX_VALUE))
         );
         panelMembersLayout.setVerticalGroup(
             panelMembersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -852,7 +971,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                                 .addComponent(buttonNewResult))
                             .addGroup(panelMembersLayout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelMedlemsData, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -912,12 +1031,12 @@ public class DelfinGUI extends javax.swing.JFrame {
             .addGroup(panelAboutLayout.createSequentialGroup()
                 .addGap(181, 181, 181)
                 .addComponent(panelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(453, Short.MAX_VALUE))
+                .addContainerGap(939, Short.MAX_VALUE))
         );
         panelAboutLayout.setVerticalGroup(
             panelAboutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAboutLayout.createSequentialGroup()
-                .addContainerGap(211, Short.MAX_VALUE)
+                .addContainerGap(314, Short.MAX_VALUE)
                 .addComponent(panelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128))
         );
@@ -1013,7 +1132,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                     .addComponent(accountTextFieldAccountingYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(thisYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
 
         accountListDebitor.setBorder(javax.swing.BorderFactory.createTitledBorder("Medlemmer i Restance"));
@@ -1100,7 +1219,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                 .addGroup(panelAccountLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelAccountLayout.createSequentialGroup()
                         .addComponent(labelDelfinIcon1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addComponent(labelResults1)
                         .addGap(325, 325, 325))
                     .addGroup(panelAccountLayout.createSequentialGroup()
@@ -1199,7 +1318,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(labelMemberPhoto10))
                         .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 725, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(510, Short.MAX_VALUE))
         );
         panelResultsLayout.setVerticalGroup(
             panelResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1213,7 +1332,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(400, Short.MAX_VALUE))
         );
 
         panelMain.add(panelResults, "panelResults");
@@ -1703,8 +1822,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSystemMembersActionPerformed
 
     private void menuSystemAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSystemAccountActionPerformed
-        CardLayout card = (CardLayout) panelMain.getLayout();
-        card.show(panelMain, "panelAccount");
+        GUIm.menuSystemAccount();
     }//GEN-LAST:event_menuSystemAccountActionPerformed
 
     private void buttonSearchMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchMemberActionPerformed
@@ -1879,6 +1997,18 @@ public class DelfinGUI extends javax.swing.JFrame {
         GUIm.changeToMemberAndSearch();
     }//GEN-LAST:event_resultsTableTopFemFocusGained
 
+    private void buttonMembersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMembersActionPerformed
+        GUIm.menuSystemMembers();
+    }//GEN-LAST:event_buttonMembersActionPerformed
+
+    private void buttonEconomiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEconomiActionPerformed
+        GUIm.menuSystemAccount();
+    }//GEN-LAST:event_buttonEconomiActionPerformed
+
+    private void buttonResultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResultsActionPerformed
+        Controller.collectTopFiveResults();
+    }//GEN-LAST:event_buttonResultsActionPerformed
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -1945,10 +2075,13 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonChangeMember;
     private javax.swing.JButton buttonClearMemberInfoFields;
     private javax.swing.JButton buttonClose;
+    private javax.swing.JButton buttonEconomi;
+    private javax.swing.JButton buttonMembers;
     private javax.swing.JButton buttonNewMember;
     private javax.swing.JButton buttonNewResult;
     private javax.swing.JButton buttonNewResultsClose;
     public static javax.swing.JButton buttonNewResultsSendData;
+    private javax.swing.JButton buttonResults;
     private javax.swing.JButton buttonSearchMember;
     public static javax.swing.JCheckBox checkBoxDisciplinBryst;
     public static javax.swing.JCheckBox checkBoxDisciplinButterfly;
@@ -1977,6 +2110,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1987,6 +2121,8 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1998,6 +2134,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelDelfinIcon;
     private javax.swing.JLabel labelDelfinIcon1;
     private javax.swing.JLabel labelDelfinIcon2;
+    private javax.swing.JLabel labelDelfinIcon3;
     public static javax.swing.JLabel labelDiscipliner;
     private javax.swing.JLabel labelMemberPhoto;
     private javax.swing.JLabel labelMemberPhoto10;
@@ -2022,6 +2159,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JPanel panelMedlemsData;
     private javax.swing.JPanel panelMembers;
     private javax.swing.JPanel panelResults;
+    private javax.swing.JPanel panelWelcome;
     public static javax.swing.JTable resultsTableTopFem;
     public static javax.swing.JTextField textFieldAdresse;
     public static javax.swing.JTextField textFieldAlder;

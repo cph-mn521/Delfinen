@@ -119,6 +119,11 @@ public class DelfinGUImethods {
         card.show(panelMain, "panelMembers");
     }
 
+    public void menuSystemAccount() {
+        CardLayout card = (CardLayout) panelMain.getLayout();
+        card.show(panelMain, "panelAccount");
+    }
+    
     public void menuSystemResults(String[][] rygCrawl, String[][] crawl,
             String[][] brystSvoemning, String[][] butterfly) {
         CardLayout card = (CardLayout) panelMain.getLayout();
