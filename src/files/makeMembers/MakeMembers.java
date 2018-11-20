@@ -10,6 +10,8 @@ import delfinen.logic.Member;
 import delfinen.logic.Record;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Automatic making of members, as it can be rather cumbersome to do it manually
@@ -35,8 +37,8 @@ public class MakeMembers {
     }
 
     /**
-     * modified addMember from Controller. Used to add 100 members with random
-     * names and info
+     * modified addMember from Controller. Used to add 1 member with random
+     * names and info if needed
      */
     public void addMember(String name, String email, String address, String sCoach, int age,
             int phoneNumber, boolean isCoach) {
@@ -50,12 +52,12 @@ public class MakeMembers {
         ran = new randomNumbers((76));
         int houseNumber = ran.getRandom();
         if (email.equals("")) {
-            email = name.replace(" ","_") + "@delfinen.dk";
+            email = name.replace(" ", "_") + "@delfinen.dk";
         }
         if (address.equals("")) {
             address = "Ligustervej " + houseNumber + ", 2750 Ligust";
         }
-        int id=0;
+        int id = 0;
         try {
             id = data.getMembers().size() + 1;
             System.out.println("ID: " + id);
@@ -115,7 +117,7 @@ public class MakeMembers {
      * funktion indsættes her.
      */
     public void addResult() {
-        for (int i = 0; i < dat.memberNumbersSize() - 1; i++) {
+        for (int i = 0; i < dat.memberNumbersSize() - 1; i++) { //
             ran = new randomNumbers((5));
             float time = ran.getRandomFloat();
             LocalDateTime date = LocalDateTime.now();
@@ -124,44 +126,42 @@ public class MakeMembers {
             ran = new randomNumbers((15));
             int place = ran.getRandom();
 
-            try {
-                String name = dat.getMemberName(i);
-                while (name == "") {
-                    try {
-                        name = dat.getMemberName(i++);
-                    } catch (Exception e) {
-
-                        e.printStackTrace();
+            String name = dat.getMemberName(i);
+            Pattern pattern = Pattern.compile("(^\\{\"name\":\".+\",\"email\")|(,\"name\":\".+\",\"email\")");
+            Matcher matcher = pattern.matcher(name);
+            if (matcher.find()) {
+                System.out.println(matcher.group(0) + "\t" + matcher.group(1) + "\t" + matcher.group(2));
+                String regexName[] = matcher.group().split("\"name\":\"");
+                System.out.println(regexName[1]);
+                String regexName2[] = regexName[1].split("\",\"email\"");
+                System.out.println(regexName2[0]);
+                String k = regexName2[0];
+                try {
+                    for (Member member : data.searchMember(k)) {
+                        if (member != null || k.equals(member.getName())) {
+                            holder = member;
+                            break;
+                        }
                     }
 
+                } catch (DataException e) {
+                    e.printStackTrace();
                 }
-                for (Member member : data.searchMember(name)) {
-                    if (member.getName().equals(name)) {
-                        holder = member;
-                    }
+                try {
+                    data.addRecord(new Record(time, date, holder, event, Discipline.Brystsvømning, place));
+                    data.addRecord(new Record(time, date, holder, event, Discipline.Butterfly, place));
+                    data.addRecord(new Record(time, date, holder, event, Discipline.Crawl, place));
+                    data.addRecord(new Record(time, date, holder, event, Discipline.Rygcrawl, place));
+                } catch (DataException dataException) {
                 }
-
-            } catch (DataException ex) {
-                ex.printStackTrace();
-            }
-
-            try {
-                Discipline discipline = Discipline.Brystsvømning;
-                data.addRecord(new Record(time, date, holder, event, discipline, place));
-                discipline = Discipline.Butterfly;
-                data.addRecord(new Record(time, date, holder, event, discipline, place));
-                discipline = Discipline.Crawl;
-                data.addRecord(new Record(time, date, holder, event, discipline, place));
-                discipline = Discipline.Rygcrawl;
-                data.addRecord(new Record(time, date, holder, event, discipline, place));
-            } catch (DataException e) {
-                e.printStackTrace();
+            } else {
+                System.out.println("No name found");
             }
         }
     }
 
     public static void main(String[] args) {
-        new MakeMembers().fillMemberFile();
-//        new MakeMembers().addResult();
+//        new MakeMembers().fillMemberFile();
+        new MakeMembers().addResult();
     }
 }

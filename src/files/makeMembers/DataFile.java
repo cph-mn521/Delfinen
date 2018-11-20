@@ -22,12 +22,11 @@ public class DataFile {
             reader = new BufferedReader(new FileReader(fil));
             String line;
             while ((line = reader.readLine()) != null) {
-                line = line.toLowerCase();
+//                line = line.toLowerCase();
                 String name = line.trim();
                 if (name == null || name.isEmpty()) {
-                    throw new IOException("Unable to read name!");
                 }
-                fileContent.add(name);
+                    fileContent.add(name);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -35,17 +34,17 @@ public class DataFile {
         return fileContent;
     }
 
-    public int memberNumbersSize(){
+    public int memberNumbersSize() {
         file = "Members.txt";
         return getFileContent().size();
     }
-    
+
     public String getMemberName(int memberNumber) {
 
         file = "Members.txt";
         int k = getFileContent().size();
-        if (memberNumber>k){
-            k=memberNumber;
+        if (memberNumber > k) {
+            k = memberNumber;
         }
         String name = getFileContent().get(memberNumber);
         return name;
