@@ -1454,8 +1454,8 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
     }
 
-    public ArrayList<String> getDisciplin() {
-        ArrayList<String> disc = new ArrayList<>();
+    public List<String> getDisciplin() {
+        List<String> disc = new ArrayList<>();
         for (JCheckBox jCheckbox : discipliner) {
             if (jCheckbox.isSelected()) {
                 disc.add(jCheckbox.getText());
