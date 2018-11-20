@@ -44,7 +44,7 @@ public class DataFile {
 
         file = "src/files/makeMembers/surnames.txt";
         k = getFileContent().size();
-        rand = new randomNumbers(k);
+        rand = new randomNumbers(k-1);
         String surname = getFileContent().get(rand.getRandom());
 
         return foreName + " " + surname;

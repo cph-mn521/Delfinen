@@ -25,22 +25,16 @@ public class MakeMembers {
 
     private static PersistanceHandler data = new PersistanceHandler();
 
-    public void go() {
-        Controller cont = new Controller();
-        DelfinGUI gui = new DelfinGUI();
-        DelfinGUImethods guim = new DelfinGUImethods();
-
-    }
-
     /**
      * Method for retrieving a member by ID from the gui, and editing that
      * member in the filesystem.
      */
     /**
-     * Passes a member to the PersistanceHandler, for storing and databasing.
+     * modified addMember from Controller. Used to add 100 members with random
+     * names and info
      */
     public void addMember() {
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 200; i++) {
 
             // Getting info from guim
             Member newMember = null;
@@ -48,8 +42,10 @@ public class MakeMembers {
             DataFile dat = new DataFile();
             String name = dat.getRandomName();
             System.out.println(name);
-            String email = "sammeEmail@delfinen.dk";
-            String adress = "Ligustervej 12, 2750 Ligust";
+            ran = new randomNumbers((76));
+            int houseNumber = ran.getRandom();
+            String email = name + "@delfinen.dk";
+            String address = "Ligustervej " + houseNumber + ", 2750 Ligust";
             int id = 0, age = 0, phoneNumber = 0;
             try {
                 id = data.getMembers().size() + 1;
@@ -87,7 +83,7 @@ public class MakeMembers {
             }
             try {
                 //Creating a competetive member.
-                newMember = new CompetitiveMember(name, email, adress, id, age, phoneNumber, status, disciplines, isCoach, coach);
+                newMember = new CompetitiveMember(name, email, address, id, age, phoneNumber, status, disciplines, isCoach, coach);
             } catch (CoachNotFoundException e) {
                 e.printStackTrace();
             }
@@ -100,10 +96,10 @@ public class MakeMembers {
         }
     }
 
-    /**
-     * Klog og indsigtsgivende kommentar der grundtigt beskriver følgende
-     * funktion indsættes her.
-     */
+//    /**
+//     * Klog og indsigtsgivende kommentar der grundtigt beskriver følgende
+//     * funktion indsættes her.
+//     */
 //    public static void addResult() {
 //
 //        float time = gui.getNewResultTime();
