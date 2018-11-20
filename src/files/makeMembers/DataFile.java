@@ -16,7 +16,7 @@ public class DataFile {
 
     public ArrayList<String> getFileContent() {
         BufferedReader reader = null;
-        fileContent = null;
+        fileContent.clear();
         try {
             File fil = new File(file);
             reader = new BufferedReader(new FileReader(fil));
@@ -37,15 +37,15 @@ public class DataFile {
 
     public String getRandomName() {
         randomNumbers rand;
-        file = "test/testMakeDBFiles/forenames.txt";
+        file = "src/files/makeMembers/forenames.txt";
         int k = getFileContent().size();
         rand = new randomNumbers(k);
-        String foreName = getFileContent().get(rand.getRandom()) + " ";
+        String foreName = getFileContent().get(rand.getRandom());
 
-        file = "test/testMakeDBFiles/surnames.txt";
+        file = "src/files/makeMembers/surnames.txt";
         k = getFileContent().size();
         rand = new randomNumbers(k);
-        String surname = getFileContent().get(rand.getRandom()) + " ";
+        String surname = getFileContent().get(rand.getRandom());
 
         return foreName + " " + surname;
     }
