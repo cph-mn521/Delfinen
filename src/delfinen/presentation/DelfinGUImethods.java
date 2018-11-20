@@ -1,25 +1,15 @@
 package delfinen.presentation;
 
 import delfinen.Controller;
-import delfinen.data.DataException;
-import delfinen.logic.Accountant;
-import delfinen.logic.Member;
-import delfinen.logic.Subscription;
 import static delfinen.presentation.DelfinGUI.*;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import static java.awt.image.ImageObserver.ERROR;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JTable;
-import static javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -28,7 +18,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 /**
- * Methods from GUI placed here for easier perusing
+ * Methods from GUI placed here for "easier" perusing
  *
  * @author martin b.
  */
@@ -250,7 +240,7 @@ public class DelfinGUImethods {
      */
     public void textField_FocusGained_NewResultsDate() {
         textFieldNewResultsClearWhiteBackground(textFieldNewResultsDate);
-        textFieldNewResultsDate.setText(formatDate("d-M-yyyy HH:mm"));
+        textFieldNewResultsDate.setText(formatDate("d.M.yyyy HH:mm"));
     }
 
     /**
