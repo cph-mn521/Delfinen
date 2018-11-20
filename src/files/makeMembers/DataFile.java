@@ -1,8 +1,9 @@
-package files.UML.makeMembers;
+package files.makeMembers;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.File;
 import java.util.ArrayList;
 
 public class DataFile {
@@ -13,12 +14,12 @@ public class DataFile {
     public DataFile() {
     }
 
-
     public ArrayList<String> getFileContent() {
         BufferedReader reader = null;
         fileContent = null;
         try {
-            reader = new BufferedReader(new FileReader(file));
+            File fil = new File(file);
+            reader = new BufferedReader(new FileReader(fil));
             String line;
             while ((line = reader.readLine()) != null) {
                 line = line.toLowerCase();
@@ -48,6 +49,5 @@ public class DataFile {
 
         return foreName + " " + surname;
     }
-
 
 }
