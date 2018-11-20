@@ -412,6 +412,7 @@ public class Controller {
                 for (Subscription memSub : subs) {
                     if (memSub.getYear() == year) {
                         payed = true;
+                        
                     }
                 }
 
@@ -420,6 +421,7 @@ public class Controller {
                 data.addSubscription(new Subscription(year, member));
                 guim.displayPlainBlack("Abonnement betalt for ");
                 guim.displayPlainGreen(memberName + ".\n");
+                bookKeeping();
             }
         } catch (DataException ex) {
             guim.displayBoldRed("Der sket en fejl under betaling af ");
@@ -428,6 +430,7 @@ public class Controller {
             guim.displayBoldBlack(year + ".\n");
             ex.printStackTrace();
         }
+        
 
     }
 
