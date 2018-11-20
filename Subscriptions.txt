@@ -36,3 +36,4 @@
 {"year":2018,"holder":{"name":"niels nielsen","email":"niels nielsen@delfinen.dk","address":"Ligustervej 60, 2750 Ligust","id":10,"age":50,"phone":43088129,"status":"Active","isCoach":false},"price":1600.0}
 {"year":2018,"holder":{"name":"camilla wulff","email":"camilla wulff@delfinen.dk","address":"Ligustervej 73, 2750 Ligust","id":12,"age":24,"phone":35360259,"status":"Active","isCoach":false},"price":1600.0}
 {"year":2018,"holder":{"name":"tina pedersen","email":"tina pedersen@delfinen.dk","address":"Ligustervej 35, 2750 Ligust","id":15,"age":51,"phone":28204517,"status":"Active","isCoach":false},"price":1600.0}
+{"year":2018,"holder":{"name":"bettina bøgh","email":"bettina_bøgh@delfinen.dk","address":"Ligustervej 6, 2750 Ligust","id":199,"age":64,"phone":45054847,"status":"Active","isCoach":false},"price":1200.0}

@@ -475,7 +475,7 @@ public class Controller {
                     t5Crawl.checkAndChangetopFive(0, ""); // send dummy result
                 }
             }
-            for (Record record : data.searchRecord("RygCrawl")) {
+            for (Record record : data.searchRecord("Rygcrawl")) {
                 try {
                     t5RygCrawl.checkAndChangetopFive(record.getTime(), record.getHolder().getName());
                 } catch (NullPointerException e) {
