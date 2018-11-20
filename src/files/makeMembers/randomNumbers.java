@@ -1,4 +1,4 @@
-package files.UML.makeMembers;
+package files.makeMembers;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package files.UML.makeMembers;
+package files.makeMembers;
 
 /**
  *  Collecting random names and putting them together
