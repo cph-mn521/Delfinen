@@ -39,7 +39,7 @@ public class DataFile {
         randomNumbers rand;
         file = "src/files/makeMembers/forenames.txt";
         int k = getFileContent().size();
-        rand = new randomNumbers(k);
+        rand = new randomNumbers(k-1);
         String foreName = getFileContent().get(rand.getRandom());
 
         file = "src/files/makeMembers/surnames.txt";
