@@ -28,72 +28,90 @@ public class MakeMembers {
     private static PersistanceHandler data = new PersistanceHandler();
 
     /**
-     * Method for retrieving a member by ID from the gui, and editing that
-     * member in the filesystem.
+     *
+     *
      */
+    public void fillMemberFile() {
+        // Add Lars Emil. There has to be at least one trainer
+        addMember("Lars Emil", "le@delfinen.dk", "Ligustervej 23, 2956 Ligust", "", 23, 25254545, true);
+        for (int i = 0; i < 200; i++) {
+            addMember("", "", "", "", 0, 0, false);
+        }
+    }
+
     /**
      * modified addMember from Controller. Used to add 100 members with random
      * names and info
      */
-    public void addMember() {
-        for (int i = 0; i < 200; i++) {
+    public void addMember(String name, String email, String address, String sCoach, int age,
+            int phoneNumber, boolean isCoach) {
 
-            // Getting info from guim
-            Member newMember = null;
-            String name = dat.getRandomName();
-            System.out.println(name);
-            ran = new randomNumbers((76));
-            int houseNumber = ran.getRandom();
-            String email = name + "@delfinen.dk";
-            String address = "Ligustervej " + houseNumber + ", 2750 Ligust";
-            int id = 0, age = 0, phoneNumber = 0;
-            try {
-                id = data.getMembers().size() + 1;
-                System.out.println("ID: " + id);
-            } catch (DataException ex) {
-                ex.printStackTrace();
-            }
-            try {
+        // Getting info from guim
+        Member newMember = null;
+        if (name.equals("")) {
+            name = dat.getRandomName();
+        }
+        System.out.println(name);
+        ran = new randomNumbers((76));
+        int houseNumber = ran.getRandom();
+        if (email.equals("")) {
+            email = name + "@delfinen.dk";
+        }
+        if (address.equals("")) {
+            address = "Ligustervej " + houseNumber + ", 2750 Ligust";
+        }
+        int id=0;
+        try {
+            id = data.getMembers().size() + 1;
+            System.out.println("ID: " + id);
+        } catch (DataException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            if (age == 0) {
                 ran = new randomNumbers((76));
                 age = ran.getRandom();
-                System.out.println("Age: " + age);
+            }
+            System.out.println("Age: " + age);
+            if (phoneNumber == 0) {
                 ran = new randomNumbers((99999999));
                 phoneNumber = ran.getRandom();
-                System.out.println("phoneNumber: " + phoneNumber);
-            } catch (NumberFormatException e) {
-                e.printStackTrace();
             }
-            Member.Status status = Member.Status.valueOf("Active");
-            boolean isCoach = false;
-
-            //Checking for Member Type, then creating it.
-            ArrayList<Discipline> disciplines = new ArrayList<>();
-            disciplines.add(Discipline.Brystsvømning);
-            disciplines.add(Discipline.Butterfly);
-            disciplines.add(Discipline.Crawl);
-            disciplines.add(Discipline.Rygcrawl);
-            String sCoach = "Lars Emil";
-            Member coach = null;
-            //Coach Check.
-            for (Member m : findMembers("\"isCoach\":true")) {
-                if (m.getName().equals(sCoach)) {
-                    coach = m;
-                    break;
-                }
-            }
-            try {
-                //Creating a competetive member.
-                newMember = new CompetitiveMember(name, email, address, id, age, phoneNumber, status, disciplines, isCoach, coach);
-            } catch (CoachNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            try { // Ads member to database.
-                data.addMember(newMember);
-            } catch (DataException e) {
-                e.printStackTrace();
+            System.out.println("phoneNumber: " + phoneNumber);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        Member.Status status = Member.Status.valueOf("Active");
+        //Checking for Member Type, then creating it.
+        ArrayList<Discipline> disciplines = new ArrayList<>();
+        disciplines.add(Discipline.Brystsvømning);
+        disciplines.add(Discipline.Butterfly);
+        disciplines.add(Discipline.Crawl);
+        disciplines.add(Discipline.Rygcrawl);
+        if (sCoach.equals("")) {
+            sCoach = "Lars Emil";
+        }
+        Member coach = null;
+        //Coach Check.
+        for (Member m : findMembers("\"isCoach\":true")) {
+            if (m.getName().equals(sCoach)) {
+                coach = m;
+                break;
             }
         }
+        try {
+            //Creating a competetive member.
+            newMember = new CompetitiveMember(name, email, address, id, age, phoneNumber, status, disciplines, isCoach, coach);
+        } catch (CoachNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try { // Ads member to database.
+            data.addMember(newMember);
+        } catch (DataException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -101,23 +119,6 @@ public class MakeMembers {
      * funktion indsættes her.
      */
     public void addResult() {
-
-//        
-//        //Time and date
-//        ran = new randomNumbers((27));
-//        int day = ran.getRandom();
-//        
-//        ran = new randomNumbers((11));
-//        int month = ran.getRandom();
-//        
-//        ran = new randomNumbers((2018));
-//        int year = ran.getRandom();
-//        
-//        ran = new randomNumbers((23));
-//        int hour = ran.getRandom();
-//
-//        ran = new randomNumbers((59));
-//        int min = ran.getRandom();
         for (int i = 0; i < dat.memberNumbersSize() - 1; i++) {
             ran = new randomNumbers((5));
             float time = ran.getRandomFloat();
@@ -164,7 +165,7 @@ public class MakeMembers {
     }
 
     public static void main(String[] args) {
-//        new MakeMembers().addMember();
-        new MakeMembers().addResult();
+        new MakeMembers().fillMemberFile();
+//        new MakeMembers().addResult();
     }
 }
