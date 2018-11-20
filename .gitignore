@@ -59,6 +59,7 @@ pull
 push
 status
 commit
+credentials
 
 ### Windows ###
 # Windows thumbnail cache files
