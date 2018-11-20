@@ -1,7 +1,5 @@
 package files.makeMembers;
 
-import delfinen.Controller;
-import static delfinen.Controller.DEBUG;
 import static delfinen.Controller.findMembers;
 import delfinen.data.DataException;
 import delfinen.data.PersistanceHandler;
@@ -10,11 +8,8 @@ import delfinen.logic.CompetitiveMember;
 import delfinen.logic.Discipline;
 import delfinen.logic.Member;
 import delfinen.logic.Record;
-import delfinen.presentation.DelfinGUI;
-import delfinen.presentation.DelfinGUImethods;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Automatic making of members, as it can be rather cumbersome to do it manually
@@ -55,7 +50,7 @@ public class MakeMembers {
         ran = new randomNumbers((76));
         int houseNumber = ran.getRandom();
         if (email.equals("")) {
-            email = name + "@delfinen.dk";
+            email = name.replace(" ","_") + "@delfinen.dk";
         }
         if (address.equals("")) {
             address = "Ligustervej " + houseNumber + ", 2750 Ligust";
@@ -103,6 +98,7 @@ public class MakeMembers {
             //Creating a competetive member.
             newMember = new CompetitiveMember(name, email, address, id, age, phoneNumber, status, disciplines, isCoach, coach);
         } catch (CoachNotFoundException e) {
+            newMember = new Member(name, email, address, id, age, phoneNumber, status, isCoach);
             e.printStackTrace();
         }
 
