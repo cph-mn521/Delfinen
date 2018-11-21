@@ -129,7 +129,7 @@ public class DelfinGUImethods {
         CardLayout card = (CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelResults");
 
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < 5; j++) {
             resultsTableTopFem.setValueAt(rygCrawl[1][j], j, 0);
             resultsTableTopFem.setValueAt(crawl[1][j], j, 1);
             resultsTableTopFem.setValueAt(brystSvoemning[1][j], j, 2);

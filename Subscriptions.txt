@@ -1,4 +1,0 @@
-
-{"year":2018,"holder":{"name":"Børge Eriksen","email":"Børge_Eriksen@delfinen.dk","address":"Ligustervej 64, 2750 Ligust","id":34,"age":42,"phone":32855045,"status":"Active","isCoach":false},"price":1600.0}
-{"year":2018,"holder":{"name":"Børge Bøgh","email":"Børge_Bøgh@delfinen.dk","address":"Ligustervej 55, 2750 Ligust","id":35,"age":9,"phone":82131357,"status":"Active","isCoach":false},"price":1000.0}
-{"year":2018,"holder":{"name":"Lars Bang","email":"Lars_Bang@delfinen.dk","address":"Ligustervej 65, 2750 Ligust","id":11,"age":56,"phone":27862241,"status":"Active","isCoach":false},"price":1600.0}
