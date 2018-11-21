@@ -283,14 +283,33 @@ public class Controller {
      *
      */
     public static void addResult() {
-
-        float time = gui.getNewResultTime();
-        LocalDateTime date = gui.getNewResultDate();
+        List<Member> Query;
         Member holder = null;
-        String event = gui.getNewResultEvent();
-        Discipline discipline = gui.getNewResultDiscipline();
         int place = gui.getNewResultPlace();
 
+        try {
+            int ID = Integer.parseInt(gui.getID());
+            Query = data.searchMember(gui.getNavn());
+            for (Member member : Query) {
+                System.out.println(member.isCompetitive());
+                if (member.getId() == ID) {
+                    holder = member;
+                    break;
+                }
+            }
+            float time = gui.getNewResultTime();
+            LocalDateTime date = gui.getNewResultDate();
+            String event = gui.getNewResultEvent();
+            Discipline discipline = gui.getNewResultDiscipline();
+            data.addRecord(new Record(time, date, holder, event, discipline, place));
+            guim.displayPlainBlack("Resultat oprettet\n");
+        } catch (NumberFormatException e) {
+            guim.displayPlainRed("Kun tal i ID-boksen.\n");
+        } catch (DataException e) {
+            guim.displayBoldRed("something went wrong.");
+        }
+        
+        /*
         try {
             for (Member member : data.searchMember(gui.getNavn())) {
                 if (Integer.parseInt(gui.getID()) == member.getId()) {
@@ -328,6 +347,7 @@ public class Controller {
                 e.printStackTrace();
             }
         }
+         */
     }
 
     /**
