@@ -123,7 +123,7 @@ public class DelfinGUImethods {
         CardLayout card = (CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelAccount");
     }
-    
+
     public void menuSystemResults(String[][] rygCrawl, String[][] crawl,
             String[][] brystSvoemning, String[][] butterfly) {
         CardLayout card = (CardLayout) panelMain.getLayout();
@@ -149,7 +149,7 @@ public class DelfinGUImethods {
         accountTextFieldSelectedMember.setText(accountListDebitor.getSelectedValue());
         accountTextFieldRestance.setText(Controller.SubscriptionValue(accountListDebitor.getSelectedValue()));
         Controller.restancePerMember();
-        
+
     }
 
     /**
@@ -173,7 +173,7 @@ public class DelfinGUImethods {
      */
     public void textFieldAlder() {
 
-        if (Integer.parseInt(textFieldAlder.getText()) < 0
+        if (!textFieldAlder.getText().isEmpty() && Integer.parseInt(textFieldAlder.getText()) < 0
                 || Integer.parseInt(textFieldAlder.getText()) > 120) {
             textFieldAlder.setBackground(Color.red);
             textFieldAlder.setForeground(Color.white);

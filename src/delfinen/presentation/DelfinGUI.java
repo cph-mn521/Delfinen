@@ -1839,7 +1839,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_checkBoxTrainerActionPerformed
 
     private void comboBoxTrainedByFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_comboBoxTrainedByFocusGained
-        setTrainedBy(Controller.getTrainers());
+        setTrainedBy(Controller.getTrainerNames());
     }//GEN-LAST:event_comboBoxTrainedByFocusGained
 
     private void buttonNewMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewMemberActionPerformed

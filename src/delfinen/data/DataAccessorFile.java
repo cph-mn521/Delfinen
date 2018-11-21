@@ -18,6 +18,8 @@ import java.util.List;
 /**
  *
  * @author Martin Wulff
+ * @author Niels Bang (edits only)
+ *
  */
 public class DataAccessorFile implements DataAccessor {
 
@@ -28,7 +30,7 @@ public class DataAccessorFile implements DataAccessor {
      * Constructor for the class, used to assign the current database.
      *
      * @param FileName The File to pull data from.
-    *
+     *
      */
     public DataAccessorFile(String FileName) {
         fil = new File(FileName);
@@ -68,26 +70,28 @@ public class DataAccessorFile implements DataAccessor {
      * @param query The wanted Query.
      * @return machingEntries All entries that contains the query.
      * @throws DataException
-    *
+     *
      */
     @Override
     public List<String> searchEntries(String query) throws DataException {
         String line = null;
-        List<String> machingEntries = new ArrayList<>();
+        List<String> matchingEntries = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FileName));
             while ((line = reader.readLine()) != null) {
                 if (line.contains(query)) {
-                    machingEntries.add(line);
+                    matchingEntries.add(line);
+                } else if (line.matches(query)) {
+                    matchingEntries.add(line);
                 }
             }
-            return machingEntries;
+            return matchingEntries;
         } catch (IOException e) {
 //            throw new DataException();
-            if (machingEntries.size() == 0) {
+            if (matchingEntries.isEmpty()) {
                 return (this.getEntries());
             } else {
-                return machingEntries;
+                return matchingEntries;
             }
         }
     }
@@ -98,7 +102,7 @@ public class DataAccessorFile implements DataAccessor {
      *
      * @param obj The object to add to the database
      * @throws DataException
-    *
+     *
      */
     @Override
     public void addEntry(String obj) throws DataException {
@@ -120,7 +124,7 @@ public class DataAccessorFile implements DataAccessor {
      * @param old The entry to change.
      * @param N The changed entry.
      * @throws DataException
-    *
+     *
      */
     @Override
     public void editEntry(String old, String N) throws DataException {

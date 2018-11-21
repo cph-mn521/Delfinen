@@ -77,7 +77,7 @@ public class DataSearchEngine {
                 i++;
                 continue;
             } else {
-                regQuery.append(regex.get(i).replace(".+", ".*" + s + ".*"));
+                regQuery.append(regex.get(i).replace(".+", ".*" + s.replace(" ", ".*") + ".*"));
             }
             i++;
         }
