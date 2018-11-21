@@ -1302,16 +1302,16 @@ public class DelfinGUI extends javax.swing.JFrame {
         if (resultsTableTopFem.getColumnModel().getColumnCount() > 0) {
             resultsTableTopFem.getColumnModel().getColumn(0).setResizable(false);
             resultsTableTopFem.getColumnModel().getColumn(1).setResizable(false);
-            resultsTableTopFem.getColumnModel().getColumn(1).setPreferredWidth(15);
+            resultsTableTopFem.getColumnModel().getColumn(1).setPreferredWidth(7);
             resultsTableTopFem.getColumnModel().getColumn(2).setResizable(false);
             resultsTableTopFem.getColumnModel().getColumn(3).setResizable(false);
-            resultsTableTopFem.getColumnModel().getColumn(3).setPreferredWidth(15);
+            resultsTableTopFem.getColumnModel().getColumn(3).setPreferredWidth(7);
             resultsTableTopFem.getColumnModel().getColumn(4).setResizable(false);
             resultsTableTopFem.getColumnModel().getColumn(5).setResizable(false);
-            resultsTableTopFem.getColumnModel().getColumn(5).setPreferredWidth(15);
+            resultsTableTopFem.getColumnModel().getColumn(5).setPreferredWidth(7);
             resultsTableTopFem.getColumnModel().getColumn(6).setResizable(false);
             resultsTableTopFem.getColumnModel().getColumn(7).setResizable(false);
-            resultsTableTopFem.getColumnModel().getColumn(7).setPreferredWidth(15);
+            resultsTableTopFem.getColumnModel().getColumn(7).setPreferredWidth(7);
         }
 
         javax.swing.GroupLayout panelResultsLayout = new javax.swing.GroupLayout(panelResults);

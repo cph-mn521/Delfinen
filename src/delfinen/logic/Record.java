@@ -149,9 +149,9 @@ public class Record {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy HH:mm");
         LocalDateTime dateTime = date;
         String formattedDateTime = dateTime.format(formatter);
-        return discipline + "\t" + time + "\t" + formattedDateTime
-                + "\t" + event
-                + "\t" + place + ". plads.";
+        // Formatting fits with small info box on members page
+        return String.format("%-17s %-6s %-18s %-30s %-12s", discipline, String.format("%.5s", time), formattedDateTime,
+                event, place + ".");
     }
 
 }

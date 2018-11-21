@@ -24,10 +24,10 @@ import javax.swing.text.StyledDocument;
  */
 public class DelfinGUImethods {
 
-    Font FONT_NOTOSANS_PLAIN_12 = new Font("notosans", Font.PLAIN, 12);
-    Font FONT_NOTOSANS_BOLD_12 = new Font("notosans", Font.BOLD, 12);
-    Font FONT_NOTOSANS_ITALIC_12 = new Font("notosans", Font.ITALIC, 12);
-    Font FONT_NOTOSANS_BOLD_ITALIC_12 = new Font("notosans", Font.BOLD + Font.ITALIC, 12);
+    Font FONT_NOTOSANS_PLAIN_12 = new Font("monospaced", Font.PLAIN, 12);
+    Font FONT_NOTOSANS_BOLD_12 = new Font("monospaced", Font.BOLD, 12);
+    Font FONT_NOTOSANS_ITALIC_12 = new Font("monospaced", Font.ITALIC, 12);
+    Font FONT_NOTOSANS_BOLD_ITALIC_12 = new Font("monospaced", Font.BOLD + Font.ITALIC, 12);
 
     /**
      * ************************************************************************************
