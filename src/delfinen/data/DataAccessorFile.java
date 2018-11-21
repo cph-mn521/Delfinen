@@ -128,7 +128,7 @@ public class DataAccessorFile implements DataAccessor {
             String lines = "";
             BufferedWriter writer = new BufferedWriter(new FileWriter(FileName)); //Append when file exists, make when false
             for (String string : newFile) {
-                if (string.equals(old)) {
+                if (string.contains(old)) { //changed equals -> contains to handle compmembers
                     lines += N + "\r\n";
                 } else {
                     lines += string + "\r\n";

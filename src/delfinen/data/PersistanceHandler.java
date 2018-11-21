@@ -141,7 +141,21 @@ public class PersistanceHandler {
             dam.editEntry(gson.toJson(old), "");
         }
     }
-
+    /**
+     * Method for editing a CompetitiveMember. Can also be used to remove members.
+     *
+     * @param old The CompetitiveMember that you wish to modify.
+     * @param N The CompetitiveMember you wish it should be. if null, removes the entry.
+     * @throws delfinen.data.DataException
+     */
+    public void editMember(Member old, CompetitiveMember CM) throws DataException {
+        if (CM != null) {
+            dam.editEntry(gson.toJson(old), gson.toJson(CM));
+        } else {
+            dam.editEntry(gson.toJson(old), "");
+        }
+    }
+    
     ///////////////////////      REKORDS HANDLING       ////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////
     /**
