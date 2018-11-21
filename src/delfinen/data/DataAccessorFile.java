@@ -78,10 +78,11 @@ public class DataAccessorFile implements DataAccessor {
         List<String> matchingEntries = new ArrayList<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(FileName));
+            System.out.println(query);
             while ((line = reader.readLine()) != null) {
-                if (line.contains(query)) {
+                if (line.matches(query)) {
                     matchingEntries.add(line);
-                } else if (line.matches(query)) {
+                } else if (line.contains(query)) {
                     matchingEntries.add(line);
                 }
             }

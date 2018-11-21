@@ -55,7 +55,7 @@ public class Controller {
      */
     public static List<String> getTrainerNames() {
         List<String> trainers = new ArrayList<>();
-        List<Member> buffer = findMembers("\"isCoach\":true\\}$");
+        List<Member> buffer = findMembers(".*\"isCoach\":true\\}$");
         if (buffer == null || buffer.size() < 1) {
             trainers.add("Ingen trænere i systemet.");
         }
@@ -108,7 +108,7 @@ public class Controller {
             String sCoach = gui.getTrainedBy();
             Member coach = null;
             //Coach Check.
-            for (Member m : findMembers("\"isCoach\":true\\}$")) {
+            for (Member m : findMembers(".*\"isCoach\":true\\}$")) {
                 if (m.getName().equals(sCoach)) {
                     coach = m;
                     break;
@@ -177,13 +177,13 @@ public class Controller {
         if (aktivitet.equals("Konkurrencesvømmer")) {
             isCompetitive = true;
             disciplines = gui.getDisciplin();
-            List<Member> trainers = findMembers("\"isCoach\":true\\}$");
+            List<Member> trainers = findMembers(".*\"isCoach\":true\\}$");
             ArrayList<String> names = new ArrayList<>();
             for (Member m : trainers) {
                 names.add(m.getName());
             }
-            String coach = gui.getTrainedBy();
-            Coach = trainers.get(names.indexOf(coach));
+            String coachName = gui.getTrainedBy();
+            Coach = trainers.get(names.indexOf(coachName));
         }
 
         String name = gui.getNavn();
