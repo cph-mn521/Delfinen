@@ -59,7 +59,7 @@ public class MakeMembers {
         }
         int id = 0;
         try {
-            id = data.getMembers().size() + 1;
+            id = data.getMembers().size();
             System.out.println("ID: " + id);
         } catch (DataException ex) {
             ex.printStackTrace();

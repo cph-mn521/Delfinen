@@ -88,10 +88,10 @@ public class DataSearchEngine {
         if (delfinen.Controller.DEBUG) {
             System.out.println(regQuery);
         }
-        Pattern p = Pattern.compile(regQuery.toString());
+        Pattern p = Pattern.compile(regQuery.toString(), Pattern.CASE_INSENSITIVE);
 
         for (String s : data) {
-            if (p.matcher(s).matches()) {
+            if (p.matcher(s.trim()).matches()) {
                 matches.add(s);
             }
         }
