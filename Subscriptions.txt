@@ -1,0 +1,3 @@
+
+{"year":2018,"holder":{"name":"Bettina Nguyen","email":"Bettina_Nguyen@delfinen.dk","address":"Ligustervej 9, 2750 Ligust","id":3,"age":10,"phone":35979609,"status":"Active","isCoach":false},"price":1000.0}
+{"year":2018,"holder":{"name":"Signe Pedersen","email":"Signe_Pedersen@delfinen.dk","address":"Ligustervej 53, 2750 Ligust","id":6,"age":14,"phone":43762858,"status":"Active","isCoach":false},"price":1000.0}
