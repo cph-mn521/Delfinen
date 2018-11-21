@@ -123,17 +123,38 @@ public class DelfinGUImethods {
         CardLayout card = (CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelAccount");
     }
-    
+
     public void menuSystemResults(String[][] rygCrawl, String[][] crawl,
             String[][] brystSvoemning, String[][] butterfly) {
+        //Cleanup long float digits
+        for (int i = 0; i < 5; i++) {
+            rygCrawl[0][i]=String.format("%.5s", rygCrawl[0][i]);
+        }
+        
+        for (int i = 0; i < 5; i++) {
+            crawl[0][i]=String.format("%.5s", crawl[0][i]);
+        }
+        
+        for (int i = 0; i < 5; i++) {
+            brystSvoemning[0][i]=String.format("%.5s", brystSvoemning[0][i]);
+        }
+        
+        for (int i = 0; i < 5; i++) {
+            butterfly[0][i]=String.format("%.5s", butterfly[0][i]);
+        }
+        
         CardLayout card = (CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelResults");
 
         for (int j = 0; j < 5; j++) {
             resultsTableTopFem.setValueAt(rygCrawl[1][j], j, 0);
-            resultsTableTopFem.setValueAt(crawl[1][j], j, 1);
-            resultsTableTopFem.setValueAt(brystSvoemning[1][j], j, 2);
-            resultsTableTopFem.setValueAt(butterfly[1][j], j, 3);
+            resultsTableTopFem.setValueAt(rygCrawl[0][j], j, 1);
+            resultsTableTopFem.setValueAt(crawl[1][j], j, 2);
+            resultsTableTopFem.setValueAt(crawl[0][j], j, 3);
+            resultsTableTopFem.setValueAt(brystSvoemning[1][j], j, 4);
+            resultsTableTopFem.setValueAt(brystSvoemning[0][j], j, 5);
+            resultsTableTopFem.setValueAt(butterfly[1][j], j, 6);
+            resultsTableTopFem.setValueAt(butterfly[0][j], j, 7);
         }
     }
 
@@ -149,7 +170,7 @@ public class DelfinGUImethods {
         accountTextFieldSelectedMember.setText(accountListDebitor.getSelectedValue());
         accountTextFieldRestance.setText(Controller.SubscriptionValue(accountListDebitor.getSelectedValue()));
         Controller.restancePerMember();
-        
+
     }
 
     /**

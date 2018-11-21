@@ -34,6 +34,7 @@ public class TopFive {
      * @param timeHolder
      */
     public void checkAndChangetopFive(double time, String timeHolder) {
+        Arrays.fill(topFiveTimes, 600.0);
         if (timeHolder != null && !timeHolder.isEmpty()) {
             boolean notDuplicate = true;
             for (String[] strings : topFive) {
@@ -42,7 +43,7 @@ public class TopFive {
                 }
             }
             for (int i = 4; i >= 0; i--) {
-                if (time > topFiveTimes[i] && i < 4 && notDuplicate) {
+                if (time < topFiveTimes[i] && i < 4 && notDuplicate) {
                     topFiveTimes[i + 1] = topFiveTimes[i]; // time as double
                     topFive[0][i + 1] = topFive[0][i]; // time holder
                     topFive[1][i + 1] = topFive[1][i]; // time as string
