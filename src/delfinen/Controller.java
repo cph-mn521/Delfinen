@@ -277,6 +277,33 @@ public class Controller {
     }
 
     /**
+     * Method for retrieving a member by ID from the gui, and deleting that
+     * member in the filesystem.
+     * Modified change() method.
+     */
+    public static void delete(){
+        List<Member> members = findMembers(",\"id\":" + gui.getID() + ",");
+        Member old = null;
+        if (members == null || members.size() > 1) {
+
+        } else {
+            old = members.get(0);
+        }
+
+        try {
+            data.editMember(old, null);
+        } catch (DataException e) {
+            if (DEBUG) {
+                e.printStackTrace();
+                guim.displayPlainRed("Medlem ikke fundet! - Prøv igen. \n");
+            }
+        }
+    }
+        
+    
+    
+    
+    /**
      * Method for handling results input fron the gui and passing data top the
      * filesystem.
      *

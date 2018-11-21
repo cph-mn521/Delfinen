@@ -142,6 +142,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         buttonNewMember = new javax.swing.JButton();
         buttonSearchMember = new javax.swing.JButton();
+        buttonDeleteMember = new javax.swing.JButton();
         buttonChangeMember = new javax.swing.JButton();
         panelAbout = new javax.swing.JPanel();
         panelLogo = new javax.swing.JPanel();
@@ -798,7 +799,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(textFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(buttonClearMemberInfoFields, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelDisciplin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelDiscipliner)))
@@ -827,7 +828,7 @@ public class DelfinGUI extends javax.swing.JFrame {
                     .addComponent(comboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkBoxTrainer)
                     .addComponent(comboBoxMotionistKonkurrence, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 36, Short.MAX_VALUE)
+                .addGap(0, 12, Short.MAX_VALUE)
                 .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelMedlemsDataLayout.createSequentialGroup()
                         .addGroup(panelMedlemsDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -899,6 +900,13 @@ public class DelfinGUI extends javax.swing.JFrame {
             }
         });
 
+        buttonDeleteMember.setText("Slette medlem");
+        buttonDeleteMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteMemberActionPerformed(evt);
+            }
+        });
+
         buttonChangeMember.setText("Ændre medlem");
         buttonChangeMember.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -912,10 +920,14 @@ public class DelfinGUI extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonSearchMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonChangeMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonNewMember, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(buttonSearchMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonDeleteMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonNewMember, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(buttonChangeMember, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -923,11 +935,13 @@ public class DelfinGUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buttonNewMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(buttonDeleteMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buttonChangeMember, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonSearchMember, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelMembersLayout = new javax.swing.GroupLayout(panelMembers);
@@ -969,15 +983,16 @@ public class DelfinGUI extends javax.swing.JFrame {
                                 .addComponent(buttonNewResult))
                             .addGroup(panelMembersLayout.createSequentialGroup()
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelMedlemsData, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 34, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(panelMedlemsData, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMembersLayout.createSequentialGroup()
                         .addComponent(labelMemberPhoto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(12, 12, 12))
         );
 
         panelMain.add(panelMembers, "panelMembers");
@@ -1843,9 +1858,9 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_buttonSearchMemberActionPerformed
 
-    private void buttonChangeMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangeMemberActionPerformed
-        Controller.change();
-    }//GEN-LAST:event_buttonChangeMemberActionPerformed
+    private void buttonDeleteMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteMemberActionPerformed
+        Controller.delete();
+    }//GEN-LAST:event_buttonDeleteMemberActionPerformed
 
     private void comboBoxStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxStatusActionPerformed
         GUIm.comboBoxStatus();
@@ -2026,6 +2041,10 @@ public class DelfinGUI extends javax.swing.JFrame {
         Controller.collectTopFiveResults();
     }//GEN-LAST:event_buttonResultsActionPerformed
 
+    private void buttonChangeMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangeMemberActionPerformed
+         Controller.change();
+    }//GEN-LAST:event_buttonChangeMemberActionPerformed
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -2092,6 +2111,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     private javax.swing.JButton buttonChangeMember;
     private javax.swing.JButton buttonClearMemberInfoFields;
     private javax.swing.JButton buttonClose;
+    private javax.swing.JButton buttonDeleteMember;
     private javax.swing.JButton buttonEconomi;
     private javax.swing.JButton buttonMembers;
     private javax.swing.JButton buttonNewMember;
