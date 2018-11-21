@@ -22,7 +22,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Niels Bang
- * @author addResults martin b.
+ * @author martin b. addResults, collectTopFiveResults 
  */
 public class Controller {
 
