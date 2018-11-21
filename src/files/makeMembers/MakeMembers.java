@@ -31,7 +31,7 @@ public class MakeMembers {
     public void fillMemberFile() {
         // Add Lars Emil. There has to be at least one trainer
         addMember("Lars Emil", "le@delfinen.dk", "Ligustervej 23, 2956 Ligust", "", 23, 25254545, true);
-        for (int i = 0; i < 200; i++) {
+        for (int i = 0; i < 40; i++) {
             addMember("", "", "", "", 0, 0, false);
         }
     }
@@ -118,13 +118,9 @@ public class MakeMembers {
      */
     public void addResult() {
         for (int i = 0; i < dat.memberNumbersSize() - 1; i++) { //
-            ran = new randomNumbers((5));
-            float time = ran.getRandomFloat();
             LocalDateTime date = LocalDateTime.now();
             Member holder = null;
             String event = dat.getRandomPlace();
-            ran = new randomNumbers((15));
-            int place = ran.getRandom();
 
             String name = dat.getMemberName(i);
             Pattern pattern = Pattern.compile("(^\\{\"name\":\".+\",\"email\")|(,\"name\":\".+\",\"email\")");
@@ -148,9 +144,28 @@ public class MakeMembers {
                     e.printStackTrace();
                 }
                 try {
+                    ran = new randomNumbers((50));
+                    float time = ran.getRandomFloat();
+                    ran = new randomNumbers((15));
+                    int place = ran.getRandom();
                     data.addRecord(new Record(time, date, holder, event, Discipline.Brystsvømning, place));
+
+                    ran = new randomNumbers((50));
+                    time = ran.getRandomFloat();
+                    ran = new randomNumbers((15));
+                    place = ran.getRandom();
                     data.addRecord(new Record(time, date, holder, event, Discipline.Butterfly, place));
+
+                    ran = new randomNumbers((50));
+                    time = ran.getRandomFloat();
+                    ran = new randomNumbers((15));
+                    place = ran.getRandom();
                     data.addRecord(new Record(time, date, holder, event, Discipline.Crawl, place));
+
+                    ran = new randomNumbers((50));
+                    time = ran.getRandomFloat();
+                    ran = new randomNumbers((15));
+                    place = ran.getRandom();
                     data.addRecord(new Record(time, date, holder, event, Discipline.Rygcrawl, place));
                 } catch (DataException dataException) {
                 }
@@ -161,7 +176,7 @@ public class MakeMembers {
     }
 
     public static void main(String[] args) {
-//        new MakeMembers().fillMemberFile();
+        new MakeMembers().fillMemberFile();
         new MakeMembers().addResult();
     }
 }
