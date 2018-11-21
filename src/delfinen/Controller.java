@@ -22,7 +22,7 @@ import java.util.ArrayList;
 /**
  *
  * @author Niels Bang
- * @author martin b. addResults, collectTopFiveResults 
+ * @author martin b. addResults, collectTopFiveResults
  */
 public class Controller {
 
@@ -178,7 +178,7 @@ public class Controller {
             isCompetitive = true;
             disciplines = gui.getDisciplin();
             List<Member> trainers = findMembers(".*\"isCoach\":true\\}$");
-            ArrayList<String> names = new ArrayList<>();
+            List<String> names = new ArrayList<>();
             for (Member m : trainers) {
                 names.add(m.getName());
             }
@@ -308,7 +308,7 @@ public class Controller {
         } catch (DataException e) {
             guim.displayBoldRed("something went wrong.");
         }
-        
+
         /*
         try {
             for (Member member : data.searchMember(gui.getNavn())) {

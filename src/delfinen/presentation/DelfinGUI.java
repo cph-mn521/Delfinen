@@ -1617,7 +1617,7 @@ public class DelfinGUI extends javax.swing.JFrame {
 
     // #######################    SETTERS MEMBER #########################
     // ###################################################################
-    public void setDisciplinCheckBoxes(ArrayList<String> disciplinList) {
+    public void setDisciplinCheckBoxes(List<String> disciplinList) {
         for (String disciplin : disciplinList) {
             switch (disciplin) {
                 case ("Brystsvømning"):
@@ -1639,24 +1639,24 @@ public class DelfinGUI extends javax.swing.JFrame {
         }
     }
 
-    public void setDisciplinBryst(boolean disciplinBryst) {
+    public static void setDisciplinBryst(boolean disciplinBryst) {
         checkBoxDisciplinBryst.setSelected(disciplinBryst);
     }
 
-    public void setDisciplinButterfly(boolean disciplinButterfly) {
+    public static void setDisciplinButterfly(boolean disciplinButterfly) {
         checkBoxDisciplinButterfly.setSelected(disciplinButterfly);
     }
 
-    public void setDisciplinCrawl(boolean disciplinCrawl) {
-        this.checkBoxDisciplinCrawl.setSelected(disciplinCrawl);
+    public static void setDisciplinCrawl(boolean disciplinCrawl) {
+        checkBoxDisciplinCrawl.setSelected(disciplinCrawl);
     }
 
-    public void setDisciplinRygcrawl(boolean disciplinRygcrawl) {
-        this.checkBoxDisciplinRygcrawl.setSelected(disciplinRygcrawl);
+    public static void setDisciplinRygcrawl(boolean disciplinRygcrawl) {
+        checkBoxDisciplinRygcrawl.setSelected(disciplinRygcrawl);
     }
 
-    public void setMotionistKonkurrence(String MotionistKonkurrence) {
-        this.comboBoxMotionistKonkurrence.setSelectedItem(MotionistKonkurrence);
+    public static void setMotionistKonkurrence(String MotionistKonkurrence) {
+        comboBoxMotionistKonkurrence.setSelectedItem(MotionistKonkurrence);
     }
 
     public void setStatus(String statusAktivPassiv) {

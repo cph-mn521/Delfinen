@@ -41,6 +41,10 @@ public class DelfinGUImethods {
             textField.setText("");
             textField.setBackground(Color.pink);
         }
+//        setDisciplinBryst(false);
+//        setDisciplinButterfly(false);
+//        setDisciplinCrawl(false);
+//        setDisciplinRygcrawl(false);
     }
 
     /**
@@ -373,6 +377,7 @@ public class DelfinGUImethods {
                 tab.getSelectedColumn()).toString();
         ClearFieldToPink();
         textFieldNavn.setText(member);
+        DelfinGUI.setMotionistKonkurrence("Konkurrencesvømmer");
         Controller.search();
         menuSystemMembers(); // change to members layer
     }
