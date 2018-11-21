@@ -43,7 +43,7 @@ public class Controller {
      * Passes a list of trainers from data to guim, and activates the guim.
      */
     public static void init() {
-        gui.setTrainedBy(getTrainers());
+        gui.setTrainedBy(getTrainerNames());
         gui.setVisible(true);
 
     }
@@ -53,9 +53,9 @@ public class Controller {
      *
      * @return
      */
-    public static List<String> getTrainers() {
+    public static List<String> getTrainerNames() {
         List<String> trainers = new ArrayList<>();
-        List<Member> buffer = findMembers("\"isCoach\":true");
+        List<Member> buffer = findMembers(".*\"isCoach\":true\\}$");
         if (buffer == null || buffer.size() < 1) {
             trainers.add("Ingen trænere i systemet.");
         }
@@ -71,9 +71,9 @@ public class Controller {
     public static void addMember() {
         // Getting info from guim
         Member newMember = null;
-        String name = strFormatter(gui.getNavn());
-        String email = strFormatter(gui.getEmail());
-        String adress = strFormatter(gui.getAdresse());
+        String name = gui.getNavn();
+        String email = gui.getEmail();
+        String adress = gui.getAdresse();
         int id, age, phoneNumber;
         try {
             id = data.getMembers().size() + 1;
@@ -108,7 +108,7 @@ public class Controller {
             String sCoach = gui.getTrainedBy();
             Member coach = null;
             //Coach Check.
-            for (Member m : findMembers("\"isCoach\":true")) {
+            for (Member m : findMembers(".*\"isCoach\":true\\}$")) {
                 if (m.getName().equals(sCoach)) {
                     coach = m;
                     break;
@@ -177,22 +177,22 @@ public class Controller {
         if (aktivitet.equals("Konkurrencesvømmer")) {
             isCompetitive = true;
             disciplines = gui.getDisciplin();
-            List<Member> trainers = findMembers("\"isCoach\":true");
+            List<Member> trainers = findMembers(".*\"isCoach\":true\\}$");
             ArrayList<String> names = new ArrayList<>();
             for (Member m : trainers) {
                 names.add(m.getName());
             }
-            String coach = gui.getTrainedBy();
-            Coach = trainers.get(names.indexOf(coach));
+            String coachName = gui.getTrainedBy();
+            Coach = trainers.get(names.indexOf(coachName));
         }
 
         String name = gui.getNavn();
         String email = gui.getEmail();
         String address = gui.getAdresse();
         String isCoach = gui.getTrainer() + "";
-        Search.add(strFormatter(name));
-        Search.add(strFormatter(email));
-        Search.add(strFormatter(address));
+        Search.add(name);
+        Search.add(email);
+        Search.add(address);
         Search.add(gui.getID());
         Search.add(gui.getAlder());
         Search.add(gui.getTelefon());
@@ -277,8 +277,10 @@ public class Controller {
     }
 
     /**
-     * Klog og indsigtsgivende kommentar der grundtigt beskriver følgende
-     * funktion indsættes her.
+     * Method for handling results input fron the gui and passing data top the
+     * filesystem.
+     *
+     *
      */
     public static void addResult() {
 
@@ -374,24 +376,33 @@ public class Controller {
             gui.setAccountTextFieldAccountBank(Float.toString(acc.getBank()));
             gui.setAccountTextFieldExpectedBank(Float.toString(acc.getExpectedBank()));
             gui.setAccountTextFieldUnpaidSubscriptions(Integer.toString(acc.getMissingPayments()));
-            
+
         } catch (DataException e) {
-            e.printStackTrace();
+            if (DEBUG) {
+                e.printStackTrace();
+            }
         }
     }
-    
-    public static String SubscriptionValue(String Member){
+
+    /**
+     *
+     * @param Member
+     * @return
+     */
+    public static String SubscriptionValue(String Member) {
         String memberName = gui.getAccountTextFieldSelectedMemberPane();
         try {
             Member member = data.searchMember(memberName).get(0);
             Subscription sub = new Subscription(0, member);
             return Float.toString(sub.getPrice());
         } catch (DataException ex) {
-            
+
             guim.displayBoldRed("Der sket en fejl i udregning af ");
             guim.displayBoldBlack(Member);
-            guim.displayBoldRed("'s udestående for nuværende sæson.");
-            ex.printStackTrace();
+            guim.displayBoldRed("'s udestående for nuværende sæson.\n");
+            if (DEBUG) {
+                ex.printStackTrace();
+            }
             return " ";
         }
     }
@@ -412,7 +423,7 @@ public class Controller {
                 for (Subscription memSub : subs) {
                     if (memSub.getYear() == year) {
                         payed = true;
-                        
+
                     }
                 }
 
@@ -430,10 +441,12 @@ public class Controller {
             guim.displayBoldBlack(year + ".\n");
             ex.printStackTrace();
         }
-        
 
     }
 
+    /**
+     *
+     */
     public static void restancePerMember() {
         int year = Integer.parseInt(accountTextFieldAccountingYear.getText());
         String memberName = accountTextFieldSelectedMember.getText();
