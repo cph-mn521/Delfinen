@@ -1,6 +1,7 @@
 package delfinen.logic;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Class for keeping score on topFive recordholders
@@ -34,6 +35,15 @@ public class TopFive {
      * @param timeHolder
      */
     public void checkAndChangetopFive(double time, String timeHolder) {
+        int counter = 0;
+        for (double topFiveTime : topFiveTimes) {
+            if (topFiveTime == 0.0) {
+                counter++;
+            }
+        }
+        if (counter==5) {
+            Arrays.fill(topFiveTimes, 600.0);
+        }
         if (timeHolder != null && !timeHolder.isEmpty()) {
             boolean notDuplicate = true;
             for (String[] strings : topFive) {
@@ -42,13 +52,19 @@ public class TopFive {
                 }
             }
             for (int i = 4; i >= 0; i--) {
-                if (time > topFiveTimes[i] && i < 4 && notDuplicate) {
-                    topFiveTimes[i + 1] = topFiveTimes[i]; // time as double
-                    topFive[0][i + 1] = topFive[0][i]; // time holder
-                    topFive[1][i + 1] = topFive[1][i]; // time as string
-                    topFiveTimes[i] = time;
-                    topFive[0][i] = String.valueOf(time);
-                    topFive[1][i] = timeHolder;
+                if (time < topFiveTimes[i] && notDuplicate) {
+                    if (i == 4) {
+                        topFiveTimes[i] = time;
+                        topFive[0][i] = String.valueOf(String.format("%.5s",time));
+                        topFive[1][i] = timeHolder;
+                    } else {
+                        topFiveTimes[i + 1] = topFiveTimes[i]; // time as double
+                        topFive[0][i + 1] = topFive[0][i]; // time holder
+                        topFive[1][i + 1] = topFive[1][i]; // time as string
+                        topFiveTimes[i] = time;
+                        topFive[0][i] = String.valueOf(String.format("%.5s",time));
+                        topFive[1][i] = timeHolder;
+                    }
                 }
             }
         }

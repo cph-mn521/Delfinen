@@ -220,7 +220,7 @@ public class Controller {
                     gui.setTelefon(m.getPhone());
                     try { // write records for searched member
                         if (data.searchRecord(m.getName()).size() > 0) {
-                            guim.displayBoldBlack("Disciplin: \tTid: \tDato: \t\tStævne: \t\tPlacering: \n");
+                            guim.displayBoldBlack(String.format("%-17s %-6s %-18s %-30s %-12s", "Disciplin:", "Tid:", "Dato:", "Stævne:", "Placering:"));
                             for (Record rec : data.searchRecord(m.getName())) {
                                 guim.displayPlainBlue(rec.toString() + '\n');
                             }

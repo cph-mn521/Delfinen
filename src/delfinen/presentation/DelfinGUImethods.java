@@ -24,10 +24,10 @@ import javax.swing.text.StyledDocument;
  */
 public class DelfinGUImethods {
 
-    Font FONT_NOTOSANS_PLAIN_12 = new Font("notosans", Font.PLAIN, 12);
-    Font FONT_NOTOSANS_BOLD_12 = new Font("notosans", Font.BOLD, 12);
-    Font FONT_NOTOSANS_ITALIC_12 = new Font("notosans", Font.ITALIC, 12);
-    Font FONT_NOTOSANS_BOLD_ITALIC_12 = new Font("notosans", Font.BOLD + Font.ITALIC, 12);
+    Font FONT_NOTOSANS_PLAIN_12 = new Font("monospaced", Font.PLAIN, 12);
+    Font FONT_NOTOSANS_BOLD_12 = new Font("monospaced", Font.BOLD, 12);
+    Font FONT_NOTOSANS_ITALIC_12 = new Font("monospaced", Font.ITALIC, 12);
+    Font FONT_NOTOSANS_BOLD_ITALIC_12 = new Font("monospaced", Font.BOLD + Font.ITALIC, 12);
 
     /**
      * ************************************************************************************
@@ -126,14 +126,35 @@ public class DelfinGUImethods {
 
     public void menuSystemResults(String[][] rygCrawl, String[][] crawl,
             String[][] brystSvoemning, String[][] butterfly) {
+        //Cleanup long float digits
+        for (int i = 0; i < 5; i++) {
+            rygCrawl[0][i]=String.format("%.5s", rygCrawl[0][i]);
+        }
+        
+        for (int i = 0; i < 5; i++) {
+            crawl[0][i]=String.format("%.5s", crawl[0][i]);
+        }
+        
+        for (int i = 0; i < 5; i++) {
+            brystSvoemning[0][i]=String.format("%.5s", brystSvoemning[0][i]);
+        }
+        
+        for (int i = 0; i < 5; i++) {
+            butterfly[0][i]=String.format("%.5s", butterfly[0][i]);
+        }
+        
         CardLayout card = (CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelResults");
 
         for (int j = 0; j < 5; j++) {
             resultsTableTopFem.setValueAt(rygCrawl[1][j], j, 0);
-            resultsTableTopFem.setValueAt(crawl[1][j], j, 1);
-            resultsTableTopFem.setValueAt(brystSvoemning[1][j], j, 2);
-            resultsTableTopFem.setValueAt(butterfly[1][j], j, 3);
+            resultsTableTopFem.setValueAt(rygCrawl[0][j], j, 1);
+            resultsTableTopFem.setValueAt(crawl[1][j], j, 2);
+            resultsTableTopFem.setValueAt(crawl[0][j], j, 3);
+            resultsTableTopFem.setValueAt(brystSvoemning[1][j], j, 4);
+            resultsTableTopFem.setValueAt(brystSvoemning[0][j], j, 5);
+            resultsTableTopFem.setValueAt(butterfly[1][j], j, 6);
+            resultsTableTopFem.setValueAt(butterfly[0][j], j, 7);
         }
     }
 
