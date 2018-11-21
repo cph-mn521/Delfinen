@@ -318,7 +318,9 @@ public class Controller {
             if (holder.isCompetitive()) {
                 data.addRecord(new Record(time, date, holder, event, discipline, place));
                 guim.displayPlainBlack("Resultat oprettet\n");
-            }else throw new DataException("Medlemmet er ikke Konkurencesvømmer");
+            } else {
+                throw new DataException("Medlemmet er ikke Konkurencesvømmer");
+            }
         } catch (DataException e) {
             guim.displayBoldRed("Fejl - Ny resultat ikke oprettet.\n");
             guim.displayBoldRed(e.getMessage());
@@ -332,6 +334,7 @@ public class Controller {
      * Method for formatting Strings to a known format. Takes a string and
      * capitalizes the first letter of every word.
      *
+     * @deprecated Not in use.
      * @param str The String to be formattet.
      * @return The formatted String.
      */
