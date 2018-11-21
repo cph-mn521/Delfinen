@@ -245,10 +245,14 @@ public class Controller {
     public static void change() {
         List<Member> members = findMembers(",\"id\":" + gui.getID() + ",");
         Member old = null;
+        CompetitiveMember oldComp = null;
         if (members == null || members.size() > 1) {
 
         } else {
             old = members.get(0);
+            if(old.isCompetitive()){
+                oldComp = (CompetitiveMember)old;
+            }
         }
 
         int id, age, phone;
