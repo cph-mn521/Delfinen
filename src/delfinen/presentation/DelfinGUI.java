@@ -1741,7 +1741,7 @@ public class DelfinGUI extends javax.swing.JFrame {
     public void setAccountTextFieldUnpaidSubscriptions(String accountTextFieldUnpaidSubscriptions) {
         this.accountTextFieldUnpaidSubscriptions.setText(accountTextFieldUnpaidSubscriptions);
     }
-    
+
     //  #######################    RESULTS  ####################################
     //  #######################    SETTERS/GETTERS  ############################
     //  ########################################################################
@@ -1754,8 +1754,6 @@ public class DelfinGUI extends javax.swing.JFrame {
 //        data[row][col] = value;
 //        fireTableCellUpdated(row, col);
 //    }
-
-    
     // #######################      ###############################
     //#######################    DISPLAY ACCOUNTING ############################
     // #########################################################################
@@ -1840,8 +1838,9 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSystemAccountActionPerformed
 
     private void buttonSearchMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSearchMemberActionPerformed
-        GUIm.displayBoldBlack("Ny søgning:\n");
+        GUIm.displayBoldBlack("\nNy søgning:\n");
         Controller.search();
+
     }//GEN-LAST:event_buttonSearchMemberActionPerformed
 
     private void buttonChangeMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangeMemberActionPerformed
@@ -1869,7 +1868,9 @@ public class DelfinGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldEmailFocusLost
 
     private void buttonNewResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultActionPerformed
-        GUIm.buttonNewResult();
+        if (getMotionKonkurrence().equals("konkurrencesvømmer")) {
+            GUIm.buttonNewResult();
+        }
     }//GEN-LAST:event_buttonNewResultActionPerformed
 
     private void buttonNewResultsCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNewResultsCloseActionPerformed
