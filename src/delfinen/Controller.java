@@ -71,9 +71,9 @@ public class Controller {
     public static void addMember() {
         // Getting info from guim
         Member newMember = null;
-        String name = strFormatter(gui.getNavn());
-        String email = strFormatter(gui.getEmail());
-        String adress = strFormatter(gui.getAdresse());
+        String name = gui.getNavn();
+        String email = gui.getEmail();
+        String adress = gui.getAdresse();
         int id, age, phoneNumber;
         try {
             id = data.getMembers().size() + 1;
@@ -190,9 +190,9 @@ public class Controller {
         String email = gui.getEmail();
         String address = gui.getAdresse();
         String isCoach = gui.getTrainer() + "";
-        Search.add(strFormatter(name));
-        Search.add(strFormatter(email));
-        Search.add(strFormatter(address));
+        Search.add(name);
+        Search.add(email);
+        Search.add(address);
         Search.add(gui.getID());
         Search.add(gui.getAlder());
         Search.add(gui.getTelefon());
@@ -384,6 +384,11 @@ public class Controller {
         }
     }
 
+    /**
+     *
+     * @param Member
+     * @return
+     */
     public static String SubscriptionValue(String Member) {
         String memberName = gui.getAccountTextFieldSelectedMemberPane();
         try {
@@ -439,6 +444,9 @@ public class Controller {
 
     }
 
+    /**
+     *
+     */
     public static void restancePerMember() {
         int year = Integer.parseInt(accountTextFieldAccountingYear.getText());
         String memberName = accountTextFieldSelectedMember.getText();

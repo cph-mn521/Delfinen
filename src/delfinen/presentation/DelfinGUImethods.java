@@ -173,8 +173,8 @@ public class DelfinGUImethods {
      */
     public void textFieldAlder() {
 
-        if (!textFieldAlder.getText().isEmpty() && Integer.parseInt(textFieldAlder.getText()) < 0
-                || Integer.parseInt(textFieldAlder.getText()) > 120) {
+        if (!textFieldAlder.getText().isEmpty() && (Integer.parseInt(textFieldAlder.getText()) < 0
+                || Integer.parseInt(textFieldAlder.getText()) > 120)) {
             textFieldAlder.setBackground(Color.red);
             textFieldAlder.setForeground(Color.white);
         } else {
