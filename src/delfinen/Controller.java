@@ -315,10 +315,13 @@ public class Controller {
         }
 
         try {
-            data.addRecord(new Record(time, date, holder, event, discipline, place));
-            guim.displayPlainBlack("Resultat oprettet\n");
+            if (holder.isCompetitive()) {
+                data.addRecord(new Record(time, date, holder, event, discipline, place));
+                guim.displayPlainBlack("Resultat oprettet\n");
+            }else throw new DataException("Medlemmet er ikke Konkurencesvømmer");
         } catch (DataException e) {
             guim.displayBoldRed("Fejl - Ny resultat ikke oprettet.\n");
+            guim.displayBoldRed(e.getMessage());
             if (DEBUG) {
                 e.printStackTrace();
             }
