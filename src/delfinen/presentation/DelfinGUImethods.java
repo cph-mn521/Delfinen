@@ -378,6 +378,14 @@ public class DelfinGUImethods {
         ClearFieldToPink();
         textFieldNavn.setText(member);
         DelfinGUI.setMotionistKonkurrence("Konkurrencesvømmer");
+        for (String trainerName : Controller.getTrainerNames()) {
+            if(trainerName.equals(member)){
+                checkBoxTrainer.setSelected(true);
+            } else{
+                
+                checkBoxTrainer.setSelected(false);
+            }
+        }
         Controller.search();
         menuSystemMembers(); // change to members layer
     }
