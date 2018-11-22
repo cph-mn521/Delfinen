@@ -36,13 +36,9 @@ public class Accountant {
         this.MissingPayments = Members.size() - Budget.size();
         this.Bank = calcBudget();
         this.Debitors = Restance();
-        switch (MissingPayments) {
-            case 0:
-                this.ExpectedBank = this.Bank;
-                break;
-            default:
-                this.ExpectedBank = this.Bank + calcExpectedBank();
-        }
+        if(MissingPayments!=0) this.ExpectedBank = calcExpectedBank();
+        else this.ExpectedBank=this.Bank;
+        
     }
 
     /**
@@ -67,9 +63,9 @@ public class Accountant {
      */
     private float calcExpectedBank() {
         float runsum = 0;
-        for (Member Debitor : Debitors) {
-            if (Debitor != null) { // added check for nulldom
-                runsum += new Subscription(0, Debitor).getPrice();
+        for (Member m : this.Members) {
+            if (m != null) { // added check for nulldom
+                runsum += new Subscription(0, m).getPrice();
             }
         }
         return runsum;
