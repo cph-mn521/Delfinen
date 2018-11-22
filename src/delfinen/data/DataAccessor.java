@@ -1,7 +1,6 @@
 package delfinen.data;
 
 
-import delfinen.logic.Member;
 import java.util.List;
 
 

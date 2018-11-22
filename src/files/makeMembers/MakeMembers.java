@@ -31,7 +31,8 @@ public class MakeMembers {
     public void fillMemberFile() {
         // Add Lars Emil. There has to be at least one trainer
         addMember("Lars Emil", "le@delfinen.dk", "Ligustervej 23, 2956 Ligust", "", 23, 25254545, true);
-        for (int i = 0; i < 40; i++) {
+        addMember("Hans Egen", "hans_egen@delfinen.dk", "Ligustervej 99, 2956 Ligust", "Lars Emil", 35, 25257890, false);
+        for (int i = 0; i < 25; i++) {
             addMember("", "", "", "", 0, 0, false);
         }
     }

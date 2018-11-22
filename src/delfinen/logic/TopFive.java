@@ -1,7 +1,6 @@
 package delfinen.logic;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * Class for keeping score on topFive recordholders
@@ -30,7 +29,8 @@ public class TopFive {
     }
 
     /**
-     *
+     *  Method that keeps score of the Top 5 swimmers and the time they'ved clocked in
+     * 
      * @param time
      * @param timeHolder
      */
@@ -42,7 +42,8 @@ public class TopFive {
             }
         }
         if (counter==5) {
-            Arrays.fill(topFiveTimes, 600.0);
+            Arrays.fill(topFiveTimes, 600.0); // initial start values. Should be higher than
+                                              // expected competition times
         }
         if (timeHolder != null && !timeHolder.isEmpty()) {
             boolean notDuplicate = true;

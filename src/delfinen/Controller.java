@@ -18,11 +18,13 @@ import static delfinen.presentation.DelfinGUI.accountTextFieldSelectedMember;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Niels Bang
- * @author addResults martin b.
+ * @author martin b. addResults, collectTopFiveResults
  */
 public class Controller {
 
@@ -178,7 +180,7 @@ public class Controller {
             isCompetitive = true;
             disciplines = gui.getDisciplin();
             List<Member> trainers = findMembers(".*\"isCoach\":true\\}$");
-            ArrayList<String> names = new ArrayList<>();
+            List<String> names = new ArrayList<>();
             for (Member m : trainers) {
                 names.add(m.getName());
             }
@@ -263,11 +265,63 @@ public class Controller {
             guim.displayPlainRed("Fejl i indtastet data! - Prøv igen.\n");
             return;
         }
+        ArrayList<Discipline> dis = new ArrayList<>();
+        dis.add(Discipline.Brystsvømning);
+        dis.add(Discipline.Butterfly);
+        dis.add(Discipline.Crawl);
+        dis.add(Discipline.Rygcrawl);
         Member.Status status = Member.Status.valueOf(gui.getStatus());
-        Member N = new Member(gui.getNavn(), gui.getEmail(), gui.getAdresse(), id, age, phone, status, gui.getTrainer());
+        if (gui.getMotionKonkurrence().equals("Konkurrencesvømmer")) {
+            try {
+                List<Member> trainers = findMembers(".*\"isCoach\":true\\}$");
+                List<String> names = new ArrayList<>();
+                for (Member m : trainers) {
+                    names.add(m.getName());
+                }
+                String coachName = gui.getTrainedBy();
+                Member Coach = trainers.get(names.indexOf(coachName));
+                CompetitiveMember newCompMember = new CompetitiveMember(gui.getNavn(),
+                        gui.getEmail(), gui.getAdresse(), id, age, phone,
+                        status, dis, gui.checkBoxTrainer.isSelected(), Coach);
+                try {
+                    data.editMember(old, newCompMember);
+                } catch (DataException ex) {
+                    if (DEBUG) {
+                        ex.printStackTrace();
+                    }
+                }
+            } catch (CoachNotFoundException ex) {
+                if (DEBUG) {
+                    ex.printStackTrace();
+                }
+            }
+        } else {
+            try {
+                Member N = new Member(gui.getNavn(), gui.getEmail(), gui.getAdresse(), id, age, phone, status, gui.getTrainer());
+                data.editMember(old, N);
+            } catch (DataException ex) {
+                if (DEBUG) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /**
+     * Method for retrieving a member by ID from the gui, and deleting that
+     * member in the filesystem. Modified change() method.
+     */
+    public static void delete() {
+        List<Member> members = findMembers(",\"id\":" + gui.getID() + ",");
+        Member old = null;
+        if (members == null || members.size() > 1) {
+
+        } else {
+            old = members.get(0);
+        }
 
         try {
-            data.editMember(old, N);
+            data.editMember(old, null);
         } catch (DataException e) {
             if (DEBUG) {
                 e.printStackTrace();
@@ -308,7 +362,7 @@ public class Controller {
         } catch (DataException e) {
             guim.displayBoldRed("something went wrong.");
         }
-        
+
         /*
         try {
             for (Member member : data.searchMember(gui.getNavn())) {

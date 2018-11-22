@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package delfinen.data;
+    package delfinen.data;
 
-import delfinen.logic.Member;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -134,7 +128,7 @@ public class DataAccessorFile implements DataAccessor {
             String lines = "";
             BufferedWriter writer = new BufferedWriter(new FileWriter(FileName)); //Append when file exists, make when false
             for (String string : newFile) {
-                if (string.equals(old)) {
+                if (string.length()>7 && string.contains(old.substring(3, old.length()-3))) { //changed equals -> contains to handle compmembers
                     lines += N + "\r\n";
                 } else {
                     lines += string + "\r\n";
