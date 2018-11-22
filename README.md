@@ -4,3 +4,5 @@
 
 Delfinen is a piece of software written in java, that manages a sportsclubs members, economy and results.
 by BBW software
+
+For it to be able to compile you need the GSON 2.8.5 library. It's included in the Lib folder.
