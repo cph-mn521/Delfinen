@@ -59,6 +59,34 @@ public class DelfinGUImethods {
     /**
      *
      */
+    public void buttonChangeMember() {
+        okCancelLabelAction.setText("ændre");
+        okCancelButtonbuttonOK.setText("Ja, ændre medlem");
+        okCancelDialog.setAlwaysOnTop(true);
+        okCancelDialog.setVisible(true);
+    }
+
+    /**
+     *
+     */
+    public void buttonDeleteMember() {
+        okCancelLabelAction.setText("slette");
+        okCancelButtonbuttonOK.setText("Ja, slet medlem");
+        okCancelDialog.setAlwaysOnTop(true);
+        okCancelDialog.setVisible(true);
+    }
+
+    /**
+     *
+     */
+    public void buttonCloseOkCancel() {
+        okCancelDialog.setAlwaysOnTop(false);
+        okCancelDialog.setVisible(false);
+    }
+
+    /**
+     *
+     */
     public void buttonNewResultsClose() {
         dialogNewResults.setAlwaysOnTop(false);
         dialogNewResults.setVisible(false);
@@ -132,21 +160,21 @@ public class DelfinGUImethods {
             String[][] brystSvoemning, String[][] butterfly) {
         //Cleanup long float digits
         for (int i = 0; i < 5; i++) {
-            rygCrawl[0][i]=String.format("%.5s", rygCrawl[0][i]);
+            rygCrawl[0][i] = String.format("%.5s", rygCrawl[0][i]);
         }
-        
+
         for (int i = 0; i < 5; i++) {
-            crawl[0][i]=String.format("%.5s", crawl[0][i]);
+            crawl[0][i] = String.format("%.5s", crawl[0][i]);
         }
-        
+
         for (int i = 0; i < 5; i++) {
-            brystSvoemning[0][i]=String.format("%.5s", brystSvoemning[0][i]);
+            brystSvoemning[0][i] = String.format("%.5s", brystSvoemning[0][i]);
         }
-        
+
         for (int i = 0; i < 5; i++) {
-            butterfly[0][i]=String.format("%.5s", butterfly[0][i]);
+            butterfly[0][i] = String.format("%.5s", butterfly[0][i]);
         }
-        
+
         CardLayout card = (CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelResults");
 
@@ -379,10 +407,10 @@ public class DelfinGUImethods {
         textFieldNavn.setText(member);
         DelfinGUI.setMotionistKonkurrence("Konkurrencesvømmer");
         for (String trainerName : Controller.getTrainerNames()) {
-            if(trainerName.equals(member)){
+            if (trainerName.equals(member)) {
                 checkBoxTrainer.setSelected(true);
-            } else{
-                
+            } else {
+
                 checkBoxTrainer.setSelected(false);
             }
         }
