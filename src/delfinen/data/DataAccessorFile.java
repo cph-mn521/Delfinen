@@ -1,4 +1,4 @@
-package delfinen.data;
+    package delfinen.data;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -128,7 +128,7 @@ public class DataAccessorFile implements DataAccessor {
             String lines = "";
             BufferedWriter writer = new BufferedWriter(new FileWriter(FileName)); //Append when file exists, make when false
             for (String string : newFile) {
-                if (string.contains(old)) { //changed equals -> contains to handle compmembers
+                if (string.contains(old.substring(3, old.length()-3))) { //changed equals -> contains to handle compmembers
                     lines += N + "\r\n";
                 } else {
                     lines += string + "\r\n";
