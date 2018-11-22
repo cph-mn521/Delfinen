@@ -36,8 +36,8 @@ public class TopFiveTest {
 
     /**
      * Test of getTopFive method, of class TopFive.
-     * Initial values (time and name) is entered through method checkAndChangetopFive
-     * Afterwards result can be read from getTopFive.
+     * Initial values (time [double] and name [String]) are entered through method checkAndChangetopFive
+     * Afterwards result can be read from getTopFive (time [String] and name [String])
      */
     @Test
     public void testGetTopFive() {

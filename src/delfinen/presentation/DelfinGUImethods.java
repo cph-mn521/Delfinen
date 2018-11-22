@@ -19,7 +19,8 @@ import javax.swing.text.StyledDocument;
 
 /**
  * Methods from GUI placed here for "easier" perusing
- *
+ * Next version should be a methods file for each layer in DelfinGUI for even
+ * easier perusing
  * @author martin b.
  */
 public class DelfinGUImethods {
@@ -34,21 +35,17 @@ public class DelfinGUImethods {
      * button methods
      */
     /**
-     *
+     * members site clears input fields to pink
      */
     public void ClearFieldToPink() {
         for (JTextField textField : textFields) {
             textField.setText("");
             textField.setBackground(Color.pink);
         }
-//        setDisciplinBryst(false);
-//        setDisciplinButterfly(false);
-//        setDisciplinCrawl(false);
-//        setDisciplinRygcrawl(false);
     }
 
     /**
-     *
+     * members site code for when Add results is pressed
      */
     public void buttonNewResult() {
         dialogNewResults.setAlwaysOnTop(true);
@@ -57,7 +54,7 @@ public class DelfinGUImethods {
     }
 
     /**
-     *
+     * members site code for when change member is pressed
      */
     public void buttonChangeMember() {
         okCancelLabelAction.setText("ændre");
@@ -67,7 +64,7 @@ public class DelfinGUImethods {
     }
 
     /**
-     *
+     * members site code for when delete member is pressed
      */
     public void buttonDeleteMember() {
         okCancelLabelAction.setText("slette");
@@ -77,7 +74,7 @@ public class DelfinGUImethods {
     }
 
     /**
-     *
+     * members site - delete/change member dialog code for when close is pressed
      */
     public void buttonCloseOkCancel() {
         okCancelDialog.setAlwaysOnTop(false);
@@ -85,7 +82,7 @@ public class DelfinGUImethods {
     }
 
     /**
-     *
+     * members site - new results dialog code for when close button is pressed
      */
     public void buttonNewResultsClose() {
         dialogNewResults.setAlwaysOnTop(false);
@@ -93,12 +90,10 @@ public class DelfinGUImethods {
     }
 
     /**
-     *
+     * membersite - new results dialog code for when send result is pressed
      */
     public void buttonNewResultsSendData() {
-//        dialogNewResults.setAlwaysOnTop(false);
         Controller.addResult();
-//        dialogNewResults.setVisible(false);
 
     }
 
@@ -107,7 +102,7 @@ public class DelfinGUImethods {
      * comboBox methods
      */
     /**
-     *
+     * members site sets several combobox, labels and panels to hide or show
      */
     public void comboBoxMotionistKonkurrence() {
         if (comboBoxMotionistKonkurrence.getSelectedItem().equals("Konkurrencesvømmer")) {
@@ -123,6 +118,10 @@ public class DelfinGUImethods {
         }
     }
 
+    /**
+     * members site
+     * sets several combobox, labels and panels to hide or show
+     */
     public void comboBoxStatus() {
         if (comboBoxStatus.getSelectedItem().equals("Aktiv")) {
             comboBoxMotionistKonkurrence.setVisible(true);
@@ -144,18 +143,24 @@ public class DelfinGUImethods {
      * Menu
      */
     /**
-     * When Resultater is pressed
+     * menu System When Resultater is pressed
      */
     public void menuSystemMembers() {
         CardLayout card = (CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelMembers");
     }
 
+    /**
+     * menu System When Kassen is pressed
+     */
     public void menuSystemAccount() {
         CardLayout card = (CardLayout) panelMain.getLayout();
         card.show(panelMain, "panelAccount");
     }
 
+    /**
+     * menu System When Resultater is pressed
+     */
     public void menuSystemResults(String[][] rygCrawl, String[][] crawl,
             String[][] brystSvoemning, String[][] butterfly) {
         //Cleanup long float digits
@@ -195,6 +200,7 @@ public class DelfinGUImethods {
      * List Account methods
      */
     /**
+     * accouting site
      * input check, Regex for address
      */
     public void accountListDebitor() {
@@ -210,6 +216,7 @@ public class DelfinGUImethods {
      * textfield Member methods
      */
     /**
+     * members site
      * input check, Regex for address
      */
     public void textFieldAdresse() {
@@ -222,6 +229,7 @@ public class DelfinGUImethods {
     }
 
     /**
+     * members site
      * input check, Regex for address
      */
     public void textFieldAlder() {
@@ -238,6 +246,7 @@ public class DelfinGUImethods {
     }
 
     /**
+     * members site
      * input check, Regex for email
      */
     public void textFieldEmail() {
@@ -251,6 +260,7 @@ public class DelfinGUImethods {
     }
 
     /**
+     * members site
      * input check, Regex for ID
      */
     public void textFieldID() {
@@ -266,6 +276,7 @@ public class DelfinGUImethods {
     }
 
     /**
+     * members site
      * input check, Regex for name
      */
     public void textFieldNavn() {
@@ -278,6 +289,7 @@ public class DelfinGUImethods {
     }
 
     /**
+     * members site
      * input check, Regex for Telephone
      */
     public void textFieldTelefon() {
@@ -294,7 +306,8 @@ public class DelfinGUImethods {
      *
      */
     /**
-     *
+     * members site - new results
+     * set colour and put in now as date and time
      */
     public void textField_FocusGained_NewResultsDate() {
         textFieldNewResultsClearWhiteBackground(textFieldNewResultsDate);
@@ -302,6 +315,7 @@ public class DelfinGUImethods {
     }
 
     /**
+     * members site - new results
      * input check, Regex for Date
      */
     public void textFieldNewResultsDate() {
@@ -313,13 +327,15 @@ public class DelfinGUImethods {
     }
 
     /**
-     *
+     * members site - new results
+     * clears chosen event
      */
     public void textField_FocusGained_NewResultsEvent() {
         textFieldNewResultsClearWhiteBackground(textFieldNewResultsEvent);
     }
 
     /**
+     * members site - new results
      * input check, Regex for Event
      */
     public void textFieldNewResultsEvent() {
@@ -331,13 +347,15 @@ public class DelfinGUImethods {
     }
 
     /**
-     *
+     * members site - new results
+     * clears chosen ranking
      */
     public void textField_FocusGained_NewResultsPlace() {
         textFieldNewResultsClearWhiteBackground(textFieldNewResultsPlace);
     }
 
     /**
+     * members site
      * input check, Regex for Ranking
      */
     public void textFieldNewResultsPlace() {
@@ -357,13 +375,15 @@ public class DelfinGUImethods {
     }
 
     /**
-     *
+     * members site
+     * clears textfield
      */
     public void textField_FocusGained_NewResultsTime() {
         textFieldNewResultsClearWhiteBackground(textFieldNewResultsTime);
     }
 
     /**
+     * members site
      * input check, Regex for Time
      */
     public void textFieldNewResultsTime() {
@@ -383,7 +403,7 @@ public class DelfinGUImethods {
     }
 
     /**
-     *
+     * resetting textfields
      */
     public void textFieldNewResultsClearWhiteBackground(JTextField tf) {
         tf.setText("");
@@ -397,7 +417,8 @@ public class DelfinGUImethods {
      *
      */
     /**
-     *
+     * change to member page when name is pressed
+     * and sets some attributes before searching
      */
     public void changeToMemberAndSearch() {
         JTable tab = resultsTableTopFem;
@@ -423,6 +444,11 @@ public class DelfinGUImethods {
      * Tools
      *
      */
+    /**
+     * 
+     * @param format
+     * @return the time of now in chosen format
+     */
     public String formatDate(String format) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(format);
         LocalDateTime dateTime = LocalDateTime.now();
@@ -430,6 +456,11 @@ public class DelfinGUImethods {
         return formattedDateTime;
     }
 
+    /**
+     * 
+     * several different types of fonts
+     * for member info box in members site
+     */
     public void displayPlainBlack(String text) {
         displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_PLAIN_12, Color.black);
     }
@@ -462,6 +493,13 @@ public class DelfinGUImethods {
         displayFormatedText(textPaneMedlemsInfo, text, FONT_NOTOSANS_BOLD_12, Color.blue);
     }
 
+    /**
+     * display formatted text in chosen font, colour and location
+     * @param tp -> location
+     * @param txt -> printed text
+     * @param font -> chosen font
+     * @param color -> chosen colour
+     */
     public void displayFormatedText(JTextPane tp, String txt, Font font, Color color) {
 
         StyledDocument doc = (StyledDocument) tp.getDocument();
@@ -472,6 +510,12 @@ public class DelfinGUImethods {
         }
     }
 
+    /**
+     * return attributes for formatting text needed by displayFormatedText()
+     * @param font, chosen font
+     * @param color, chosen colour
+     * @return type SimpleAttributeSet used in displayFormatedText()
+     */
     public SimpleAttributeSet displayFormat(Font font, Color color) {
         SimpleAttributeSet sAS = new SimpleAttributeSet();
 
@@ -484,10 +528,20 @@ public class DelfinGUImethods {
         return sAS;
     }
 
+    /**
+     * clear text in chosen textpane
+     * @param tp 
+     */
     public void clearFormatedText(JTextPane tp) {
         tp.setText("");
     }
 
+    /**
+     * check patterns in chosen textfield and sets colors in textfields accordingly
+     * @param regex
+     * @param tf, textfield
+     * @return, both set color and returns boolean
+     */
     public boolean regexUserInfoBackGroundColorSet(String regex, JTextField tf) {
         // check user input and set background accordingly
         Pattern pattern = Pattern.compile(regex);
@@ -496,12 +550,10 @@ public class DelfinGUImethods {
             tf.setBackground(Color.red);
 
             tf.setForeground(Color.white);
-//            displayFormatedText(DelfinGUI.textPaneMedlemsInfo, err, FONT_NOTOSANS_PLAIN_12, Color.RED);
             return false;
         } else {
             tf.setBackground(Color.white);
             tf.setForeground(Color.black);
-//            clearFormatedText(DelfinGUI.textPaneMedlemsInfo);
 
             return true;
         }
