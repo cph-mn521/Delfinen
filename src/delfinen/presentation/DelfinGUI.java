@@ -448,6 +448,7 @@ public class DelfinGUI extends javax.swing.JFrame {
         okCancelDialog.setMaximumSize(new java.awt.Dimension(292, 222));
         okCancelDialog.setMinimumSize(new java.awt.Dimension(292, 222));
         okCancelDialog.setModal(true);
+        okCancelDialog.setPreferredSize(new java.awt.Dimension(292, 222));
         okCancelDialog.setResizable(false);
 
         okCancelPanel.setMaximumSize(new java.awt.Dimension(287, 178));
@@ -2146,9 +2147,10 @@ public class DelfinGUI extends javax.swing.JFrame {
                 break;
 
             default:
-                GUIm.menuSystemMembers();
+                GUIm.buttonCloseOkCancel();
 
         }
+        GUIm.buttonCloseOkCancel();
     }//GEN-LAST:event_okCancelButtonbuttonOKActionPerformed
 
     private void okCancelButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okCancelButtonCancelActionPerformed
