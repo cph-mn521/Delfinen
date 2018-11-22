@@ -1,7 +1,6 @@
 package delfinen.presentation;
 
-import java.awt.Color;
-import java.util.ArrayList;
+import static delfinen.Controller.getTrainerNames;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,7 +14,11 @@ import static org.junit.Assert.*;
  */
 public class DelfinGUITest {
 
+    DelfinGUI GUI = new DelfinGUI();                // GUIen
+    DelfinGUImethods GUIm = new DelfinGUImethods(); // og dens metoder
+
     public DelfinGUITest() {
+
     }
 
     @BeforeClass
@@ -28,6 +31,14 @@ public class DelfinGUITest {
 
     @Before
     public void setUp() {
+        //opret ny bruger til brug ved tests
+        GUIm.menuSystemMembers();                       // gå til medlemsside
+        GUIm.ClearFieldToPink();                        // tøm evt felter
+        GUI.setNavn("Hans Egen");                       // Sæt Hans Egen i søgefelt
+        GUI.setTrainedBy(getTrainerNames());
+        GUI.setVisible(true);
+        GUI.setNavn("Hans Egen");                       // Sæt Hans Egen i søgefelt
+//        Controller.search();                            // Søg
     }
 
     @After
@@ -35,173 +46,59 @@ public class DelfinGUITest {
     }
 
     @Test
-    public void testStatus() {
+    public void testStatusofMemberAfterSearch() {
         System.out.println("getStatus");
-        DelfinGUI instance = new DelfinGUI();
-        String expResult = "Aktiv";
-        String result = instance.getStatus();
+        String expResult = "Active";
+        String result = GUI.getStatus();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testMotionistKonkurrence() {
+    public void testCasualorCompetitionswimmerStatusofMemberAfterSearch() {
         System.out.println("getMotionistKonkurrence");
-        DelfinGUI instance = new DelfinGUI();
         String expResult = "Konkurrencesvømmer";
-        String result = instance.getMotionKonkurrence();
+        String result = GUI.getMotionKonkurrence();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testGetMemberPhoto() {
-        System.out.println("getMemberPhoto");
-        DelfinGUI instance = new DelfinGUI();
-        int expResult = 1;
-        int result = instance.getMemberPhoto();
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testSetMemberPhoto() {
-        System.out.println("setMemberPhoto");
-        DelfinGUI instance = new DelfinGUI();
-        int expResult = 2;
-        instance.setMemberPhoto(2);
-        int result = instance.getMemberPhoto();
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testDisciplin() {
-        System.out.println("getDisciplin");
-        DelfinGUI instance = new DelfinGUI();
-        ArrayList<String> expResult = new ArrayList<>();
-        expResult.add("Butterfly");
-        expResult.add("Rygcrawl");
-        ArrayList<String> result;
-        result = instance.getDisciplin();
-        System.out.println("Discipliner to string: " + result);
-
-        for (String string : result) {
-            System.out.println("Discipliner: " + string);
-        }
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testDisciplinCheckboxes() {
-        System.out.println("getDisciplinCheckboxes");
-        DelfinGUI instance = new DelfinGUI();
-        ArrayList<String> result = new ArrayList<>();
-        result.add("Brystsvømning");
-        result.add("Butterfly");
-        result.add("Rygcrawl");
-        instance.setDisciplinCheckBoxes(result);
-        ArrayList<String> expResult = new ArrayList<String>();
-        if (instance.getDisciplinBryst()) {
-            expResult.add("Brystsvømning");
-        }
-        if (instance.getDisciplinButterfly()) {
-            expResult.add("Butterfly");
-        }
-        if (instance.getDisciplinCrawl()) {
-            expResult.add("Crawl");
-        }
-        if (instance.getDisciplinRygcrawl()) {
-            expResult.add("Rygcrawl");
-        }
-        assertEquals(expResult, result);
-    }
-
-    @Test
-    public void testGetAdresse() {
+    public void testGetAdresseofMemberAfterSearch() {
         System.out.println("getAdresse");
-        DelfinGUI instance = new DelfinGUI();
-        String expResult = "Ligustervænget 23, 2756 Liguster";
-        String result = instance.getAdresse();
+        String expResult = "Ligustervej 99, 2956 Ligust";
+        String result = GUI.getAdresse();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testGetAlder() {
+    public void testGetAlderofMemberAfterSearch() {
         System.out.println("getAlder");
-        DelfinGUI instance = new DelfinGUI();
-        String expResult = 23 + "";
-        String result = instance.getAlder();
+        String expResult = 35 + "";
+        String result = GUI.getAlder();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testGetEmail() {
+    public void testGetEmailofMemberAfterSearch() {
         System.out.println("getEmail");
-        DelfinGUI instance = new DelfinGUI();
-        String expResult = "lm@delfinen.dk";
-        String result = instance.getEmail();
-        assertEquals(expResult, result);
-    }
-
-//    @Test
-//    public void testisEmail() {
-//        System.out.println("isEmail");
-//        DelfinGUI instance = new DelfinGUI();
-//        boolean result = (instance.getBackground() == Color.white);
-//        assertTrue(result);
-//    }
-    @Test
-    public void testGetID() {
-        System.out.println("getID");
-        DelfinGUI instance = new DelfinGUI();
-        String expResult = 1 + "";
-        String result = instance.getID() + "";
+        String expResult = "hans_egen@delfinen.dk";
+        String result = GUI.getEmail();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testGetNavn() {
+    public void testGetNavnofMemberAfterSearch() {
         System.out.println("getNavn");
-        DelfinGUI instance = new DelfinGUI();
-        String expResult = "Lars Emil";
-        String result = instance.getNavn();
+        String expResult = "Hans Egen";
+        String result = GUI.getNavn();
         assertEquals(expResult, result);
     }
 
     @Test
-    public void testGetTelefon() {
+    public void testGetTelefonofMemberAfterSearch() {
         System.out.println("getTelefon");
-        DelfinGUI instance = new DelfinGUI();
-        String expResult = 25854578 + "";
-        String result = instance.getTelefon() + "";
+        String expResult = 25254545 + "";
+        String result = GUI.getTelefon() + "";
         assertEquals(expResult, result);
     }
 
-//    @Test
-//    public void testGetEXIT_ON_CLOSE() {
-//        System.out.println("getEXIT_ON_CLOSE");
-//        int expResult = 0;
-//        int result = DelfinGUI.getEXIT_ON_CLOSE();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//    @Test
-//    public void testEquals() {
-//        System.out.println("equals");
-//        Object obj = null;
-//        DelfinGUI instance = new DelfinGUI();
-//        boolean expResult = false;
-//        boolean result = instance.equals(obj);result
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
-//    @Test
-//    public void testToString() {
-//        System.out.println("toString");
-//        DelfinGUI instance = new DelfinGUI();
-//        String expResult = "";
-//        String result = instance.toString();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-//    }
 }
