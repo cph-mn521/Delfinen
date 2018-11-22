@@ -59,17 +59,5 @@ public class TopFiveTest {
         result = instance.getTopFive();
         assertArrayEquals(expResult, result);
     }
-
-    /**
-     * Test of checkAndChangetopFive method, of class TopFive.
-     */
-    @Test
-    public void testCheckAndChangetopFive() {
-        System.out.println("checkAndChangetopFive");
-        double time = 0.0;
-        String timeHolder = "";
-        TopFive instance = new TopFive();
-        instance.checkAndChangetopFive(time, timeHolder);
-    }
     
 }
